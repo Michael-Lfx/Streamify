@@ -1,0 +1,129 @@
+//
+// Prefix header for all source files of the 'JanuaryApp' target in the 'JanuaryApp' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#import <QuartzCore/QuartzCore.h>
+#import <MapKit/MapKit.h>
+#import <MessageUI/MessageUI.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
+
+//Categories/extensions
+#import "UIViewController+Transition.h"
+#import "NSString+Additions.h"
+#import "UIAlertView+Additions.h"
+#import "UIView+Additions.h"
+#import "UIImage+AEAdditions.h"
+#import "NSObject+Additions.h"
+#import "NSArray+Additions.h"
+#import "NSCalendar+Additions.h"
+#import "NSDate+Additions.h"
+#import "NSDictionary+Additions.h"
+#import "NSString+MD5.h"
+#import "UIColor+Addition.h"
+
+
+//Appdelegate
+#import "SFAppDelegate.h"
+
+//Vendors
+#import "SVPullToRefresh.h"
+#import "AFNetworking.h"
+
+//Models
+#import "BaseModel.h"
+
+//Views
+#import "BaseTableViewCell.h"
+
+
+//Managers
+
+
+//Controllers (order is important here!)
+#import "BaseViewController.h"
+#import "BaseTableViewController.h"
+#import "BaseNavigationController.h"
+
+#endif
+
+//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+
+#ifdef DEBUG
+#define SERVER_ADDRESS_SECURED          @"http://janapp.torinnguyen.com/"
+#define SERVER_ADDRESS                  @"http://janapp.torinnguyen.com/"
+#else
+#define SERVER_ADDRESS_SECURED          @"https://janapp.ap01.aws.af.cm/"
+#define SERVER_ADDRESS                  @"http://janapp.ap01.aws.af.cm/"
+#endif
+
+
+
+//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+
+//
+// Convenient macro to check app version
+//
+#define APP_VERSION_EQUAL_TO(v)                  ([[[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define APP_VERSION_GREATER_THAN(v)              ([[[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define APP_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define APP_VERSION_LESS_THAN(v)                 ([[[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define APP_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+//
+// Convenient macro to check system version
+// Source: http://stackoverflow.com/questions/3339722/check-iphone-ios-version
+//
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+
+#define IS_LANDSCAPE                                (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
+#define IS_PORTRAIT                                 (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation))
+#define IS_IPAD                                     ([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad)
+#define IS_NOT_IPAD                                 ([UIDevice currentDevice].userInterfaceIdiom!=UIUserInterfaceIdiomPad)
+#define IS_RETINA                                   ([UIScreen mainScreen].scale > 1)
+#define DEVICE_SCALE                                ([UIScreen mainScreen].scale)
+
+
+
+//
+// Source: http://iphoneincubator.com/blog/debugging/the-evolution-of-a-replacement-for-nslog
+// Source: http://www.cimgf.com/2010/05/02/my-current-prefix-pch-file/
+//
+// DLog is almost a drop-in replacement for NSLog to turn off logging for release build
+//
+// add -DDEBUG to OTHER_CFLAGS in the build user defined settings
+//
+// Usage:
+//
+// DLog();
+// DLog(@"here");
+// DLog(@"value: %d", x);
+// Unfortunately this doesn't work DLog(aStringVariable); you have to do this instead DLog(@"%@", aStringVariable);
+//
+
+#ifdef DEBUG
+#define DLog(__FORMAT__, ...) NSLog((@"<%@:%d> " __FORMAT__), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, ##__VA_ARGS__)
+#define ALog(...) [[NSAssertionHandler currentHandler] handleFailureInFunction:[NSString stringWithCString:__PRETTY_FUNCTION__ encoding:NSUTF8StringEncoding] file:[NSString stringWithCString:__FILE__ encoding:NSUTF8StringEncoding] lineNumber:__LINE__ description:__VA_ARGS__]
+#else
+#define DLog(...) do {} while (0)
+#define ALog(__FORMAT__, ...) NSLog((@"<%@:%d> " __FORMAT__), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, ##__VA_ARGS__)
+#endif
+
