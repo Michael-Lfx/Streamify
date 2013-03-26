@@ -64,6 +64,8 @@
 		9CACF0A516F759050067C352 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A416F759050067C352 /* QuartzCore.framework */; };
 		9CACF0A716F759A70067C352 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A616F759A70067C352 /* ImageIO.framework */; };
 		9CACF0A916F759BA0067C352 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A816F759BA0067C352 /* MapKit.framework */; };
+		C0C0371617019A5500B40C4A /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C0371417019A5500B40C4A /* SidebarViewController.m */; };
+		C0C0371717019A5500B40C4A /* SidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0C0371517019A5500B40C4A /* SidebarViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,6 +173,9 @@
 		9CACF0A416F759050067C352 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9CACF0A616F759A70067C352 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		9CACF0A816F759BA0067C352 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C0C0371317019A5500B40C4A /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
+		C0C0371417019A5500B40C4A /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
+		C0C0371517019A5500B40C4A /* SidebarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidebarViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +233,7 @@
 		9CACEFE716F7529C0067C352 /* Streamify */ = {
 			isa = PBXGroup;
 			children = (
+				C0A201BD1700A5AA00BE3C1D /* Project */,
 				9CACF00716F755AC0067C352 /* Categories */,
 				9CACF02016F755AC0067C352 /* Controllers */,
 				9CACF02816F755AC0067C352 /* Managers */,
@@ -439,6 +445,24 @@
 			path = Superclass;
 			sourceTree = "<group>";
 		};
+		C0A201BC1700A59800BE3C1D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C0C0371317019A5500B40C4A /* SidebarViewController.h */,
+				C0C0371417019A5500B40C4A /* SidebarViewController.m */,
+				C0C0371517019A5500B40C4A /* SidebarViewController.xib */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C0A201BD1700A5AA00BE3C1D /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				C0A201BC1700A59800BE3C1D /* View Controllers */,
+			);
+			name = Project;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -497,6 +521,7 @@
 				9CACEFF816F7529C0067C352 /* Default-568h@2x.png in Resources */,
 				9CACEFFB16F7529C0067C352 /* MainStoryboard_iPhone.storyboard in Resources */,
 				9CACEFFE16F7529C0067C352 /* MainStoryboard_iPad.storyboard in Resources */,
+				C0C0371717019A5500B40C4A /* SidebarViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +574,7 @@
 				9CACF09716F757D60067C352 /* UIViewController+Transition.m in Sources */,
 				9CACF09C16F7584A0067C352 /* BaseTableViewCell.m in Sources */,
 				9CACF09F16F7589A0067C352 /* BaseViewController.m in Sources */,
+				C0C0371617019A5500B40C4A /* SidebarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +678,7 @@
 				INFOPLIST_FILE = "Streamify/Streamify-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -668,6 +695,7 @@
 				INFOPLIST_FILE = "Streamify/Streamify-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
