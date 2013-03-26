@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "SFViewController.h"
+#import "BaseViewController.h"
 
-@interface SidebarViewController : SFViewController
+@interface SidebarViewController : BaseViewController
 
 @end

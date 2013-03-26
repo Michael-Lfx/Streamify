@@ -7,10 +7,7 @@
 //
 
 #import "MainViewController.h"
-
-@interface MainViewController ()
-
-@end
+#import "SidebarViewController.h"
 
 @implementation MainViewController
 
@@ -25,8 +22,11 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+  [super viewDidLoad];
+  
+  // Testing
+  SidebarViewController *svc = [[SidebarViewController alloc] initWithNib];
+  [self.view addSubview:svc.view];
 }
 
 - (void)didReceiveMemoryWarning

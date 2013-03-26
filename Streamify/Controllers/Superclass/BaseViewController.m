@@ -40,8 +40,8 @@
   NSString *className = NSStringFromClass([self class]);
   self.title = className;
   
-  self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-  self.view.autoresizesSubviews = YES;
+  //self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+  //self.view.autoresizesSubviews = YES;
   
   //Custom image view will stretch correctly on iPhone5
   /*
@@ -65,9 +65,23 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-  return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+  return ((interfaceOrientation == UIInterfaceOrientationLandscapeLeft)
+          || (interfaceOrientation == UIInterfaceOrientationLandscapeRight));
 }
 
+- (BOOL)shouldAutorotate {
+  return ((self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft)
+          || (self.interfaceOrientation == UIInterfaceOrientationLandscapeRight));
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+  return UIInterfaceOrientationLandscapeRight;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+  return UIInterfaceOrientationMaskLandscapeRight;
+}
 
 #pragma mark - UI Helpers
 
