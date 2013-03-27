@@ -64,11 +64,11 @@
 		9CACF0A716F759A70067C352 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A616F759A70067C352 /* ImageIO.framework */; };
 		9CACF0A916F759BA0067C352 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A816F759BA0067C352 /* MapKit.framework */; };
 		9CCC3214170359C400910B22 /* SFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC3213170359C400910B22 /* SFHomeViewController.m */; };
-		9CDD6AC917034265005A42C8 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6AC817034264005A42C8 /* Accounts.framework */; };
-		9CDD6ACB1703426D005A42C8 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6ACA1703426D005A42C8 /* AdSupport.framework */; };
+		9CCC322017036A3600910B22 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCC321F17036A3600910B22 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9CDD6AC917034265005A42C8 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6AC817034264005A42C8 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9CDD6ACB1703426D005A42C8 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6ACA1703426D005A42C8 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9CDD6ACD1703438D005A42C8 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6ACC1703438D005A42C8 /* FacebookSDKResources.bundle */; };
 		9CDD6ACF17034397005A42C8 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6ACE17034397005A42C8 /* FBUserSettingsViewResources.bundle */; };
-		9CDD6AD1170344EA005A42C8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6AD0170344EA005A42C8 /* Social.framework */; };
 		9CDD6AD31703478C005A42C8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6AD21703478C005A42C8 /* Parse.framework */; };
 		9CDD6AD5170347A4005A42C8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6AD4170347A4005A42C8 /* AudioToolbox.framework */; };
 		9CDD6AD7170347AB005A42C8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6AD6170347AB005A42C8 /* CFNetwork.framework */; };
@@ -207,11 +207,11 @@
 		9CACF0A816F759BA0067C352 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9CCC3212170359C400910B22 /* SFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHomeViewController.h; sourceTree = "<group>"; };
 		9CCC3213170359C400910B22 /* SFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHomeViewController.m; sourceTree = "<group>"; };
+		9CCC321F17036A3600910B22 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		9CDD6AC817034264005A42C8 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		9CDD6ACA1703426D005A42C8 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		9CDD6ACC1703438D005A42C8 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		9CDD6ACE17034397005A42C8 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
-		9CDD6AD0170344EA005A42C8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		9CDD6AD21703478C005A42C8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		9CDD6AD4170347A4005A42C8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9CDD6AD6170347AB005A42C8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -253,6 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CCC322017036A3600910B22 /* Social.framework in Frameworks */,
 				9CACF0A316F758E00067C352 /* SystemConfiguration.framework in Frameworks */,
 				9CDD6ADF170347EB005A42C8 /* StoreKit.framework in Frameworks */,
 				9CDD6ADD170347E2005A42C8 /* Security.framework in Frameworks */,
@@ -263,7 +264,6 @@
 				9CACEFE616F7529C0067C352 /* CoreGraphics.framework in Frameworks */,
 				9CDD6AD7170347AB005A42C8 /* CFNetwork.framework in Frameworks */,
 				9CDD6AD5170347A4005A42C8 /* AudioToolbox.framework in Frameworks */,
-				9CDD6AD1170344EA005A42C8 /* Social.framework in Frameworks */,
 				9CDD6ACB1703426D005A42C8 /* AdSupport.framework in Frameworks */,
 				9CDD6AC917034265005A42C8 /* Accounts.framework in Frameworks */,
 				9CACF0A916F759BA0067C352 /* MapKit.framework in Frameworks */,
@@ -298,27 +298,27 @@
 		9CACEFE016F7529C0067C352 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9CDD6ADE170347EA005A42C8 /* StoreKit.framework */,
-				9CDD6ADC170347E2005A42C8 /* Security.framework */,
-				9CDD6ADA170347C9005A42C8 /* libz.1.1.3.dylib */,
-				9CDD6AD8170347BA005A42C8 /* CoreLocation.framework */,
-				9CDD6AD6170347AB005A42C8 /* CFNetwork.framework */,
-				9CDD6AD4170347A4005A42C8 /* AudioToolbox.framework */,
-				9CDD6AD21703478C005A42C8 /* Parse.framework */,
-				9CDD6AD0170344EA005A42C8 /* Social.framework */,
-				9CDD6ACE17034397005A42C8 /* FBUserSettingsViewResources.bundle */,
-				9CDD6ACC1703438D005A42C8 /* FacebookSDKResources.bundle */,
-				9CACF04516F755AC0067C352 /* FacebookSDK.framework */,
-				9CDD6ACA1703426D005A42C8 /* AdSupport.framework */,
 				9CDD6AC817034264005A42C8 /* Accounts.framework */,
-				9CACF0A816F759BA0067C352 /* MapKit.framework */,
-				9CACF0A616F759A70067C352 /* ImageIO.framework */,
-				9CACF0A416F759050067C352 /* QuartzCore.framework */,
-				9CACF0A216F758E00067C352 /* SystemConfiguration.framework */,
-				9CACF0A016F758DB0067C352 /* MobileCoreServices.framework */,
-				9CACEFE116F7529C0067C352 /* UIKit.framework */,
-				9CACEFE316F7529C0067C352 /* Foundation.framework */,
+				9CDD6ACA1703426D005A42C8 /* AdSupport.framework */,
+				9CDD6AD4170347A4005A42C8 /* AudioToolbox.framework */,
+				9CDD6AD6170347AB005A42C8 /* CFNetwork.framework */,
 				9CACEFE516F7529C0067C352 /* CoreGraphics.framework */,
+				9CDD6AD8170347BA005A42C8 /* CoreLocation.framework */,
+				9CACF04516F755AC0067C352 /* FacebookSDK.framework */,
+				9CDD6ACC1703438D005A42C8 /* FacebookSDKResources.bundle */,
+				9CDD6ACE17034397005A42C8 /* FBUserSettingsViewResources.bundle */,
+				9CACEFE316F7529C0067C352 /* Foundation.framework */,
+				9CACF0A616F759A70067C352 /* ImageIO.framework */,
+				9CDD6ADA170347C9005A42C8 /* libz.1.1.3.dylib */,
+				9CACF0A816F759BA0067C352 /* MapKit.framework */,
+				9CACF0A016F758DB0067C352 /* MobileCoreServices.framework */,
+				9CDD6AD21703478C005A42C8 /* Parse.framework */,
+				9CACF0A416F759050067C352 /* QuartzCore.framework */,
+				9CDD6ADC170347E2005A42C8 /* Security.framework */,
+				9CCC321F17036A3600910B22 /* Social.framework */,
+				9CDD6ADE170347EA005A42C8 /* StoreKit.framework */,
+				9CACF0A216F758E00067C352 /* SystemConfiguration.framework */,
+				9CACEFE116F7529C0067C352 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
