@@ -29,6 +29,25 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    /*
+     NSArray *keys = [NSArray arrayWithObjects:@"follower", @"followee", nil];
+     NSArray *values = [NSArray arrayWithObjects:@"tien", @"minh tu", nil];
+     
+     PFObject *testObject = [PFObject objectWithClassName:@"Follow" dictionary:[NSDictionary dictionaryWithObjects:values
+     forKeys: keys]];
+     [testObject saveInBackground];
+     
+     PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+     NSArray *dataArray = [query findObjects];
+    
+     NSEnumerator *e = [dataArray objectEnumerator];
+     id object;
+     while (object = [e nextObject]) {
+        NSLog(@"%@", object);
+     }
+    NSLog([NSString stringWithFormat:@"%d", [query countObjects]]);
+    */
+    
     if ([PFUser currentUser]) {
         self.userProfile = [PFUser currentUser][@"profile"];
     }
@@ -46,7 +65,6 @@
                              @"location": userData[@"location"][@"name"],
                              @"gender": userData[@"gender"],
                              @"birthday": userData[@"birthday"],
-                             @"relationship": userData[@"relationship_status"],
                              @"pictureURL": [pictureURL absoluteString]};
         
         [[PFUser currentUser] setObject:self.userProfile forKey:@"profile"];
