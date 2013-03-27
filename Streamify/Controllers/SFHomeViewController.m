@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "SFUserProfileViewController.h"
+#import "SFHomeViewController.h"
 #import <Parse/Parse.h>
 
-@interface SFUserProfileViewController ()
+@interface SFHomeViewController ()
 @property (nonatomic, strong) NSDictionary *userProfile;
 @end
 
-@implementation SFUserProfileViewController
+@implementation SFHomeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,6 +59,7 @@
 - (void)updateProfile {
     self.nameField.text = self.userProfile[@"name"];
     self.genderField.text = self.userProfile[@"gender"];
+    NSLog(@"%@", self.userProfile[@"facebookId"]);
 }
 
 - (void)didReceiveMemoryWarning

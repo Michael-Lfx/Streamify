@@ -63,7 +63,7 @@
 		9CACF0A516F759050067C352 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A416F759050067C352 /* QuartzCore.framework */; };
 		9CACF0A716F759A70067C352 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A616F759A70067C352 /* ImageIO.framework */; };
 		9CACF0A916F759BA0067C352 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A816F759BA0067C352 /* MapKit.framework */; };
-		9CCC3214170359C400910B22 /* SFUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC3213170359C400910B22 /* SFUserProfileViewController.m */; };
+		9CCC3214170359C400910B22 /* SFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC3213170359C400910B22 /* SFHomeViewController.m */; };
 		9CDD6AC917034265005A42C8 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6AC817034264005A42C8 /* Accounts.framework */; };
 		9CDD6ACB1703426D005A42C8 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6ACA1703426D005A42C8 /* AdSupport.framework */; };
 		9CDD6ACD1703438D005A42C8 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6ACC1703438D005A42C8 /* FacebookSDKResources.bundle */; };
@@ -205,8 +205,8 @@
 		9CACF0A416F759050067C352 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9CACF0A616F759A70067C352 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		9CACF0A816F759BA0067C352 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		9CCC3212170359C400910B22 /* SFUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUserProfileViewController.h; sourceTree = "<group>"; };
-		9CCC3213170359C400910B22 /* SFUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUserProfileViewController.m; sourceTree = "<group>"; };
+		9CCC3212170359C400910B22 /* SFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHomeViewController.h; sourceTree = "<group>"; };
+		9CCC3213170359C400910B22 /* SFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHomeViewController.m; sourceTree = "<group>"; };
 		9CDD6AC817034264005A42C8 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		9CDD6ACA1703426D005A42C8 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		9CDD6ACC1703438D005A42C8 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
@@ -327,11 +327,11 @@
 			isa = PBXGroup;
 			children = (
 				9CDD6AE017034B1C005A42C8 /* Assets */,
-				C0A201BD1700A5AA00BE3C1D /* Project */,
 				9CACF00716F755AC0067C352 /* Categories */,
 				9CACF02016F755AC0067C352 /* Controllers */,
 				9CACF02816F755AC0067C352 /* Managers */,
 				9CACF02C16F755AC0067C352 /* Models */,
+				C0A201BD1700A5AA00BE3C1D /* Project */,
 				9CACEFE816F7529C0067C352 /* Supporting Files */,
 				9CACF03016F755AC0067C352 /* Vendors */,
 				9CACF09816F7584A0067C352 /* Views */,
@@ -394,8 +394,8 @@
 				9CACF02116F755AC0067C352 /* Superclass */,
 				9CDD6AEA17034C47005A42C8 /* SFLoginViewController.h */,
 				9CDD6AEB17034C47005A42C8 /* SFLoginViewController.m */,
-				9CCC3212170359C400910B22 /* SFUserProfileViewController.h */,
-				9CCC3213170359C400910B22 /* SFUserProfileViewController.m */,
+				9CCC3212170359C400910B22 /* SFHomeViewController.h */,
+				9CCC3213170359C400910B22 /* SFHomeViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -746,7 +746,7 @@
 				C0C0371617019A5500B40C4A /* SidebarViewController.m in Sources */,
 				C0C5DDE01701D5B500191192 /* MainViewController.m in Sources */,
 				9CDD6AEC17034C47005A42C8 /* SFLoginViewController.m in Sources */,
-				9CCC3214170359C400910B22 /* SFUserProfileViewController.m in Sources */,
+				9CCC3214170359C400910B22 /* SFHomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

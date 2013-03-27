@@ -8,7 +8,6 @@
 
 #import "SFLoginViewController.h"
 #import <Parse/Parse.h>
-#import "UserDetailsViewController.h"
 
 @interface SFLoginViewController ()
 
@@ -51,10 +50,10 @@
             }
         } else if (user.isNew) {
             NSLog(@"User with facebook signed up and logged in!");
-            [self performSegueWithIdentifier:@"UserDetailSegue" sender:self];
+            [self performSegueWithIdentifier:@"HomeViewSegue" sender:self];
         } else {
             NSLog(@"User with facebook logged in!");
-            [self performSegueWithIdentifier:@"UserDetailSegue" sender:self];
+            [self performSegueWithIdentifier:@"HomeViewSegue" sender:self];
         }
     }];
     
