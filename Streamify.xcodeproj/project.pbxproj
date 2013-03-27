@@ -63,6 +63,11 @@
 		9CACF0A516F759050067C352 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A416F759050067C352 /* QuartzCore.framework */; };
 		9CACF0A716F759A70067C352 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A616F759A70067C352 /* ImageIO.framework */; };
 		9CACF0A916F759BA0067C352 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A816F759BA0067C352 /* MapKit.framework */; };
+		9CDD6AC917034265005A42C8 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6AC817034264005A42C8 /* Accounts.framework */; };
+		9CDD6ACB1703426D005A42C8 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6ACA1703426D005A42C8 /* AdSupport.framework */; };
+		9CDD6ACD1703438D005A42C8 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6ACC1703438D005A42C8 /* FacebookSDKResources.bundle */; };
+		9CDD6ACF17034397005A42C8 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6ACE17034397005A42C8 /* FBUserSettingsViewResources.bundle */; };
+		9CDD6AD1170344EA005A42C8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6AD0170344EA005A42C8 /* Social.framework */; };
 		C0C0371617019A5500B40C4A /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C0371417019A5500B40C4A /* SidebarViewController.m */; };
 		C0C0371717019A5500B40C4A /* SidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0C0371517019A5500B40C4A /* SidebarViewController.xib */; };
 		C0C5DDCC1701CF2700191192 /* sidebar-icon-broadcaster.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C5DDBE1701CF2700191192 /* sidebar-icon-broadcaster.png */; };
@@ -143,7 +148,7 @@
 		9CACF04216F755AC0067C352 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		9CACF04316F755AC0067C352 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		9CACF04416F755AC0067C352 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		9CACF04516F755AC0067C352 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		9CACF04516F755AC0067C352 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Streamify/Vendors/FacebookSDK.framework; sourceTree = "<group>"; };
 		9CACF04716F755AC0067C352 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		9CACF04816F755AC0067C352 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		9CACF04916F755AC0067C352 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -187,6 +192,11 @@
 		9CACF0A416F759050067C352 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9CACF0A616F759A70067C352 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		9CACF0A816F759BA0067C352 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9CDD6AC817034264005A42C8 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		9CDD6ACA1703426D005A42C8 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		9CDD6ACC1703438D005A42C8 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		9CDD6ACE17034397005A42C8 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
+		9CDD6AD0170344EA005A42C8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		C0C0371317019A5500B40C4A /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
 		C0C0371417019A5500B40C4A /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		C0C0371517019A5500B40C4A /* SidebarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidebarViewController.xib; sourceTree = "<group>"; };
@@ -215,6 +225,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CDD6AD1170344EA005A42C8 /* Social.framework in Frameworks */,
+				9CDD6ACB1703426D005A42C8 /* AdSupport.framework in Frameworks */,
+				9CDD6AC917034265005A42C8 /* Accounts.framework in Frameworks */,
 				9CACF0A916F759BA0067C352 /* MapKit.framework in Frameworks */,
 				9CACF0A716F759A70067C352 /* ImageIO.framework in Frameworks */,
 				9CACEFE616F7529C0067C352 /* CoreGraphics.framework in Frameworks */,
@@ -250,6 +263,12 @@
 		9CACEFE016F7529C0067C352 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CDD6AD0170344EA005A42C8 /* Social.framework */,
+				9CDD6ACE17034397005A42C8 /* FBUserSettingsViewResources.bundle */,
+				9CDD6ACC1703438D005A42C8 /* FacebookSDKResources.bundle */,
+				9CACF04516F755AC0067C352 /* FacebookSDK.framework */,
+				9CDD6ACA1703426D005A42C8 /* AdSupport.framework */,
+				9CDD6AC817034264005A42C8 /* Accounts.framework */,
 				9CACF0A816F759BA0067C352 /* MapKit.framework */,
 				9CACF0A616F759A70067C352 /* ImageIO.framework */,
 				9CACF0A416F759050067C352 /* QuartzCore.framework */,
@@ -385,7 +404,6 @@
 			isa = PBXGroup;
 			children = (
 				9CACF03116F755AC0067C352 /* AFNetworking */,
-				9CACF04516F755AC0067C352 /* FacebookSDK.framework */,
 				9CACF04616F755AC0067C352 /* SDWebImage */,
 				9CACF05C16F755AC0067C352 /* SVPullToRefresh */,
 			);
@@ -602,6 +620,8 @@
 				C0C5DDD91701CF2700191192 /* sidebar-selected-background@2x.png in Resources */,
 				C0C5DDDC1701D33000191192 /* sidebar-background.png in Resources */,
 				C0C5DDDD1701D33000191192 /* sidebar-background@2x.png in Resources */,
+				9CDD6ACD1703438D005A42C8 /* FacebookSDKResources.bundle in Resources */,
+				9CDD6ACF17034397005A42C8 /* FBUserSettingsViewResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +777,10 @@
 				GCC_PREFIX_HEADER = "Streamify/Streamify-Prefix.pch";
 				INFOPLIST_FILE = "Streamify/Streamify-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = (
+					"-lsqlite3.0",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -774,6 +798,10 @@
 				GCC_PREFIX_HEADER = "Streamify/Streamify-Prefix.pch";
 				INFOPLIST_FILE = "Streamify/Streamify-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = (
+					"-lsqlite3.0",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
