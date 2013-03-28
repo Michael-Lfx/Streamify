@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MetroCanvasViewController : UIViewController <UIScrollViewDelegate>
+@interface SFMetroCanvasViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSArray *tiles;
-@property (nonatomic, strong) UIViewController *p;
 
 @end

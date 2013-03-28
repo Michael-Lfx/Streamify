@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "SidebarViewController.h"
+#import "SFSidebarViewController.h"
 
-@interface SidebarViewController ()
+@interface SFSidebarViewController ()
 
 @end
 
-@implementation SidebarViewController
+@implementation SFSidebarViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

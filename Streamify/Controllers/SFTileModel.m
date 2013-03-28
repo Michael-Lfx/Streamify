@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "TileModel.h"
+#import "SFTileModel.h"
 
-@implementation TileModel
+@implementation SFTileModel
 
 - (id)initWithName:(NSString *)title
           andCover:(UIImage *)cover

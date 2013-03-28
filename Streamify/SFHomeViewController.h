@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "SFMetroCanvasViewController.h"
 
-@interface MainViewController : BaseViewController
+@interface SFHomeViewController : BaseViewController
+
+@property (nonatomic, strong) SFMetroCanvasViewController *canvasViewController;
 
 @end

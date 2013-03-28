@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface SFHomeViewController : BaseViewController
+@interface SFHomeTestViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UILabel *nameField;
 @property (weak, nonatomic) IBOutlet UILabel *genderField;
 

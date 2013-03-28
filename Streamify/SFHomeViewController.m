@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "MainViewController.h"
-#import "SidebarViewController.h"
+#import "SFHomeViewController.h"
+#import "SFSidebarViewController.h"
 
-@implementation MainViewController
+@implementation SFHomeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,11 +22,19 @@
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
+    [super viewDidLoad];
   
-  // Testing
-  SidebarViewController *svc = [[SidebarViewController alloc] initWithNib];
-  [self.view addSubview:svc.view];
+    self.canvasViewController = [[SFMetroCanvasViewController alloc] init];
+    CGSize canvasSize = self.canvasViewController.view.frame.size;
+    self.canvasViewController.view.frame = CGRectMake(130,
+                                                 130,
+                                                 canvasSize.width,
+                                                 canvasSize.height);
+    [self.view addSubview:self.canvasViewController.view];
+    
+    // Testing
+    SFSidebarViewController *svc = [[SFSidebarViewController alloc] initWithNib];
+    [self.view addSubview:svc.view];
 }
 
 - (void)didReceiveMemoryWarning

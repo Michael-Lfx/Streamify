@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "MetroTileView.h"
+#import "SFMetroTileView.h"
 
-@implementation MetroTileView
+@implementation SFMetroTileView
 
 - (id)initWithFrame:(CGRect)frame
 {

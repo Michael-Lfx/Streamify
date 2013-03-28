@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "SFHomeViewController.h"
+#import "SFHomeTestViewController.h"
 #import <Parse/Parse.h>
 
-@interface SFHomeViewController ()
+@interface SFHomeTestViewController ()
 @property (nonatomic, strong) NSDictionary *userProfile;
 @end
 
-@implementation SFHomeViewController
+@implementation SFHomeTestViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

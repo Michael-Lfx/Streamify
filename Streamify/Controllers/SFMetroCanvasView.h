@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MetroCanvasView : UIView
+@interface SFMetroCanvasView : UIView
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 

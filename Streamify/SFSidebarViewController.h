@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface SidebarViewController : BaseViewController
+@interface SFSidebarViewController : BaseViewController
 
 @end

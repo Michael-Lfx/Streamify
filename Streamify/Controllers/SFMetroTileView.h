@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@class MetroTileView;
+@class SFMetroTileView;
 
-@protocol MetroTileActionDelegate <NSObject>
+@protocol SFMetroTileActionDelegate <NSObject>
 
 - (void)tapOnTile:(UITapGestureRecognizer *)tapRecognizer;
 
 @end
 
-@interface MetroTileView : UIView
+@interface SFMetroTileView : UIView
 
 @property (strong, nonatomic) IBOutlet UIImageView *coverView;
 @property (strong, nonatomic) IBOutlet UILabel *titleView;

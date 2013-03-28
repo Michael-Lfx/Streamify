@@ -8,22 +8,23 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "MetroConstants.h"
-#import "MetroCanvasViewController.h"
-#import "MetroCanvasView.h"
-#import "MetroTileView.h"
-#import "TileModel.h"
+#import "SFMetroConstants.h"
+#import "SFMetroCanvasViewController.h"
+#import "SFMetroCanvasView.h"
+#import "SFMetroTileView.h"
+#import "SFTileModel.h"
+#import "SFListenerViewController.h"
 
-@interface MetroCanvasViewController ()
+@interface SFMetroCanvasViewController ()
 
-@property (nonatomic, strong) MetroCanvasView *canvasView;
+@property (nonatomic, strong) SFMetroCanvasView *canvasView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray *pageViews;
 
 @end
 
 
-@implementation MetroCanvasViewController
+@implementation SFMetroCanvasViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,15 +37,17 @@
 
 - (void)loadView
 {
-    self.canvasView = [[[NSBundle mainBundle] loadNibNamed:@"MetroCanvasView" owner:self options:nil] lastObject];
+    self.canvasView = [[[NSBundle mainBundle] loadNibNamed:kMetroCanvasViewNibName owner:self options:nil] lastObject];
     self.scrollView = self.canvasView.scrollView;
     [self.scrollView setCanCancelContentTouches:YES];
     self.scrollView.delegate = self;
     
-    self.canvasView.layer.borderColor = [UIColor redColor].CGColor;
-    self.canvasView.layer.borderWidth = 3.0f;
-    self.scrollView.layer.borderColor = [UIColor greenColor].CGColor;
-    self.scrollView.layer.borderWidth = 1.0f;
+    if (kMetroDebug) {
+        self.canvasView.layer.borderColor = [UIColor redColor].CGColor;
+        self.canvasView.layer.borderWidth = 3.0f;
+        self.scrollView.layer.borderColor = [UIColor greenColor].CGColor;
+        self.scrollView.layer.borderWidth = 1.0f;
+    }
     self.view = self.canvasView;
 }
 
@@ -64,13 +67,13 @@
 {
     UIImage *image;
     NSString *imageName, *coverName;
-    TileModel *tile;
+    SFTileModel *tile;
     NSMutableArray *temp = [NSMutableArray array];
     for (int i = 0; i < 100; ++i) {
         coverName = [NSString stringWithFormat:@"Cover %d", i];
         imageName = [NSString stringWithFormat:@"%d.JPG", i];
         image = [UIImage imageNamed:imageName];
-        tile = [[TileModel alloc] initWithName:coverName andCover:image];
+        tile = [[SFTileModel alloc] initWithName:coverName andCover:image];
         [temp addObject:tile];
     }
     self.tiles = [NSArray arrayWithArray:temp];
@@ -155,8 +158,8 @@
 - (void)addTiles:(NSArray *)tiles toPageView:(UIView *)pageView
 {
     for (NSInteger i = 0; i < tiles.count; ++i) {
-        NSObject<TileModel> *tile = [tiles objectAtIndex:i];
-        MetroTileView *tileView = [[[NSBundle mainBundle] loadNibNamed:@"MetroTileView" owner:self options:nil] lastObject];
+        NSObject<SFTileModel> *tile = [tiles objectAtIndex:i];
+        SFMetroTileView *tileView = [[[NSBundle mainBundle] loadNibNamed:kMetroTileViewNibName owner:self options:nil] lastObject];
         [tileView setTitle:tile.title];
         [tileView setCover:tile.cover];
         UITapGestureRecognizer *tapOnTileRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openChannelListener:)];
@@ -201,9 +204,9 @@
 
 - (void)openChannelListener:(UIGestureRecognizer *)tapRecognizer
 {
-    NSLog(@"fuckkkk\n");
     if (tapRecognizer.state == UIGestureRecognizerStateEnded) {
-        [self.p performSegueWithIdentifier:@"OpenListenerChannel" sender:self];
+        SFListenerViewController *listenerViewController = [[SFListenerViewController alloc] init];
+        [self presentViewController:listenerViewController animated:YES completion:nil];
     }
 }
 

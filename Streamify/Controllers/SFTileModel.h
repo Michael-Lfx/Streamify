@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol TileModel <NSObject>
+@protocol SFTileModel <NSObject>
 
 - (NSString *)title;
 - (UIImage *)cover;
 
 @end
 
-@interface TileModel : NSObject <TileModel>
+@interface SFTileModel : NSObject <SFTileModel>
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) UIImage *cover;
