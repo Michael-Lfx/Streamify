@@ -24,4 +24,7 @@ typedef enum {
     kSFSidebarBackOnly
 } SFSidebarType;
 
+// NOTIFICATIONS
+#define kUpdateMeSuccessNotification @"updateMeSuccess"
+
 #endif

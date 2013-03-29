@@ -49,7 +49,7 @@
     NSLog([NSString stringWithFormat:@"%d", [query countObjects]]);
      */
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateProfile) name:@"updateMeSucceed" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateProfile) name:kUpdateMeSuccessNotification object:nil];
 }
 
 - (void)updateProfile {
