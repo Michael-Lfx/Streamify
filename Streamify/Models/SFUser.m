@@ -13,6 +13,8 @@
 - (id)initWithPFUser:(PFUser *)user {
     if (self = [super initWithDictionary:[user objectForKey:@"profile"]]) {
         self.objectID = user.objectId;
+        
+        
     }
     return self;
 }

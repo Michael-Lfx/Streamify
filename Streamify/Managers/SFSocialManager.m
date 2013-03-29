@@ -38,10 +38,19 @@
         [[PFUser currentUser] save];
         
         self.currentUser = [[SFUser alloc] initWithPFUser:[PFUser currentUser]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateMeSucceed" object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateMeSuccessNotification object:self userInfo:nil];
     }];
     
     return  YES;
 }
+
+- (NSArray *)getFollowersForUser:(NSString *)objectID {
+    return NULL;
+}
+
+- (NSArray *)getFollowsForUser:(NSString *)objectID {
+    return NULL;
+}
+
 
 @end

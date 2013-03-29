@@ -13,4 +13,6 @@
 @property (nonatomic, strong) SFUser *currentUser;
 + (SFSocialManager* )sharedInstance;
 - (BOOL)updateMe;
+- (NSArray *)getFollowersForUser:(NSString *)objectID;
+- (NSArray *)getFollowsForUser:(NSString *)objectID;
 @end
