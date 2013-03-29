@@ -45,6 +45,10 @@
 		1A49FA661704F57C00969CFA /* SFListenerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA651704F57C00969CFA /* SFListenerViewController.m */; };
 		1A7932BF1705FE7F00005CBF /* SFMetroCanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7932BD1705FE7F00005CBF /* SFMetroCanvasViewController.m */; };
 		1A7932C01705FE7F00005CBF /* SFMetroCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7932BE1705FE7F00005CBF /* SFMetroCanvasViewController.xib */; };
+		991868F017061D17003906C7 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 991868EF17061D17003906C7 /* RecordViewController.m */; };
+		991868F317061D30003906C7 /* SFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 991868F217061D30003906C7 /* SFHomeViewController.m */; };
+		991868F517061D7A003906C7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991868F417061D7A003906C7 /* AVFoundation.framework */; };
+		991868F717061D81003906C7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991868F617061D81003906C7 /* MediaPlayer.framework */; };
 		9C93677E170601B0006108F9 /* SFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C93677D170601B0006108F9 /* SFUser.m */; };
 		9C936781170601BC006108F9 /* SFSocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C936780170601BC006108F9 /* SFSocialManager.m */; };
 		9CACEFE216F7529C0067C352 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACEFE116F7529C0067C352 /* UIKit.framework */; };
@@ -125,7 +129,6 @@
 		C0AC8A641705731D00422723 /* SFMainColumnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8A621705731D00422723 /* SFMainColumnViewController.xib */; };
 		C0AC8A68170575B900422723 /* SFSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A661705755400422723 /* SFSidebarViewController.m */; };
 		C0AC8A691705768E00422723 /* SFSidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8A671705755400422723 /* SFSidebarViewController.xib */; };
-		C0AC8A6F1705771100422723 /* SFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A6E1705771100422723 /* SFHomeViewController.m */; };
 		C0AC8A80170577B900422723 /* sidebar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8A70170577B900422723 /* sidebar-background.png */; };
 		C0AC8A81170577B900422723 /* sidebar-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8A71170577B900422723 /* sidebar-background@2x.png */; };
 		C0AC8A82170577B900422723 /* sidebar-icon-broadcaster.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8A72170577B900422723 /* sidebar-icon-broadcaster.png */; };
@@ -202,6 +205,12 @@
 		1A7932BC1705FE7E00005CBF /* SFMetroCanvasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroCanvasViewController.h; sourceTree = "<group>"; };
 		1A7932BD1705FE7F00005CBF /* SFMetroCanvasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMetroCanvasViewController.m; sourceTree = "<group>"; };
 		1A7932BE1705FE7F00005CBF /* SFMetroCanvasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMetroCanvasViewController.xib; sourceTree = "<group>"; };
+		991868EE17061D17003906C7 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		991868EF17061D17003906C7 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
+		991868F117061D30003906C7 /* SFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHomeViewController.h; sourceTree = "<group>"; };
+		991868F217061D30003906C7 /* SFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHomeViewController.m; sourceTree = "<group>"; };
+		991868F417061D7A003906C7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		991868F617061D81003906C7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		9C93677C170601B0006108F9 /* SFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUser.h; sourceTree = "<group>"; };
 		9C93677D170601B0006108F9 /* SFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUser.m; sourceTree = "<group>"; };
 		9C93677F170601BC006108F9 /* SFSocialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSocialManager.h; sourceTree = "<group>"; };
@@ -334,8 +343,6 @@
 		C0AC8A651705755400422723 /* SFSidebarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFSidebarViewController.h; sourceTree = "<group>"; };
 		C0AC8A661705755400422723 /* SFSidebarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFSidebarViewController.m; sourceTree = "<group>"; };
 		C0AC8A671705755400422723 /* SFSidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFSidebarViewController.xib; sourceTree = "<group>"; };
-		C0AC8A6D1705771100422723 /* SFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHomeViewController.h; sourceTree = "<group>"; };
-		C0AC8A6E1705771100422723 /* SFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHomeViewController.m; sourceTree = "<group>"; };
 		C0AC8A70170577B900422723 /* sidebar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sidebar-background.png"; path = "Assets/Theme/sidebar-background.png"; sourceTree = "<group>"; };
 		C0AC8A71170577B900422723 /* sidebar-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sidebar-background@2x.png"; path = "Assets/Theme/sidebar-background@2x.png"; sourceTree = "<group>"; };
 		C0AC8A72170577B900422723 /* sidebar-icon-broadcaster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sidebar-icon-broadcaster.png"; path = "Assets/Theme/sidebar-icon-broadcaster.png"; sourceTree = "<group>"; };
@@ -376,6 +383,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				991868F717061D81003906C7 /* MediaPlayer.framework in Frameworks */,
+				991868F517061D7A003906C7 /* AVFoundation.framework in Frameworks */,
 				9CCC322017036A3600910B22 /* Social.framework in Frameworks */,
 				9CACF0A316F758E00067C352 /* SystemConfiguration.framework in Frameworks */,
 				9CDD6ADF170347EB005A42C8 /* StoreKit.framework in Frameworks */,
@@ -404,8 +413,8 @@
 		1A49F9E61704BE0900969CFA /* Home Screen */ = {
 			isa = PBXGroup;
 			children = (
-				C0AC8A6D1705771100422723 /* SFHomeViewController.h */,
-				C0AC8A6E1705771100422723 /* SFHomeViewController.m */,
+				991868F117061D30003906C7 /* SFHomeViewController.h */,
+				991868F217061D30003906C7 /* SFHomeViewController.m */,
 			);
 			name = "Home Screen";
 			sourceTree = "<group>";
@@ -493,6 +502,15 @@
 			path = thumb;
 			sourceTree = "<group>";
 		};
+		991868EA17061CE6003906C7 /* TestAudio */ = {
+			isa = PBXGroup;
+			children = (
+				991868EE17061D17003906C7 /* RecordViewController.h */,
+				991868EF17061D17003906C7 /* RecordViewController.m */,
+			);
+			name = TestAudio;
+			sourceTree = "<group>";
+		};
 		9CACEFD516F7529C0067C352 = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +531,8 @@
 		9CACEFE016F7529C0067C352 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				991868F617061D81003906C7 /* MediaPlayer.framework */,
+				991868F417061D7A003906C7 /* AVFoundation.framework */,
 				9CDD6AC817034264005A42C8 /* Accounts.framework */,
 				9CDD6ACA1703426D005A42C8 /* AdSupport.framework */,
 				9CDD6AD4170347A4005A42C8 /* AudioToolbox.framework */,
@@ -606,6 +626,7 @@
 		9CACF02016F755AC0067C352 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				991868EA17061CE6003906C7 /* TestAudio */,
 				9CACF02116F755AC0067C352 /* Superclass */,
 				1A49F9E71704BE4500969CFA /* Login Screen */,
 				1A49F9E61704BE0900969CFA /* Home Screen */,
@@ -1069,11 +1090,12 @@
 				1A49FA0D1704EAC400969CFA /* SFMetroTileView.m in Sources */,
 				1A49FA661704F57C00969CFA /* SFListenerViewController.m in Sources */,
 				C0AC8A631705731D00422723 /* SFMainColumnViewController.m in Sources */,
-				C0AC8A6F1705771100422723 /* SFHomeViewController.m in Sources */,
 				C0AC8AAF17059C7600422723 /* SFUIDefaultTheme.m in Sources */,
 				1A7932BF1705FE7F00005CBF /* SFMetroCanvasViewController.m in Sources */,
 				9C93677E170601B0006108F9 /* SFUser.m in Sources */,
 				9C936781170601BC006108F9 /* SFSocialManager.m in Sources */,
+				991868F017061D17003906C7 /* RecordViewController.m in Sources */,
+				991868F317061D30003906C7 /* SFHomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

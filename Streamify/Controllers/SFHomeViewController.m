@@ -8,6 +8,7 @@
 #import "SFConstants.h"
 #import "SFHomeViewController.h"
 #import "SFListenerViewController.h"
+#import "RecordViewController.h" 
 
 @implementation SFHomeViewController
 
@@ -38,6 +39,12 @@
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarFull
                                                                                delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
+    
+    UIButton *broadcastButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    broadcastButton.frame = CGRectMake(50, 50, 100, 50);
+    [broadcastButton setTitle:@"Broadcast" forState:UIControlStateNormal];
+    [broadcastButton addTarget:self action:@selector(broadcast) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:broadcastButton];
 }
 
 - (void)tilePressed:(id)sender
@@ -51,10 +58,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)broadcast {
+    RecordViewController *vc = [[RecordViewController alloc] init];
+    vc.username = [SFSocialManager sharedInstance].currentUser.objectID;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.canvasViewController viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 @end
