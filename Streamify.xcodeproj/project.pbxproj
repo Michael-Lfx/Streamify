@@ -401,14 +401,10 @@
 			name = Listener;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		1A49F9F51704E9CA00969CFA /* Metro Components */ = {
-=======
-		1A49F9F51704E9CA00969CFA /* Metro Component Views */ = {
->>>>>>> Reorganize
 			isa = PBXGroup;
 			children = (
-				1A49FA121704ED6A00969CFA /* Test thumbnails */,
+				1A49FA121704ED6A00969CFA /* thumb */,
 				1A49FA041704EAC400969CFA /* SFTileModel.h */,
 				1A49FA051704EAC400969CFA /* SFTileModel.m */,
 				1A49FA061704EAC400969CFA /* SFMetroTileView.h */,
@@ -419,14 +415,10 @@
 				1A49FA0B1704EAC400969CFA /* SFMetroCanvasView.xib */,
 				1A49FA111704EACA00969CFA /* SFMetroConstants.h */,
 			);
-<<<<<<< HEAD
 			name = "Metro Components";
-=======
-			name = "Metro Component Views";
->>>>>>> Reorganize
 			sourceTree = "<group>";
 		};
-		1A49FA121704ED6A00969CFA /* Test thumbnails */ = {
+		1A49FA121704ED6A00969CFA /* thumb */ = {
 			isa = PBXGroup;
 			children = (
 				1A49FA131704ED6B00969CFA /* 0.JPG */,
@@ -462,7 +454,6 @@
 				1A49FA311704ED6B00969CFA /* 8.JPG */,
 				1A49FA321704ED6B00969CFA /* 9.JPG */,
 			);
-			name = "Test thumbnails";
 			path = thumb;
 			sourceTree = "<group>";
 		};
@@ -769,11 +760,7 @@
 		C0B22125170558B30045A248 /* MetroCanvas VC */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				1A49F9F51704E9CA00969CFA /* Metro Components */,
-=======
-				1A49F9F51704E9CA00969CFA /* Metro Component Views */,
->>>>>>> Reorganize
 				1A49FA011704EAB600969CFA /* SFMetroCanvasViewController.h */,
 				1A49FA021704EAB600969CFA /* SFMetroCanvasViewController.m */,
 			);
