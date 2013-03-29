@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A1D84FE17061FC2002C1CB4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1D84FD17061FC2002C1CB4 /* AVFoundation.framework */; };
+		1A1D850017061FC8002C1CB4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1D84FF17061FC8002C1CB4 /* MediaPlayer.framework */; };
 		1A49FA0C1704EAC400969CFA /* SFTileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA051704EAC400969CFA /* SFTileModel.m */; };
 		1A49FA0D1704EAC400969CFA /* SFMetroTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA071704EAC400969CFA /* SFMetroTileView.m */; };
 		1A49FA0E1704EAC400969CFA /* SFMetroTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA081704EAC400969CFA /* SFMetroTileView.xib */; };
@@ -160,6 +162,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A1D84FD17061FC2002C1CB4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1A1D84FF17061FC8002C1CB4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		1A49FA041704EAC400969CFA /* SFTileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTileModel.h; sourceTree = "<group>"; };
 		1A49FA051704EAC400969CFA /* SFTileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTileModel.m; sourceTree = "<group>"; };
 		1A49FA061704EAC400969CFA /* SFMetroTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroTileView.h; sourceTree = "<group>"; };
@@ -379,6 +383,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A1D850017061FC8002C1CB4 /* MediaPlayer.framework in Frameworks */,
+				1A1D84FE17061FC2002C1CB4 /* AVFoundation.framework in Frameworks */,
 				9CCC322017036A3600910B22 /* Social.framework in Frameworks */,
 				9CACF0A316F758E00067C352 /* SystemConfiguration.framework in Frameworks */,
 				9CDD6ADF170347EB005A42C8 /* StoreKit.framework in Frameworks */,
@@ -518,6 +524,8 @@
 		9CACEFE016F7529C0067C352 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A1D84FF17061FC8002C1CB4 /* MediaPlayer.framework */,
+				1A1D84FD17061FC2002C1CB4 /* AVFoundation.framework */,
 				9CDD6AC817034264005A42C8 /* Accounts.framework */,
 				9CDD6ACA1703426D005A42C8 /* AdSupport.framework */,
 				9CDD6AD4170347A4005A42C8 /* AudioToolbox.framework */,
