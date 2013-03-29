@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "SFMetroConstants.h"
 #import "SFMetroCanvasViewController.h"
 #import "SFMetroTileView.h"
@@ -40,6 +42,11 @@
     for (NSInteger i = 0; i < numOfPages; ++i) {
         [self.pageViews addObject:[NSNull null]];
     }
+    
+//    self.view.layer.borderColor = [UIColor redColor].CGColor;
+//    self.view.layer.borderWidth = 3.0f;
+//    self.scrollView.layer.borderColor = [UIColor greenColor].CGColor;
+//    self.scrollView.layer.borderWidth = 1.0f;
 }
 
 - (void)initTiles

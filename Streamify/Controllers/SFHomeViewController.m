@@ -24,10 +24,13 @@
     [super viewDidLoad];
   
     self.canvasViewController = [[SFMetroCanvasViewController alloc] initWithNib];
+    CGRect frame = self.canvasViewController.view.frame;
     self.canvasViewController.view.frame = CGRectMake(kSFCanvasFrameXInHomeView,
-                                                 kSFCanvasFrameYInHomeView,
-                                                 kSFCanvasFrameWInHomeView,
-                                                 kSFCanvasFrameHInHomeView);
+                                                      kSFCanvasFrameYInHomeView,
+                                                      frame.size.width,
+                                                      frame.size.height);
+                                                      
+
     [self.view addSubview:self.canvasViewController.view];
     
     // Sidebar must be added after main column for shadow
