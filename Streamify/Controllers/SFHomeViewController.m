@@ -23,7 +23,7 @@
 {
     [super viewDidLoad];
   
-    self.canvasViewController = [[SFMetroCanvasViewController alloc] init];
+    self.canvasViewController = [[SFMetroCanvasViewController alloc] initWithNib];
     self.canvasViewController.view.frame = CGRectMake(kSFCanvasFrameXInHomeView,
                                                  kSFCanvasFrameYInHomeView,
                                                  kSFCanvasFrameWInHomeView,

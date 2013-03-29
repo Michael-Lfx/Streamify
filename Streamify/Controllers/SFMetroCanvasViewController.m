@@ -1,29 +1,25 @@
 //
-//  MetroViewController.m
-//  Metro2
+//  SFMetroCanvasViewController.m
+//  Streamify
 //
-//  Created by Le Minh Tu on 3/28/13.
+//  Created by Le Minh Tu on 3/29/13.
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
-
 #import "SFMetroConstants.h"
 #import "SFMetroCanvasViewController.h"
-#import "SFMetroCanvasView.h"
 #import "SFMetroTileView.h"
 #import "SFTileModel.h"
 #import "SFListenerViewController.h"
 
 @interface SFMetroCanvasViewController ()
 
-@property (nonatomic, strong) SFMetroCanvasView *canvasView;
-@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray *pageViews;
 
 @end
 
 @implementation SFMetroCanvasViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,24 +28,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (void)loadView
-{
-    // Hierachy: Canvas View contains Scroll View
-    
-    self.canvasView = [[[NSBundle mainBundle] loadNibNamed:kMetroCanvasViewNibName owner:self options:nil] lastObject];
-    self.scrollView = self.canvasView.scrollView;
-    [self.scrollView setCanCancelContentTouches:YES];
-    self.scrollView.delegate = self;
-    
-    if (kMetroDebug) {
-        self.canvasView.layer.borderColor = [UIColor redColor].CGColor;
-        self.canvasView.layer.borderWidth = 3.0f;
-        self.scrollView.layer.borderColor = [UIColor greenColor].CGColor;
-        self.scrollView.layer.borderWidth = 1.0f;
-    }
-    self.view = self.canvasView;
 }
 
 - (void)viewDidLoad
@@ -83,7 +61,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
     CGSize pagesScrollViewSize = self.scrollView.frame.size;
     self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageViews.count, pagesScrollViewSize.height);
     
@@ -112,12 +90,12 @@
     [self purgePage:(firstPage - 1)];
     [self purgePage:(lastPage + 1)];
     
-//    for (NSInteger i = 0; i < firstPage; ++i) {
-//        [self purgePage:i];
-//    }
-//    for (NSInteger i = lastPage + 1; i < self.tiles.count; ++i) {
-//        [self purgePage:i];
-//    }
+    //    for (NSInteger i = 0; i < firstPage; ++i) {
+    //        [self purgePage:i];
+    //    }
+    //    for (NSInteger i = lastPage + 1; i < self.tiles.count; ++i) {
+    //        [self purgePage:i];
+    //    }
 }
 
 - (void)loadPage:(NSInteger)page
@@ -180,7 +158,7 @@
         tileView.frame = frame;
         [pageView addSubview:tileView];
     }
-
+    
 }
 
 - (void)purgePage:(NSInteger)page
@@ -212,3 +190,4 @@
 }
 
 @end
+

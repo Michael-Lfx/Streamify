@@ -7,12 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A49FA031704EAB700969CFA /* SFMetroCanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA021704EAB600969CFA /* SFMetroCanvasViewController.m */; };
 		1A49FA0C1704EAC400969CFA /* SFTileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA051704EAC400969CFA /* SFTileModel.m */; };
 		1A49FA0D1704EAC400969CFA /* SFMetroTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA071704EAC400969CFA /* SFMetroTileView.m */; };
 		1A49FA0E1704EAC400969CFA /* SFMetroTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA081704EAC400969CFA /* SFMetroTileView.xib */; };
-		1A49FA0F1704EAC400969CFA /* SFMetroCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA0A1704EAC400969CFA /* SFMetroCanvasView.m */; };
-		1A49FA101704EAC400969CFA /* SFMetroCanvasView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA0B1704EAC400969CFA /* SFMetroCanvasView.xib */; };
 		1A49FA331704ED6B00969CFA /* 0.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA131704ED6B00969CFA /* 0.JPG */; };
 		1A49FA341704ED6B00969CFA /* 1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA141704ED6B00969CFA /* 1.JPG */; };
 		1A49FA351704ED6B00969CFA /* 10.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA151704ED6B00969CFA /* 10.JPG */; };
@@ -46,6 +43,8 @@
 		1A49FA511704ED6B00969CFA /* 8.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA311704ED6B00969CFA /* 8.JPG */; };
 		1A49FA521704ED6B00969CFA /* 9.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA321704ED6B00969CFA /* 9.JPG */; };
 		1A49FA661704F57C00969CFA /* SFListenerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA651704F57C00969CFA /* SFListenerViewController.m */; };
+		1A7932BF1705FE7F00005CBF /* SFMetroCanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7932BD1705FE7F00005CBF /* SFMetroCanvasViewController.m */; };
+		1A7932C01705FE7F00005CBF /* SFMetroCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7932BE1705FE7F00005CBF /* SFMetroCanvasViewController.xib */; };
 		9CACEFE216F7529C0067C352 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACEFE116F7529C0067C352 /* UIKit.framework */; };
 		9CACEFE416F7529C0067C352 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACEFE316F7529C0067C352 /* Foundation.framework */; };
 		9CACEFE616F7529C0067C352 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACEFE516F7529C0067C352 /* CoreGraphics.framework */; };
@@ -158,16 +157,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A49FA011704EAB600969CFA /* SFMetroCanvasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroCanvasViewController.h; sourceTree = "<group>"; };
-		1A49FA021704EAB600969CFA /* SFMetroCanvasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMetroCanvasViewController.m; sourceTree = "<group>"; };
 		1A49FA041704EAC400969CFA /* SFTileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTileModel.h; sourceTree = "<group>"; };
 		1A49FA051704EAC400969CFA /* SFTileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTileModel.m; sourceTree = "<group>"; };
 		1A49FA061704EAC400969CFA /* SFMetroTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroTileView.h; sourceTree = "<group>"; };
 		1A49FA071704EAC400969CFA /* SFMetroTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMetroTileView.m; sourceTree = "<group>"; };
 		1A49FA081704EAC400969CFA /* SFMetroTileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMetroTileView.xib; sourceTree = "<group>"; };
-		1A49FA091704EAC400969CFA /* SFMetroCanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroCanvasView.h; sourceTree = "<group>"; };
-		1A49FA0A1704EAC400969CFA /* SFMetroCanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMetroCanvasView.m; sourceTree = "<group>"; };
-		1A49FA0B1704EAC400969CFA /* SFMetroCanvasView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMetroCanvasView.xib; sourceTree = "<group>"; };
 		1A49FA111704EACA00969CFA /* SFMetroConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroConstants.h; sourceTree = "<group>"; };
 		1A49FA131704ED6B00969CFA /* 0.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.JPG; sourceTree = "<group>"; };
 		1A49FA141704ED6B00969CFA /* 1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.JPG; sourceTree = "<group>"; };
@@ -203,6 +197,9 @@
 		1A49FA321704ED6B00969CFA /* 9.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.JPG; sourceTree = "<group>"; };
 		1A49FA641704F57C00969CFA /* SFListenerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFListenerViewController.h; sourceTree = "<group>"; };
 		1A49FA651704F57C00969CFA /* SFListenerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFListenerViewController.m; sourceTree = "<group>"; };
+		1A7932BC1705FE7E00005CBF /* SFMetroCanvasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroCanvasViewController.h; sourceTree = "<group>"; };
+		1A7932BD1705FE7F00005CBF /* SFMetroCanvasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMetroCanvasViewController.m; sourceTree = "<group>"; };
+		1A7932BE1705FE7F00005CBF /* SFMetroCanvasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMetroCanvasViewController.xib; sourceTree = "<group>"; };
 		9CACEFDE16F7529C0067C352 /* Streamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CACEFE116F7529C0067C352 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CACEFE316F7529C0067C352 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -446,9 +443,6 @@
 				1A49FA061704EAC400969CFA /* SFMetroTileView.h */,
 				1A49FA071704EAC400969CFA /* SFMetroTileView.m */,
 				1A49FA081704EAC400969CFA /* SFMetroTileView.xib */,
-				1A49FA091704EAC400969CFA /* SFMetroCanvasView.h */,
-				1A49FA0A1704EAC400969CFA /* SFMetroCanvasView.m */,
-				1A49FA0B1704EAC400969CFA /* SFMetroCanvasView.xib */,
 				1A49FA111704EACA00969CFA /* SFMetroConstants.h */,
 			);
 			name = "Metro Components";
@@ -845,8 +839,9 @@
 			isa = PBXGroup;
 			children = (
 				1A49F9F51704E9CA00969CFA /* Metro Components */,
-				1A49FA011704EAB600969CFA /* SFMetroCanvasViewController.h */,
-				1A49FA021704EAB600969CFA /* SFMetroCanvasViewController.m */,
+				1A7932BC1705FE7E00005CBF /* SFMetroCanvasViewController.h */,
+				1A7932BD1705FE7F00005CBF /* SFMetroCanvasViewController.m */,
+				1A7932BE1705FE7F00005CBF /* SFMetroCanvasViewController.xib */,
 			);
 			name = "MetroCanvas VC";
 			sourceTree = "<group>";
@@ -943,7 +938,6 @@
 				9CDD6AE817034B1C005A42C8 /* login-button-small.png in Resources */,
 				9CDD6AE917034B1C005A42C8 /* login-button-small@2x.png in Resources */,
 				1A49FA0E1704EAC400969CFA /* SFMetroTileView.xib in Resources */,
-				1A49FA101704EAC400969CFA /* SFMetroCanvasView.xib in Resources */,
 				1A49FA331704ED6B00969CFA /* 0.JPG in Resources */,
 				1A49FA341704ED6B00969CFA /* 1.JPG in Resources */,
 				1A49FA351704ED6B00969CFA /* 10.JPG in Resources */,
@@ -1006,6 +1000,7 @@
 				C0CD8BAE1705D147005E98CE /* maincol-button-background-pressed@2x.png in Resources */,
 				C0CD8BB11705DD28005E98CE /* sidebar-icon-back.png in Resources */,
 				C0CD8BB21705DD28005E98CE /* sidebar-icon-back@2x.png in Resources */,
+				1A7932C01705FE7F00005CBF /* SFMetroCanvasViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1060,14 +1055,13 @@
 				C0AC8A68170575B900422723 /* SFSidebarViewController.m in Sources */,
 				9CDD6AEC17034C47005A42C8 /* SFLoginViewController.m in Sources */,
 				9CCC3214170359C400910B22 /* SFHomeTestViewController.m in Sources */,
-				1A49FA031704EAB700969CFA /* SFMetroCanvasViewController.m in Sources */,
 				1A49FA0C1704EAC400969CFA /* SFTileModel.m in Sources */,
 				1A49FA0D1704EAC400969CFA /* SFMetroTileView.m in Sources */,
-				1A49FA0F1704EAC400969CFA /* SFMetroCanvasView.m in Sources */,
 				1A49FA661704F57C00969CFA /* SFListenerViewController.m in Sources */,
 				C0AC8A631705731D00422723 /* SFMainColumnViewController.m in Sources */,
 				C0AC8A6F1705771100422723 /* SFHomeViewController.m in Sources */,
 				C0AC8AAF17059C7600422723 /* SFUIDefaultTheme.m in Sources */,
+				1A7932BF1705FE7F00005CBF /* SFMetroCanvasViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
