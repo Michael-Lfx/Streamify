@@ -150,6 +150,11 @@
 		C0AC8AA517058F7000422723 /* keane_album-coverlores.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8AA417058F7000422723 /* keane_album-coverlores.jpg */; };
 		C0AC8AA8170597AB00422723 /* maincol-icon-stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8AA6170597AA00422723 /* maincol-icon-stop.png */; };
 		C0AC8AA9170597AB00422723 /* maincol-icon-stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8AA7170597AB00422723 /* maincol-icon-stop@2x.png */; };
+		C0AC8AAF17059C7600422723 /* SFUIDefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8AAE17059C7600422723 /* SFUIDefaultTheme.m */; };
+		C0CD8BAD1705D147005E98CE /* maincol-button-background-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CD8BAB1705D147005E98CE /* maincol-button-background-pressed.png */; };
+		C0CD8BAE1705D147005E98CE /* maincol-button-background-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CD8BAC1705D147005E98CE /* maincol-button-background-pressed@2x.png */; };
+		C0CD8BB11705DD28005E98CE /* sidebar-icon-back.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CD8BAF1705DD28005E98CE /* sidebar-icon-back.png */; };
+		C0CD8BB21705DD28005E98CE /* sidebar-icon-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CD8BB01705DD28005E98CE /* sidebar-icon-back@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -353,7 +358,14 @@
 		C0AC8AA417058F7000422723 /* keane_album-coverlores.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "keane_album-coverlores.jpg"; sourceTree = "<group>"; };
 		C0AC8AA6170597AA00422723 /* maincol-icon-stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-stop.png"; path = "Theme/maincol-icon-stop.png"; sourceTree = "<group>"; };
 		C0AC8AA7170597AB00422723 /* maincol-icon-stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-stop@2x.png"; path = "Theme/maincol-icon-stop@2x.png"; sourceTree = "<group>"; };
+		C0AC8AAC17059B1D00422723 /* SFUITheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUITheme.h; sourceTree = "<group>"; };
+		C0AC8AAD17059C7600422723 /* SFUIDefaultTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUIDefaultTheme.h; sourceTree = "<group>"; };
+		C0AC8AAE17059C7600422723 /* SFUIDefaultTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUIDefaultTheme.m; sourceTree = "<group>"; };
 		C0B22122170556AA0045A248 /* SFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFConstants.h; sourceTree = "<group>"; };
+		C0CD8BAB1705D147005E98CE /* maincol-button-background-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-button-background-pressed.png"; path = "Theme/maincol-button-background-pressed.png"; sourceTree = "<group>"; };
+		C0CD8BAC1705D147005E98CE /* maincol-button-background-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-button-background-pressed@2x.png"; path = "Theme/maincol-button-background-pressed@2x.png"; sourceTree = "<group>"; };
+		C0CD8BAF1705DD28005E98CE /* sidebar-icon-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sidebar-icon-back.png"; path = "Assets/Theme/sidebar-icon-back.png"; sourceTree = "<group>"; };
+		C0CD8BB01705DD28005E98CE /* sidebar-icon-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sidebar-icon-back@2x.png"; path = "Assets/Theme/sidebar-icon-back@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -779,6 +791,9 @@
 			children = (
 				C0AC8A9117057AAC00422723 /* Main Column */,
 				C0C5DDBD1701CECA00191192 /* Sidebar */,
+				C0AC8AAC17059B1D00422723 /* SFUITheme.h */,
+				C0AC8AAD17059C7600422723 /* SFUIDefaultTheme.h */,
+				C0AC8AAE17059C7600422723 /* SFUIDefaultTheme.m */,
 			);
 			name = Theme;
 			sourceTree = "<group>";
@@ -790,6 +805,8 @@
 				C0AC8A9317057ABC00422723 /* maincol-background@2x.png */,
 				C0AC8A9417057ABC00422723 /* maincol-button-background.png */,
 				C0AC8A9517057ABC00422723 /* maincol-button-background@2x.png */,
+				C0CD8BAB1705D147005E98CE /* maincol-button-background-pressed.png */,
+				C0CD8BAC1705D147005E98CE /* maincol-button-background-pressed@2x.png */,
 				C0AC8A9A170581D700422723 /* maincol-control-background.png */,
 				C0AC8A9B170581D700422723 /* maincol-control-background@2x.png */,
 				C0AC8AA6170597AA00422723 /* maincol-icon-stop.png */,
@@ -839,6 +856,8 @@
 			children = (
 				C0AC8A70170577B900422723 /* sidebar-background.png */,
 				C0AC8A71170577B900422723 /* sidebar-background@2x.png */,
+				C0CD8BAF1705DD28005E98CE /* sidebar-icon-back.png */,
+				C0CD8BB01705DD28005E98CE /* sidebar-icon-back@2x.png */,
 				C0AC8A72170577B900422723 /* sidebar-icon-broadcaster.png */,
 				C0AC8A73170577B900422723 /* sidebar-icon-broadcaster@2x.png */,
 				C0AC8A74170577B900422723 /* sidebar-icon-favorite.png */,
@@ -983,6 +1002,10 @@
 				C0AC8AA517058F7000422723 /* keane_album-coverlores.jpg in Resources */,
 				C0AC8AA8170597AB00422723 /* maincol-icon-stop.png in Resources */,
 				C0AC8AA9170597AB00422723 /* maincol-icon-stop@2x.png in Resources */,
+				C0CD8BAD1705D147005E98CE /* maincol-button-background-pressed.png in Resources */,
+				C0CD8BAE1705D147005E98CE /* maincol-button-background-pressed@2x.png in Resources */,
+				C0CD8BB11705DD28005E98CE /* sidebar-icon-back.png in Resources */,
+				C0CD8BB21705DD28005E98CE /* sidebar-icon-back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1044,6 +1067,7 @@
 				1A49FA661704F57C00969CFA /* SFListenerViewController.m in Sources */,
 				C0AC8A631705731D00422723 /* SFMainColumnViewController.m in Sources */,
 				C0AC8A6F1705771100422723 /* SFHomeViewController.m in Sources */,
+				C0AC8AAF17059C7600422723 /* SFUIDefaultTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

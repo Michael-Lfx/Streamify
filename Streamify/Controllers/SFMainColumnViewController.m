@@ -7,6 +7,7 @@
 //
 
 #import "SFMainColumnViewController.h"
+#import "SFUIDefaultTheme.h"
 
 @interface SFMainColumnViewController ()
 
@@ -33,6 +34,8 @@
     self.coverImageView.layer.shadowRadius = 4.0f;
     self.coverImageView.layer.shadowOpacity = 0.5f;
     self.coverImageView.layer.shadowPath = shadowPath.CGPath;
+    
+    [SFUIDefaultTheme themeButton:self.followButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,6 +47,8 @@
 - (void)viewDidUnload {
     [self setCoverImageView:nil];
     [self setTimeLabel:nil];
+    [self setStopButton:nil];
+    [self setFollowButton:nil];
     [super viewDidUnload];
 }
 @end

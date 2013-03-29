@@ -30,14 +30,14 @@
 	
     // Testing
     self.mainColumnViewController = [[SFMainColumnViewController alloc] init];
-    self.mainColumnViewController.view.frame = CGRectMake(kMainColumnFrameX,
-                                                          kMainColumnFrameY,
-                                                          kMainColumnFrameW,
-                                                          kMainColumnFrameH);
+    self.mainColumnViewController.view.frame = CGRectMake(kSFMainColumnFrameX,
+                                                          kSFMainColumnFrameY,
+                                                          kSFMainColumnFrameW,
+                                                          kSFMainColumnFrameH);
     [self.view addSubview:self.mainColumnViewController.view];
     
     // Sidebar must be added after main column for shadow
-    self.sidebarViewController = [[SFSidebarViewController alloc] initWithNib];;
+    self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarBackOnly];
     [self.view addSubview:self.sidebarViewController.view];
 }
 

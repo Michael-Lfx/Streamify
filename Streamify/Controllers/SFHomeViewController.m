@@ -23,17 +23,16 @@
 {
     [super viewDidLoad];
   
-    // Testing
-    self.sidebarViewController = [[SFSidebarViewController alloc] initWithNib];;
-    [self.view addSubview:self.sidebarViewController.view];
-    
-  
     self.canvasViewController = [[SFMetroCanvasViewController alloc] init];
-    self.canvasViewController.view.frame = CGRectMake(kCanvasFrameXInHomeView,
-                                                 kCanvasFrameYInHomeView,
-                                                 kCanvasFrameWInHomeView,
-                                                 kCanvasFrameHInHomeView);
+    self.canvasViewController.view.frame = CGRectMake(kSFCanvasFrameXInHomeView,
+                                                 kSFCanvasFrameYInHomeView,
+                                                 kSFCanvasFrameWInHomeView,
+                                                 kSFCanvasFrameHInHomeView);
     [self.view addSubview:self.canvasViewController.view];
+    
+    // Sidebar must be added after main column for shadow
+    self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarFull];
+    [self.view addSubview:self.sidebarViewController.view];
 }
 
 - (void)didReceiveMemoryWarning

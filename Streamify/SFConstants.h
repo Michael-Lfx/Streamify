@@ -9,14 +9,19 @@
 #ifndef Streamify_SFConstants_h
 #define Streamify_SFConstants_h
 
-#define kCanvasFrameXInHomeView 100
-#define kCanvasFrameYInHomeView 150
-#define kCanvasFrameWInHomeView 924
-#define kCanvasFrameHInHomeView 520
+#define kSFCanvasFrameXInHomeView 100
+#define kSFCanvasFrameYInHomeView 150
+#define kSFCanvasFrameWInHomeView 924
+#define kSFCanvasFrameHInHomeView 520
 
-#define kMainColumnFrameX 80
-#define kMainColumnFrameY 0
-#define kMainColumnFrameW 420
-#define kMainColumnFrameH 768
+#define kSFMainColumnFrameX 80
+#define kSFMainColumnFrameY 0
+#define kSFMainColumnFrameW 420
+#define kSFMainColumnFrameH 768
+
+typedef enum {
+    kSFSidebarFull,
+    kSFSidebarBackOnly
+} SFSidebarType;
 
 #endif
