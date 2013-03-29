@@ -37,6 +37,8 @@
 
 - (void)loadView
 {
+    // Hierachy: Scroll View contains Canvas View
+    
     self.canvasView = [[[NSBundle mainBundle] loadNibNamed:kMetroCanvasViewNibName owner:self options:nil] lastObject];
     self.scrollView = self.canvasView.scrollView;
     [self.scrollView setCanCancelContentTouches:YES];

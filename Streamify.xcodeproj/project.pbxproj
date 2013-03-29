@@ -309,6 +309,7 @@
 		9CDD6AE517034B1C005A42C8 /* login-button-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small@2x.png"; sourceTree = "<group>"; };
 		9CDD6AEA17034C47005A42C8 /* SFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLoginViewController.h; sourceTree = "<group>"; };
 		9CDD6AEB17034C47005A42C8 /* SFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLoginViewController.m; sourceTree = "<group>"; };
+		C0B22122170556AA0045A248 /* SFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFConstants.h; sourceTree = "<group>"; };
 		C0C0371317019A5500B40C4A /* SFSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFSidebarViewController.h; path = ../SFSidebarViewController.h; sourceTree = "<group>"; };
 		C0C0371417019A5500B40C4A /* SFSidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFSidebarViewController.m; path = ../SFSidebarViewController.m; sourceTree = "<group>"; };
 		C0C0371517019A5500B40C4A /* SFSidebarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SFSidebarViewController.xib; path = ../SFSidebarViewController.xib; sourceTree = "<group>"; };
@@ -365,9 +366,6 @@
 		1A49F9E61704BE0900969CFA /* Home Screen */ = {
 			isa = PBXGroup;
 			children = (
-				1A49F9F51704E9CA00969CFA /* Metro */,
-				1A49FA011704EAB600969CFA /* SFMetroCanvasViewController.h */,
-				1A49FA021704EAB600969CFA /* SFMetroCanvasViewController.m */,
 				C0C5DDDE1701D5B500191192 /* SFHomeViewController.h */,
 				C0C5DDDF1701D5B500191192 /* SFHomeViewController.m */,
 			);
@@ -388,9 +386,8 @@
 		1A49F9E81704C0A700969CFA /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				C0C0371317019A5500B40C4A /* SFSidebarViewController.h */,
-				C0C0371417019A5500B40C4A /* SFSidebarViewController.m */,
-				C0C0371517019A5500B40C4A /* SFSidebarViewController.xib */,
+				C0B22125170558B30045A248 /* MetroCanvas VC */,
+				C0B22123170558000045A248 /* Sidebar VC */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -404,7 +401,7 @@
 			name = Listener;
 			sourceTree = "<group>";
 		};
-		1A49F9F51704E9CA00969CFA /* Metro */ = {
+		1A49F9F51704E9CA00969CFA /* Metro Components */ = {
 			isa = PBXGroup;
 			children = (
 				1A49FA121704ED6A00969CFA /* thumb */,
@@ -418,7 +415,7 @@
 				1A49FA0B1704EAC400969CFA /* SFMetroCanvasView.xib */,
 				1A49FA111704EACA00969CFA /* SFMetroConstants.h */,
 			);
-			name = Metro;
+			name = "Metro Components";
 			sourceTree = "<group>";
 		};
 		1A49FA121704ED6A00969CFA /* thumb */ = {
@@ -508,6 +505,7 @@
 		9CACEFE716F7529C0067C352 /* Streamify */ = {
 			isa = PBXGroup;
 			children = (
+				C0B221211705566B0045A248 /* Constants */,
 				9CDD6AE017034B1C005A42C8 /* Assets */,
 				9CACF09816F7584A0067C352 /* Views */,
 				9CACF02016F755AC0067C352 /* Controllers */,
@@ -739,6 +737,34 @@
 				9CDD6AE517034B1C005A42C8 /* login-button-small@2x.png */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		C0B221211705566B0045A248 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C0B22122170556AA0045A248 /* SFConstants.h */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		C0B22123170558000045A248 /* Sidebar VC */ = {
+			isa = PBXGroup;
+			children = (
+				C0C0371317019A5500B40C4A /* SFSidebarViewController.h */,
+				C0C0371417019A5500B40C4A /* SFSidebarViewController.m */,
+				C0C0371517019A5500B40C4A /* SFSidebarViewController.xib */,
+			);
+			name = "Sidebar VC";
+			sourceTree = "<group>";
+		};
+		C0B22125170558B30045A248 /* MetroCanvas VC */ = {
+			isa = PBXGroup;
+			children = (
+				1A49F9F51704E9CA00969CFA /* Metro Components */,
+				1A49FA011704EAB600969CFA /* SFMetroCanvasViewController.h */,
+				1A49FA021704EAB600969CFA /* SFMetroCanvasViewController.m */,
+			);
+			name = "MetroCanvas VC";
 			sourceTree = "<group>";
 		};
 		C0C5DDBD1701CECA00191192 /* Sidebar */ = {

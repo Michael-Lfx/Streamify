@@ -8,9 +8,11 @@
 
 #import "BaseViewController.h"
 #import "SFMetroCanvasViewController.h"
+#import "SFSidebarViewController.h"
 
 @interface SFHomeViewController : BaseViewController
 
 @property (nonatomic, strong) SFMetroCanvasViewController *canvasViewController;
+@property (nonatomic, strong) SFSidebarViewController *sidebarViewController;
 
 @end

@@ -102,7 +102,7 @@
         <!--Navigation Controller-->
         <scene sceneID="DH1-t4-pEk">
             <objects>
-                <navigationController id="Hjf-1A-Mro" sceneMemberID="viewController">
+                <navigationController wantsFullScreenLayout="YES" id="Hjf-1A-Mro" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dkY-vn-Inc">
