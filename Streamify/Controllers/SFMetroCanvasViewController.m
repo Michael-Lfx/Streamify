@@ -51,6 +51,8 @@
         [self.pageViews addObject:[NSNull null]];
     }
     
+    self.view.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.01f];
+    
     self.view.layer.borderColor = [UIColor redColor].CGColor;
     self.view.layer.borderWidth = 3.0f;
     self.scrollView.layer.borderColor = [UIColor greenColor].CGColor;

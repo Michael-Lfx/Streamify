@@ -49,7 +49,6 @@
 }
 
 - (void)backPressed:(id)sender {
-    NSLog(@"fuck\n");
     [self.navigationController popViewControllerAnimated:YES];
 }
 
