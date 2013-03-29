@@ -7,6 +7,7 @@
 //
 #import "SFConstants.h"
 #import "SFHomeViewController.h"
+#import "SFListenerViewController.h"
 
 @implementation SFHomeViewController
 
@@ -23,7 +24,7 @@
 {
     [super viewDidLoad];
   
-    self.canvasViewController = [[SFMetroCanvasViewController alloc] initWithNib];
+    self.canvasViewController = [[SFMetroCanvasViewController alloc] initWithDelegate:self];
     CGRect frame = self.canvasViewController.view.frame;
     self.canvasViewController.view.frame = CGRectMake(kSFCanvasFrameXInHomeView,
                                                       kSFCanvasFrameYInHomeView,
@@ -38,10 +39,20 @@
     [self.view addSubview:self.sidebarViewController.view];
 }
 
+- (void)tilePressed:(id)sender {
+    SFListenerViewController *listenerViewController = [[SFListenerViewController alloc] init];
+    [self.navigationController pushViewController:listenerViewController animated:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.canvasViewController viewWillAppear:animated];
 }
 
 @end

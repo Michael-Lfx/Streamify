@@ -9,6 +9,7 @@
 #import "SFLoginViewController.h"
 #import <Parse/Parse.h>
 #import "SFSocialManager.h"
+#import "SFHomeViewController.h"
 
 @interface SFLoginViewController ()
 
@@ -52,11 +53,15 @@
         } else if (user.isNew) {
             NSLog(@"User with facebook signed up and logged in!");
             [[SFSocialManager sharedInstance] updateMe];
-            [self performSegueWithIdentifier:@"HomeViewSegue" sender:self];
+//            [self performSegueWithIdentifier:@"HomeViewSegue" sender:self];
+            SFHomeViewController *vc = [[SFHomeViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         } else {
             NSLog(@"User with facebook logged in!");
             [[SFSocialManager sharedInstance] updateMe];
-            [self performSegueWithIdentifier:@"HomeViewSegue" sender:self];
+//            [self performSegueWithIdentifier:@"HomeViewSegue" sender:self];
+            SFHomeViewController *vc = [[SFHomeViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }];
     

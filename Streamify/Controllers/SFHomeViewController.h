@@ -10,7 +10,7 @@
 #import "SFMetroCanvasViewController.h"
 #import "SFSidebarViewController.h"
 
-@interface SFHomeViewController : BaseViewController
+@interface SFHomeViewController : BaseViewController <MetroCanvasViewControllerProtocol>
 
 @property (nonatomic, strong) SFMetroCanvasViewController *canvasViewController;
 @property (nonatomic, strong) SFSidebarViewController *sidebarViewController;

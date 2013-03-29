@@ -32,9 +32,16 @@
     return self;
 }
 
+- (id)initWithDelegate:(id)delegate {
+    self = [[SFMetroCanvasViewController alloc] initWithNib];
+    self.delegate = delegate;
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view.
     [self initTiles];
     self.pageViews = [[NSMutableArray alloc] init];
@@ -43,10 +50,10 @@
         [self.pageViews addObject:[NSNull null]];
     }
     
-//    self.view.layer.borderColor = [UIColor redColor].CGColor;
-//    self.view.layer.borderWidth = 3.0f;
-//    self.scrollView.layer.borderColor = [UIColor greenColor].CGColor;
-//    self.scrollView.layer.borderWidth = 1.0f;
+    self.view.layer.borderColor = [UIColor redColor].CGColor;
+    self.view.layer.borderWidth = 3.0f;
+    self.scrollView.layer.borderColor = [UIColor greenColor].CGColor;
+    self.scrollView.layer.borderWidth = 1.0f;
 }
 
 - (void)initTiles
@@ -191,8 +198,10 @@
 - (void)openChannelListener:(UIGestureRecognizer *)tapRecognizer
 {
     if (tapRecognizer.state == UIGestureRecognizerStateEnded) {
-        SFListenerViewController *listenerViewController = [[SFListenerViewController alloc] init];
-        [self presentViewController:listenerViewController animated:YES completion:nil];
+//        SFListenerViewController *listenerViewController = [[SFListenerViewController alloc] init];
+//        [self presentViewController:listenerViewController animated:YES completion:nil];
+//        [self.navigationController pushViewController:listenerViewController animated:YES];
+        [self.delegate tilePressed:tapRecognizer.view];
     }
 }
 

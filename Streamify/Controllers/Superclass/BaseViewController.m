@@ -39,6 +39,7 @@
   
   NSString *className = NSStringFromClass([self class]);
   self.title = className;
+    [self.navigationController setNavigationBarHidden:YES];
   
   //self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
   //self.view.autoresizesSubviews = YES;
