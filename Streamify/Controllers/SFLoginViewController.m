@@ -8,6 +8,7 @@
 
 #import "SFLoginViewController.h"
 #import <Parse/Parse.h>
+#import "SFSocialManager.h"
 
 @interface SFLoginViewController ()
 
@@ -32,7 +33,7 @@
 
 - (IBAction)loginButtonPressed:(id)sender {
     // Set permissions required from the facebook user account
-    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+    NSArray *permissionsArray = @[@"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
     
     // Login PFUser using facebook
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
@@ -50,9 +51,11 @@
             }
         } else if (user.isNew) {
             NSLog(@"User with facebook signed up and logged in!");
+            [[SFSocialManager sharedInstance] updateMe];
             [self performSegueWithIdentifier:@"HomeViewSegue" sender:self];
         } else {
             NSLog(@"User with facebook logged in!");
+            [[SFSocialManager sharedInstance] updateMe];
             [self performSegueWithIdentifier:@"HomeViewSegue" sender:self];
         }
     }];
