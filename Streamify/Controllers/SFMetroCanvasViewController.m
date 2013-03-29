@@ -23,7 +23,6 @@
 
 @end
 
-
 @implementation SFMetroCanvasViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,7 +36,7 @@
 
 - (void)loadView
 {
-    // Hierachy: Scroll View contains Canvas View
+    // Hierachy: Canvas View contains Scroll View
     
     self.canvasView = [[[NSBundle mainBundle] loadNibNamed:kMetroCanvasViewNibName owner:self options:nil] lastObject];
     self.scrollView = self.canvasView.scrollView;

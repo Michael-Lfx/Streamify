@@ -13,5 +13,5 @@
 #define kNumTilesPerRow (3)
 #define kPaddingBetweenTiles (20.0f)
 #define kPaddingBetweenPages (40.0f)
-#define kMetroDebug TRUE
+#define kMetroDebug FALSE
 
