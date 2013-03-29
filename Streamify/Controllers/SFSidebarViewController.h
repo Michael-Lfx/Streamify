@@ -9,9 +9,13 @@
 #import "SFConstants.h"
 #import "BaseViewController.h"
 
-@interface SFSidebarViewController : BaseViewController {
-    SFSidebarType _sidebarType;
-}
+@protocol SFSidebarViewControllerProtocol <NSObject>
+
+- (void)backPressed:(id)sender;
+
+@end
+
+@interface SFSidebarViewController : BaseViewController
 
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;
@@ -21,8 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *broadcastButton;
 @property (strong, nonatomic) IBOutlet UIButton *settingsButton;
 
-@property (readonly, nonatomic) SFSidebarType sidebarType;
-
-- (id)initSidebarWithOption:(SFSidebarType)sidebarType;
+- (id)initSidebarWithOption:(SFSidebarType)sidebarType delegate:(id)delegate;
+- (IBAction)backPressed:(id)sender;
 
 @end

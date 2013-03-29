@@ -16,6 +16,7 @@
 
 @interface SFMetroCanvasViewController ()
 
+@property (nonatomic, strong) id <SFMetroCanvasViewControllerProtocol> delegate;
 @property (nonatomic, strong) NSMutableArray *pageViews;
 
 @end

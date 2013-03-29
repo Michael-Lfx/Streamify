@@ -37,7 +37,8 @@
     [self.view addSubview:self.mainColumnViewController.view];
     
     // Sidebar must be added after main column for shadow
-    self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarBackOnly];
+    self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarBackOnly
+                                                                               delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
 }
 
@@ -45,6 +46,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)backPressed:(id)sender {
+    NSLog(@"fuck\n");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

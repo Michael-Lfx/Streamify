@@ -8,6 +8,13 @@
 
 #import "SFSidebarViewController.h"
 
+@interface SFSidebarViewController ()
+
+@property (nonatomic, weak) id<SFSidebarViewControllerProtocol> delegate;
+@property (nonatomic) SFSidebarType sidebarType;
+
+@end
+
 @implementation SFSidebarViewController
 
 @synthesize sidebarType = _sidebarType;
@@ -21,9 +28,11 @@
     return self;
 }
 
-- (id)initSidebarWithOption:(SFSidebarType)sidebarType {
+- (id)initSidebarWithOption:(SFSidebarType)sidebarType delegate:(id)delegate
+{
     self = [[SFSidebarViewController alloc] initWithNib];
-    _sidebarType = sidebarType;
+    self.sidebarType = sidebarType;
+    self.delegate = delegate;
     return self;
 }
 
@@ -58,7 +67,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
     [self setBackButton:nil];
     [self setSearchButton:nil];
     [self setTrendingButton:nil];
@@ -68,4 +78,10 @@
     [self setSettingsButton:nil];
     [super viewDidUnload];
 }
+
+- (IBAction)backPressed:(id)sender
+{
+    [self.delegate backPressed:sender];
+}
+
 @end

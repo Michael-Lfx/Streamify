@@ -35,11 +35,13 @@
     [self.view addSubview:self.canvasViewController.view];
     
     // Sidebar must be added after main column for shadow
-    self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarFull];
+    self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarFull
+                                                                               delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
 }
 
-- (void)tilePressed:(id)sender {
+- (void)tilePressed:(id)sender
+{
     SFListenerViewController *listenerViewController = [[SFListenerViewController alloc] init];
     [self.navigationController pushViewController:listenerViewController animated:YES];
 }

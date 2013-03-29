@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "SFMetroTileView.h"
 
-@protocol MetroCanvasViewControllerProtocol <NSObject>
+@protocol SFMetroCanvasViewControllerProtocol <NSObject>
 
 - (void)tilePressed:(id)sender;
 
@@ -18,7 +18,8 @@
 @interface SFMetroCanvasViewController : BaseViewController
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) id <MetroCanvasViewControllerProtocol> delegate;
 @property (nonatomic, strong) NSArray *tiles;
+
 - (id)initWithDelegate:(id)delegate;
+
 @end
