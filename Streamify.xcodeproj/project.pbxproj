@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A1D84FE17061FC2002C1CB4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1D84FD17061FC2002C1CB4 /* AVFoundation.framework */; };
 		1A1D850017061FC8002C1CB4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1D84FF17061FC8002C1CB4 /* MediaPlayer.framework */; };
+		1A1D8504170620B7002C1CB4 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1D8503170620B7002C1CB4 /* RecordViewController.m */; };
 		1A49FA0C1704EAC400969CFA /* SFTileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA051704EAC400969CFA /* SFTileModel.m */; };
 		1A49FA0D1704EAC400969CFA /* SFMetroTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA071704EAC400969CFA /* SFMetroTileView.m */; };
 		1A49FA0E1704EAC400969CFA /* SFMetroTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA081704EAC400969CFA /* SFMetroTileView.xib */; };
@@ -164,6 +165,8 @@
 /* Begin PBXFileReference section */
 		1A1D84FD17061FC2002C1CB4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1A1D84FF17061FC8002C1CB4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		1A1D8502170620B7002C1CB4 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordViewController.h; path = Controllers/RecordViewController.h; sourceTree = "<group>"; };
+		1A1D8503170620B7002C1CB4 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordViewController.m; path = Controllers/RecordViewController.m; sourceTree = "<group>"; };
 		1A49FA041704EAC400969CFA /* SFTileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTileModel.h; sourceTree = "<group>"; };
 		1A49FA051704EAC400969CFA /* SFTileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTileModel.m; sourceTree = "<group>"; };
 		1A49FA061704EAC400969CFA /* SFMetroTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroTileView.h; sourceTree = "<group>"; };
@@ -410,6 +413,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A1D8501170620A4002C1CB4 /* TestAudio */ = {
+			isa = PBXGroup;
+			children = (
+				1A1D8502170620B7002C1CB4 /* RecordViewController.h */,
+				1A1D8503170620B7002C1CB4 /* RecordViewController.m */,
+			);
+			name = TestAudio;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		1A49F9E61704BE0900969CFA /* Home Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +632,7 @@
 		9CACF02016F755AC0067C352 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1A1D8501170620A4002C1CB4 /* TestAudio */,
 				9CACF02116F755AC0067C352 /* Superclass */,
 				1A49F9E71704BE4500969CFA /* Login Screen */,
 				1A49F9E61704BE0900969CFA /* Home Screen */,
@@ -1088,6 +1102,7 @@
 				9C93677E170601B0006108F9 /* SFUser.m in Sources */,
 				9C936781170601BC006108F9 /* SFSocialManager.m in Sources */,
 				1A7932C41706169E00005CBF /* SFMetroCanvasView.m in Sources */,
+				1A1D8504170620B7002C1CB4 /* RecordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
