@@ -35,7 +35,7 @@
                                       @"pictureURL": [pictureURL absoluteString]};
         
         [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
-        [[PFUser currentUser] save];
+        [[PFUser currentUser] saveInBackground];
         
         self.currentUser = [[SFUser alloc] initWithPFUser:[PFUser currentUser]];
         [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateMeSuccessNotification object:self userInfo:nil];
