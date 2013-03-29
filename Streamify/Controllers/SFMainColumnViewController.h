@@ -10,4 +10,8 @@
 
 @interface SFMainColumnViewController : BaseViewController
 
+@property (strong, nonatomic) IBOutlet UIImageView *coverImageView;
+
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+
 @end

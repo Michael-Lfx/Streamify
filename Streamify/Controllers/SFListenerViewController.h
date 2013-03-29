@@ -7,7 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import "SFSidebarViewController.h"
+#import "SFMainColumnViewController.h"
 
 @interface SFListenerViewController : BaseViewController
+
+@property (nonatomic, strong) SFMainColumnViewController *mainColumnViewController;
+@property (nonatomic, strong) SFSidebarViewController *sidebarViewController;
 
 @end

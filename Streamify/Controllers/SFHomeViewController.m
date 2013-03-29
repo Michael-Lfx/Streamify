@@ -7,7 +7,6 @@
 //
 #import "SFConstants.h"
 #import "SFHomeViewController.h"
-#import "SFSidebarViewController.h"
 
 @implementation SFHomeViewController
 

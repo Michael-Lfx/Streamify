@@ -14,4 +14,9 @@
 #define kCanvasFrameWInHomeView 924
 #define kCanvasFrameHInHomeView 520
 
+#define kMainColumnFrameX 80
+#define kMainColumnFrameY 0
+#define kMainColumnFrameW 420
+#define kMainColumnFrameH 768
+
 #endif

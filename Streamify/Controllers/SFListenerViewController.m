@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+#import "SFConstants.h"
 #import "SFListenerViewController.h"
 
 @interface SFListenerViewController ()
@@ -26,7 +27,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    // Testing
+    self.mainColumnViewController = [[SFMainColumnViewController alloc] init];
+    self.mainColumnViewController.view.frame = CGRectMake(kMainColumnFrameX,
+                                                          kMainColumnFrameY,
+                                                          kMainColumnFrameW,
+                                                          kMainColumnFrameH);
+    [self.view addSubview:self.mainColumnViewController.view];
+    
+    // Sidebar must be added after main column for shadow
+    self.sidebarViewController = [[SFSidebarViewController alloc] initWithNib];;
+    [self.view addSubview:self.sidebarViewController.view];
 }
 
 - (void)didReceiveMemoryWarning

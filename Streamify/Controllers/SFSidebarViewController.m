@@ -25,10 +25,17 @@
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
+    [super viewDidLoad];
   
-  UIImage *patternImage = [UIImage imageNamed:@"sidebar-background.png"];
-  self.view.backgroundColor = [UIColor colorWithPatternImage:patternImage];
+    UIImage *patternImage = [UIImage imageNamed:@"sidebar-background.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:patternImage];
+    
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.view.bounds];
+    self.view.layer.masksToBounds = NO;
+    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.view.layer.shadowOffset = CGSizeMake(4.0f, 0.0f);
+    self.view.layer.shadowOpacity = 0.3f;
+    self.view.layer.shadowPath = shadowPath.CGPath;
 }
 
 - (void)didReceiveMemoryWarning

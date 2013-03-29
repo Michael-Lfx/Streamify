@@ -26,7 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.coverImageView.bounds];
+    self.coverImageView.layer.masksToBounds = NO;
+    self.coverImageView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.coverImageView.layer.shadowRadius = 4.0f;
+    self.coverImageView.layer.shadowOpacity = 0.5f;
+    self.coverImageView.layer.shadowPath = shadowPath.CGPath;
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +41,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setCoverImageView:nil];
+    [self setTimeLabel:nil];
+    [super viewDidUnload];
+}
 @end
