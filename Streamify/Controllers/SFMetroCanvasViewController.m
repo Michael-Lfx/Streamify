@@ -172,7 +172,7 @@
     for (NSInteger i = 0; i < tiles.count; ++i) {
         SFTileModel *tile = (SFTileModel *)[tiles objectAtIndex:i];
         SFMetroTileView *tileView = [[[NSBundle mainBundle] loadNibNamed:kMetroTileViewNibName owner:self options:nil] lastObject];
-        [tileView setTitle:tile.user.objectID];
+        [tileView setTitle:[NSString stringWithFormat:@"%@ %@", tile.user.name ,tile.user.objectID]];
         [tileView setPictureLink:tile.user.pictureURL];
         tileView.tag = i;
 //        [tileView setCover:tile.cover];
