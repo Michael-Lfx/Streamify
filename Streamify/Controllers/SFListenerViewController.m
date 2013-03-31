@@ -54,7 +54,6 @@
 }
 
 - (void)play {
-    NSLog(@"HERE");
     NSString *urlString = [NSString stringWithFormat:@"http://54.251.250.31/%@/a.m3u8", self.user.objectID];
     NSLog(@"%@", urlString);
     NSURL *streamURL = [NSURL URLWithString:urlString];
@@ -70,7 +69,7 @@
     
     [self.view addSubview: self.streamPlayer.view];
     
-    
+    [self.streamPlayer prepareToPlay];
     [self.streamPlayer play];
 }
 
