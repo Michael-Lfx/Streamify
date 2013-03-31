@@ -38,6 +38,8 @@
         [[PFUser currentUser] saveInBackground];
         
         self.currentUser = [[SFUser alloc] initWithPFUser:[PFUser currentUser]];
+        self.currentUser.followings = [self getFollowingForUser:self.currentUser.objectID];
+        self.currentUser.followers = [self getFollowersForUser:self.currentUser.objectID];
         [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateMeSuccessNotification object:self userInfo:nil];
     }];
     
@@ -45,12 +47,40 @@
 }
 
 - (NSArray *)getFollowersForUser:(NSString *)objectID {
-    return NULL;
+    NSMutableArray *result = [NSMutableArray array];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+    [query whereKey:@"following" equalTo:self.currentUser.objectID];
+    
+    NSArray *dataArray = [query findObjects];
+    for (id row in dataArray) {
+        NSString *objectID = [row objectForKey:@"follower"];
+        [result addObject:[self getUser:objectID]];
+    }
+    
+//    NSLog(@"Number of followers: %lu", (unsigned long)result.count);
+    return result;
 }
 
-- (NSArray *)getFollowsForUser:(NSString *)objectID {
-    return NULL;
+- (SFUser *)getUser:(NSString *)objectID {
+    PFUser *user = [PFQuery getUserObjectWithId:objectID];
+    return [[SFUser alloc] initWithPFUser:user];
 }
 
+- (NSArray *)getFollowingForUser:(NSString *)objectID {
+    NSMutableArray *result = [NSMutableArray array];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+    [query whereKey:@"follower" equalTo:self.currentUser.objectID];
+    
+    NSArray *dataArray = [query findObjects];
+    for (id row in dataArray) {
+        NSString *objectID = [row objectForKey:@"following"];
+        [result addObject:[self getUser:objectID]];
+    }
+    
+//    NSLog(@"Number of followings: %lu", (unsigned long)result.count);
+    return result;
+}
 
 @end

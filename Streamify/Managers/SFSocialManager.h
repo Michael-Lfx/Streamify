@@ -14,5 +14,5 @@
 + (SFSocialManager* )sharedInstance;
 - (BOOL)updateMe;
 - (NSArray *)getFollowersForUser:(NSString *)objectID;
-- (NSArray *)getFollowsForUser:(NSString *)objectID;
+- (NSArray *)getFollowingForUser:(NSString *)objectID;
 @end
