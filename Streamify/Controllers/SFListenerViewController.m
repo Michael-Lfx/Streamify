@@ -48,6 +48,7 @@
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarBackOnly
                                                                                delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
+    _streamPlayer = [[MPMoviePlayerController alloc] init];
     
     [self.mainColumnViewController.stopButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchDown];
 }
@@ -58,12 +59,12 @@
     NSLog(@"%@", urlString);
     NSURL *streamURL = [NSURL URLWithString:urlString];
     
-    _streamPlayer = [[MPMoviePlayerController alloc] initWithContentURL:streamURL];
     
     // depending on your implementation your view may not have it's bounds set here
     // in that case consider calling the following 4 msgs later
     [self.streamPlayer.view setFrame: self.view.bounds];
     self.streamPlayer.movieSourceType = MPMovieSourceTypeStreaming;
+    [self.streamPlayer setContentURL:streamURL];
     self.streamPlayer.controlStyle = MPMovieControlModeHidden;
     [self.streamPlayer.view setHidden:YES];
     
