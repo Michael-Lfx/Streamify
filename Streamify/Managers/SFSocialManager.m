@@ -41,6 +41,8 @@
         self.currentUser.followings = [self getFollowingForUser:self.currentUser.objectID];
         self.currentUser.followers = [self getFollowersForUser:self.currentUser.objectID];
         [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateMeSuccessNotification object:self userInfo:nil];
+        
+//        [self follows:@"TESTUSER"];
     }];
     
     return  YES;
@@ -57,9 +59,22 @@
         NSString *objectID = [row objectForKey:@"follower"];
         [result addObject:[self getUser:objectID]];
     }
-    
-//    NSLog(@"Number of followers: %lu", (unsigned long)result.count);
+
     return result;
+}
+
+- (BOOL)follows:(NSString *)objectID {
+    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+    [query whereKey:@"follower" equalTo:self.currentUser.objectID];
+    [query whereKey:@"following" equalTo:objectID];
+    NSArray *dataArray = [query findObjects];
+    if (dataArray.count > 0) return FALSE;
+    
+    PFObject *relation = [PFObject objectWithClassName:@"Follow"];
+    [relation setObject:self.currentUser.objectID forKey:@"follower"];
+    [relation setObject:objectID forKey:@"following"];
+    [relation saveInBackground];
+    return YES;
 }
 
 - (SFUser *)getUser:(NSString *)objectID {

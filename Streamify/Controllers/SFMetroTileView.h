@@ -23,6 +23,7 @@
 
 - (void)setTitle:(NSString *)title;
 - (void)setCover:(UIImage *)cover;
+- (void)setPictureLink:(NSString *)link;
 
 
 @end

@@ -9,6 +9,7 @@
 #import "SFHomeViewController.h"
 #import "SFListenerViewController.h"
 #import "RecordViewController.h" 
+#import "SFTileModel.h"
 
 @implementation SFHomeViewController
 
@@ -49,7 +50,9 @@
 
 - (void)tilePressed:(id)sender
 {
-    SFListenerViewController *listenerViewController = [[SFListenerViewController alloc] init];
+    SFTileModel *model = (SFTileModel *)sender;
+    SFUser *user = model.user;
+    SFListenerViewController *listenerViewController = [[SFListenerViewController alloc] initWithUser:user];
     [self.navigationController pushViewController:listenerViewController animated:YES];
 }
 

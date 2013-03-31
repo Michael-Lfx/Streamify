@@ -44,6 +44,10 @@
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setup) name:kUpdateMeSuccessNotification object:nil];
+}
+
+- (void)setup {
     [self initTiles];
     self.pageViews = [[NSMutableArray alloc] init];
     NSInteger numOfPages = self.tiles.count/kNumTilesPerPage + 1;
@@ -57,10 +61,13 @@
     self.view.layer.borderWidth = 3.0f;
     self.scrollView.layer.borderColor = [UIColor greenColor].CGColor;
     self.scrollView.layer.borderWidth = 1.0f;
+    
+    [self loadVisiblePages];
 }
 
 - (void)initTiles
 {
+    /*
     UIImage *image;
     NSString *imageName, *coverName;
     SFTileModel *tile;
@@ -73,6 +80,15 @@
         [temp addObject:tile];
     }
     self.tiles = [NSArray arrayWithArray:temp];
+     */
+    
+    NSMutableArray *temp = [NSMutableArray array];
+    for (SFUser *user in [SFSocialManager sharedInstance].currentUser.followings) {
+        SFTileModel *tile = [[SFTileModel alloc] initWithUser:user];
+        [temp addObject:tile];
+    }
+    self.tiles = [NSMutableArray arrayWithArray:temp];
+    NSLog(@"NUMBER OF TILES = %lu", (unsigned long)[self.tiles count]);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -154,10 +170,12 @@
 - (void)addTiles:(NSArray *)tiles toPageView:(UIView *)pageView
 {
     for (NSInteger i = 0; i < tiles.count; ++i) {
-        NSObject<SFTileModel> *tile = [tiles objectAtIndex:i];
+        SFTileModel *tile = (SFTileModel *)[tiles objectAtIndex:i];
         SFMetroTileView *tileView = [[[NSBundle mainBundle] loadNibNamed:kMetroTileViewNibName owner:self options:nil] lastObject];
-        [tileView setTitle:tile.title];
-        [tileView setCover:tile.cover];
+        [tileView setTitle:tile.user.objectID];
+        [tileView setPictureLink:tile.user.pictureURL];
+        tileView.tag = i;
+//        [tileView setCover:tile.cover];
         UITapGestureRecognizer *tapOnTileRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openChannelListener:)];
         tapOnTileRecognizer.numberOfTapsRequired = 1;
         tapOnTileRecognizer.numberOfTouchesRequired = 1;
@@ -204,7 +222,8 @@
 //        SFListenerViewController *listenerViewController = [[SFListenerViewController alloc] init];
 //        [self presentViewController:listenerViewController animated:YES completion:nil];
 //        [self.navigationController pushViewController:listenerViewController animated:YES];
-        [self.delegate tilePressed:tapRecognizer.view];
+//        [self.delegate tilePressed:tapRecognizer.view];
+        [self.delegate tilePressed:[self.tiles objectAtIndex:tapRecognizer.view.tag]];
     }
 }
 

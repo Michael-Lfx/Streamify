@@ -21,5 +21,11 @@
     return self;
 }
 
+- (id)initWithUser:(SFUser *)user {
+    if (self = [super init]) {
+        self.user = user;
+    }
+    return self;
+}
 
 @end

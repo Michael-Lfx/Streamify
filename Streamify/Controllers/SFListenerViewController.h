@@ -14,5 +14,7 @@
 
 @property (nonatomic, strong) SFMainColumnViewController *mainColumnViewController;
 @property (nonatomic, strong) SFSidebarViewController *sidebarViewController;
+@property (nonatomic, strong) SFUser *user;
+- (id)initWithUser:(SFUser *)user;
 
 @end

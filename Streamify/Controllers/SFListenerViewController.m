@@ -8,9 +8,10 @@
 
 #import "SFConstants.h"
 #import "SFListenerViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface SFListenerViewController ()
-
+@property (nonatomic, strong) MPMoviePlayerController *streamPlayer;
 @end
 
 @implementation SFListenerViewController
@@ -20,6 +21,13 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+    }
+    return self;
+}
+
+- (id)initWithUser:(SFUser *)user {
+    if (self = [super init]) {
+        self.user = user;
     }
     return self;
 }
@@ -40,6 +48,28 @@
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarBackOnly
                                                                                delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
+    
+    [self.mainColumnViewController.stopButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchDown];
+}
+
+- (void)play {
+    NSLog(@"HERE");
+    NSString *urlString = [NSString stringWithFormat:@"http://54.251.250.31/%@/a.m3u8", self.user.objectID];
+    NSLog(@"%@", urlString);
+    NSURL *streamURL = [NSURL URLWithString:urlString];
+    
+    _streamPlayer = [[MPMoviePlayerController alloc] initWithContentURL:streamURL];
+    
+    // depending on your implementation your view may not have it's bounds set here
+    // in that case consider calling the following 4 msgs later
+    [self.streamPlayer.view setFrame: self.view.bounds];
+    self.streamPlayer.movieSourceType = MPMovieSourceTypeStreaming;
+    self.streamPlayer.controlStyle = MPMovieControlModeHidden;
+    
+    [self.view addSubview: self.streamPlayer.view];
+    
+    
+    [self.streamPlayer play];
 }
 
 - (void)didReceiveMemoryWarning

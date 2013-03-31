@@ -19,7 +19,10 @@
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) UIImage *cover;
+@property (nonatomic, strong) SFUser *user;
 
 - (id)initWithName:(NSString *)name andCover:(UIImage *)cover;
+
+- (id)initWithUser:(SFUser *)user;
 
 @end

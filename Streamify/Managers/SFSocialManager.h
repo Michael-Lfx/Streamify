@@ -15,4 +15,5 @@
 - (BOOL)updateMe;
 - (NSArray *)getFollowersForUser:(NSString *)objectID;
 - (NSArray *)getFollowingForUser:(NSString *)objectID;
+- (BOOL)follows:(NSString *)objectID;
 @end

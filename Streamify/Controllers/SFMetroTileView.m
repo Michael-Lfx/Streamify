@@ -30,4 +30,8 @@
     self.coverView.image = cover;
 }
 
+- (void)setPictureLink:(NSString *)link {
+    [self.coverView setImageWithURL:[NSURL URLWithString:link] placeholderImage:nil];
+}
+
 @end
