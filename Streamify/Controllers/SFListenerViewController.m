@@ -65,6 +65,7 @@
     [self.streamPlayer.view setFrame: self.view.bounds];
     self.streamPlayer.movieSourceType = MPMovieSourceTypeStreaming;
     self.streamPlayer.controlStyle = MPMovieControlModeHidden;
+    [self.streamPlayer.view setHidden:YES];
     
     [self.view addSubview: self.streamPlayer.view];
     
