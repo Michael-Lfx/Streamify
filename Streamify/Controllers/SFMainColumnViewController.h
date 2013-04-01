@@ -13,9 +13,13 @@
 @property (strong, nonatomic) IBOutlet UIImageView *coverImageView;
 
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *personListeningLabel;
+@property (strong, nonatomic) IBOutlet UILabel *personFollowingLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *channelInfoLabel;
 
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
-
 @property (strong, nonatomic) IBOutlet UIButton *followButton;
+@property (strong, nonatomic) IBOutlet UIButton *shareButton;
 
 @end

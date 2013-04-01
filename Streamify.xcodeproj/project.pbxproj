@@ -160,6 +160,8 @@
 		C0CD8BAE1705D147005E98CE /* maincol-button-background-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CD8BAC1705D147005E98CE /* maincol-button-background-pressed@2x.png */; };
 		C0CD8BB11705DD28005E98CE /* sidebar-icon-back.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CD8BAF1705DD28005E98CE /* sidebar-icon-back.png */; };
 		C0CD8BB21705DD28005E98CE /* sidebar-icon-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CD8BB01705DD28005E98CE /* sidebar-icon-back@2x.png */; };
+		C0E3A4A61709FA8800ADD132 /* mainbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = C0E3A4A41709FA8800ADD132 /* mainbackground.png */; };
+		C0E3A4A71709FA8800ADD132 /* mainbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0E3A4A51709FA8800ADD132 /* mainbackground@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -379,6 +381,8 @@
 		C0CD8BAC1705D147005E98CE /* maincol-button-background-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-button-background-pressed@2x.png"; path = "Theme/maincol-button-background-pressed@2x.png"; sourceTree = "<group>"; };
 		C0CD8BAF1705DD28005E98CE /* sidebar-icon-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sidebar-icon-back.png"; path = "Assets/Theme/sidebar-icon-back.png"; sourceTree = "<group>"; };
 		C0CD8BB01705DD28005E98CE /* sidebar-icon-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sidebar-icon-back@2x.png"; path = "Assets/Theme/sidebar-icon-back@2x.png"; sourceTree = "<group>"; };
+		C0E3A4A41709FA8800ADD132 /* mainbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mainbackground.png; path = Theme/mainbackground.png; sourceTree = "<group>"; };
+		C0E3A4A51709FA8800ADD132 /* mainbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mainbackground@2x.png"; path = "Theme/mainbackground@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -443,23 +447,23 @@
 			name = "Login Screen";
 			sourceTree = "<group>";
 		};
-		1A49F9E81704C0A700969CFA /* Common */ = {
+		1A49F9E81704C0A700969CFA /* Common Screen */ = {
 			isa = PBXGroup;
 			children = (
 				C0AC8A5F170572E100422723 /* MainColumn VC */,
 				C0B22125170558B30045A248 /* MetroCanvas VC */,
 				C0B22123170558000045A248 /* Sidebar VC */,
 			);
-			name = Common;
+			name = "Common Screen";
 			sourceTree = "<group>";
 		};
-		1A49F9EA1704C2DB00969CFA /* Listener */ = {
+		1A49F9EA1704C2DB00969CFA /* Listener Screen */ = {
 			isa = PBXGroup;
 			children = (
 				1A49FA641704F57C00969CFA /* SFListenerViewController.h */,
 				1A49FA651704F57C00969CFA /* SFListenerViewController.m */,
 			);
-			name = Listener;
+			name = "Listener Screen";
 			sourceTree = "<group>";
 		};
 		1A49F9F51704E9CA00969CFA /* Metro Components */ = {
@@ -636,8 +640,8 @@
 				9CACF02116F755AC0067C352 /* Superclass */,
 				1A49F9E71704BE4500969CFA /* Login Screen */,
 				1A49F9E61704BE0900969CFA /* Home Screen */,
-				1A49F9EA1704C2DB00969CFA /* Listener */,
-				1A49F9E81704C0A700969CFA /* Common */,
+				1A49F9EA1704C2DB00969CFA /* Listener Screen */,
+				1A49F9E81704C0A700969CFA /* Common Screen */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -820,6 +824,8 @@
 		C0AC8A901705780600422723 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				C0E3A4A41709FA8800ADD132 /* mainbackground.png */,
+				C0E3A4A51709FA8800ADD132 /* mainbackground@2x.png */,
 				C0AC8A9117057AAC00422723 /* Main Column */,
 				C0C5DDBD1701CECA00191192 /* Sidebar */,
 				C0AC8AAC17059B1D00422723 /* SFUITheme.h */,
@@ -1038,6 +1044,8 @@
 				C0CD8BB11705DD28005E98CE /* sidebar-icon-back.png in Resources */,
 				C0CD8BB21705DD28005E98CE /* sidebar-icon-back@2x.png in Resources */,
 				1A7932C01705FE7F00005CBF /* SFMetroCanvasViewController.xib in Resources */,
+				C0E3A4A61709FA8800ADD132 /* mainbackground.png in Resources */,
+				C0E3A4A71709FA8800ADD132 /* mainbackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

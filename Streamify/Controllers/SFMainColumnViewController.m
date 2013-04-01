@@ -36,6 +36,7 @@
     self.coverImageView.layer.shadowPath = shadowPath.CGPath;
     
     [SFUIDefaultTheme themeButton:self.followButton];
+    [SFUIDefaultTheme themeButton:self.shareButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,6 +50,11 @@
     [self setTimeLabel:nil];
     [self setStopButton:nil];
     [self setFollowButton:nil];
+    [self setShareButton:nil];
+    [self setPersonListeningLabel:nil];
+    [self setPersonFollowingLabel:nil];
+    [self setChannelInfoLabel:nil];
+    [self setPersonFollowingLabel:nil];
     [super viewDidUnload];
 }
 @end
