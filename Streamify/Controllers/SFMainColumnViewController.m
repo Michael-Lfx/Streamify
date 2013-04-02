@@ -55,8 +55,10 @@
     
     if (self.mainColumnType == kSFMainColumnListener) {
         self.broadcasterButtonsView.hidden = YES;
+        [self.controlButton setImage:[UIImage imageNamed:@"maincol-icon-stop.png"] forState:UIControlStateNormal];
     } else if (self.mainColumnType == kSFMainColumnBroadcaster) {
         self.listenerButtonsView.hidden = YES;
+        [self.controlButton setImage:[UIImage imageNamed:@"maincol-icon-record.png"] forState:UIControlStateNormal];
     }
     
 }

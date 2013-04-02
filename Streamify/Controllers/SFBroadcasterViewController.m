@@ -42,7 +42,7 @@
                                                                                delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
     
-    [self.mainColumnViewController.controlButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchDown];
+    //[self.mainColumnViewController.controlButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchDown];
 
 }
 
