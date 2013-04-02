@@ -1,20 +1,19 @@
 //
-//  SFListenerViewController.m
+//  SFBroadcasterViewController.m
 //  Streamify
 //
-//  Created by Le Minh Tu on 3/29/13.
+//  Created by Zuyet Awarmatik on 2/4/13.
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
 #import "SFConstants.h"
-#import "SFListenerViewController.h"
-#import <MediaPlayer/MediaPlayer.h>
+#import "SFBroadcasterViewController.h"
 
-@interface SFListenerViewController ()
-@property (nonatomic, strong) MPMoviePlayerController *streamPlayer;
+@interface SFBroadcasterViewController ()
+
 @end
 
-@implementation SFListenerViewController
+@implementation SFBroadcasterViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,19 +24,12 @@
     return self;
 }
 
-- (id)initWithUser:(SFUser *)user {
-    if (self = [super init]) {
-        self.user = user;
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     // Add Main Column
-    self.mainColumnViewController = [[SFMainColumnViewController alloc] initMainColumnWithOption:kSFMainColumnListener
+    self.mainColumnViewController = [[SFMainColumnViewController alloc] initMainColumnWithOption:kSFMainColumnBroadcaster
                                                                                         delegate:self];
     self.mainColumnViewController.view.frame = CGRectMake(kSFMainColumnFrameX,
                                                           kSFMainColumnFrameY,
@@ -49,29 +41,9 @@
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarBackOnly
                                                                                delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
-    _streamPlayer = [[MPMoviePlayerController alloc] init];
     
     [self.mainColumnViewController.controlButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchDown];
-}
 
-- (void)play {
-    NSString *urlString = [NSString stringWithFormat:@"http://54.251.250.31/%@/a.m3u8", self.user.objectID];
-    NSLog(@"%@", urlString);
-    NSURL *streamURL = [NSURL URLWithString:urlString];
-    
-    
-    // depending on your implementation your view may not have it's bounds set here
-    // in that case consider calling the following 4 msgs later
-    [self.streamPlayer.view setFrame: self.view.bounds];
-    self.streamPlayer.movieSourceType = MPMovieSourceTypeStreaming;
-    [self.streamPlayer setContentURL:streamURL];
-    self.streamPlayer.controlStyle = MPMovieControlModeHidden;
-    [self.streamPlayer.view setHidden:YES];
-    
-    [self.view addSubview: self.streamPlayer.view];
-    
-    [self.streamPlayer prepareToPlay];
-    [self.streamPlayer play];
 }
 
 - (void)didReceiveMemoryWarning

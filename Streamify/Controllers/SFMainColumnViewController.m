@@ -11,6 +11,9 @@
 
 @interface SFMainColumnViewController ()
 
+@property (nonatomic, weak) id<SFMainColumnViewControllerProtocol> delegate;
+@property (nonatomic) SFMainColumnType mainColumnType;
+
 @end
 
 @implementation SFMainColumnViewController
@@ -21,6 +24,14 @@
     if (self) {
         // Custom initialization
     }
+    return self;
+}
+
+- (id)initMainColumnWithOption:(SFMainColumnType)mainColumnType delegate:(id)delegate
+{
+    self = [[SFMainColumnViewController alloc] initWithNib];
+    self.mainColumnType = mainColumnType;
+    self.delegate = delegate;
     return self;
 }
 
@@ -37,6 +48,17 @@
     
     [SFUIDefaultTheme themeButton:self.followButton];
     [SFUIDefaultTheme themeButton:self.shareButton];
+    [SFUIDefaultTheme themeButton:self.effect1Button];
+    [SFUIDefaultTheme themeButton:self.effect2Button];
+    [SFUIDefaultTheme themeButton:self.effect3Button];
+    [SFUIDefaultTheme themeButton:self.effect4Button];
+    
+    if (self.mainColumnType == kSFMainColumnListener) {
+        self.broadcasterButtonsView.hidden = YES;
+    } else if (self.mainColumnType == kSFMainColumnBroadcaster) {
+        self.listenerButtonsView.hidden = YES;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,13 +70,20 @@
 - (void)viewDidUnload {
     [self setCoverImageView:nil];
     [self setTimeLabel:nil];
-    [self setStopButton:nil];
+    [self setControlButton:nil];
     [self setFollowButton:nil];
     [self setShareButton:nil];
     [self setPersonListeningLabel:nil];
     [self setPersonFollowingLabel:nil];
     [self setChannelInfoLabel:nil];
     [self setPersonFollowingLabel:nil];
+    [self setListenerButtonsView:nil];
+    [self setBroadcasterButtonsView:nil];
+    [self setEffect1Button:nil];
+    [self setEffect2Button:nil];
+    [self setEffect3Button:nil];
+    [self setEffect4Button:nil];
     [super viewDidUnload];
 }
+
 @end

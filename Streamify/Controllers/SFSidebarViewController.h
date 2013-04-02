@@ -13,6 +13,16 @@
 
 - (void)backPressed:(id)sender;
 
+- (void)searchPressed:(id)sender;
+
+- (void)trendingPressed:(id)sender;
+- (void)favoritePressed:(id)sender;
+- (void)recentPressed:(id)sender;
+
+- (void)broadcastPressed:(id)sender;
+
+- (void)settingsPressed:(id)sender;
+
 @end
 
 @interface SFSidebarViewController : BaseViewController
@@ -26,6 +36,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *settingsButton;
 
 - (id)initSidebarWithOption:(SFSidebarType)sidebarType delegate:(id)delegate;
+
 - (IBAction)backPressed:(id)sender;
 
 @end

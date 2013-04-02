@@ -11,6 +11,10 @@
 #import "RecordViewController.h" 
 #import "SFTileModel.h"
 
+@interface SFHomeViewController ()
+@property (nonatomic) SFHomeBrowsingType browsingType;
+@end
+
 @implementation SFHomeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

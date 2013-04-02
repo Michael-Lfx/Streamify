@@ -22,6 +22,17 @@ typedef enum {
     kSFSidebarBackOnly
 } SFSidebarType;
 
+typedef enum {
+    kSFMainColumnListener,
+    kSFMainColumnBroadcaster
+} SFMainColumnType;
+
+typedef enum {
+    kSFTrendingBrowsing,
+    kSFFavoriteBrowsing,
+    kSFRecentBrowsing
+} SFHomeBrowsingType;
+
 // NOTIFICATIONS
 #define kUpdateMeSuccessNotification @"updateMeSuccess"
 
