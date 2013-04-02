@@ -84,4 +84,36 @@
     [self.delegate backPressed:sender];
 }
 
+- (IBAction)searchPressed:(id)sender {
+    [self.delegate searchPressed:sender];
+}
+
+- (IBAction)trendingPressed:(id)sender {
+    self.trendingButton.selected = YES;
+    self.favouriteButton.selected = NO;
+    self.recentButton.selected = NO;
+    
+    [self.delegate trendingPressed:sender];
+}
+
+- (IBAction)favouritePressed:(id)sender {
+    self.trendingButton.selected = NO;
+    self.favouriteButton.selected = YES;
+    self.recentButton.selected = NO;
+ 
+    [self.delegate favouritePressed:sender];
+}
+
+- (IBAction)recentPressed:(id)sender {
+    self.trendingButton.selected = NO;
+    self.favouriteButton.selected = NO;
+    self.recentButton.selected = YES;
+    
+    [self.delegate recentPressed:sender];
+}
+
+- (IBAction)broadcastPressed:(id)sender {
+    [self.delegate broadcastPressed:sender];
+}
+
 @end

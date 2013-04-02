@@ -16,7 +16,7 @@
 - (void)searchPressed:(id)sender;
 
 - (void)trendingPressed:(id)sender;
-- (void)favoritePressed:(id)sender;
+- (void)favouritePressed:(id)sender;
 - (void)recentPressed:(id)sender;
 
 - (void)broadcastPressed:(id)sender;
@@ -38,5 +38,10 @@
 - (id)initSidebarWithOption:(SFSidebarType)sidebarType delegate:(id)delegate;
 
 - (IBAction)backPressed:(id)sender;
+- (IBAction)searchPressed:(id)sender;
+- (IBAction)trendingPressed:(id)sender;
+- (IBAction)favouritePressed:(id)sender;
+- (IBAction)recentPressed:(id)sender;
+- (IBAction)broadcastPressed:(id)sender;
 
 @end
