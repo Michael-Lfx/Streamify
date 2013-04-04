@@ -11,16 +11,13 @@
 
 @protocol SFSidebarViewControllerProtocol <NSObject>
 
+@optional
 - (void)backPressed:(id)sender;
-
 - (void)searchPressed:(id)sender;
-
 - (void)trendingPressed:(id)sender;
 - (void)favouritePressed:(id)sender;
 - (void)recentPressed:(id)sender;
-
 - (void)broadcastPressed:(id)sender;
-
 - (void)settingsPressed:(id)sender;
 
 @end

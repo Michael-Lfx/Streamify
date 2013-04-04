@@ -9,8 +9,12 @@
 #ifndef Streamify_SFConstants_h
 #define Streamify_SFConstants_h
 
+#define kSFCanvasTitleFrameXInHomeView 700
+#define kSFCanvasTitleFrameYInHomeView 100
 #define kSFCanvasFrameXInHomeView 120
-#define kSFCanvasFrameYInHomeView 150
+#define kSFCanvasFrameYInHomeView 170
+#define kSFTopbarFrameXInHomeView 250
+#define kSFTopbarFrameYInHomeView 0
 
 #define kSFMainColumnFrameX 80
 #define kSFMainColumnFrameY 0

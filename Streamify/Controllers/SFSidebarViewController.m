@@ -31,8 +31,10 @@
 - (id)initSidebarWithOption:(SFSidebarType)sidebarType delegate:(id)delegate
 {
     self = [[SFSidebarViewController alloc] initWithNib];
-    self.sidebarType = sidebarType;
-    self.delegate = delegate;
+    if (self) {
+        self.sidebarType = sidebarType;
+        self.delegate = delegate;
+    }
     return self;
 }
 

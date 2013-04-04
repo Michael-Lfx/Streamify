@@ -12,7 +12,9 @@
 #import "SFTileModel.h"
 
 @interface SFHomeViewController ()
+
 @property (nonatomic) SFHomeBrowsingType browsingType;
+
 @end
 
 @implementation SFHomeViewController
@@ -29,15 +31,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  
+    
+    // Topbar
+    self.topbarViewController = [[SFTopbarViewController alloc] initTopbarWithDelegate:self];
+    CGRect topbarFrame = self.topbarViewController.view.frame;
+    self.topbarViewController.view.frame = CGRectMake(kSFTopbarFrameXInHomeView,
+                                                      kSFTopbarFrameYInHomeView,
+                                                      topbarFrame.size.width,
+                                                      topbarFrame.size.height);
+    [self.view addSubview:self.topbarViewController.view];
+    
+    // Canvas Title
+    self.canvasTitle = [[[NSBundle mainBundle] loadNibNamed:@"SFHomeViewCanvasTitle" owner:self options:nil] lastObject];
+    CGRect canvasTitleFrame = self.canvasTitle.frame;
+    self.canvasTitle.frame = CGRectMake(kSFCanvasTitleFrameXInHomeView,
+                                        kSFCanvasTitleFrameYInHomeView,
+                                        canvasTitleFrame.size.width,
+                                        canvasTitleFrame.size.height);
+    NSLog(@"title %@\n", self.canvasTitle);
+    [self.view addSubview:self.canvasTitle];
+    
+    // Canvas
     self.canvasViewController = [[SFMetroCanvasViewController alloc] initWithDelegate:self];
-    CGRect frame = self.canvasViewController.view.frame;
+    CGRect canvasFrame = self.canvasViewController.view.frame;
     self.canvasViewController.view.frame = CGRectMake(kSFCanvasFrameXInHomeView,
                                                       kSFCanvasFrameYInHomeView,
-                                                      frame.size.width,
-                                                      frame.size.height);
-                                                      
-
+                                                      canvasFrame.size.width,
+                                                      canvasFrame.size.height);
     [self.view addSubview:self.canvasViewController.view];
     
     // Sidebar must be added after main column for shadow
@@ -68,14 +88,17 @@
 
 - (void)trendingPressed:(id)sender {
     self.browsingType = kSFTrendingBrowsing;
+    self.canvasTitle.text = @"Trending";
 }
 
 - (void)favouritePressed:(id)sender {
     self.browsingType = kSFFavoriteBrowsing;
+    self.canvasTitle.text = @"Favorite";
 }
 
 - (void)recentPressed:(id)sender {
     self.browsingType = kSFRecentBrowsing;
+    self.canvasTitle.text = @"Recent";
 }
 
 - (void)broadcastPressed:(id)sender {
