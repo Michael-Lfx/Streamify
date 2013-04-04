@@ -63,9 +63,30 @@
 - (BOOL)sendCreateRequestToServer {    
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://54.251.250.31"]];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObject:self.username forKey:@"username"];
+    NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:self.username, [PFUser currentUser].sessionToken, nil]
+                                                       forKeys:[NSArray arrayWithObjects:@"username", @"session_token", nil]];
     NSMutableURLRequest *requets = [client requestWithMethod:@"POST" path:@"/create.php" parameters:params];
 
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requets];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"SUCCESS");
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"FAIL");
+    }];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperation:operation];
+    
+    return YES;
+}
+
+- (BOOL)sendStopRequestToServer {
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://54.251.250.31"]];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:self.username, [PFUser currentUser].sessionToken, nil]
+                                                       forKeys:[NSArray arrayWithObjects:@"username", @"session_token", nil]];
+    NSMutableURLRequest *requets = [client requestWithMethod:@"POST" path:@"/stop.php" parameters:params];
+    
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requets];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"SUCCESS");
@@ -197,6 +218,7 @@
 - (void)stop {
     [self.timer invalidate];
     [self.audioRecorder stop];
+    [self sendStopRequestToServer];
 }
 
 - (void)didReceiveMemoryWarning
