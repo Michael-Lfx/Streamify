@@ -39,5 +39,6 @@ typedef enum {
 
 // NOTIFICATIONS
 #define kUpdateMeSuccessNotification @"updateMeSuccess"
+#define kUpdateLiveChannelsSuccessNotification @"updateLiveChannelsSuccess"
 
 #endif

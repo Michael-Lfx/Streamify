@@ -11,9 +11,11 @@
 
 @interface SFSocialManager : NSObject
 @property (nonatomic, strong) SFUser *currentUser;
+@property (nonatomic, strong) NSArray *liveChannels;
 + (SFSocialManager* )sharedInstance;
 - (BOOL)updateMe;
 - (NSArray *)getFollowersForUser:(NSString *)objectID;
 - (NSArray *)getFollowingForUser:(NSString *)objectID;
 - (BOOL)follows:(NSString *)objectID;
+- (void)updateLiveChannels;
 @end

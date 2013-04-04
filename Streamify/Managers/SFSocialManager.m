@@ -8,6 +8,10 @@
 
 #import "SFSocialManager.h"
 
+@interface SFSocialManager ()
+@property (nonatomic, strong) NSTimer *timer;
+@end
+
 @implementation SFSocialManager
 
 + (SFSocialManager *)sharedInstance
@@ -44,6 +48,8 @@
         
 //        [self follows:@"TESTUSER"];
     }];
+    
+    self.timer = [NSTimer timerWithTimeInterval:10.0 target:self selector:@selector(updateLiveChannels) userInfo:nil repeats:YES];
     
     return  YES;
 }
@@ -82,6 +88,7 @@
     return [[SFUser alloc] initWithPFUser:user];
 }
 
+
 - (NSArray *)getFollowingForUser:(NSString *)objectID {
     NSMutableArray *result = [NSMutableArray array];
     
@@ -96,6 +103,23 @@
     
 //    NSLog(@"Number of followings: %lu", (unsigned long)result.count);
     return result;
+}
+
+- (void)updateLiveChannels {
+    NSMutableArray *result = [NSMutableArray array];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Broadcast"];
+    [query whereKey:@"live" equalTo:@"1"];
+    NSArray *dataArray = [query findObjects];
+    
+    for (id row in dataArray) {
+        NSString *objectID = [row objectForKey:@"users_object_id"];
+        [result addObject:[self getUser:objectID]];
+    }
+    
+    self.liveChannels = [NSArray arrayWithArray:result];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateLiveChannelsSuccessNotification object:self userInfo:nil];
 }
 
 @end
