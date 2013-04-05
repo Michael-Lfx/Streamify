@@ -48,7 +48,6 @@
                                         kSFCanvasTitleFrameYInHomeView,
                                         canvasTitleFrame.size.width,
                                         canvasTitleFrame.size.height);
-    NSLog(@"title %@\n", self.canvasTitle);
     [self.view addSubview:self.canvasTitle];
     
     // Canvas

@@ -14,9 +14,15 @@ typedef enum {
     kSFButtonTypeMainColumnPressed
 } SFButtonType;
 
+typedef enum {
+    kSFSliderMinTrack,
+    kSFSliderMaxTrack
+} SFSliderTrackType;
+
 @protocol SFUITheme <NSObject>
 
 + (void)themeButton:(UIButton *)button;
++ (void)themeSlider:(UISlider *)slider;
 
 + (UIColor *)mainTextColor;
 + (void)themeButton:(UIButton *)button forType:(SFButtonType)buttonType;

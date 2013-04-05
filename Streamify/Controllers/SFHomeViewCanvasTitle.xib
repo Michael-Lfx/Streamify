@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">11G63b</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1138.51</string>
-		<string key="IBDocument.HIToolboxVersion">569.00</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -37,28 +37,27 @@
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MQA</bytes>
-				</object>
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClipsSubviews">YES</bool>
 				<int key="IBUIContentMode">7</int>
 				<bool key="IBUIUserInteractionEnabled">NO</bool>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<string key="IBUIText">Trending</string>
-				<nil key="IBUITextColor"/>
+				<object class="NSColor" key="IBUITextColor">
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MCAxIDEAA</bytes>
+				</object>
 				<nil key="IBUIHighlightedColor"/>
 				<int key="IBUIBaselineAdjustment">0</int>
 				<int key="IBUITextAlignment">2</int>
 				<object class="IBUIFontDescription" key="IBUIFontDescription">
-					<string key="name">HelveticaNeue-Medium</string>
+					<string key="name">HelveticaNeue-Bold</string>
 					<string key="family">Helvetica Neue</string>
-					<int key="traits">0</int>
+					<int key="traits">2</int>
 					<double key="pointSize">25</double>
 				</object>
 				<object class="NSFont" key="IBUIFont">
-					<string key="NSName">HelveticaNeue-Medium</string>
+					<string key="NSName">HelveticaNeue-Bold</string>
 					<double key="NSSize">25</double>
 					<int key="NSfFlags">16</int>
 				</object>

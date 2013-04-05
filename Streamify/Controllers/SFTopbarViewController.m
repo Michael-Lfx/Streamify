@@ -7,6 +7,7 @@
 //
 
 #import "SFTopbarViewController.h"
+#import "SFUIDefaultTheme.h"
 
 @interface SFTopbarViewController ()
 
@@ -37,7 +38,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [SFUIDefaultTheme themeSlider:self.volumeSlider];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,4 +48,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setPauseButton:nil];
+    [self setInfoLabel:nil];
+    [self setVolumeSlider:nil];
+    [super viewDidUnload];
+}
 @end

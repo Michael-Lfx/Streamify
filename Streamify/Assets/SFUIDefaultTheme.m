@@ -15,6 +15,12 @@
     [SFUIDefaultTheme themeButton:button forType:kSFButtonTypeMainColumnPressed];
 }
 
++ (void)themeSlider:(UISlider *)slider {
+    [slider setMinimumTrackImage:[SFUIDefaultTheme getSliderBackgroundImageforType:kSFSliderMinTrack] forState:UIControlStateNormal];
+    [slider setMaximumTrackImage:[SFUIDefaultTheme getSliderBackgroundImageforType:kSFSliderMaxTrack] forState:UIControlStateNormal];
+    [slider setThumbImage:[[UIImage alloc] init] forState:UIControlStateNormal];
+}
+
 + (UIColor *)mainTextColor {
     return [UIColor colorWithRed:101.0/255 green:246.0/255 blue:227.0/255 alpha:1];
 }
@@ -52,11 +58,10 @@
 
 + (UIImage *)getButtonBackgroundImageforType:(SFButtonType)buttonType {
     UIImage *image;
+    UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10);
     if (buttonType == kSFButtonTypeMainColumnDefault) {
-        UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10);
         image = [[UIImage imageNamed:@"maincol-button-background.png"] resizableImageWithCapInsets:insets];
     } else if (buttonType == kSFButtonTypeMainColumnPressed) {
-        UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10);
         image = [[UIImage imageNamed:@"maincol-button-background-pressed.png"] resizableImageWithCapInsets:insets];
     }
     return image;
@@ -69,6 +74,17 @@
         return [SFUIDefaultTheme mainTextColor];
     }
     return NULL;
+}
+
++ (UIImage *)getSliderBackgroundImageforType:(SFSliderTrackType)sliderTrackType {
+    UIImage *image;
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 2, 0, 2);
+    if (sliderTrackType == kSFSliderMinTrack) {
+        image = [[UIImage imageNamed:@"topbar-track-min.png"] resizableImageWithCapInsets:insets];
+    } else if (sliderTrackType == kSFSliderMaxTrack) {
+        image = [[UIImage imageNamed:@"topbar-track-max.png"] resizableImageWithCapInsets:insets];
+    }
+    return image;
 }
 
 @end
