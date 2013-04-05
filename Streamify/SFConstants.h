@@ -21,6 +21,11 @@
 #define kSFMainColumnFrameW 420
 #define kSFMainColumnFrameH 768
 
+#define kSFChatViewFrameX 500
+#define kSFChatViewFrameY 0
+#define kSFChatViewFrameW 524
+#define kSFChatViewFrameH 768
+
 typedef enum {
     kSFSidebarFull,
     kSFSidebarBackOnly

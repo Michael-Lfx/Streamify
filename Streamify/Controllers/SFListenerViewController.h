@@ -9,11 +9,13 @@
 #import "BaseViewController.h"
 #import "SFSidebarViewController.h"
 #import "SFMainColumnViewController.h"
+#import "SFChatViewController.h"
 
-@interface SFListenerViewController : BaseViewController <SFSidebarViewControllerProtocol, SFMainColumnViewControllerProtocol>
+@interface SFListenerViewController : BaseViewController <SFSidebarViewControllerProtocol, SFMainColumnViewControllerProtocol, SFChatViewControllerProtocol>
 
 @property (nonatomic, strong) SFMainColumnViewController *mainColumnViewController;
 @property (nonatomic, strong) SFSidebarViewController *sidebarViewController;
+@property (nonatomic, strong) SFChatViewController *chatViewController;
 @property (nonatomic, strong) SFUser *user;
 
 - (id)initWithUser:(SFUser *)user;

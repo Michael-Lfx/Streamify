@@ -28,6 +28,14 @@
 {
     [super viewDidLoad];
 
+    // Add Chat View
+    self.chatViewController = [[SFChatViewController alloc] initChatViewWithDelegate:self];
+    self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
+                                                    kSFChatViewFrameY,
+                                                    kSFChatViewFrameW,
+                                                    kSFChatViewFrameH);
+    [self.view addSubview:self.chatViewController.view];
+    
     // Add Main Column
     self.mainColumnViewController = [[SFMainColumnViewController alloc] initMainColumnWithOption:kSFMainColumnBroadcaster
                                                                                         delegate:self];

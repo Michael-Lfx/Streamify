@@ -39,12 +39,19 @@
 {
     [super viewDidLoad];
     
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.coverImageView.bounds];
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.view.bounds];
+    self.view.layer.masksToBounds = NO;
+    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.view.layer.shadowOffset = CGSizeMake(4.0f, 0.0f);
+    self.view.layer.shadowOpacity = 0.3f;
+    self.view.layer.shadowPath = shadowPath.CGPath;
+    
+    UIBezierPath *coverShadowPath = [UIBezierPath bezierPathWithRect:self.coverImageView.bounds];
     self.coverImageView.layer.masksToBounds = NO;
     self.coverImageView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.coverImageView.layer.shadowRadius = 4.0f;
     self.coverImageView.layer.shadowOpacity = 0.5f;
-    self.coverImageView.layer.shadowPath = shadowPath.CGPath;
+    self.coverImageView.layer.shadowPath = coverShadowPath.CGPath;
     
     [SFUIDefaultTheme themeButton:self.followButton];
     [SFUIDefaultTheme themeButton:self.shareButton];
@@ -52,6 +59,8 @@
     [SFUIDefaultTheme themeButton:self.effect2Button];
     [SFUIDefaultTheme themeButton:self.effect3Button];
     [SFUIDefaultTheme themeButton:self.effect4Button];
+    
+    [SFUIDefaultTheme themeSlider:self.volumeSlider];
     
     if (self.mainColumnType == kSFMainColumnListener) {
         self.broadcasterButtonsView.hidden = YES;
@@ -85,6 +94,7 @@
     [self setEffect2Button:nil];
     [self setEffect3Button:nil];
     [self setEffect4Button:nil];
+    [self setVolumeSlider:nil];
     [super viewDidUnload];
 }
 

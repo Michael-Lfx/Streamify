@@ -9,10 +9,12 @@
 #import "BaseViewController.h"
 #import "SFSidebarViewController.h"
 #import "SFMainColumnViewController.h"
+#import "SFChatViewController.h"
 
-@interface SFBroadcasterViewController : BaseViewController <SFSidebarViewControllerProtocol, SFMainColumnViewControllerProtocol>
+@interface SFBroadcasterViewController : BaseViewController <SFSidebarViewControllerProtocol, SFMainColumnViewControllerProtocol, SFChatViewControllerProtocol>
 
 @property (nonatomic, strong) SFMainColumnViewController *mainColumnViewController;
 @property (nonatomic, strong) SFSidebarViewController *sidebarViewController;
+@property (nonatomic, strong) SFChatViewController *chatViewController;
 
 @end

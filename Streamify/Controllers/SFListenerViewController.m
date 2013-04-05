@@ -36,6 +36,15 @@
 {
     [super viewDidLoad];
 
+    // Add Chat View
+    self.chatViewController = [[SFChatViewController alloc] initChatViewWithDelegate:self];
+    self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
+                                                          kSFChatViewFrameY,
+                                                          kSFChatViewFrameW,
+                                                          kSFChatViewFrameH);
+    [self.view addSubview:self.chatViewController.view];
+    
+    
     // Add Main Column
     self.mainColumnViewController = [[SFMainColumnViewController alloc] initMainColumnWithOption:kSFMainColumnListener
                                                                                         delegate:self];
@@ -49,6 +58,7 @@
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarBackOnly
                                                                                delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
+    
     _streamPlayer = [[MPMoviePlayerController alloc] init];
     
     [self.mainColumnViewController.controlButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchDown];

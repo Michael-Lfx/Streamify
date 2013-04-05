@@ -159,7 +159,7 @@
 		C0AC8AA8170597AB00422723 /* maincol-icon-stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8AA6170597AA00422723 /* maincol-icon-stop.png */; };
 		C0AC8AA9170597AB00422723 /* maincol-icon-stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8AA7170597AB00422723 /* maincol-icon-stop@2x.png */; };
 		C0AC8AAF17059C7600422723 /* SFUIDefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8AAE17059C7600422723 /* SFUIDefaultTheme.m */; };
-		C0CA2B69170F1F470007C576 /* subtle_carbon_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CA2B5D170F1F470007C576 /* subtle_carbon_@2X.png */; };
+		C0CA2B69170F1F470007C576 /* subtle_carbon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CA2B5D170F1F470007C576 /* subtle_carbon@2x.png */; };
 		C0CA2B6A170F1F470007C576 /* subtle_carbon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CA2B5E170F1F470007C576 /* subtle_carbon.png */; };
 		C0CA2B6B170F1F470007C576 /* topbar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CA2B5F170F1F470007C576 /* topbar-background.png */; };
 		C0CA2B6C170F1F470007C576 /* topbar-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CA2B60170F1F470007C576 /* topbar-background@2x.png */; };
@@ -175,6 +175,10 @@
 		C0CD8BAE1705D147005E98CE /* maincol-button-background-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CD8BAC1705D147005E98CE /* maincol-button-background-pressed@2x.png */; };
 		C0CD8BB11705DD28005E98CE /* sidebar-icon-back.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CD8BAF1705DD28005E98CE /* sidebar-icon-back.png */; };
 		C0CD8BB21705DD28005E98CE /* sidebar-icon-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CD8BB01705DD28005E98CE /* sidebar-icon-back@2x.png */; };
+		C0D16177170F3666006C1475 /* SFChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D16175170F3666006C1475 /* SFChatViewController.m */; };
+		C0D16178170F3666006C1475 /* SFChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D16176170F3666006C1475 /* SFChatViewController.xib */; };
+		C0D1617C170F40AB006C1475 /* chat-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D1617A170F40AB006C1475 /* chat-background.png */; };
+		C0D1617D170F40AB006C1475 /* chat-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D1617B170F40AB006C1475 /* chat-background@2x.png */; };
 		C0D21CF6170B0FFE004EC17F /* maincol-icon-follow.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D21CF2170B0FFE004EC17F /* maincol-icon-follow.png */; };
 		C0D21CF7170B0FFE004EC17F /* maincol-icon-follow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D21CF3170B0FFE004EC17F /* maincol-icon-follow@2x.png */; };
 		C0D21CF8170B0FFE004EC17F /* maincol-icon-share.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D21CF4170B0FFE004EC17F /* maincol-icon-share.png */; };
@@ -403,7 +407,7 @@
 		C0AC8AAD17059C7600422723 /* SFUIDefaultTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUIDefaultTheme.h; sourceTree = "<group>"; };
 		C0AC8AAE17059C7600422723 /* SFUIDefaultTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUIDefaultTheme.m; sourceTree = "<group>"; };
 		C0B22122170556AA0045A248 /* SFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFConstants.h; sourceTree = "<group>"; };
-		C0CA2B5D170F1F470007C576 /* subtle_carbon_@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "subtle_carbon_@2X.png"; path = "Theme/subtle_carbon_@2X.png"; sourceTree = "<group>"; };
+		C0CA2B5D170F1F470007C576 /* subtle_carbon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "subtle_carbon@2x.png"; path = "Theme/subtle_carbon@2x.png"; sourceTree = "<group>"; };
 		C0CA2B5E170F1F470007C576 /* subtle_carbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = subtle_carbon.png; path = Theme/subtle_carbon.png; sourceTree = "<group>"; };
 		C0CA2B5F170F1F470007C576 /* topbar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "topbar-background.png"; path = "Theme/topbar-background.png"; sourceTree = "<group>"; };
 		C0CA2B60170F1F470007C576 /* topbar-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "topbar-background@2x.png"; path = "Theme/topbar-background@2x.png"; sourceTree = "<group>"; };
@@ -419,6 +423,11 @@
 		C0CD8BAC1705D147005E98CE /* maincol-button-background-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-button-background-pressed@2x.png"; path = "Theme/maincol-button-background-pressed@2x.png"; sourceTree = "<group>"; };
 		C0CD8BAF1705DD28005E98CE /* sidebar-icon-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sidebar-icon-back.png"; path = "Assets/Theme/sidebar-icon-back.png"; sourceTree = "<group>"; };
 		C0CD8BB01705DD28005E98CE /* sidebar-icon-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sidebar-icon-back@2x.png"; path = "Assets/Theme/sidebar-icon-back@2x.png"; sourceTree = "<group>"; };
+		C0D16174170F3666006C1475 /* SFChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFChatViewController.h; sourceTree = "<group>"; };
+		C0D16175170F3666006C1475 /* SFChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFChatViewController.m; sourceTree = "<group>"; };
+		C0D16176170F3666006C1475 /* SFChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFChatViewController.xib; sourceTree = "<group>"; };
+		C0D1617A170F40AB006C1475 /* chat-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chat-background.png"; path = "Theme/chat-background.png"; sourceTree = "<group>"; };
+		C0D1617B170F40AB006C1475 /* chat-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chat-background@2x.png"; path = "Theme/chat-background@2x.png"; sourceTree = "<group>"; };
 		C0D21CF2170B0FFE004EC17F /* maincol-icon-follow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-follow.png"; path = "Theme/maincol-icon-follow.png"; sourceTree = "<group>"; };
 		C0D21CF3170B0FFE004EC17F /* maincol-icon-follow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-follow@2x.png"; path = "Theme/maincol-icon-follow@2x.png"; sourceTree = "<group>"; };
 		C0D21CF4170B0FFE004EC17F /* maincol-icon-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-share.png"; path = "Theme/maincol-icon-share.png"; sourceTree = "<group>"; };
@@ -497,6 +506,7 @@
 		1A49F9E81704C0A700969CFA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C0D16173170F3624006C1475 /* Chat VC */,
 				C0AC8A5F170572E100422723 /* MainColumn VC */,
 				C0B22125170558B30045A248 /* MetroCanvas VC */,
 				C0B22123170558000045A248 /* Sidebar VC */,
@@ -852,6 +862,7 @@
 		9CDD6AE017034B1C005A42C8 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C0D16179170F4098006C1475 /* Chat */,
 				C0CA2B5C170F1F2F0007C576 /* Topbar */,
 				C0AC8A901705780600422723 /* Theme */,
 				9CDD6AE117034B1C005A42C8 /* Login */,
@@ -884,6 +895,8 @@
 		C0AC8A901705780600422723 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				C0CA2B5D170F1F470007C576 /* subtle_carbon@2x.png */,
+				C0CA2B5E170F1F470007C576 /* subtle_carbon.png */,
 				C0E3A4A41709FA8800ADD132 /* mainbackground.png */,
 				C0E3A4A51709FA8800ADD132 /* mainbackground@2x.png */,
 				C0AC8A9117057AAC00422723 /* Main Column */,
@@ -984,8 +997,6 @@
 		C0CA2B5C170F1F2F0007C576 /* Topbar */ = {
 			isa = PBXGroup;
 			children = (
-				C0CA2B5D170F1F470007C576 /* subtle_carbon_@2X.png */,
-				C0CA2B5E170F1F470007C576 /* subtle_carbon.png */,
 				C0CA2B5F170F1F470007C576 /* topbar-background.png */,
 				C0CA2B60170F1F470007C576 /* topbar-background@2x.png */,
 				C0CA2B61170F1F470007C576 /* topbar-icon-pause.png */,
@@ -998,6 +1009,25 @@
 				C0CA2B68170F1F470007C576 /* topbar-track-min@2x.png */,
 			);
 			name = Topbar;
+			sourceTree = "<group>";
+		};
+		C0D16173170F3624006C1475 /* Chat VC */ = {
+			isa = PBXGroup;
+			children = (
+				C0D16174170F3666006C1475 /* SFChatViewController.h */,
+				C0D16175170F3666006C1475 /* SFChatViewController.m */,
+				C0D16176170F3666006C1475 /* SFChatViewController.xib */,
+			);
+			name = "Chat VC";
+			sourceTree = "<group>";
+		};
+		C0D16179170F4098006C1475 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				C0D1617A170F40AB006C1475 /* chat-background.png */,
+				C0D1617B170F40AB006C1475 /* chat-background@2x.png */,
+			);
+			name = Chat;
 			sourceTree = "<group>";
 		};
 		C0D21CFA170B1CBC004EC17F /* Broadcaster Screen */ = {
@@ -1148,7 +1178,7 @@
 				C0D21D01170B23D1004EC17F /* maincol-icon-record@2x.png in Resources */,
 				1AE32126170DC8DC00D740E5 /* SFTopbarViewController.xib in Resources */,
 				1AE32128170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib in Resources */,
-				C0CA2B69170F1F470007C576 /* subtle_carbon_@2X.png in Resources */,
+				C0CA2B69170F1F470007C576 /* subtle_carbon@2x.png in Resources */,
 				C0CA2B6A170F1F470007C576 /* subtle_carbon.png in Resources */,
 				C0CA2B6B170F1F470007C576 /* topbar-background.png in Resources */,
 				C0CA2B6C170F1F470007C576 /* topbar-background@2x.png in Resources */,
@@ -1160,6 +1190,9 @@
 				C0CA2B72170F1F470007C576 /* topbar-track-max@2x.png in Resources */,
 				C0CA2B73170F1F470007C576 /* topbar-track-min.png in Resources */,
 				C0CA2B74170F1F470007C576 /* topbar-track-min@2x.png in Resources */,
+				C0D16178170F3666006C1475 /* SFChatViewController.xib in Resources */,
+				C0D1617C170F40AB006C1475 /* chat-background.png in Resources */,
+				C0D1617D170F40AB006C1475 /* chat-background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1227,6 +1260,7 @@
 				1A1D8504170620B7002C1CB4 /* RecordViewController.m in Sources */,
 				C0D21CFD170B1D32004EC17F /* SFBroadcasterViewController.m in Sources */,
 				1AE32125170DC8DC00D740E5 /* SFTopbarViewController.m in Sources */,
+				C0D16177170F3666006C1475 /* SFChatViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
