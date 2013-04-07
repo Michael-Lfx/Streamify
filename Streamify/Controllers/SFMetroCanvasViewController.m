@@ -34,7 +34,7 @@
 }
 
 - (id)initWithDelegate:(id)delegate {
-    self = [[SFMetroCanvasViewController alloc] initWithNib];
+    self = [self initWithNib];
     self.delegate = delegate;
     return self;
 }

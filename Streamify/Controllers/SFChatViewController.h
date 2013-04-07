@@ -7,12 +7,13 @@
 //
 
 #import "BaseViewController.h"
+#import "SFChatMessageViewController.h"
 
 @protocol SFChatViewControllerProtocol<NSObject>
 
 @end
 
-@interface SFChatViewController : BaseViewController
+@interface SFChatViewController : BaseViewController<SFChatMessageViewControllerDelegate>
 
 - (id)initChatViewWithDelegate:(id)delegate;
 

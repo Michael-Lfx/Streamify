@@ -7,6 +7,7 @@
 //
 
 #import "SFChatViewController.h"
+#import "SFChatMessageViewController.h"
 
 @interface SFChatViewController ()
 @property (nonatomic, weak) id<SFChatViewControllerProtocol> delegate;
@@ -24,6 +25,7 @@
 }
 
 - (id)initChatViewWithDelegate:(id)delegate {
+    self = [self initWithNib];
     self.delegate = delegate;
     return self;
 }
@@ -31,6 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

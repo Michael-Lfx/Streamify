@@ -29,7 +29,7 @@
 
 - (id)initMainColumnWithOption:(SFMainColumnType)mainColumnType delegate:(id)delegate
 {
-    self = [[SFMainColumnViewController alloc] initWithNib];
+    self = [self initWithNib];
     self.mainColumnType = mainColumnType;
     self.delegate = delegate;
     return self;

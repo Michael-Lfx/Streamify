@@ -128,6 +128,8 @@
 		9CDD6AE817034B1C005A42C8 /* login-button-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6AE417034B1C005A42C8 /* login-button-small.png */; };
 		9CDD6AE917034B1C005A42C8 /* login-button-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6AE517034B1C005A42C8 /* login-button-small@2x.png */; };
 		9CDD6AEC17034C47005A42C8 /* SFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD6AEB17034C47005A42C8 /* SFLoginViewController.m */; };
+		C0A3B966171126FE0005B3ED /* brillant.png in Resources */ = {isa = PBXBuildFile; fileRef = C0A3B964171126FE0005B3ED /* brillant.png */; };
+		C0A3B967171126FE0005B3ED /* brillant@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0A3B965171126FE0005B3ED /* brillant@2x.png */; };
 		C0AC8A631705731D00422723 /* SFMainColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A611705731D00422723 /* SFMainColumnViewController.m */; };
 		C0AC8A641705731D00422723 /* SFMainColumnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8A621705731D00422723 /* SFMainColumnViewController.xib */; };
 		C0AC8A68170575B900422723 /* SFSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A661705755400422723 /* SFSidebarViewController.m */; };
@@ -372,6 +374,8 @@
 		9CDD6AE517034B1C005A42C8 /* login-button-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small@2x.png"; sourceTree = "<group>"; };
 		9CDD6AEA17034C47005A42C8 /* SFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLoginViewController.h; sourceTree = "<group>"; };
 		9CDD6AEB17034C47005A42C8 /* SFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLoginViewController.m; sourceTree = "<group>"; };
+		C0A3B964171126FE0005B3ED /* brillant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brillant.png; path = Theme/brillant.png; sourceTree = "<group>"; };
+		C0A3B965171126FE0005B3ED /* brillant@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brillant@2x.png"; path = "Theme/brillant@2x.png"; sourceTree = "<group>"; };
 		C0AC8A601705731D00422723 /* SFMainColumnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMainColumnViewController.h; sourceTree = "<group>"; };
 		C0AC8A611705731D00422723 /* SFMainColumnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMainColumnViewController.m; sourceTree = "<group>"; };
 		C0AC8A621705731D00422723 /* SFMainColumnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMainColumnViewController.xib; sourceTree = "<group>"; };
@@ -900,6 +904,8 @@
 		C0AC8A901705780600422723 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				C0A3B964171126FE0005B3ED /* brillant.png */,
+				C0A3B965171126FE0005B3ED /* brillant@2x.png */,
 				C0CA2B5D170F1F470007C576 /* subtle_carbon@2x.png */,
 				C0CA2B5E170F1F470007C576 /* subtle_carbon.png */,
 				C0E3A4A41709FA8800ADD132 /* mainbackground.png */,
@@ -1210,6 +1216,8 @@
 				C0D1617C170F40AB006C1475 /* chat-background.png in Resources */,
 				C0D1617D170F40AB006C1475 /* chat-background@2x.png in Resources */,
 				C0D224BA1710033400970AA3 /* SFChatMessageViewController.xib in Resources */,
+				C0A3B966171126FE0005B3ED /* brillant.png in Resources */,
+				C0A3B967171126FE0005B3ED /* brillant@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
