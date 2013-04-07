@@ -179,8 +179,6 @@
 		C0D16178170F3666006C1475 /* SFChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D16176170F3666006C1475 /* SFChatViewController.xib */; };
 		C0D1617C170F40AB006C1475 /* chat-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D1617A170F40AB006C1475 /* chat-background.png */; };
 		C0D1617D170F40AB006C1475 /* chat-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D1617B170F40AB006C1475 /* chat-background@2x.png */; };
-		C0D16187170F4658006C1475 /* SFChatMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D16185170F4658006C1475 /* SFChatMessageView.m */; };
-		C0D16188170F4658006C1475 /* SFChatMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D16186170F4658006C1475 /* SFChatMessageView.xib */; };
 		C0D21CF6170B0FFE004EC17F /* maincol-icon-follow.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D21CF2170B0FFE004EC17F /* maincol-icon-follow.png */; };
 		C0D21CF7170B0FFE004EC17F /* maincol-icon-follow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D21CF3170B0FFE004EC17F /* maincol-icon-follow@2x.png */; };
 		C0D21CF8170B0FFE004EC17F /* maincol-icon-share.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D21CF4170B0FFE004EC17F /* maincol-icon-share.png */; };
@@ -188,6 +186,8 @@
 		C0D21CFD170B1D32004EC17F /* SFBroadcasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D21CFC170B1D32004EC17F /* SFBroadcasterViewController.m */; };
 		C0D21D00170B23D1004EC17F /* maincol-icon-record.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D21CFE170B23D1004EC17F /* maincol-icon-record.png */; };
 		C0D21D01170B23D1004EC17F /* maincol-icon-record@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D21CFF170B23D1004EC17F /* maincol-icon-record@2x.png */; };
+		C0D224B91710033400970AA3 /* SFChatMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D224B71710033400970AA3 /* SFChatMessageViewController.m */; };
+		C0D224BA1710033400970AA3 /* SFChatMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D224B81710033400970AA3 /* SFChatMessageViewController.xib */; };
 		C0E3A4A61709FA8800ADD132 /* mainbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = C0E3A4A41709FA8800ADD132 /* mainbackground.png */; };
 		C0E3A4A71709FA8800ADD132 /* mainbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0E3A4A51709FA8800ADD132 /* mainbackground@2x.png */; };
 /* End PBXBuildFile section */
@@ -430,9 +430,6 @@
 		C0D16176170F3666006C1475 /* SFChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFChatViewController.xib; sourceTree = "<group>"; };
 		C0D1617A170F40AB006C1475 /* chat-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chat-background.png"; path = "Theme/chat-background.png"; sourceTree = "<group>"; };
 		C0D1617B170F40AB006C1475 /* chat-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chat-background@2x.png"; path = "Theme/chat-background@2x.png"; sourceTree = "<group>"; };
-		C0D16184170F4658006C1475 /* SFChatMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFChatMessageView.h; sourceTree = "<group>"; };
-		C0D16185170F4658006C1475 /* SFChatMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFChatMessageView.m; sourceTree = "<group>"; };
-		C0D16186170F4658006C1475 /* SFChatMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFChatMessageView.xib; sourceTree = "<group>"; };
 		C0D21CF2170B0FFE004EC17F /* maincol-icon-follow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-follow.png"; path = "Theme/maincol-icon-follow.png"; sourceTree = "<group>"; };
 		C0D21CF3170B0FFE004EC17F /* maincol-icon-follow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-follow@2x.png"; path = "Theme/maincol-icon-follow@2x.png"; sourceTree = "<group>"; };
 		C0D21CF4170B0FFE004EC17F /* maincol-icon-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-share.png"; path = "Theme/maincol-icon-share.png"; sourceTree = "<group>"; };
@@ -441,6 +438,9 @@
 		C0D21CFC170B1D32004EC17F /* SFBroadcasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBroadcasterViewController.m; sourceTree = "<group>"; };
 		C0D21CFE170B23D1004EC17F /* maincol-icon-record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-record.png"; path = "Theme/maincol-icon-record.png"; sourceTree = "<group>"; };
 		C0D21CFF170B23D1004EC17F /* maincol-icon-record@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-record@2x.png"; path = "Theme/maincol-icon-record@2x.png"; sourceTree = "<group>"; };
+		C0D224B61710033400970AA3 /* SFChatMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFChatMessageViewController.h; sourceTree = "<group>"; };
+		C0D224B71710033400970AA3 /* SFChatMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFChatMessageViewController.m; sourceTree = "<group>"; };
+		C0D224B81710033400970AA3 /* SFChatMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFChatMessageViewController.xib; sourceTree = "<group>"; };
 		C0E3A4A41709FA8800ADD132 /* mainbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mainbackground.png; path = Theme/mainbackground.png; sourceTree = "<group>"; };
 		C0E3A4A51709FA8800ADD132 /* mainbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mainbackground@2x.png"; path = "Theme/mainbackground@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1039,9 +1039,9 @@
 		C0D1617E170F45E3006C1475 /* Chat Component */ = {
 			isa = PBXGroup;
 			children = (
-				C0D16184170F4658006C1475 /* SFChatMessageView.h */,
-				C0D16185170F4658006C1475 /* SFChatMessageView.m */,
-				C0D16186170F4658006C1475 /* SFChatMessageView.xib */,
+				C0D224B61710033400970AA3 /* SFChatMessageViewController.h */,
+				C0D224B71710033400970AA3 /* SFChatMessageViewController.m */,
+				C0D224B81710033400970AA3 /* SFChatMessageViewController.xib */,
 			);
 			name = "Chat Component";
 			sourceTree = "<group>";
@@ -1209,7 +1209,7 @@
 				C0D16178170F3666006C1475 /* SFChatViewController.xib in Resources */,
 				C0D1617C170F40AB006C1475 /* chat-background.png in Resources */,
 				C0D1617D170F40AB006C1475 /* chat-background@2x.png in Resources */,
-				C0D16188170F4658006C1475 /* SFChatMessageView.xib in Resources */,
+				C0D224BA1710033400970AA3 /* SFChatMessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1278,7 +1278,7 @@
 				C0D21CFD170B1D32004EC17F /* SFBroadcasterViewController.m in Sources */,
 				1AE32125170DC8DC00D740E5 /* SFTopbarViewController.m in Sources */,
 				C0D16177170F3666006C1475 /* SFChatViewController.m in Sources */,
-				C0D16187170F4658006C1475 /* SFChatMessageView.m in Sources */,
+				C0D224B91710033400970AA3 /* SFChatMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

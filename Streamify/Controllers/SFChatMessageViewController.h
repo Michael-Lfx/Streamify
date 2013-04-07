@@ -1,5 +1,5 @@
 //
-//  SFChatMessageView.h
+//  SFChatMessageViewController.h
 //  Streamify
 //
 //  Created by Zuyet Awarmatik on 6/4/13.
@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface SFChatMessageView : BaseViewController
+@interface SFChatMessageViewController : BaseViewController
 
 @end
