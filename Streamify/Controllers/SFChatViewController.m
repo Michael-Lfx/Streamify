@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+#import "SFConstants.h"
 #import "SFChatViewController.h"
 #import "SFChatMessageViewController.h"
 
@@ -24,17 +25,28 @@
     return self;
 }
 
+- (IBAction)chatTextEditBeginned:(id)sender {
+    self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.chatTextField.frame.size.height - 35,
+                                self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
+}
+
+- (IBAction)chatTextEditEnded:(id)sender {
+    self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFChatTextFrameY,
+                                          self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
+}
+
 - (id)initChatViewWithDelegate:(id)delegate {
     self = [self initWithNib];
     self.delegate = delegate;
+
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
+    self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, self.chatTextField.frame.origin.y,
+                                          self.chatTextField.frame.size.width, 40);
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,6 +56,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setChatTextField:nil];
     [super viewDidUnload];
 }
 @end

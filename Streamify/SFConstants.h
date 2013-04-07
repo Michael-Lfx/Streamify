@@ -26,6 +26,11 @@
 #define kSFChatViewFrameW 524
 #define kSFChatViewFrameH 768
 
+#define kSFChatTextFrameY 670
+
+#define kSFKeyboardHeight 352
+#define kSFScreenHeight 768
+
 typedef enum {
     kSFSidebarFull,
     kSFSidebarBackOnly
