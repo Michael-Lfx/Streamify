@@ -49,7 +49,8 @@
 //        [self follows:@"TESTUSER"];
     }];
     
-    self.timer = [NSTimer timerWithTimeInterval:10.0 target:self selector:@selector(updateLiveChannels) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(updateLiveChannels) userInfo:nil repeats:YES];
+    [self.timer fire];
     
     return  YES;
 }
@@ -109,7 +110,7 @@
     NSMutableArray *result = [NSMutableArray array];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Broadcast"];
-    [query whereKey:@"live" equalTo:@"1"];
+    [query whereKey:@"live" equalTo:[NSNumber numberWithInt:1]];
     NSArray *dataArray = [query findObjects];
     
     for (id row in dataArray) {
@@ -120,6 +121,7 @@
     self.liveChannels = [NSArray arrayWithArray:result];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateLiveChannelsSuccessNotification object:self userInfo:nil];
+    NSLog(@"Number of live channels = %d", self.liveChannels.count);
 }
 
 @end
