@@ -110,7 +110,7 @@
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     docsDir = [dirPaths objectAtIndex:0];
     NSString *soundFilePath = [docsDir
-                               stringByAppendingPathComponent:@"recordedfile.aac"];
+                               stringByAppendingPathComponent:@"recordedfile.caf"];
     
     NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
     
@@ -155,7 +155,7 @@
     
     NSDictionary *params = [NSDictionary dictionaryWithObject:self.username forKey:@"username"];
     NSMutableURLRequest *myRequest = [client multipartFormRequestWithMethod:@"POST" path:@"/upload.php" parameters:params constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
-        [formData appendPartWithFileData:d name:@"userfile" fileName:self.fileName mimeType:@"audio/x-aac"];
+        [formData appendPartWithFileData:d name:@"userfile" fileName:self.fileName mimeType:@"audio/x-caf"];
     }];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:myRequest];
@@ -173,7 +173,7 @@
 
 - (void)changeFileName {
     self.count++;
-    self.fileName = [NSString stringWithFormat:@"sound%d.aac", self.count];
+    self.fileName = [NSString stringWithFormat:@"sound%d.caf", self.count];
 }
 
 - (void)send {
