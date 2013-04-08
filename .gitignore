@@ -11,3 +11,5 @@
 *.xcodeproj/*.xcworkspace
 xcuserdata
 build/
+
+*.orig
