@@ -10,6 +10,7 @@
 #import "SFListenerViewController.h"
 #import "RecordViewController.h" 
 #import "SFTileModel.h"
+#import "SFBroadcasterViewController.h"
 
 @interface SFHomeViewController ()
 
@@ -101,8 +102,9 @@
 }
 
 - (void)broadcastPressed:(id)sender {
-    RecordViewController *vc = [[RecordViewController alloc] init];
-    vc.username = [SFSocialManager sharedInstance].currentUser.objectID;
+//    RecordViewController *vc = [[RecordViewController alloc] init];
+//    vc.username = [SFSocialManager sharedInstance].currentUser.objectID;
+    SFBroadcasterViewController *vc = [[SFBroadcasterViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
     
     // Must change to new SFBroadcasterViewController
