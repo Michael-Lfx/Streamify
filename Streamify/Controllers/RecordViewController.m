@@ -71,7 +71,7 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"SUCCESS");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"FAIL");
+        NSLog(@"FAIL: CREATE REQUEST");
     }];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
@@ -91,7 +91,7 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"SUCCESS");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"FAIL");
+        NSLog(@"FAIL: STOP REQUEST");
     }];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
@@ -162,7 +162,7 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"SUCCESS");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"FAIL");
+        NSLog(@"FAIL: SEND AUDIO");
     }];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
