@@ -10,7 +10,7 @@
 #import "BaseViewController.h"
 
 @protocol SFMainColumnViewControllerProtocol <NSObject>
-
+- (void)controlButtonPressed:(id)sender;
 @end
 
 @interface SFMainColumnViewController : BaseViewController
@@ -37,5 +37,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *effect4Button;
 
 - (id)initMainColumnWithOption:(SFMainColumnType)mainColumnType delegate:(id)delegate;
+- (IBAction)controlButtonPressed:(id)sender;
 
 @end

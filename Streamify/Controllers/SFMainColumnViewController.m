@@ -35,6 +35,10 @@
     return self;
 }
 
+- (IBAction)controlButtonPressed:(id)sender {
+    [self.delegate controlButtonPressed:sender];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
