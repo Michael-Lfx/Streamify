@@ -1309,7 +1309,6 @@
 				C0D21CFD170B1D32004EC17F /* SFBroadcasterViewController.m in Sources */,
 				1AE32125170DC8DC00D740E5 /* SFTopbarViewController.m in Sources */,
 				C0D16177170F3666006C1475 /* SFChatViewController.m in Sources */,
-				C0D224B91710033400970AA3 /* SFChatMessageViewController.m in Sources */,
 				9CE76B081712B09600D60D7D /* SFAudioRecorder.m in Sources */,
 				9CE76B0B1712B0B200D60D7D /* SFAudioStreamer.m in Sources */,
 				C0E12175171154AC00A09C6C /* SFChatTableViewController.m in Sources */,
