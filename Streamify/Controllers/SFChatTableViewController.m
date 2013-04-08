@@ -7,6 +7,7 @@
 //
 
 #import "SFChatTableViewController.h"
+#import "SFChatMessageCell.h"
 
 @interface SFChatTableViewController ()
 
@@ -18,8 +19,14 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+    
     }
+    return self;
+}
+
+- (id)initWithData:(NSMutableArray *)data {
+    self = [self initWithNibName:@"SFChatTableViewController" bundle:[NSBundle mainBundle]];
+    self.messagesData = data;
     return self;
 }
 
@@ -32,6 +39,10 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.opaque = NO;
+    self.tableView.backgroundView = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,29 +55,34 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    if (self.messagesData == NULL)
+        return 0;
+    return self.messagesData.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *cellIdentifier = @"SFChatMessageCell";
+    SFChatMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[SFChatMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SFChatMessageCell"];
     }
     
     // Configure the cell...
+    [self loadDataToCell:cell indexPath:indexPath];
     
     return cell;
+}
+
+- (void)loadDataToCell:(SFChatMessageCell *)cell indexPath:(NSIndexPath *)indexPath {
+    NSDictionary *cellData = [self.messagesData objectAtIndex:indexPath.section];
+    cell.userNameLabel.text = (NSString *)[cellData valueForKey:@"userName"];
+    cell.messageLabel.text = (NSString *)[cellData valueForKey:@"message"];
 }
 
 /*

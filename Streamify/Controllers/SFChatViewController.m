@@ -8,10 +8,10 @@
 
 #import "SFConstants.h"
 #import "SFChatViewController.h"
-#import "SFChatMessageViewController.h"
+#import "SFChatTableViewController.h"
 
 @interface SFChatViewController ()
-@property (nonatomic, weak) id<SFChatViewControllerProtocol> delegate;
+
 @end
 
 @implementation SFChatViewController
@@ -37,7 +37,6 @@
 
 - (id)initChatViewWithDelegate:(id)delegate {
     self = [self initWithNib];
-    self.delegate = delegate;
 
     return self;
 }
@@ -47,6 +46,19 @@
     [super viewDidLoad];
     self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, self.chatTextField.frame.origin.y,
                                           self.chatTextField.frame.size.width, 40);
+    
+    //Test
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
+                                                                   forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
+    
+    NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
+                                                                   forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
+    
+    self.messagesData = [NSMutableArray arrayWithObjects:dict, dict2, nil];
+    self.chatTableViewController = [[SFChatTableViewController alloc] initWithData:self.messagesData];
+    self.chatTableViewController.tableView.frame = CGRectMake(42, 80, 440, 560);
+
+    [self.view addSubview:self.chatTableViewController.tableView];
 }
 
 - (void)didReceiveMemoryWarning

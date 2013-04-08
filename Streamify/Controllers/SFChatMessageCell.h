@@ -10,4 +10,8 @@
 
 @interface SFChatMessageCell : UITableViewCell
 
+@property (strong, nonatomic) UIImageView *avatarImageView;
+@property (strong, nonatomic) UILabel *userNameLabel;
+@property (strong, nonatomic) UILabel *messageLabel;
+
 @end

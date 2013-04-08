@@ -59,7 +59,6 @@
 						<string key="NSFrame">{{42, 670}, {440, 30}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -97,7 +96,7 @@
 					<object class="IBUILabel" id="110337571">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{42, 43}, {440, 37}}</string>
+						<string key="NSFrame">{{42, 42}, {440, 37}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="510545262"/>
@@ -110,7 +109,7 @@
 						<string key="IBUIText">Chat</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC44NDQ1NjcxMjM3IDAuODQ0NTY3MTIzNyAwLjg0NDU2NzEyMzcAA</bytes>
+							<bytes key="NSRGB">MC4zOTYwNzg0MzE0IDAuOTY0NzA1ODgyNCAwLjg5MDE5NjA3ODQAA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<object class="NSColor" key="IBUIShadowColor">
@@ -247,7 +246,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">16</int>
+			<int key="maxID">23</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

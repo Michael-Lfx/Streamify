@@ -7,13 +7,18 @@
 //
 
 #import "BaseViewController.h"
-#import "SFChatMessageViewController.h"
 
 @protocol SFChatViewControllerProtocol<NSObject>
 
 @end
 
-@interface SFChatViewController : BaseViewController<SFChatMessageViewControllerDelegate>
+@class SFChatTableViewController;
+
+@interface SFChatViewController : BaseViewController
+
+@property (strong, nonatomic) NSMutableArray *messagesData;
+
+@property (strong, nonatomic) SFChatTableViewController *chatTableViewController;
 @property (strong, nonatomic) IBOutlet UITextField *chatTextField;
 
 - (IBAction)chatTextEditBeginned:(id)sender;

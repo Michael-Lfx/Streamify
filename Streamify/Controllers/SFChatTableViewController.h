@@ -10,4 +10,8 @@
 
 @interface SFChatTableViewController : UITableViewController
 
+- (id)initWithData:(NSMutableArray *)data;
+
+@property (weak, nonatomic) NSMutableArray *messagesData;
+
 @end
