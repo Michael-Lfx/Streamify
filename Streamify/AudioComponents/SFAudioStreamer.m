@@ -30,6 +30,8 @@
 }
 
 - (void)playChannel:(NSString *)channelID {
+    [self preparePlayer];
+    
     NSString *urlString = [NSString stringWithFormat:@"http://54.251.250.31/%@/a.m3u8", channelID];
     NSLog(@"%@", urlString);
     NSURL *streamURL = [NSURL URLWithString:urlString];

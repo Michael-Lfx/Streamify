@@ -64,6 +64,11 @@
     [self.mainColumnViewController.controlButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchDown];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [[SFAudioStreamer sharedInstance] stop];
+    [super viewWillAppear:animated];
+}
+
 - (void)play {
     /*
     NSString *urlString = [NSString stringWithFormat:@"http://54.251.250.31/%@/a.m3u8", self.user.objectID];
@@ -85,6 +90,7 @@
     [self.streamPlayer play];
      */
  
+    [[SFAudioStreamer sharedInstance] preparePlayer];
     [[SFAudioStreamer sharedInstance] playChannel:self.user.objectID];
 }
 
@@ -92,6 +98,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)controlButtonPressed:(id)sender {
+    [self play];
 }
 
 - (void)backPressed:(id)sender {
