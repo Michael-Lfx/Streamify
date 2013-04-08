@@ -55,6 +55,10 @@
 //Constants
 #import "SFConstants.h"
 
+// AudioComponents
+#import "SFAudioRecorder.h"
+#import "SFAudioStreamer.h"
+
 
 //Controllers (order is important here!)
 #import "BaseViewController.h"

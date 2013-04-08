@@ -65,6 +65,7 @@
 }
 
 - (void)play {
+    /*
     NSString *urlString = [NSString stringWithFormat:@"http://54.251.250.31/%@/a.m3u8", self.user.objectID];
     NSLog(@"%@", urlString);
     NSURL *streamURL = [NSURL URLWithString:urlString];
@@ -82,6 +83,9 @@
     
     [self.streamPlayer prepareToPlay];
     [self.streamPlayer play];
+     */
+ 
+    [[SFAudioStreamer sharedInstance] playChannel:self.user.objectID];
 }
 
 - (void)didReceiveMemoryWarning

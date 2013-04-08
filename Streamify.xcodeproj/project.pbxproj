@@ -128,6 +128,8 @@
 		9CDD6AE817034B1C005A42C8 /* login-button-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6AE417034B1C005A42C8 /* login-button-small.png */; };
 		9CDD6AE917034B1C005A42C8 /* login-button-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6AE517034B1C005A42C8 /* login-button-small@2x.png */; };
 		9CDD6AEC17034C47005A42C8 /* SFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD6AEB17034C47005A42C8 /* SFLoginViewController.m */; };
+		9CE76B081712B09600D60D7D /* SFAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE76B071712B09600D60D7D /* SFAudioRecorder.m */; };
+		9CE76B0B1712B0B200D60D7D /* SFAudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE76B0A1712B0B200D60D7D /* SFAudioStreamer.m */; };
 		C0A3B966171126FE0005B3ED /* brillant.png in Resources */ = {isa = PBXBuildFile; fileRef = C0A3B964171126FE0005B3ED /* brillant.png */; };
 		C0A3B967171126FE0005B3ED /* brillant@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0A3B965171126FE0005B3ED /* brillant@2x.png */; };
 		C0AC8A631705731D00422723 /* SFMainColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A611705731D00422723 /* SFMainColumnViewController.m */; };
@@ -374,6 +376,10 @@
 		9CDD6AE517034B1C005A42C8 /* login-button-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small@2x.png"; sourceTree = "<group>"; };
 		9CDD6AEA17034C47005A42C8 /* SFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLoginViewController.h; sourceTree = "<group>"; };
 		9CDD6AEB17034C47005A42C8 /* SFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLoginViewController.m; sourceTree = "<group>"; };
+		9CE76B061712B09600D60D7D /* SFAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAudioRecorder.h; sourceTree = "<group>"; };
+		9CE76B071712B09600D60D7D /* SFAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAudioRecorder.m; sourceTree = "<group>"; };
+		9CE76B091712B0B200D60D7D /* SFAudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAudioStreamer.h; sourceTree = "<group>"; };
+		9CE76B0A1712B0B200D60D7D /* SFAudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAudioStreamer.m; sourceTree = "<group>"; };
 		C0A3B964171126FE0005B3ED /* brillant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brillant.png; path = Theme/brillant.png; sourceTree = "<group>"; };
 		C0A3B965171126FE0005B3ED /* brillant@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brillant@2x.png"; path = "Theme/brillant@2x.png"; sourceTree = "<group>"; };
 		C0AC8A601705731D00422723 /* SFMainColumnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMainColumnViewController.h; sourceTree = "<group>"; };
@@ -648,15 +654,16 @@
 		9CACEFE716F7529C0067C352 /* Streamify */ = {
 			isa = PBXGroup;
 			children = (
-				C0B221211705566B0045A248 /* Constants */,
 				9CDD6AE017034B1C005A42C8 /* Assets */,
-				9CACF09816F7584A0067C352 /* Views */,
+				9CE76B051712B07200D60D7D /* AudioComponents */,
+				9CACF00716F755AC0067C352 /* Categories */,
+				C0B221211705566B0045A248 /* Constants */,
 				9CACF02016F755AC0067C352 /* Controllers */,
 				9CACF02816F755AC0067C352 /* Managers */,
 				9CACF02C16F755AC0067C352 /* Models */,
-				9CACF00716F755AC0067C352 /* Categories */,
 				9CACEFE816F7529C0067C352 /* Supporting Files */,
 				9CACF03016F755AC0067C352 /* Vendors */,
+				9CACF09816F7584A0067C352 /* Views */,
 			);
 			path = Streamify;
 			sourceTree = "<group>";
@@ -888,6 +895,17 @@
 				9CDD6AE517034B1C005A42C8 /* login-button-small@2x.png */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		9CE76B051712B07200D60D7D /* AudioComponents */ = {
+			isa = PBXGroup;
+			children = (
+				9CE76B061712B09600D60D7D /* SFAudioRecorder.h */,
+				9CE76B071712B09600D60D7D /* SFAudioRecorder.m */,
+				9CE76B091712B0B200D60D7D /* SFAudioStreamer.h */,
+				9CE76B0A1712B0B200D60D7D /* SFAudioStreamer.m */,
+			);
+			path = AudioComponents;
 			sourceTree = "<group>";
 		};
 		C0AC8A5F170572E100422723 /* MainColumn VC */ = {
@@ -1287,6 +1305,8 @@
 				1AE32125170DC8DC00D740E5 /* SFTopbarViewController.m in Sources */,
 				C0D16177170F3666006C1475 /* SFChatViewController.m in Sources */,
 				C0D224B91710033400970AA3 /* SFChatMessageViewController.m in Sources */,
+				9CE76B081712B09600D60D7D /* SFAudioRecorder.m in Sources */,
+				9CE76B0B1712B0B200D60D7D /* SFAudioStreamer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
