@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface SFAudioRecorder : NSObject
-
++ (SFAudioRecorder *)sharedInstance;
+- (void)prepareRecord;
+- (void)record;
+- (void)stop;
 @end

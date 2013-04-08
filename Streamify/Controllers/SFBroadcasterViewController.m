@@ -54,10 +54,19 @@
 
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [[SFAudioRecorder sharedInstance] stop];
+    [super viewWillDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)controlButtonPressed:(id)sender {
+    [[SFAudioRecorder sharedInstance] record];
 }
 
 - (void)backPressed:(id)sender {
