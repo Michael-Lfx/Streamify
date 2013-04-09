@@ -47,7 +47,7 @@
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     docsDir = [dirPaths objectAtIndex:0];
     NSString *soundFilePath = [docsDir
-                               stringByAppendingPathComponent:@"recordedfile.caf"];
+                               stringByAppendingPathComponent:@"recordedfile.aac"];
     
     NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
     
@@ -91,7 +91,7 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requets];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"SUCCESS");
+        NSLog(@"SUCCESS: CREEATE REQUEST");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"FAIL: CREATE REQUEST");
     }];
@@ -111,7 +111,7 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requets];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"SUCCESS");
+        NSLog(@"SUCCESS: STOP AUDIO");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"FAIL: STOP REQUEST");
     }];
@@ -130,12 +130,12 @@
     
     NSDictionary *params = [NSDictionary dictionaryWithObject:self.userID forKey:@"username"];
     NSMutableURLRequest *myRequest = [client multipartFormRequestWithMethod:@"POST" path:@"/upload.php" parameters:params constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
-        [formData appendPartWithFileData:d name:@"userfile" fileName:self.fileName mimeType:@"audio/x-caf"];
+        [formData appendPartWithFileData:d name:@"userfile" fileName:self.fileName mimeType:@"audio/x-aac"];
     }];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:myRequest];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"SUCCESS");
+        NSLog(@"SUCCESS: SEND AUDIO");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"FAIL: SEND AUDIO");
     }];
@@ -148,7 +148,7 @@
 
 - (void)changeFileName {
     self.count++;
-    self.fileName = [NSString stringWithFormat:@"sound%d.caf", self.count];
+    self.fileName = [NSString stringWithFormat:@"sound%d.aac", self.count];
 }
 
 - (void)send {
