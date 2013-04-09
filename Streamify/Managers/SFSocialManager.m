@@ -111,17 +111,17 @@
     
     PFQuery *query = [PFQuery queryWithClassName:@"Broadcast"];
     [query whereKey:@"live" equalTo:[NSNumber numberWithInt:1]];
-    NSArray *dataArray = [query findObjects];
-    
-    for (id row in dataArray) {
-        NSString *objectID = [row objectForKey:@"users_object_id"];
-        [result addObject:[self getUser:objectID]];
-    }
-    
-    self.liveChannels = [NSArray arrayWithArray:result];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateLiveChannelsSuccessNotification object:self userInfo:nil];
-    NSLog(@"Number of live channels = %d", self.liveChannels.count);
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        for (id row in objects) {
+            NSString *objectID = [row objectForKey:@"users_object_id"];
+            [result addObject:[self getUser:objectID]];
+        }
+        
+        self.liveChannels = [NSArray arrayWithArray:result];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateLiveChannelsSuccessNotification object:self userInfo:nil];
+        NSLog(@"Number of live channels = %d", self.liveChannels.count);
+    }];
 }
 
 @end
