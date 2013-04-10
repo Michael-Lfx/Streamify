@@ -57,10 +57,12 @@
     
     self.view.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.01f];
     
-    self.view.layer.borderColor = [UIColor redColor].CGColor;
-    self.view.layer.borderWidth = 3.0f;
-    self.scrollView.layer.borderColor = [UIColor greenColor].CGColor;
-    self.scrollView.layer.borderWidth = 1.0f;
+    if (kMetroDebug) {
+        self.view.layer.borderColor = [UIColor redColor].CGColor;
+        self.view.layer.borderWidth = 3.0f;
+        self.scrollView.layer.borderColor = [UIColor greenColor].CGColor;
+        self.scrollView.layer.borderWidth = 1.0f;
+    }
     
     [self loadVisiblePages];
 }

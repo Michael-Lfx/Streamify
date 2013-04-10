@@ -123,15 +123,17 @@
 		9CDD6ADB170347C9005A42C8 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6ADA170347C9005A42C8 /* libz.1.1.3.dylib */; };
 		9CDD6ADD170347E2005A42C8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6ADC170347E2005A42C8 /* Security.framework */; };
 		9CDD6ADF170347EB005A42C8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6ADE170347EA005A42C8 /* StoreKit.framework */; };
-		9CDD6AE617034B1C005A42C8 /* login-button-small-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6AE217034B1C005A42C8 /* login-button-small-pressed.png */; };
-		9CDD6AE717034B1C005A42C8 /* login-button-small-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6AE317034B1C005A42C8 /* login-button-small-pressed@2x.png */; };
-		9CDD6AE817034B1C005A42C8 /* login-button-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6AE417034B1C005A42C8 /* login-button-small.png */; };
-		9CDD6AE917034B1C005A42C8 /* login-button-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6AE517034B1C005A42C8 /* login-button-small@2x.png */; };
 		9CDD6AEC17034C47005A42C8 /* SFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD6AEB17034C47005A42C8 /* SFLoginViewController.m */; };
 		9CE76B081712B09600D60D7D /* SFAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE76B071712B09600D60D7D /* SFAudioRecorder.m */; };
 		9CE76B0B1712B0B200D60D7D /* SFAudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE76B0A1712B0B200D60D7D /* SFAudioStreamer.m */; };
 		C0A3B966171126FE0005B3ED /* brillant.png in Resources */ = {isa = PBXBuildFile; fileRef = C0A3B964171126FE0005B3ED /* brillant.png */; };
 		C0A3B967171126FE0005B3ED /* brillant@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0A3B965171126FE0005B3ED /* brillant@2x.png */; };
+		C0AB0918171578C3009FEBC1 /* login-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB0914171578C3009FEBC1 /* login-background.png */; };
+		C0AB0919171578C3009FEBC1 /* login-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB0915171578C3009FEBC1 /* login-background@2x.png */; };
+		C0AB091A171578C3009FEBC1 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB0916171578C3009FEBC1 /* logo.png */; };
+		C0AB091B171578C3009FEBC1 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB0917171578C3009FEBC1 /* logo@2x.png */; };
+		C0AB091F17157B28009FEBC1 /* login-button.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB091D17157B28009FEBC1 /* login-button.png */; };
+		C0AB092017157B28009FEBC1 /* login-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB091E17157B28009FEBC1 /* login-button@2x.png */; };
 		C0AC8A631705731D00422723 /* SFMainColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A611705731D00422723 /* SFMainColumnViewController.m */; };
 		C0AC8A641705731D00422723 /* SFMainColumnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8A621705731D00422723 /* SFMainColumnViewController.xib */; };
 		C0AC8A68170575B900422723 /* SFSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A661705755400422723 /* SFSidebarViewController.m */; };
@@ -371,10 +373,6 @@
 		9CDD6ADA170347C9005A42C8 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		9CDD6ADC170347E2005A42C8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9CDD6ADE170347EA005A42C8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		9CDD6AE217034B1C005A42C8 /* login-button-small-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small-pressed.png"; sourceTree = "<group>"; };
-		9CDD6AE317034B1C005A42C8 /* login-button-small-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small-pressed@2x.png"; sourceTree = "<group>"; };
-		9CDD6AE417034B1C005A42C8 /* login-button-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small.png"; sourceTree = "<group>"; };
-		9CDD6AE517034B1C005A42C8 /* login-button-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-small@2x.png"; sourceTree = "<group>"; };
 		9CDD6AEA17034C47005A42C8 /* SFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLoginViewController.h; sourceTree = "<group>"; };
 		9CDD6AEB17034C47005A42C8 /* SFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLoginViewController.m; sourceTree = "<group>"; };
 		9CE76B061712B09600D60D7D /* SFAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAudioRecorder.h; sourceTree = "<group>"; };
@@ -383,6 +381,12 @@
 		9CE76B0A1712B0B200D60D7D /* SFAudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAudioStreamer.m; sourceTree = "<group>"; };
 		C0A3B964171126FE0005B3ED /* brillant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brillant.png; path = Theme/brillant.png; sourceTree = "<group>"; };
 		C0A3B965171126FE0005B3ED /* brillant@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brillant@2x.png"; path = "Theme/brillant@2x.png"; sourceTree = "<group>"; };
+		C0AB0914171578C3009FEBC1 /* login-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-background.png"; path = "Theme/login-background.png"; sourceTree = "<group>"; };
+		C0AB0915171578C3009FEBC1 /* login-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-background@2x.png"; path = "Theme/login-background@2x.png"; sourceTree = "<group>"; };
+		C0AB0916171578C3009FEBC1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Theme/logo.png; sourceTree = "<group>"; };
+		C0AB0917171578C3009FEBC1 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo@2x.png"; path = "Theme/logo@2x.png"; sourceTree = "<group>"; };
+		C0AB091D17157B28009FEBC1 /* login-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-button.png"; path = "Theme/login-button.png"; sourceTree = "<group>"; };
+		C0AB091E17157B28009FEBC1 /* login-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-button@2x.png"; path = "Theme/login-button@2x.png"; sourceTree = "<group>"; };
 		C0AC8A601705731D00422723 /* SFMainColumnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMainColumnViewController.h; sourceTree = "<group>"; };
 		C0AC8A611705731D00422723 /* SFMainColumnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMainColumnViewController.m; sourceTree = "<group>"; };
 		C0AC8A621705731D00422723 /* SFMainColumnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMainColumnViewController.xib; sourceTree = "<group>"; };
@@ -881,23 +885,12 @@
 		9CDD6AE017034B1C005A42C8 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C0AB091C17157AFF009FEBC1 /* Login */,
 				C0D16179170F4098006C1475 /* Chat */,
 				C0CA2B5C170F1F2F0007C576 /* Topbar */,
 				C0AC8A901705780600422723 /* Theme */,
-				9CDD6AE117034B1C005A42C8 /* Login */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		9CDD6AE117034B1C005A42C8 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				9CDD6AE217034B1C005A42C8 /* login-button-small-pressed.png */,
-				9CDD6AE317034B1C005A42C8 /* login-button-small-pressed@2x.png */,
-				9CDD6AE417034B1C005A42C8 /* login-button-small.png */,
-				9CDD6AE517034B1C005A42C8 /* login-button-small@2x.png */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		9CE76B051712B07200D60D7D /* AudioComponents */ = {
@@ -909,6 +902,19 @@
 				9CE76B0A1712B0B200D60D7D /* SFAudioStreamer.m */,
 			);
 			path = AudioComponents;
+			sourceTree = "<group>";
+		};
+		C0AB091C17157AFF009FEBC1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C0AB091D17157B28009FEBC1 /* login-button.png */,
+				C0AB091E17157B28009FEBC1 /* login-button@2x.png */,
+				C0AB0914171578C3009FEBC1 /* login-background.png */,
+				C0AB0915171578C3009FEBC1 /* login-background@2x.png */,
+				C0AB0916171578C3009FEBC1 /* logo.png */,
+				C0AB0917171578C3009FEBC1 /* logo@2x.png */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		C0AC8A5F170572E100422723 /* MainColumn VC */ = {
@@ -1145,10 +1151,6 @@
 				9CACEFFE16F7529C0067C352 /* MainStoryboard_iPad.storyboard in Resources */,
 				9CDD6ACD1703438D005A42C8 /* FacebookSDKResources.bundle in Resources */,
 				9CDD6ACF17034397005A42C8 /* FBUserSettingsViewResources.bundle in Resources */,
-				9CDD6AE617034B1C005A42C8 /* login-button-small-pressed.png in Resources */,
-				9CDD6AE717034B1C005A42C8 /* login-button-small-pressed@2x.png in Resources */,
-				9CDD6AE817034B1C005A42C8 /* login-button-small.png in Resources */,
-				9CDD6AE917034B1C005A42C8 /* login-button-small@2x.png in Resources */,
 				1A49FA0E1704EAC400969CFA /* SFMetroTileView.xib in Resources */,
 				1A49FA331704ED6B00969CFA /* 0.JPG in Resources */,
 				1A49FA341704ED6B00969CFA /* 1.JPG in Resources */,
@@ -1241,6 +1243,12 @@
 				C0A3B966171126FE0005B3ED /* brillant.png in Resources */,
 				C0A3B967171126FE0005B3ED /* brillant@2x.png in Resources */,
 				C0E12176171154AC00A09C6C /* SFChatTableViewController.xib in Resources */,
+				C0AB0918171578C3009FEBC1 /* login-background.png in Resources */,
+				C0AB0919171578C3009FEBC1 /* login-background@2x.png in Resources */,
+				C0AB091A171578C3009FEBC1 /* logo.png in Resources */,
+				C0AB091B171578C3009FEBC1 /* logo@2x.png in Resources */,
+				C0AB091F17157B28009FEBC1 /* login-button.png in Resources */,
+				C0AB092017157B28009FEBC1 /* login-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

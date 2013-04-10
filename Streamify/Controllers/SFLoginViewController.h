@@ -11,4 +11,5 @@
 @interface SFLoginViewController : BaseViewController
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
 @end

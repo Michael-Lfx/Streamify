@@ -29,7 +29,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    self.loginButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.loginButton.layer.shadowOpacity = 0.3f;
+    self.loginButton.layer.shadowRadius = 3.0f;
+    self.loginButton.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    self.loginButton.layer.masksToBounds = NO;
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
@@ -54,14 +59,14 @@
             NSLog(@"User with facebook signed up and logged in!");
             [[SFSocialManager sharedInstance] updateMe];
 //            [self performSegueWithIdentifier:@"HomeViewSegue" sender:self];
-            SFHomeViewController *vc = [[SFHomeViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
+            SFHomeViewController *homeViewController = [[SFHomeViewController alloc] init];
+            [self.navigationController pushViewController:homeViewController animated:YES];
         } else {
             NSLog(@"User with facebook logged in!");
             [[SFSocialManager sharedInstance] updateMe];
 //            [self performSegueWithIdentifier:@"HomeViewSegue" sender:self];
-            SFHomeViewController *vc = [[SFHomeViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
+            SFHomeViewController *homeViewController = [[SFHomeViewController alloc] init];
+            [self.navigationController pushViewController:homeViewController animated:YES];
         }
     }];
     
@@ -75,6 +80,8 @@
 }
 
 - (void)viewDidUnload {
+    [self setLoginButton:nil];
     [super viewDidUnload];
 }
+
 @end
