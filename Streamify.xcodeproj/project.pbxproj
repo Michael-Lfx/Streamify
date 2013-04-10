@@ -112,6 +112,7 @@
 		9CACF0A916F759BA0067C352 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A816F759BA0067C352 /* MapKit.framework */; };
 		9CCC3214170359C400910B22 /* SFHomeTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC3213170359C400910B22 /* SFHomeTestViewController.m */; };
 		9CCC322017036A3600910B22 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCC321F17036A3600910B22 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9CCE45A51715D18E0015825F /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE45A41715D18E0015825F /* GCDTimer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9CDD6AC917034265005A42C8 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6AC817034264005A42C8 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9CDD6ACB1703426D005A42C8 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6ACA1703426D005A42C8 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9CDD6ACD1703438D005A42C8 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CDD6ACC1703438D005A42C8 /* FacebookSDKResources.bundle */; };
@@ -362,6 +363,8 @@
 		9CCC3212170359C400910B22 /* SFHomeTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHomeTestViewController.h; sourceTree = "<group>"; };
 		9CCC3213170359C400910B22 /* SFHomeTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHomeTestViewController.m; sourceTree = "<group>"; };
 		9CCC321F17036A3600910B22 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		9CCE45A31715D18E0015825F /* GCDTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDTimer.h; sourceTree = "<group>"; };
+		9CCE45A41715D18E0015825F /* GCDTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDTimer.m; sourceTree = "<group>"; };
 		9CDD6AC817034264005A42C8 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		9CDD6ACA1703426D005A42C8 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		9CDD6ACC1703438D005A42C8 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
@@ -792,6 +795,7 @@
 		9CACF03016F755AC0067C352 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				9CCE45A11715D18E0015825F /* GCDTimer */,
 				9CACF03116F755AC0067C352 /* AFNetworking */,
 				9CACF04616F755AC0067C352 /* SDWebImage */,
 				9CACF05C16F755AC0067C352 /* SVPullToRefresh */,
@@ -880,6 +884,15 @@
 				9CACF09B16F7584A0067C352 /* BaseTableViewCell.m */,
 			);
 			path = Superclass;
+			sourceTree = "<group>";
+		};
+		9CCE45A11715D18E0015825F /* GCDTimer */ = {
+			isa = PBXGroup;
+			children = (
+				9CCE45A31715D18E0015825F /* GCDTimer.h */,
+				9CCE45A41715D18E0015825F /* GCDTimer.m */,
+			);
+			path = GCDTimer;
 			sourceTree = "<group>";
 		};
 		9CDD6AE017034B1C005A42C8 /* Assets */ = {
@@ -1321,6 +1334,7 @@
 				9CE76B0B1712B0B200D60D7D /* SFAudioStreamer.m in Sources */,
 				C0E12175171154AC00A09C6C /* SFChatTableViewController.m in Sources */,
 				C0E12179171162C400A09C6C /* SFChatMessageCell.m in Sources */,
+				9CCE45A51715D18E0015825F /* GCDTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

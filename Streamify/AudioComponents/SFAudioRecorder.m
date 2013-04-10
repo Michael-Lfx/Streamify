@@ -9,14 +9,16 @@
 #import "SFAudioRecorder.h"
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CoreMedia.h>
+#import "GCDTimer.h"
 
 @interface SFAudioRecorder() <AVAudioRecorderDelegate>
 @property (nonatomic, strong) AVAudioRecorder *audioRecorder;
 @property (nonatomic, strong) NSString *fileName;
-@property (nonatomic, strong) NSTimer *timer;
+//@property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic) int count;
 @property (nonatomic) NSUInteger lastBytes;
 @property (nonatomic, strong) NSString *userID;
+@property GCDTimer *timer;
 @end
 
 @implementation SFAudioRecorder
@@ -75,11 +77,19 @@
     }
     
     [self.audioRecorder record];
+    /*
     self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0f
                                                   target:self
                                                 selector:@selector(send)
                                                 userInfo:nil
                                                  repeats:YES];
+     */
+
+    dispatch_queue_t queue = dispatch_queue_create("streamify.cs3217.nus", DISPATCH_QUEUE_CONCURRENT);
+    self.timer = [GCDTimer timerOnQueue:queue withLeeway:TIMER_LEEWAY_NONE name:@"RecorderTimer"];
+    [self.timer scheduleBlock:^{
+        [self send];
+    } afterInterval:10.0 repeat:YES];
 }
 
 - (BOOL)sendCreateRequestToServer {

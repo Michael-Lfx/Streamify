@@ -49,8 +49,9 @@
 //        [self follows:@"TESTUSER"];
     }];
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(updateLiveChannels) userInfo:nil repeats:YES];
-    [self.timer fire];
+//    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(updateLiveChannels) userInfo:nil repeats:YES];
+//    [self.timer fire];
+    [self updateLiveChannels];
     
     return  YES;
 }
