@@ -910,9 +910,6 @@
 		9CDD6AE017034B1C005A42C8 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				C0AB091C17157AFF009FEBC1 /* Login */,
-				C0D16179170F4098006C1475 /* Chat */,
-				C0CA2B5C170F1F2F0007C576 /* Topbar */,
 				C0AC8A901705780600422723 /* Theme */,
 			);
 			path = Assets;
@@ -956,14 +953,17 @@
 		C0AC8A901705780600422723 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				C0AC8A9117057AAC00422723 /* Main Column */,
+				C0C5DDBD1701CECA00191192 /* Sidebar */,
+				C0AB091C17157AFF009FEBC1 /* Login */,
+				C0D16179170F4098006C1475 /* Chat */,
+				C0CA2B5C170F1F2F0007C576 /* Topbar */,
 				C0A3B964171126FE0005B3ED /* brillant.png */,
 				C0A3B965171126FE0005B3ED /* brillant@2x.png */,
 				C0CA2B5D170F1F470007C576 /* subtle_carbon@2x.png */,
 				C0CA2B5E170F1F470007C576 /* subtle_carbon.png */,
 				C0E3A4A41709FA8800ADD132 /* mainbackground.png */,
 				C0E3A4A51709FA8800ADD132 /* mainbackground@2x.png */,
-				C0AC8A9117057AAC00422723 /* Main Column */,
-				C0C5DDBD1701CECA00191192 /* Sidebar */,
 				C0AC8AAC17059B1D00422723 /* SFUITheme.h */,
 				C0AC8AAD17059C7600422723 /* SFUIDefaultTheme.h */,
 				C0AC8AAE17059C7600422723 /* SFUIDefaultTheme.m */,
