@@ -69,11 +69,13 @@
 }
 
 - (void)controlButtonPressed:(id)sender {
-    if (self.channelState == kSFStoppedOrPausedState) {
+//    if (self.channelState == kSFStoppedOrPausedState) {
+    if (![SFAudioRecorder sharedInstance].isRecording) {
         [[SFAudioRecorder sharedInstance] record];
         
         self.channelState = kSFPlayingOrRecordingState;
-    } else if (self.channelState == kSFPlayingOrRecordingState) {
+//    } else if (self.channelState == kSFPlayingOrRecordingState) {
+    } else if ([SFAudioRecorder sharedInstance].isRecording) {
         [[SFAudioRecorder sharedInstance] stop];
         
         self.channelState = kSFStoppedOrPausedState;
