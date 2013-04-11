@@ -45,11 +45,13 @@
     [self.streamPlayer prepareToPlay];
     [self.streamPlayer play];
     self.isPlaying = YES;
+    self.channelPlaying = channelID;
 }
 
 - (void)stop {
     [self.streamPlayer stop];
     self.isPlaying = NO;
+    self.channelPlaying = @"";
 }
 
 @end

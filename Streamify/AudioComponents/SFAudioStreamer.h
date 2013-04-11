@@ -10,6 +10,7 @@
 
 @interface SFAudioStreamer : NSObject
 @property (nonatomic) BOOL isPlaying;
+@property (nonatomic, strong) NSString *channelPlaying;
 
 + (SFAudioStreamer *)sharedInstance;
 - (void)preparePlayer;
