@@ -12,6 +12,7 @@
 
 @interface SFListenerViewController ()
 @property (nonatomic, strong) MPMoviePlayerController *streamPlayer;
+@property (nonatomic) SFChannelState channelState;
 @end
 
 @implementation SFListenerViewController
@@ -28,6 +29,9 @@
 - (id)initWithUser:(SFUser *)user {
     if (self = [super init]) {
         self.user = user;
+        
+        // Default Channel State in controller when started
+        self.channelState = kSFStoppedOrPausedState;
     }
     return self;
 }
@@ -47,7 +51,8 @@
     
     // Add Main Column
     self.mainColumnViewController = [[SFMainColumnViewController alloc] initMainColumnWithOption:kSFMainColumnListener
-                                                                                        delegate:self];
+                                                                                        delegate:self
+                                                                                    channelState:self.channelState];
     self.mainColumnViewController.view.frame = CGRectMake(kSFMainColumnFrameX,
                                                           kSFMainColumnFrameY,
                                                           kSFMainColumnFrameW,
@@ -65,6 +70,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.channelState = kSFStoppedOrPausedState;
     [[SFAudioStreamer sharedInstance] stop];
     [super viewWillAppear:animated];
 }
@@ -101,11 +107,24 @@
 }
 
 - (void)controlButtonPressed:(id)sender {
-    [self play];
+    if (self.channelState == kSFStoppedOrPausedState) {
+        [self play];
+        
+        self.channelState = kSFPlayingOrRecordingState;
+    } else if (self.channelState == kSFPlayingOrRecordingState) {
+        // Pause listening here
+        
+        self.channelState = kSFStoppedOrPausedState;
+    }
+    [self.mainColumnViewController setChannelState:self.channelState];
 }
 
 - (void)backPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)volumeSliderChanged:(id)sender {
+    
 }
 
 @end

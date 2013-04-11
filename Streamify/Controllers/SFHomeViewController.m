@@ -15,6 +15,7 @@
 @interface SFHomeViewController ()
 
 @property (nonatomic) SFHomeBrowsingType browsingType;
+@property (nonatomic) SFChannelState channelState;
 
 @end
 
@@ -25,6 +26,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.channelState = kSFStoppedOrPausedState;
     }
     return self;
 }
@@ -34,7 +36,8 @@
     [super viewDidLoad];
     
     // Topbar
-    self.topbarViewController = [[SFTopbarViewController alloc] initTopbarWithDelegate:self];
+    self.topbarViewController = [[SFTopbarViewController alloc] initTopbarWithDelegate:self
+                                                                          channelState:self.channelState];
     CGRect topbarFrame = self.topbarViewController.view.frame;
     self.topbarViewController.view.frame = CGRectMake(kSFTopbarFrameXInHomeView,
                                                       kSFTopbarFrameYInHomeView,
@@ -102,12 +105,19 @@
 }
 
 - (void)broadcastPressed:(id)sender {
-//    RecordViewController *vc = [[RecordViewController alloc] init];
-//    vc.username = [SFSocialManager sharedInstance].currentUser.objectID;
-    SFBroadcasterViewController *vc = [[SFBroadcasterViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+//  RecordViewController *vc = [[RecordViewController alloc] init];
+//  vc.username = [SFSocialManager sharedInstance].currentUser.objectID;
     
-    // Must change to new SFBroadcasterViewController
+    SFBroadcasterViewController *broadcasterViewController = [[SFBroadcasterViewController alloc] init];
+    [self.navigationController pushViewController:broadcasterViewController animated:YES];
+}
+
+- (void)volumeSliderChanged:(id)sender {
+    
+}
+
+- (void)controlButtonPressed:(id)sender {
+    
 }
 
 @end

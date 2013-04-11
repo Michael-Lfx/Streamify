@@ -74,7 +74,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="logo.png" id="Xkb-95-tYb">
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="logo.png" id="Xkb-95-tYb">
                                 <rect key="frame" x="349" y="268" width="348" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>

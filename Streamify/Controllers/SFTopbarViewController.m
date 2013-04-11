@@ -26,13 +26,27 @@
     return self;
 }
 
-- (id)initTopbarWithDelegate:(id)delegate
+- (id)initTopbarWithDelegate:(id)delegate channelState:(SFChannelState)channelState
 {
     self = [self initWithNib];
     if (self) {
         self.delegate = delegate;
+        self.channelState = channelState;
     }
     return self;
+}
+
+- (IBAction)volumeSliderChanged:(id)sender {
+    [self.delegate volumeSliderChanged:sender];
+}
+
+- (IBAction)controlButtonPressed:(id)sender {
+    [self.delegate controlButtonPressed:sender];
+}
+
+- (void)setChannelState:(SFChannelState)channelState {
+    _channelState = channelState;
+    [self.controlButton setImage:[self buttonIconForCurrentState] forState:UIControlStateNormal];
 }
 
 - (void)viewDidLoad
@@ -40,6 +54,7 @@
     [super viewDidLoad];
     
     [SFUIDefaultTheme themeSlider:self.volumeSlider];
+    [self.controlButton setImage:[self buttonIconForCurrentState] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,9 +64,18 @@
 }
 
 - (void)viewDidUnload {
-    [self setPauseButton:nil];
+    [self setControlButton:nil];
     [self setInfoLabel:nil];
     [self setVolumeSlider:nil];
     [super viewDidUnload];
 }
+
+- (UIImage*)buttonIconForCurrentState {
+    if (self.channelState == kSFPlayingOrRecordingState) {
+        return [UIImage imageNamed:@"topbar-icon-pause.png"];
+    } else if (self.channelState == kSFStoppedOrPausedState) {
+        return [UIImage imageNamed:@"topbar-icon-play.png"];
+    }
+}
+
 @end

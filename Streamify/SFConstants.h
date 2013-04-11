@@ -27,6 +27,12 @@
 #define kSFChatViewFrameH 768
 
 #define kSFChatTextFrameY 670
+#define kSFChatTextFrameH 40
+
+#define kSFChatTableFrameX 50
+#define kSFChatTableFrameY 80
+#define kSFChatTableFrameW 440
+#define kSFChatTableFrameH 560
 
 #define kSFKeyboardHeight 352
 #define kSFScreenHeight 768
@@ -46,6 +52,11 @@ typedef enum {
     kSFFavoriteBrowsing,
     kSFRecentBrowsing
 } SFHomeBrowsingType;
+
+typedef enum {
+    kSFPlayingOrRecordingState,
+    kSFStoppedOrPausedState
+} SFChannelState;
 
 // NOTIFICATIONS
 #define kUpdateMeSuccessNotification @"updateMeSuccess"
