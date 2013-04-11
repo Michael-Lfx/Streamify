@@ -39,10 +39,12 @@
                                       @"pictureURL": [pictureURL absoluteString]};
         
         [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
+        [[PFUser currentUser] setObject:[PFUser currentUser].objectId forKey:@"objectIdCopy"];
         [[PFUser currentUser] saveInBackground];
         
         self.currentUser = [[SFUser alloc] initWithPFUser:[PFUser currentUser]];
-        self.currentUser.followings = [self getFollowingForUser:self.currentUser.objectID];
+        //self.currentUser.followings = [self getFollowingForUser:self.currentUser.objectID];
+        self.currentUser.followings = [self getAllUsers];
         self.currentUser.followers = [self getFollowersForUser:self.currentUser.objectID];
         [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateMeSuccessNotification object:self userInfo:nil];
         
@@ -54,6 +56,17 @@
     [self updateLiveChannels];
     
     return  YES;
+}
+
+- (NSArray *)getAllUsers{
+    NSMutableArray *result = [NSMutableArray array];
+    PFQuery *query = [PFUser query];
+    NSArray *dataArray = [query findObjects];
+    for (id row in dataArray) {
+        NSString *objectID = [row objectForKey:@"objectIdCopy"];
+        [result addObject:[self getUser:objectID]];
+    }
+    return result;
 }
 
 - (NSArray *)getFollowersForUser:(NSString *)objectID {
