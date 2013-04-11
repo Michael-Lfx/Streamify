@@ -104,6 +104,15 @@
     self.canvasTitle.text = @"Recent";
 }
 
+- (void)searchPressed:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Supported"
+                                                    message:@"Searching coming in future version !"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
 - (void)broadcastPressed:(id)sender {
 //  RecordViewController *vc = [[RecordViewController alloc] init];
 //  vc.username = [SFSocialManager sharedInstance].currentUser.objectID;

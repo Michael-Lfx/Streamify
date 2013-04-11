@@ -74,6 +74,8 @@
         [[SFAudioStreamer sharedInstance] stop];
     }
     
+    self.mainColumnViewController.volumeSlider.value = [SFAudioStreamer sharedInstance].volume;
+    
     [super viewWillAppear:animated];
 }
 
@@ -110,7 +112,8 @@
 }
 
 - (void)volumeSliderChanged:(id)sender {
-    
+    UISlider *slider = (UISlider *)sender;
+    [SFAudioStreamer sharedInstance].volume = slider.value;
 }
 
 @end
