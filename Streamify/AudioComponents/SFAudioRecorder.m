@@ -37,6 +37,7 @@
     self.userID = [SFSocialManager sharedInstance].currentUser.objectID;
     self.count = -1;
     self.lastBytes = -1;
+    self.isRecording = NO;
 }
 
 - (void)record
@@ -77,6 +78,7 @@
     }
     
     [self.audioRecorder record];
+    self.isRecording = YES;
     /*
     self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0f
                                                   target:self
@@ -191,6 +193,7 @@
         [self.timer invalidate];
         [self.audioRecorder stop];
         [self sendStopRequestToServer];
+        self.isRecording = NO;
     }
 }
 

@@ -27,6 +27,7 @@
 
 - (void)preparePlayer {
     self.streamPlayer = [[MPMoviePlayerController alloc] init];
+    self.isPlaying = NO;
 }
 
 - (void)playChannel:(NSString *)channelID {
@@ -43,10 +44,12 @@
     [self.streamPlayer.view setHidden:YES];
     [self.streamPlayer prepareToPlay];
     [self.streamPlayer play];
+    self.isPlaying = YES;
 }
 
 - (void)stop {
     [self.streamPlayer stop];
+    self.isPlaying = NO;
 }
 
 @end
