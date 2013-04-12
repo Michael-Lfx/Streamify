@@ -21,7 +21,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.chatTextField.delegate = self;
     }
     return self;
 }
@@ -31,6 +30,8 @@
         self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH - kSFKeyboardHeight);
         self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.chatTextField.frame.size.height - 35,
                                               self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
+        self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.sendButton.frame.size.height - 35,
+                                           self.sendButton.frame.size.width, self.sendButton.frame.size.height);
     }];
 }
 
@@ -38,6 +39,8 @@
     self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH);
     self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFChatTextFrameY,
                                           self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
+    self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, kSFChatTextFrameY,
+                                          self.sendButton.frame.size.width, self.sendButton.frame.size.height);
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -45,9 +48,18 @@
     return YES;
 }
 
-- (id)initChatViewWithDelegate:(id)delegate {
-    self = [self initWithNib];
+- (IBAction)sendButtonPressed:(id)sender {
+    [self.delegate sendText:self.chatTextField.text];
+    self.chatTextField.text = @"";
+    [self.chatTextField resignFirstResponder];
+}
 
+- (id)initChatViewWithDelegate:(id)delegate {
+    if (self = [self initWithNib]) {
+        self.delegate = delegate;
+        self.chatTextField.delegate = self;
+    }
+    
     return self;
 }
 
@@ -56,6 +68,8 @@
     [super viewDidLoad];
     self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, self.chatTextField.frame.origin.y,
                                           self.chatTextField.frame.size.width, kSFChatTextFrameH);
+    self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, self.chatTextField.frame.origin.y,
+                                       self.sendButton.frame.size.width, kSFChatTextFrameH);
     
     //Test
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
@@ -93,6 +107,7 @@
 
 - (void)viewDidUnload {
     [self setChatTextField:nil];
+    [self setSendButton:nil];
     [super viewDidUnload];
 }
 @end

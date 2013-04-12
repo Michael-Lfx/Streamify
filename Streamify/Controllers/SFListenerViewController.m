@@ -111,6 +111,24 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)sendText:(NSString *)text {
+    NSString *trimmedString = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *facebookID = [SFSocialManager sharedInstance].currentUser.facebookId;
+    if (trimmedString.length > 0) {
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              self.user.objectID, kMessageChannel,
+                              facebookID, kMessageUser,
+                              trimmedString, kMessageText,
+                              nil];
+        [[SFSocialManager sharedInstance] postMessage:dict withCallback:^(id returnedObject) {
+            if ([[returnedObject objectForKey:kOperationResult] isEqual: OPERATION_SUCCEEDED]){
+                NSLog(@"Succeeded sending: %@", dict);
+            }
+        }];
+    }
+}
+
+
 - (void)volumeSliderChanged:(id)sender {
     UISlider *slider = (UISlider *)sender;
     [SFAudioStreamer sharedInstance].volume = slider.value;
