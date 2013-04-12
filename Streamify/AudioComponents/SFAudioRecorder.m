@@ -87,6 +87,10 @@
                                                  repeats:YES];
      */
 
+    [self startTimer];
+}
+
+- (void)startTimer {
     dispatch_queue_t queue = dispatch_queue_create("streamify.cs3217.nus", DISPATCH_QUEUE_CONCURRENT);
     self.timer = [GCDTimer timerOnQueue:queue withLeeway:TIMER_LEEWAY_NONE name:@"RecorderTimer"];
     [self.timer scheduleBlock:^{

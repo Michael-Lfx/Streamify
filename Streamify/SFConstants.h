@@ -68,4 +68,11 @@ typedef enum {
 
 #define kResultLiveChannels @"ResultLiveChannels"
 
+#define kMessageChannel @"MessageChannel"
+#define kMessageText @"MessageText"
+#define kMessageTime @"MessageTime"
+
+#define kResultFollowers @"ResultFollowers"
+#define kResultFollowing @"ResultFollowing"
+
 #endif

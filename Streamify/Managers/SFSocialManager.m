@@ -84,6 +84,34 @@
     return result;
 }
 
+- (void)getFollowersForUser:(NSString *)userID withCallback:(SFResponseBlock)response {
+    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+    [query whereKey:@"following" equalTo:userID];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_FAILED, kOperationResult,
+                                     nil];
+            response((id)resData);
+        } else {
+            NSMutableArray *result = [NSMutableArray array];
+            
+            for (id row in objects) {
+                NSString *objectID = [row objectForKey:@"follower"];
+                [result addObject:[self getUser:objectID]];
+            }
+            
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_SUCCEEDED, kOperationResult,
+                                     result, kResultFollowers,
+                                     nil];
+            
+            response((id)resData);
+        }
+    }];
+}
+
 - (BOOL)follows:(NSString *)objectID {
     PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
     [query whereKey:@"follower" equalTo:self.currentUser.objectID];
@@ -118,6 +146,34 @@
     
 //    NSLog(@"Number of followings: %lu", (unsigned long)result.count);
     return result;
+}
+
+- (void)getFollowingForUser:(NSString *)userID withCallback:(SFResponseBlock)response {
+    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+    [query whereKey:@"follower" equalTo:userID];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_FAILED, kOperationResult,
+                                     nil];
+            response((id)resData);
+        } else {
+            NSMutableArray *result = [NSMutableArray array];
+            
+            for (id row in objects) {
+                NSString *objectID = [row objectForKey:@"following"];
+                [result addObject:[self getUser:objectID]];
+            }
+            
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_SUCCEEDED, kOperationResult,
+                                     result, kResultFollowing,
+                                     nil];
+            
+            response((id)resData);
+        }
+    }];
 }
 
 - (void)updateLiveChannels {
@@ -167,6 +223,13 @@
         }
     }];
 
+}
+
+- (void)postMessage:(NSDictionary *)dict withCallback:(SFResponseBlock)response {
+}
+
+- (void)fetchChannelMessages:(NSString *)channelID withCallback:(SFResponseBlock)response {
+    
 }
 
 @end
