@@ -274,12 +274,22 @@
     }];
 }
 
-- (void)fetchChannelMessages:(NSString *)channelID lastUpdated:(NSDate *)updateTime withCallback:(SFResponseBlock)response {
+
+- (void)fetchChannelMessages:(NSString *)channelID
+                 lastUpdated:(NSDate *)updateTime
+                withCallback:(SFResponseBlock)response {
+    [self fetchChannelMessages:channelID lastUpdated:updateTime limit:1000 withCallback:response];
+}
+
+- (void)fetchChannelMessages:(NSString *)channelID
+                 lastUpdated:(NSDate *)updateTime
+                       limit:(NSInteger)limit
+                withCallback:(SFResponseBlock)response {
     PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
     [query whereKey:kMessageChannel equalTo:channelID];
     [query whereKey:@"createdAt" greaterThan:updateTime];
     [query addDescendingOrder:@"createdAt"];
-    query.limit = kMessageFetchingLimit;
+    query.limit = limit;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
