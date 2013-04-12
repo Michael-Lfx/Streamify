@@ -62,7 +62,7 @@
     NSMutableArray *result = [NSMutableArray array];
     PFQuery *query = [PFUser query];
     NSArray *dataArray = [query findObjects];
-    for (id row in dataArray) {
+    for (PFObject *row in dataArray) {
         NSString *objectID = [row objectForKey:@"objectIdCopy"];
         [result addObject:[self getUser:objectID]];
     }
@@ -244,17 +244,67 @@
                                      nil];
             
             response((id)resData);
-//            NSLog(@"Number of live channels = %d", self.liveChannels.count);
         }
     }];
 
 }
 
 - (void)postMessage:(NSDictionary *)dict withCallback:(SFResponseBlock)response {
+    NSString *channel = [dict objectForKey:kMessageChannel];
+    NSString *text = [dict objectForKey:kMessageText];
+    NSString *userID = [dict objectForKey:kMessageUser];
+    
+    PFObject *newMessage = [PFObject objectWithClassName:@"Comment"];
+    [newMessage setObject:channel forKey:kMessageChannel];
+    [newMessage setObject:text forKey:kMessageText];
+    [newMessage setObject:userID forKey:kMessageUser];
+    
+    [newMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_SUCCEEDED, kOperationResult,
+                                     nil];
+            response((id)resData);
+        } else {
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_FAILED, kOperationResult,
+                                     nil];
+            response((id)resData);
+        }
+    }];
 }
 
-- (void)fetchChannelMessages:(NSString *)channelID withCallback:(SFResponseBlock)response {
+- (void)fetchChannelMessages:(NSString *)channelID lastUpdated:(NSDate *)updateTime withCallback:(SFResponseBlock)response {
+    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+    [query whereKey:kMessageChannel equalTo:channelID];
+    [query whereKey:@"createdAt" greaterThan:updateTime];
+    [query addDescendingOrder:@"createdAt"];
+    query.limit = kMessageFetchingLimit;
     
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSMutableArray *result = [NSMutableArray array];
+            
+            for (id row in objects) {
+                [result addObject:[[SFMessage alloc] initWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                         [row objectForKey:kMessageChannel], kMessageChannel,
+                                                                         [row objectForKey:kMessageUser], kMessageUser,
+                                                                         [row objectForKey:kMessageText], kMessageText,
+                                                                         nil]]];
+            }
+            
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_FAILED, kOperationResult,
+                                     result, kResultNewMessages,
+                                     nil];
+            response((id)resData);
+        } else {
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_FAILED, kOperationResult,
+                                     nil];
+            response((id)resData);
+        }
+    }];
 }
 
 @end
