@@ -62,4 +62,10 @@ typedef enum {
 #define kUpdateMeSuccessNotification @"updateMeSuccess"
 #define kUpdateLiveChannelsSuccessNotification @"updateLiveChannelsSuccess"
 
+#define kOperationResult @"Operation_Result"
+#define OPERATION_SUCCEEDED @"Operation_Succeeded"
+#define OPERATION_FAILED @"Operation_Failed"
+
+#define kResultLiveChannels @"ResultLiveChannels"
+
 #endif
