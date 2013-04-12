@@ -7,19 +7,23 @@
 //
 
 #import "BaseViewController.h"
+#import "SFMetroRefreshHeaderView.h"
 #import "SFMetroTileView.h"
 
 @protocol SFMetroCanvasViewControllerProtocol <NSObject>
 
-- (void)tilePressed:(id)sender;
+- (void)tileDidTapped:(SFUser *)user;
+- (void)canvasDidTriggeredToRefresh;
+- (BOOL)canvasDataSourceIsLoading;
 
 @end
 
+
 @interface SFMetroCanvasViewController : BaseViewController
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) NSArray *tiles;
+@property (nonatomic) SFMetroPullRefreshState canvasState;
 
-- (id)initWithDelegate:(id)delegate;
+- (id)initWithTiles:(NSArray *)tiles delegate:(id)delegate;
+- (void)refreshWithTiles:(NSArray *)tiles;
 
 @end

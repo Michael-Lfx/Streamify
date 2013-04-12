@@ -9,9 +9,12 @@
 #define kMetroTileViewNibName @"SFMetroTileView"
 #define kMetroCanvasViewNibName @"SFMetroCanvasView"
 
-#define kNumTilesPerPage (6)
-#define kNumTilesPerRow (3)
-#define kPaddingBetweenTiles (20.0f)
-#define kPaddingBetweenPages (40.0f)
-#define kMetroDebug FALSE
+#define kMetroNumTilesPerPage (6)
+#define kMetroNumTilesPerRow (3)
+#define kMetroPaddingBetweenTiles (20.0f)
+#define kMetroPaddingBetweenPages (40.0f)
+#define kMetroPullToRefreshOffsetLimit (100.0f)
+#define kMetroPullToRefreshOffset (100.0f)
+
+#define kMetroDebug TRUE
 

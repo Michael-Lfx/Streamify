@@ -10,19 +10,21 @@
 
 #import "SFMetroConstants.h"
 #import "SFMetroCanvasViewController.h"
+#import "SFMetroRefreshHeaderView.h"
 #import "SFMetroTileView.h"
-#import "SFTileModel.h"
-#import "SFListenerViewController.h"
 
 @interface SFMetroCanvasViewController ()
 
 @property (nonatomic, strong) id <SFMetroCanvasViewControllerProtocol> delegate;
+@property (nonatomic, strong) NSArray *tiles;
 @property (nonatomic, strong) NSMutableArray *pageViews;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) SFMetroRefreshHeaderView *refreshHeaderView;
 
 @end
 
-@implementation SFMetroCanvasViewController
 
+@implementation SFMetroCanvasViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,9 +35,12 @@
     return self;
 }
 
-- (id)initWithDelegate:(id)delegate {
+- (id)initWithTiles:(NSArray *)tiles delegate:(id)delegate {
     self = [self initWithNib];
-    self.delegate = delegate;
+    if (self) {
+        self.tiles = tiles;
+        self.delegate = delegate;
+    }
     return self;
 }
 
@@ -44,18 +49,15 @@
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setup) name:kUpdateMeSuccessNotification object:nil];
-}
-
-- (void)setup {
-    [self initTiles];
-    self.pageViews = [[NSMutableArray alloc] init];
-    NSInteger numOfPages = self.tiles.count/kNumTilesPerPage + 1;
-    for (NSInteger i = 0; i < numOfPages; ++i) {
-        [self.pageViews addObject:[NSNull null]];
-    }
-    
+    [self resetPageViews];
     self.view.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.01f];
+    [self loadVisiblePages];
+    
+    // Add header view
+    self.refreshHeaderView = [[[NSBundle mainBundle] loadNibNamed:@"SFMetroRefreshHeaderView" owner:self options:nil] lastObject];
+    CGSize refreshHeaderSize = self.refreshHeaderView.frame.size;
+    self.refreshHeaderView.frame = CGRectMake(-refreshHeaderSize.width, 0, refreshHeaderSize.width, refreshHeaderSize.height);
+    [self.scrollView addSubview:self.refreshHeaderView];
     
     if (kMetroDebug) {
         self.view.layer.borderColor = [UIColor redColor].CGColor;
@@ -63,42 +65,26 @@
         self.scrollView.layer.borderColor = [UIColor greenColor].CGColor;
         self.scrollView.layer.borderWidth = 1.0f;
     }
-    
-    [self loadVisiblePages];
 }
 
-- (void)initTiles
-{
-    /*
-    UIImage *image;
-    NSString *imageName, *coverName;
-    SFTileModel *tile;
-    NSMutableArray *temp = [NSMutableArray array];
-    for (int i = 0; i < 100; ++i) {
-        coverName = [NSString stringWithFormat:@"Cover %d", i];
-        imageName = [NSString stringWithFormat:@"%d.JPG", i];
-        image = [UIImage imageNamed:imageName];
-        tile = [[SFTileModel alloc] initWithName:coverName andCover:image];
-        [temp addObject:tile];
+- (void)resetPageViews {
+    self.pageViews = [[NSMutableArray alloc] init];
+    NSInteger numOfPages = self.tiles.count/kMetroNumTilesPerPage + 1;
+    for (NSInteger i = 0; i < numOfPages; ++i) {
+        [self.pageViews addObject:[NSNull null]];
     }
-    self.tiles = [NSArray arrayWithArray:temp];
-     */
-    
-    NSMutableArray *temp = [NSMutableArray array];
-    for (SFUser *user in [SFSocialManager sharedInstance].currentUser.followings) {
-        SFTileModel *tile = [[SFTileModel alloc] initWithUser:user];
-        [temp addObject:tile];
-    }
-    self.tiles = [NSMutableArray arrayWithArray:temp];
-    NSLog(@"NUMBER OF TILES = %lu", (unsigned long)[self.tiles count]);
 }
 
+// The contenSize initialization should go here instead of viewDidLoad
+// The reason you can’t is that the view size isn’t definitely known until
+// viewWillAppear:, and since you use the size of scrollView when calculating
+// the minimum zoom, things might go wrong if we do it in viewDidLoad.
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
     CGSize pagesScrollViewSize = self.scrollView.frame.size;
-    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageViews.count, pagesScrollViewSize.height);
+    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageViews.count + 10, pagesScrollViewSize.height);
     
     [self loadVisiblePages];
 }
@@ -109,7 +95,86 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - ScrollView helpers
+
+#pragma mark - Setters
+
+- (void)setCanvasState:(SFMetroPullRefreshState)newCanvasState
+{
+    self.refreshHeaderView.state = newCanvasState;
+    _canvasState = newCanvasState;
+}
+
+
+#pragma mark - Public Message
+
+- (void)refreshWithTiles:(NSArray *)tiles
+{
+    NSLog(@"Canvas is being refreshed...\n");
+    NSLog(@"Tiles are %@\n", tiles);
+    self.tiles = tiles;
+    [self resetPageViews];
+    [self performSelectorOnMainThread:@selector(loadVisiblePages) withObject:nil waitUntilDone:NO];
+}
+
+
+#pragma mark - ScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.canvasState == SFMetroPullRefreshLoading) {
+        CGFloat offset = MAX(-scrollView.contentOffset.y, 0);
+        offset = MIN(offset, kMetroPullToRefreshOffset);
+        scrollView.contentInset = UIEdgeInsetsMake(0, offset, 0, 0);
+    } else if (scrollView.isDragging) {
+        BOOL loading = NO;
+        
+        if ([self.delegate respondsToSelector:@selector(refreshHeaderDataSourceIsLoading:)]) {
+            loading = [self.delegate canvasDataSourceIsLoading];
+        }
+        
+        if (self.canvasState == SFMetroPullRefreshPulling
+            && scrollView.contentOffset.x > -kMetroPullToRefreshOffsetLimit
+            && scrollView.contentOffset.x < 0
+            && !loading) {
+            self.canvasState = SFMetroPullRefreshPulling;
+        }
+        
+        if (scrollView.contentInset.left != 0) {
+            scrollView.contentInset = UIEdgeInsetsZero;
+        }
+    }
+    
+    [self loadVisiblePages];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    BOOL loading = NO;
+    if ([self.delegate respondsToSelector:@selector(canvasDataSourceIsLoading)]) {
+        loading = [self.delegate canvasDataSourceIsLoading];
+    }
+    
+    if (scrollView.contentOffset.x <= -kMetroPullToRefreshOffsetLimit && !loading) {
+        if ([self.delegate respondsToSelector:@selector(canvasDidTriggeredToRefresh)]) {
+            [self.delegate canvasDidTriggeredToRefresh];
+        }
+        
+        self.canvasState = SFMetroPullRefreshLoading;
+        scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
+    }
+}
+
+
+#pragma mark - Pull To Refresh helpers
+
+- (void)canvasScrollViewDataSourceDidFinishedLoading
+{
+    [self.scrollView setContentInset:UIEdgeInsetsZero];
+    self.canvasState = SFMetroPullRefreshNormal;
+}
+
+
+#pragma mark - ScrollView helpers for paging
 
 - (void)loadVisiblePages
 {
@@ -124,13 +189,19 @@
     
     [self purgePage:(firstPage - 1)];
     [self purgePage:(lastPage + 1)];
+}
+
+- (void)purgePage:(NSInteger)page
+{
+    if (page < 0 || page >= self.pageViews.count) {
+        return;
+    }
     
-    //    for (NSInteger i = 0; i < firstPage; ++i) {
-    //        [self purgePage:i];
-    //    }
-    //    for (NSInteger i = lastPage + 1; i < self.tiles.count; ++i) {
-    //        [self purgePage:i];
-    //    }
+    UIView *pageView = [self.pageViews objectAtIndex:page];
+    if ((NSNull *)pageView != [NSNull null]) {
+        [pageView removeFromSuperview];
+        [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
+    }
 }
 
 - (void)loadPage:(NSInteger)page
@@ -156,8 +227,8 @@
 - (NSArray *)getChildrenTilesOfPage:(NSInteger)page
 {
     NSMutableArray *childrenTiles = [NSMutableArray array];
-    NSInteger firstTileIndex = page * kNumTilesPerPage;
-    NSInteger lastTileIndex = firstTileIndex + kNumTilesPerPage - 1;
+    NSInteger firstTileIndex = page * kMetroNumTilesPerPage;
+    NSInteger lastTileIndex = firstTileIndex + kMetroNumTilesPerPage - 1;
     if (lastTileIndex >= self.tiles.count) {
         lastTileIndex = self.tiles.count - 1;
     }
@@ -171,61 +242,37 @@
 
 - (void)addTiles:(NSArray *)tiles toPageView:(UIView *)pageView
 {
-    for (NSInteger i = 0; i < tiles.count; ++i) {
-        SFTileModel *tile = (SFTileModel *)[tiles objectAtIndex:i];
-        SFMetroTileView *tileView = [[[NSBundle mainBundle] loadNibNamed:kMetroTileViewNibName owner:self options:nil] lastObject];
-        [tileView setTitle:[NSString stringWithFormat:@"%@ %@", tile.user.name ,tile.user.objectID]];
-        [tileView setPictureLink:tile.user.pictureURL];
-        tileView.tag = i;
-//        [tileView setCover:tile.cover];
-        UITapGestureRecognizer *tapOnTileRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openChannelListener:)];
+    for (int i = 0; i < tiles.count; i++) {
+        SFUser *user = (SFUser *)[tiles objectAtIndex:i];
+        SFMetroTileView *tileView = [[SFMetroTileView alloc] initWithUser:user];
+        tileView.backgroundColor = [UIColor yellowColor];
+        UITapGestureRecognizer *tapOnTileRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tileDidTapped:)];
         tapOnTileRecognizer.numberOfTapsRequired = 1;
         tapOnTileRecognizer.numberOfTouchesRequired = 1;
         [tileView addGestureRecognizer:tapOnTileRecognizer];
         
-        NSInteger row = i / kNumTilesPerRow;
-        NSInteger column = i % kNumTilesPerRow;
+        NSInteger row = i / kMetroNumTilesPerRow;
+        NSInteger column = i % kMetroNumTilesPerRow;
         CGRect frame = tileView.frame;
         if (column != 0) {
-            frame.origin.x = column * (tileView.frame.size.width + kPaddingBetweenTiles);
+            frame.origin.x = column * (tileView.frame.size.width + kMetroPaddingBetweenTiles);
         }
         if (row != 0) {
-            frame.origin.y = row * (tileView.frame.size.height + kPaddingBetweenTiles);
+            frame.origin.y = row * (tileView.frame.size.height + kMetroPaddingBetweenTiles);
         }
         tileView.frame = frame;
         [pageView addSubview:tileView];
-    }
-    
+    }    
 }
 
-- (void)purgePage:(NSInteger)page
-{
-    if (page < 0 || page >= self.pageViews.count) {
-        return;
-    }
-    
-    UIView *pageView = [self.pageViews objectAtIndex:page];
-    if ((NSNull *)pageView != [NSNull null]) {
-        [pageView removeFromSuperview];
-        [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
-    }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [self loadVisiblePages];
-}
 
 #pragma mark - Gesture Handlers
 
-- (void)openChannelListener:(UIGestureRecognizer *)tapRecognizer
+- (void)tileDidTapped:(UIGestureRecognizer *)tapRecognizer
 {
     if (tapRecognizer.state == UIGestureRecognizerStateEnded) {
-//        SFListenerViewController *listenerViewController = [[SFListenerViewController alloc] init];
-//        [self presentViewController:listenerViewController animated:YES completion:nil];
-//        [self.navigationController pushViewController:listenerViewController animated:YES];
-//        [self.delegate tilePressed:tapRecognizer.view];
-        [self.delegate tilePressed:[self.tiles objectAtIndex:tapRecognizer.view.tag]];
+        SFMetroTileView *tileView = (SFMetroTileView *)tapRecognizer.view;
+        [self.delegate tileDidTapped:tileView.user];
     }
 }
 

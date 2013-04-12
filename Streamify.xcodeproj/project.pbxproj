@@ -10,41 +10,8 @@
 		1A1D84FE17061FC2002C1CB4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1D84FD17061FC2002C1CB4 /* AVFoundation.framework */; };
 		1A1D850017061FC8002C1CB4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1D84FF17061FC8002C1CB4 /* MediaPlayer.framework */; };
 		1A1D8504170620B7002C1CB4 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1D8503170620B7002C1CB4 /* RecordViewController.m */; };
-		1A49FA0C1704EAC400969CFA /* SFTileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA051704EAC400969CFA /* SFTileModel.m */; };
 		1A49FA0D1704EAC400969CFA /* SFMetroTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA071704EAC400969CFA /* SFMetroTileView.m */; };
 		1A49FA0E1704EAC400969CFA /* SFMetroTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA081704EAC400969CFA /* SFMetroTileView.xib */; };
-		1A49FA331704ED6B00969CFA /* 0.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA131704ED6B00969CFA /* 0.JPG */; };
-		1A49FA341704ED6B00969CFA /* 1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA141704ED6B00969CFA /* 1.JPG */; };
-		1A49FA351704ED6B00969CFA /* 10.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA151704ED6B00969CFA /* 10.JPG */; };
-		1A49FA361704ED6B00969CFA /* 11.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA161704ED6B00969CFA /* 11.JPG */; };
-		1A49FA371704ED6B00969CFA /* 12.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA171704ED6B00969CFA /* 12.JPG */; };
-		1A49FA381704ED6B00969CFA /* 13.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA181704ED6B00969CFA /* 13.JPG */; };
-		1A49FA391704ED6B00969CFA /* 14.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA191704ED6B00969CFA /* 14.JPG */; };
-		1A49FA3A1704ED6B00969CFA /* 15.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA1A1704ED6B00969CFA /* 15.JPG */; };
-		1A49FA3B1704ED6B00969CFA /* 16.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA1B1704ED6B00969CFA /* 16.JPG */; };
-		1A49FA3C1704ED6B00969CFA /* 17.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA1C1704ED6B00969CFA /* 17.JPG */; };
-		1A49FA3D1704ED6B00969CFA /* 18.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA1D1704ED6B00969CFA /* 18.JPG */; };
-		1A49FA3E1704ED6B00969CFA /* 19.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA1E1704ED6B00969CFA /* 19.JPG */; };
-		1A49FA3F1704ED6B00969CFA /* 2.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA1F1704ED6B00969CFA /* 2.JPG */; };
-		1A49FA401704ED6B00969CFA /* 20.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA201704ED6B00969CFA /* 20.JPG */; };
-		1A49FA411704ED6B00969CFA /* 21.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA211704ED6B00969CFA /* 21.JPG */; };
-		1A49FA421704ED6B00969CFA /* 22.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA221704ED6B00969CFA /* 22.JPG */; };
-		1A49FA431704ED6B00969CFA /* 23.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA231704ED6B00969CFA /* 23.JPG */; };
-		1A49FA441704ED6B00969CFA /* 24.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA241704ED6B00969CFA /* 24.JPG */; };
-		1A49FA451704ED6B00969CFA /* 25.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA251704ED6B00969CFA /* 25.JPG */; };
-		1A49FA461704ED6B00969CFA /* 26.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA261704ED6B00969CFA /* 26.JPG */; };
-		1A49FA471704ED6B00969CFA /* 27.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA271704ED6B00969CFA /* 27.JPG */; };
-		1A49FA481704ED6B00969CFA /* 28.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA281704ED6B00969CFA /* 28.JPG */; };
-		1A49FA491704ED6B00969CFA /* 29.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA291704ED6B00969CFA /* 29.JPG */; };
-		1A49FA4A1704ED6B00969CFA /* 3.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA2A1704ED6B00969CFA /* 3.JPG */; };
-		1A49FA4B1704ED6B00969CFA /* 30.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA2B1704ED6B00969CFA /* 30.JPG */; };
-		1A49FA4C1704ED6B00969CFA /* 31.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA2C1704ED6B00969CFA /* 31.JPG */; };
-		1A49FA4D1704ED6B00969CFA /* 4.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA2D1704ED6B00969CFA /* 4.JPG */; };
-		1A49FA4E1704ED6B00969CFA /* 5.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA2E1704ED6B00969CFA /* 5.JPG */; };
-		1A49FA4F1704ED6B00969CFA /* 6.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA2F1704ED6B00969CFA /* 6.JPG */; };
-		1A49FA501704ED6B00969CFA /* 7.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA301704ED6B00969CFA /* 7.JPG */; };
-		1A49FA511704ED6B00969CFA /* 8.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA311704ED6B00969CFA /* 8.JPG */; };
-		1A49FA521704ED6B00969CFA /* 9.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA321704ED6B00969CFA /* 9.JPG */; };
 		1A49FA661704F57C00969CFA /* SFListenerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA651704F57C00969CFA /* SFListenerViewController.m */; };
 		1A7932BF1705FE7F00005CBF /* SFMetroCanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7932BD1705FE7F00005CBF /* SFMetroCanvasViewController.m */; };
 		1A7932C01705FE7F00005CBF /* SFMetroCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7932BE1705FE7F00005CBF /* SFMetroCanvasViewController.xib */; };
@@ -111,6 +78,8 @@
 		9CACF0A516F759050067C352 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A416F759050067C352 /* QuartzCore.framework */; };
 		9CACF0A716F759A70067C352 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A616F759A70067C352 /* ImageIO.framework */; };
 		9CACF0A916F759BA0067C352 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A816F759BA0067C352 /* MapKit.framework */; };
+		9CB483F817182B9100E90107 /* SFMetroRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB483F617182B9100E90107 /* SFMetroRefreshHeaderView.m */; };
+		9CB483F917182B9100E90107 /* SFMetroRefreshHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB483F717182B9100E90107 /* SFMetroRefreshHeaderView.xib */; };
 		9CCC3214170359C400910B22 /* SFHomeTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC3213170359C400910B22 /* SFHomeTestViewController.m */; };
 		9CCC322017036A3600910B22 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCC321F17036A3600910B22 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9CCE45A51715D18E0015825F /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE45A41715D18E0015825F /* GCDTimer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -212,44 +181,9 @@
 		1A1D84FF17061FC8002C1CB4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		1A1D8502170620B7002C1CB4 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordViewController.h; path = Controllers/RecordViewController.h; sourceTree = "<group>"; };
 		1A1D8503170620B7002C1CB4 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordViewController.m; path = Controllers/RecordViewController.m; sourceTree = "<group>"; };
-		1A49FA041704EAC400969CFA /* SFTileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTileModel.h; sourceTree = "<group>"; };
-		1A49FA051704EAC400969CFA /* SFTileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTileModel.m; sourceTree = "<group>"; };
-		1A49FA061704EAC400969CFA /* SFMetroTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroTileView.h; sourceTree = "<group>"; };
 		1A49FA071704EAC400969CFA /* SFMetroTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMetroTileView.m; sourceTree = "<group>"; };
 		1A49FA081704EAC400969CFA /* SFMetroTileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMetroTileView.xib; sourceTree = "<group>"; };
 		1A49FA111704EACA00969CFA /* SFMetroConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroConstants.h; sourceTree = "<group>"; };
-		1A49FA131704ED6B00969CFA /* 0.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.JPG; sourceTree = "<group>"; };
-		1A49FA141704ED6B00969CFA /* 1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.JPG; sourceTree = "<group>"; };
-		1A49FA151704ED6B00969CFA /* 10.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.JPG; sourceTree = "<group>"; };
-		1A49FA161704ED6B00969CFA /* 11.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.JPG; sourceTree = "<group>"; };
-		1A49FA171704ED6B00969CFA /* 12.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12.JPG; sourceTree = "<group>"; };
-		1A49FA181704ED6B00969CFA /* 13.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 13.JPG; sourceTree = "<group>"; };
-		1A49FA191704ED6B00969CFA /* 14.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 14.JPG; sourceTree = "<group>"; };
-		1A49FA1A1704ED6B00969CFA /* 15.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 15.JPG; sourceTree = "<group>"; };
-		1A49FA1B1704ED6B00969CFA /* 16.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 16.JPG; sourceTree = "<group>"; };
-		1A49FA1C1704ED6B00969CFA /* 17.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 17.JPG; sourceTree = "<group>"; };
-		1A49FA1D1704ED6B00969CFA /* 18.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 18.JPG; sourceTree = "<group>"; };
-		1A49FA1E1704ED6B00969CFA /* 19.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 19.JPG; sourceTree = "<group>"; };
-		1A49FA1F1704ED6B00969CFA /* 2.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.JPG; sourceTree = "<group>"; };
-		1A49FA201704ED6B00969CFA /* 20.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 20.JPG; sourceTree = "<group>"; };
-		1A49FA211704ED6B00969CFA /* 21.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 21.JPG; sourceTree = "<group>"; };
-		1A49FA221704ED6B00969CFA /* 22.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 22.JPG; sourceTree = "<group>"; };
-		1A49FA231704ED6B00969CFA /* 23.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 23.JPG; sourceTree = "<group>"; };
-		1A49FA241704ED6B00969CFA /* 24.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 24.JPG; sourceTree = "<group>"; };
-		1A49FA251704ED6B00969CFA /* 25.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 25.JPG; sourceTree = "<group>"; };
-		1A49FA261704ED6B00969CFA /* 26.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 26.JPG; sourceTree = "<group>"; };
-		1A49FA271704ED6B00969CFA /* 27.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 27.JPG; sourceTree = "<group>"; };
-		1A49FA281704ED6B00969CFA /* 28.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 28.JPG; sourceTree = "<group>"; };
-		1A49FA291704ED6B00969CFA /* 29.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 29.JPG; sourceTree = "<group>"; };
-		1A49FA2A1704ED6B00969CFA /* 3.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.JPG; sourceTree = "<group>"; };
-		1A49FA2B1704ED6B00969CFA /* 30.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 30.JPG; sourceTree = "<group>"; };
-		1A49FA2C1704ED6B00969CFA /* 31.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 31.JPG; sourceTree = "<group>"; };
-		1A49FA2D1704ED6B00969CFA /* 4.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.JPG; sourceTree = "<group>"; };
-		1A49FA2E1704ED6B00969CFA /* 5.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.JPG; sourceTree = "<group>"; };
-		1A49FA2F1704ED6B00969CFA /* 6.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.JPG; sourceTree = "<group>"; };
-		1A49FA301704ED6B00969CFA /* 7.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.JPG; sourceTree = "<group>"; };
-		1A49FA311704ED6B00969CFA /* 8.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.JPG; sourceTree = "<group>"; };
-		1A49FA321704ED6B00969CFA /* 9.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.JPG; sourceTree = "<group>"; };
 		1A49FA641704F57C00969CFA /* SFListenerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFListenerViewController.h; sourceTree = "<group>"; };
 		1A49FA651704F57C00969CFA /* SFListenerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFListenerViewController.m; sourceTree = "<group>"; };
 		1A7932BC1705FE7E00005CBF /* SFMetroCanvasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroCanvasViewController.h; sourceTree = "<group>"; };
@@ -369,6 +303,10 @@
 		9CACF0A416F759050067C352 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9CACF0A616F759A70067C352 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		9CACF0A816F759BA0067C352 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9CB483F517182B9100E90107 /* SFMetroRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroRefreshHeaderView.h; sourceTree = "<group>"; };
+		9CB483F617182B9100E90107 /* SFMetroRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMetroRefreshHeaderView.m; sourceTree = "<group>"; };
+		9CB483F717182B9100E90107 /* SFMetroRefreshHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMetroRefreshHeaderView.xib; sourceTree = "<group>"; };
+		9CB483FA171832E000E90107 /* SFMetroTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroTileView.h; sourceTree = "<group>"; };
 		9CCC3212170359C400910B22 /* SFHomeTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHomeTestViewController.h; sourceTree = "<group>"; };
 		9CCC3213170359C400910B22 /* SFHomeTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHomeTestViewController.m; sourceTree = "<group>"; };
 		9CCC321F17036A3600910B22 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -567,10 +505,10 @@
 		1A49F9F51704E9CA00969CFA /* Metro Components */ = {
 			isa = PBXGroup;
 			children = (
-				1A49FA121704ED6A00969CFA /* thumb */,
-				1A49FA041704EAC400969CFA /* SFTileModel.h */,
-				1A49FA051704EAC400969CFA /* SFTileModel.m */,
-				1A49FA061704EAC400969CFA /* SFMetroTileView.h */,
+				9CB483FA171832E000E90107 /* SFMetroTileView.h */,
+				9CB483F517182B9100E90107 /* SFMetroRefreshHeaderView.h */,
+				9CB483F617182B9100E90107 /* SFMetroRefreshHeaderView.m */,
+				9CB483F717182B9100E90107 /* SFMetroRefreshHeaderView.xib */,
 				1A49FA071704EAC400969CFA /* SFMetroTileView.m */,
 				1A49FA081704EAC400969CFA /* SFMetroTileView.xib */,
 				1A49FA111704EACA00969CFA /* SFMetroConstants.h */,
@@ -578,45 +516,6 @@
 				1A7932C31706169E00005CBF /* SFMetroCanvasView.m */,
 			);
 			name = "Metro Components";
-			sourceTree = "<group>";
-		};
-		1A49FA121704ED6A00969CFA /* thumb */ = {
-			isa = PBXGroup;
-			children = (
-				1A49FA131704ED6B00969CFA /* 0.JPG */,
-				1A49FA141704ED6B00969CFA /* 1.JPG */,
-				1A49FA151704ED6B00969CFA /* 10.JPG */,
-				1A49FA161704ED6B00969CFA /* 11.JPG */,
-				1A49FA171704ED6B00969CFA /* 12.JPG */,
-				1A49FA181704ED6B00969CFA /* 13.JPG */,
-				1A49FA191704ED6B00969CFA /* 14.JPG */,
-				1A49FA1A1704ED6B00969CFA /* 15.JPG */,
-				1A49FA1B1704ED6B00969CFA /* 16.JPG */,
-				1A49FA1C1704ED6B00969CFA /* 17.JPG */,
-				1A49FA1D1704ED6B00969CFA /* 18.JPG */,
-				1A49FA1E1704ED6B00969CFA /* 19.JPG */,
-				1A49FA1F1704ED6B00969CFA /* 2.JPG */,
-				1A49FA201704ED6B00969CFA /* 20.JPG */,
-				1A49FA211704ED6B00969CFA /* 21.JPG */,
-				1A49FA221704ED6B00969CFA /* 22.JPG */,
-				1A49FA231704ED6B00969CFA /* 23.JPG */,
-				1A49FA241704ED6B00969CFA /* 24.JPG */,
-				1A49FA251704ED6B00969CFA /* 25.JPG */,
-				1A49FA261704ED6B00969CFA /* 26.JPG */,
-				1A49FA271704ED6B00969CFA /* 27.JPG */,
-				1A49FA281704ED6B00969CFA /* 28.JPG */,
-				1A49FA291704ED6B00969CFA /* 29.JPG */,
-				1A49FA2A1704ED6B00969CFA /* 3.JPG */,
-				1A49FA2B1704ED6B00969CFA /* 30.JPG */,
-				1A49FA2C1704ED6B00969CFA /* 31.JPG */,
-				1A49FA2D1704ED6B00969CFA /* 4.JPG */,
-				1A49FA2E1704ED6B00969CFA /* 5.JPG */,
-				1A49FA2F1704ED6B00969CFA /* 6.JPG */,
-				1A49FA301704ED6B00969CFA /* 7.JPG */,
-				1A49FA311704ED6B00969CFA /* 8.JPG */,
-				1A49FA321704ED6B00969CFA /* 9.JPG */,
-			);
-			path = thumb;
 			sourceTree = "<group>";
 		};
 		1AE32121170DC7EE00D740E5 /* Topbar VC */ = {
@@ -1188,38 +1087,6 @@
 				9CDD6ACD1703438D005A42C8 /* FacebookSDKResources.bundle in Resources */,
 				9CDD6ACF17034397005A42C8 /* FBUserSettingsViewResources.bundle in Resources */,
 				1A49FA0E1704EAC400969CFA /* SFMetroTileView.xib in Resources */,
-				1A49FA331704ED6B00969CFA /* 0.JPG in Resources */,
-				1A49FA341704ED6B00969CFA /* 1.JPG in Resources */,
-				1A49FA351704ED6B00969CFA /* 10.JPG in Resources */,
-				1A49FA361704ED6B00969CFA /* 11.JPG in Resources */,
-				1A49FA371704ED6B00969CFA /* 12.JPG in Resources */,
-				1A49FA381704ED6B00969CFA /* 13.JPG in Resources */,
-				1A49FA391704ED6B00969CFA /* 14.JPG in Resources */,
-				1A49FA3A1704ED6B00969CFA /* 15.JPG in Resources */,
-				1A49FA3B1704ED6B00969CFA /* 16.JPG in Resources */,
-				1A49FA3C1704ED6B00969CFA /* 17.JPG in Resources */,
-				1A49FA3D1704ED6B00969CFA /* 18.JPG in Resources */,
-				1A49FA3E1704ED6B00969CFA /* 19.JPG in Resources */,
-				1A49FA3F1704ED6B00969CFA /* 2.JPG in Resources */,
-				1A49FA401704ED6B00969CFA /* 20.JPG in Resources */,
-				1A49FA411704ED6B00969CFA /* 21.JPG in Resources */,
-				1A49FA421704ED6B00969CFA /* 22.JPG in Resources */,
-				1A49FA431704ED6B00969CFA /* 23.JPG in Resources */,
-				1A49FA441704ED6B00969CFA /* 24.JPG in Resources */,
-				1A49FA451704ED6B00969CFA /* 25.JPG in Resources */,
-				1A49FA461704ED6B00969CFA /* 26.JPG in Resources */,
-				1A49FA471704ED6B00969CFA /* 27.JPG in Resources */,
-				1A49FA481704ED6B00969CFA /* 28.JPG in Resources */,
-				1A49FA491704ED6B00969CFA /* 29.JPG in Resources */,
-				1A49FA4A1704ED6B00969CFA /* 3.JPG in Resources */,
-				1A49FA4B1704ED6B00969CFA /* 30.JPG in Resources */,
-				1A49FA4C1704ED6B00969CFA /* 31.JPG in Resources */,
-				1A49FA4D1704ED6B00969CFA /* 4.JPG in Resources */,
-				1A49FA4E1704ED6B00969CFA /* 5.JPG in Resources */,
-				1A49FA4F1704ED6B00969CFA /* 6.JPG in Resources */,
-				1A49FA501704ED6B00969CFA /* 7.JPG in Resources */,
-				1A49FA511704ED6B00969CFA /* 8.JPG in Resources */,
-				1A49FA521704ED6B00969CFA /* 9.JPG in Resources */,
 				C0AC8A641705731D00422723 /* SFMainColumnViewController.xib in Resources */,
 				C0AC8A80170577B900422723 /* sidebar-background.png in Resources */,
 				C0AC8A81170577B900422723 /* sidebar-background@2x.png in Resources */,
@@ -1291,6 +1158,7 @@
 				C0AE98621716BB0200B02590 /* maincol-icon-play@2x.png in Resources */,
 				C0C1366F1717040C006D8C6D /* topbar-icon-play.png in Resources */,
 				C0C136701717040C006D8C6D /* topbar-icon-play@2x.png in Resources */,
+				9CB483F917182B9100E90107 /* SFMetroRefreshHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1345,7 +1213,6 @@
 				C0AC8A68170575B900422723 /* SFSidebarViewController.m in Sources */,
 				9CDD6AEC17034C47005A42C8 /* SFLoginViewController.m in Sources */,
 				9CCC3214170359C400910B22 /* SFHomeTestViewController.m in Sources */,
-				1A49FA0C1704EAC400969CFA /* SFTileModel.m in Sources */,
 				1A49FA0D1704EAC400969CFA /* SFMetroTileView.m in Sources */,
 				1A49FA661704F57C00969CFA /* SFListenerViewController.m in Sources */,
 				C0AC8A631705731D00422723 /* SFMainColumnViewController.m in Sources */,
@@ -1365,6 +1232,7 @@
 				C0E12179171162C400A09C6C /* SFChatMessageCell.m in Sources */,
 				9CCE45A51715D18E0015825F /* GCDTimer.m in Sources */,
 				9C975CA417180F7F00C5FDDC /* SFMessage.m in Sources */,
+				9CB483F817182B9100E90107 /* SFMetroRefreshHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

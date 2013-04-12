@@ -6,7 +6,18 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+#import "SFMetroConstants.h"
 #import "SFMetroTileView.h"
+
+#define kTitleFormatString @"\t\t\t%@"
+
+@interface SFMetroTileView ()
+
+@property (strong, nonatomic) IBOutlet UIImageView *coverView;
+@property (strong, nonatomic) IBOutlet UILabel *titleView;
+
+@end
+
 
 @implementation SFMetroTileView
 
@@ -19,19 +30,33 @@
     return self;
 }
 
-- (void)setTitle:(NSString *)title
-{
-    NSString *formattedTitle = [NSString stringWithFormat:@"\t\t\t%@", title];
+- (id)init {
+    self = [[[NSBundle mainBundle] loadNibNamed:kMetroTileViewNibName owner:self options:nil] lastObject];
+    return self;
+}
+
+- (void)setUser:(SFUser *)user {
+    _user = user;
+    NSString *title = [NSString stringWithFormat:@"%@ %@", user.name, user.objectID];
+    NSString *formattedTitle = [NSString stringWithFormat:kTitleFormatString, title];
     self.titleView.text = formattedTitle;
+    
+    [self.coverView setImageWithURL:[NSURL URLWithString:user.pictureURL] placeholderImage:nil];
 }
 
-- (void)setCover:(UIImage *)cover
+- (id)initWithUser:(SFUser *)user
 {
-    self.coverView.image = cover;
-}
-
-- (void)setPictureLink:(NSString *)link {
-    [self.coverView setImageWithURL:[NSURL URLWithString:link] placeholderImage:nil];
+    self = [[[NSBundle mainBundle] loadNibNamed:kMetroTileViewNibName owner:self options:nil] lastObject];
+    if (self) {
+        self.user = user;
+        
+        NSString *title = [NSString stringWithFormat:@"%@ %@", user.name, user.objectID];
+        NSString *formattedTitle = [NSString stringWithFormat:kTitleFormatString, title];
+        self.titleView.text = formattedTitle;
+        
+        [self.coverView setImageWithURL:[NSURL URLWithString:user.pictureURL] placeholderImage:nil];
+    }
+    return self;
 }
 
 @end

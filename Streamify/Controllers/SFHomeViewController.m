@@ -8,14 +8,14 @@
 #import "SFConstants.h"
 #import "SFHomeViewController.h"
 #import "SFListenerViewController.h"
-#import "RecordViewController.h" 
-#import "SFTileModel.h"
+#import "RecordViewController.h"
 #import "SFBroadcasterViewController.h"
 
 @interface SFHomeViewController ()
 
 @property (nonatomic) SFHomeBrowsingType browsingType;
 @property (nonatomic) SFChannelState channelState;
+@property (nonatomic) BOOL canvasLoading;
 
 @end
 
@@ -55,7 +55,9 @@
     [self.view addSubview:self.canvasTitle];
     
     // Canvas
-    self.canvasViewController = [[SFMetroCanvasViewController alloc] initWithDelegate:self];
+    self.canvasLoading = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCanvas) name:kUpdateMeSuccessNotification object:nil];
+    self.canvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array] delegate:self];
     CGRect canvasFrame = self.canvasViewController.view.frame;
     self.canvasViewController.view.frame = CGRectMake(kSFCanvasFrameXInHomeView,
                                                       kSFCanvasFrameYInHomeView,
@@ -67,14 +69,6 @@
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarFull
                                                                                delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
-}
-
-- (void)tilePressed:(id)sender
-{
-    SFTileModel *model = (SFTileModel *)sender;
-    SFUser *user = model.user;
-    SFListenerViewController *listenerViewController = [[SFListenerViewController alloc] initWithUser:user];
-    [self.navigationController pushViewController:listenerViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,6 +121,37 @@
 
 - (void)controlButtonPressed:(id)sender {
     
+}
+
+#pragma mark - SFMetroCanvasViewControlProtocol
+
+- (void)tileDidTapped:(SFUser *)user
+{
+    SFListenerViewController *listenerViewController = [[SFListenerViewController alloc] initWithUser:user];
+    [self.navigationController pushViewController:listenerViewController animated:YES];
+}
+
+- (void)canvasDidTriggeredToRefresh
+{
+    self.canvasLoading = TRUE;
+    [self performSelectorInBackground:@selector(requestUpdateTile) withObject:nil];
+}
+
+- (BOOL)canvasDataSourceIsLoading
+{
+    return self.canvasLoading;
+}
+
+- (void)requestUpdateTile
+{
+    [[SFSocialManager sharedInstance] updateMe];
+}
+
+- (void)refreshCanvas
+{
+    self.canvasLoading = NO;
+    NSArray *tiles = [SFSocialManager sharedInstance].currentUser.followings;
+    [self.canvasViewController refreshWithTiles:tiles];
 }
 
 @end

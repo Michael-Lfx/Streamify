@@ -10,20 +10,10 @@
 
 @class SFMetroTileView;
 
-@protocol SFMetroTileActionDelegate <NSObject>
-
-- (void)tapOnTile:(UITapGestureRecognizer *)tapRecognizer;
-
-@end
-
 @interface SFMetroTileView : UIView
 
-@property (strong, nonatomic) IBOutlet UIImageView *coverView;
-@property (strong, nonatomic) IBOutlet UILabel *titleView;
+@property (strong, nonatomic) SFUser *user;
 
-- (void)setTitle:(NSString *)title;
-- (void)setCover:(UIImage *)cover;
-- (void)setPictureLink:(NSString *)link;
-
+- (id)initWithUser:(SFUser *)user;
 
 @end
