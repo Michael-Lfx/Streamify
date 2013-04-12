@@ -11,7 +11,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface SFListenerViewController ()
-@property (nonatomic, strong) MPMoviePlayerController *streamPlayer;
+@property (nonatomic) SFChannelState channelState;
 @end
 
 @implementation SFListenerViewController
@@ -28,6 +28,9 @@
 - (id)initWithUser:(SFUser *)user {
     if (self = [super init]) {
         self.user = user;
+        
+        // Default Channel State in controller when started
+        self.channelState = kSFStoppedOrPausedState;
     }
     return self;
 }
@@ -47,7 +50,8 @@
     
     // Add Main Column
     self.mainColumnViewController = [[SFMainColumnViewController alloc] initMainColumnWithOption:kSFMainColumnListener
-                                                                                        delegate:self];
+                                                                                        delegate:self
+                                                                                    channelState:self.channelState];
     self.mainColumnViewController.view.frame = CGRectMake(kSFMainColumnFrameX,
                                                           kSFMainColumnFrameY,
                                                           kSFMainColumnFrameW,
@@ -59,39 +63,28 @@
                                                                                delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
     
-    _streamPlayer = [[MPMoviePlayerController alloc] init];
-    
-    [self.mainColumnViewController.controlButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchDown];
+//    [self.mainColumnViewController.controlButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchDown];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [[SFAudioStreamer sharedInstance] stop];
+    if ([self.user.objectID isEqualToString:[SFAudioStreamer sharedInstance].channelPlaying]) {
+        self.channelState = kSFPlayingOrRecordingState;
+    } else {
+        self.channelState = kSFStoppedOrPausedState;
+        [[SFAudioStreamer sharedInstance] stop];
+    }
+    
+    self.mainColumnViewController.volumeSlider.value = [SFAudioStreamer sharedInstance].volume;
+    
     [super viewWillAppear:animated];
 }
 
 - (void)play {
-    /*
-    NSString *urlString = [NSString stringWithFormat:@"http://54.251.250.31/%@/a.m3u8", self.user.objectID];
-    NSLog(@"%@", urlString);
-    NSURL *streamURL = [NSURL URLWithString:urlString];
-    
-    
-    // depending on your implementation your view may not have it's bounds set here
-    // in that case consider calling the following 4 msgs later
-    [self.streamPlayer.view setFrame: self.view.bounds];
-    self.streamPlayer.movieSourceType = MPMovieSourceTypeStreaming;
-    [self.streamPlayer setContentURL:streamURL];
-    self.streamPlayer.controlStyle = MPMovieControlModeHidden;
-    [self.streamPlayer.view setHidden:YES];
-    
-    [self.view addSubview: self.streamPlayer.view];
-    
-    [self.streamPlayer prepareToPlay];
-    [self.streamPlayer play];
-     */
- 
-    [[SFAudioStreamer sharedInstance] preparePlayer];
     [[SFAudioStreamer sharedInstance] playChannel:self.user.objectID];
+}
+
+- (void)stop {
+    [[SFAudioStreamer sharedInstance] stop];
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,11 +94,26 @@
 }
 
 - (void)controlButtonPressed:(id)sender {
-    [self play];
+    if (![SFAudioStreamer sharedInstance].isPlaying) {
+        [self play];
+        
+        self.channelState = kSFPlayingOrRecordingState;
+    } else if ([SFAudioStreamer sharedInstance].isPlaying) {
+        // Pause listening here
+        [[SFAudioStreamer sharedInstance] stop];
+        
+        self.channelState = kSFStoppedOrPausedState;
+    }
+    [self.mainColumnViewController setChannelState:self.channelState];
 }
 
 - (void)backPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)volumeSliderChanged:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    [SFAudioStreamer sharedInstance].volume = slider.value;
 }
 
 @end

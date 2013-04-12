@@ -9,8 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface SFAudioStreamer : NSObject
+
+@property (nonatomic) BOOL isPlaying;
+@property (nonatomic, strong) NSString *channelPlaying;
+@property (nonatomic) float volume;
+
 + (SFAudioStreamer *)sharedInstance;
 - (void)preparePlayer;
 - (void)playChannel:(NSString *)channelID;
 - (void)stop;
+
 @end

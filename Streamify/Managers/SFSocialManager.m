@@ -138,4 +138,35 @@
     }];
 }
 
+- (void)updateLiveChannelsWithCallback:(SFResponseBlock)response {
+    NSMutableArray *result = [NSMutableArray array];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Broadcast"];
+    [query whereKey:@"live" equalTo:[NSNumber numberWithInt:1]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_FAILED, kOperationResult,
+                                     nil];
+            response((id)resData);
+        } else {
+            for (id row in objects) {
+                NSString *objectID = [row objectForKey:@"users_object_id"];
+                [result addObject:[self getUser:objectID]];
+            }
+            
+            self.liveChannels = [NSArray arrayWithArray:result];
+            
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_SUCCEEDED, kOperationResult,
+                                     self.liveChannels, kResultLiveChannels,
+                                     nil];
+            
+            response((id)resData);
+//            NSLog(@"Number of live channels = %d", self.liveChannels.count);
+        }
+    }];
+
+}
+
 @end

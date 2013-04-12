@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "SFUser.h"
 
+typedef void (^SFResponseBlock)(id returnedObject);
+
 @interface SFSocialManager : NSObject
 @property (nonatomic, strong) SFUser *currentUser;
 @property (nonatomic, strong) NSArray *liveChannels;
@@ -18,4 +20,5 @@
 - (NSArray *)getFollowingForUser:(NSString *)objectID;
 - (BOOL)follows:(NSString *)objectID;
 - (void)updateLiveChannels;
+- (void)updateLiveChannelsWithCallback:(SFResponseBlock)response;
 @end

@@ -11,6 +11,7 @@
 
 @protocol SFMainColumnViewControllerProtocol <NSObject>
 - (void)controlButtonPressed:(id)sender;
+- (void)volumeSliderChanged:(id)sender;
 @end
 
 @interface SFMainColumnViewController : BaseViewController
@@ -36,7 +37,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *effect3Button;
 @property (strong, nonatomic) IBOutlet UIButton *effect4Button;
 
-- (id)initMainColumnWithOption:(SFMainColumnType)mainColumnType delegate:(id)delegate;
+- (id)initMainColumnWithOption:(SFMainColumnType)mainColumnType delegate:(id)delegate channelState:(SFChannelState)channelState;
 - (IBAction)controlButtonPressed:(id)sender;
+- (IBAction)volumeSliderChanged:(id)sender;
+
+- (void)setChannelState:(SFChannelState)channelState;
 
 @end

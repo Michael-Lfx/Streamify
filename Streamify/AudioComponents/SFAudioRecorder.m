@@ -37,6 +37,7 @@
     self.userID = [SFSocialManager sharedInstance].currentUser.objectID;
     self.count = -1;
     self.lastBytes = -1;
+    self.isRecording = NO;
 }
 
 - (void)record
@@ -77,6 +78,7 @@
     }
     
     [self.audioRecorder record];
+    self.isRecording = YES;
     /*
     self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0f
                                                   target:self
@@ -163,20 +165,22 @@
 
 - (void)send {
     [self changeFileName];
-    NSLog(@"stoped");
-    NSLog(@"%@", self.audioRecorder.url);
+//    NSLog(@"stoped");
+//    NSLog(@"%@", self.audioRecorder.url);
     NSData *data = [NSData dataWithContentsOfURL:self.audioRecorder.url];
     
     NSUInteger length = [data length];
-    NSLog(@"LENGTH = %lu", (unsigned long)length);
+//    NSLog(@"LENGTH = %lu", (unsigned long)length);
     NSRange range;
     range.location = self.lastBytes + 1;
     range.length = (length - range.location);
-    NSLog(@"LOCATION = %lu", (unsigned long)range.location);
-    NSLog(@"LENGTH TO SEND = %lu", (unsigned long)range.length);
-    self.lastBytes = length - 1;
-    NSData *dataToSend = [data subdataWithRange:range];
-    [self sendAudioToServer:dataToSend];
+    if (range.length > 0) {
+//        NSLog(@"LOCATION = %lu", (unsigned long)range.location);
+//        NSLog(@"LENGTH TO SEND = %lu", (unsigned long)range.length);
+        self.lastBytes = length - 1;
+        NSData *dataToSend = [data subdataWithRange:range];
+        [self sendAudioToServer:dataToSend];
+    }
 }
 
 
@@ -190,7 +194,9 @@
     if (self.audioRecorder) {
         [self.timer invalidate];
         [self.audioRecorder stop];
+        [self send];
         [self sendStopRequestToServer];
+        self.isRecording = NO;
     }
 }
 

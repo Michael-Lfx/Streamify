@@ -11,6 +11,7 @@
 
 @interface SFMainColumnViewController ()
 
+@property (nonatomic) SFChannelState channelState;
 @property (nonatomic, weak) id<SFMainColumnViewControllerProtocol> delegate;
 @property (nonatomic) SFMainColumnType mainColumnType;
 
@@ -27,16 +28,26 @@
     return self;
 }
 
-- (id)initMainColumnWithOption:(SFMainColumnType)mainColumnType delegate:(id)delegate
+- (id)initMainColumnWithOption:(SFMainColumnType)mainColumnType delegate:(id)delegate channelState:(SFChannelState)channelState;
 {
     self = [self initWithNib];
     self.mainColumnType = mainColumnType;
     self.delegate = delegate;
+    self.channelState = channelState;
     return self;
 }
 
 - (IBAction)controlButtonPressed:(id)sender {
     [self.delegate controlButtonPressed:sender];
+}
+
+- (IBAction)volumeSliderChanged:(id)sender {
+    [self.delegate volumeSliderChanged:sender];
+}
+
+- (void)setChannelState:(SFChannelState)channelState {
+    _channelState = channelState;
+    [self.controlButton setImage:[self buttonIconForCurrentState] forState:UIControlStateNormal];
 }
 
 - (void)viewDidLoad
@@ -68,12 +79,11 @@
     
     if (self.mainColumnType == kSFMainColumnListener) {
         self.broadcasterButtonsView.hidden = YES;
-        [self.controlButton setImage:[UIImage imageNamed:@"maincol-icon-stop.png"] forState:UIControlStateNormal];
     } else if (self.mainColumnType == kSFMainColumnBroadcaster) {
         self.listenerButtonsView.hidden = YES;
-        [self.controlButton setImage:[UIImage imageNamed:@"maincol-icon-record.png"] forState:UIControlStateNormal];
     }
     
+    [self.controlButton setImage:[self buttonIconForCurrentState] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,6 +110,22 @@
     [self setEffect4Button:nil];
     [self setVolumeSlider:nil];
     [super viewDidUnload];
+}
+
+- (UIImage*)buttonIconForCurrentState {
+    if (self.mainColumnType == kSFMainColumnBroadcaster) {
+        if (self.channelState == kSFPlayingOrRecordingState) {
+            return [UIImage imageNamed:@"maincol-icon-stop.png"];
+        } else if (self.channelState == kSFStoppedOrPausedState) {
+            return [UIImage imageNamed:@"maincol-icon-record.png"];
+        }
+    } else if (self.mainColumnType == kSFMainColumnListener) {
+        if (self.channelState == kSFPlayingOrRecordingState) {
+            return [UIImage imageNamed:@"maincol-icon-pause.png"];
+        } else if (self.channelState == kSFStoppedOrPausedState) {
+            return [UIImage imageNamed:@"maincol-icon-play.png"];
+        }
+    }
 }
 
 @end

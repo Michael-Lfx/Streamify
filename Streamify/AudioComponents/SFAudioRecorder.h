@@ -9,8 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface SFAudioRecorder : NSObject
+
+@property (nonatomic) BOOL isRecording;
+
 + (SFAudioRecorder *)sharedInstance;
 - (void)prepareRecord;
 - (void)record;
 - (void)stop;
+
 @end

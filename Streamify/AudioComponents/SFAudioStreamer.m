@@ -8,6 +8,8 @@
 
 #import "SFAudioStreamer.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface SFAudioStreamer()
 @property (nonatomic, strong) MPMoviePlayerController *streamPlayer;
@@ -27,6 +29,7 @@
 
 - (void)preparePlayer {
     self.streamPlayer = [[MPMoviePlayerController alloc] init];
+    self.isPlaying = NO;
 }
 
 - (void)playChannel:(NSString *)channelID {
@@ -43,10 +46,22 @@
     [self.streamPlayer.view setHidden:YES];
     [self.streamPlayer prepareToPlay];
     [self.streamPlayer play];
+    self.isPlaying = YES;
+    self.channelPlaying = channelID;
+}
+
+- (float)volume {
+    return [MPMusicPlayerController applicationMusicPlayer].volume;
+}
+
+- (void)setVolume:(float)volume {
+    [MPMusicPlayerController applicationMusicPlayer].volume = volume;
 }
 
 - (void)stop {
     [self.streamPlayer stop];
+    self.isPlaying = NO;
+    self.channelPlaying = @"";
 }
 
 @end

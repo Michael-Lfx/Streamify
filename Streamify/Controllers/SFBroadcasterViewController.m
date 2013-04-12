@@ -10,7 +10,7 @@
 #import "SFBroadcasterViewController.h"
 
 @interface SFBroadcasterViewController ()
-
+@property (nonatomic) SFChannelState channelState;
 @end
 
 @implementation SFBroadcasterViewController
@@ -20,6 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.channelState = kSFStoppedOrPausedState;
     }
     return self;
 }
@@ -38,7 +39,8 @@
     
     // Add Main Column
     self.mainColumnViewController = [[SFMainColumnViewController alloc] initMainColumnWithOption:kSFMainColumnBroadcaster
-                                                                                        delegate:self];
+                                                                                        delegate:self
+                                                                                    channelState:self.channelState];
     self.mainColumnViewController.view.frame = CGRectMake(kSFMainColumnFrameX,
                                                           kSFMainColumnFrameY,
                                                           kSFMainColumnFrameW,
@@ -55,6 +57,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    self.channelState = kSFStoppedOrPausedState;
     [[SFAudioRecorder sharedInstance] stop];
     [super viewWillDisappear:animated];
 }
@@ -66,11 +69,27 @@
 }
 
 - (void)controlButtonPressed:(id)sender {
-    [[SFAudioRecorder sharedInstance] record];
+//    if (self.channelState == kSFStoppedOrPausedState) {
+    if (![SFAudioRecorder sharedInstance].isRecording) {
+        [[SFAudioRecorder sharedInstance] record];
+        
+        self.channelState = kSFPlayingOrRecordingState;
+//    } else if (self.channelState == kSFPlayingOrRecordingState) {
+    } else if ([SFAudioRecorder sharedInstance].isRecording) {
+        [[SFAudioRecorder sharedInstance] stop];
+        
+        self.channelState = kSFStoppedOrPausedState;
+    }
+    [self.mainColumnViewController setChannelState:self.channelState];
 }
 
 - (void)backPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)volumeSliderChanged:(id)sender {
+    
+}
+
 
 @end

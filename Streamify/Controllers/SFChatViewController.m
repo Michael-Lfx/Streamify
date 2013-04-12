@@ -26,11 +26,13 @@
 }
 
 - (IBAction)chatTextEditBeginned:(id)sender {
+    self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH - kSFKeyboardHeight);
     self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.chatTextField.frame.size.height - 35,
                                 self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
 }
 
 - (IBAction)chatTextEditEnded:(id)sender {
+    self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH);
     self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFChatTextFrameY,
                                           self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
 }
@@ -45,7 +47,7 @@
 {
     [super viewDidLoad];
     self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, self.chatTextField.frame.origin.y,
-                                          self.chatTextField.frame.size.width, 40);
+                                          self.chatTextField.frame.size.width, kSFChatTextFrameH);
     
     //Test
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
@@ -53,10 +55,24 @@
     
     NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
+    NSMutableDictionary *dict3 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
+                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
+    NSMutableDictionary *dict4 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
+                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
+    NSMutableDictionary *dict5 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
+                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
+    NSMutableDictionary *dict6 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
+                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
+    NSMutableDictionary *dict7 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
+                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
+    NSMutableDictionary *dict8 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
+                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
+    NSMutableDictionary *dict9 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
+                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
     
-    self.messagesData = [NSMutableArray arrayWithObjects:dict, dict2, nil];
+    self.messagesData = [NSMutableArray arrayWithObjects:dict, dict2, dict3, dict4, dict5, dict6, dict7, dict8, dict9, nil];
     self.chatTableViewController = [[SFChatTableViewController alloc] initWithData:self.messagesData];
-    self.chatTableViewController.tableView.frame = CGRectMake(42, 80, 440, 560);
+    self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH);
 
     [self.view addSubview:self.chatTableViewController.tableView];
 }
