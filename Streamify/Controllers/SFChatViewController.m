@@ -10,7 +10,7 @@
 #import "SFChatViewController.h"
 #import "SFChatTableViewController.h"
 
-@interface SFChatViewController ()
+@interface SFChatViewController () <UITextFieldDelegate>
 
 @end
 
@@ -21,20 +21,28 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.chatTextField.delegate = self;
     }
     return self;
 }
 
 - (IBAction)chatTextEditBeginned:(id)sender {
-    self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH - kSFKeyboardHeight);
-    self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.chatTextField.frame.size.height - 35,
-                                self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
+    [UIView animateWithDuration:0.3 animations:^{
+        self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH - kSFKeyboardHeight);
+        self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.chatTextField.frame.size.height - 35,
+                                              self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
+    }];
 }
 
 - (IBAction)chatTextEditEnded:(id)sender {
     self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH);
     self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFChatTextFrameY,
                                           self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (id)initChatViewWithDelegate:(id)delegate {
