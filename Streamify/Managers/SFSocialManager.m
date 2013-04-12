@@ -249,6 +249,12 @@
 
 }
 
+- (void)fetchLiveChannelsWithCallback:(SFResponseBlock)response {
+    [self getQueryServerPath:@"/getLive.php"
+                  parameters:nil
+                withCallback:response];
+}
+
 - (void)postMessage:(NSDictionary *)dict withCallback:(SFResponseBlock)response {
     NSString *channel = [dict objectForKey:kMessageChannel];
     NSString *text = [dict objectForKey:kMessageText];
@@ -315,6 +321,76 @@
             response((id)resData);
         }
     }];
+}
+
+- (void)getQueryServerPath:(NSString*)apiSubPath
+                 parameters:(NSDictionary*)parameters
+               withCallback:(SFResponseBlock)responseCallback {
+    
+    NSURL *baseURL = [NSURL URLWithString:SERVER_ADDRESS];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    
+    if ([apiSubPath hasPrefix:@"/"] == NO)
+        apiSubPath = [NSString stringWithFormat:@"/%@", apiSubPath];
+    
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:apiSubPath parameters:parameters];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id json)
+                                         {
+                                             [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                      OPERATION_SUCCEEDED, kOperationResult,
+                                                                      json, kResultJSON,
+                                                                      nil];
+                                             responseCallback((id)resData);
+                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSString *json) {
+                                             [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                      OPERATION_FAILED, kOperationResult,
+                                                                      nil];
+                                             responseCallback((id)resData);
+                                         }];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    [queue addOperation:operation];
+}
+
+- (void)postQueryServerPath:(NSString*)apiSubPath
+             parameters:(NSDictionary*)parameters
+           withCallback:(SFResponseBlock)responseCallback {
+    
+    NSURL *baseURL = [NSURL URLWithString:SERVER_ADDRESS];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    
+    if ([apiSubPath hasPrefix:@"/"] == NO)
+        apiSubPath = [NSString stringWithFormat:@"/%@", apiSubPath];
+    
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:apiSubPath parameters:parameters];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id json)
+                                         {
+                                             [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                     OPERATION_SUCCEEDED, kOperationResult,
+                                                                     json, kResultJSON,
+                                                                     nil];
+                                             responseCallback((id)resData);
+                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSString *json) {
+                                             [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                                      OPERATION_FAILED, kOperationResult,
+                                                                      nil];
+                                            responseCallback((id)resData);
+                                         }];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    [queue addOperation:operation];
 }
 
 @end
