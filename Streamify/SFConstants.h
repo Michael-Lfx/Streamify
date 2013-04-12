@@ -74,5 +74,6 @@ typedef enum {
 
 #define kResultFollowers @"ResultFollowers"
 #define kResultFollowing @"ResultFollowing"
+#define kResultAllUsers @"ResultAllUsers"
 
 #endif

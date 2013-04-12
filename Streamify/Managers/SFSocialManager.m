@@ -69,6 +69,31 @@
     return result;
 }
 
+- (void)getAllUsersWithCallback:(SFResponseBlock)response {
+    PFQuery *query = [PFUser query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_FAILED, kOperationResult,
+                                     nil];
+            response((id)resData);
+        } else {
+            NSMutableArray *result = [NSMutableArray array];
+            
+            for (id row in objects) {
+                NSString *userID = [row objectForKey:@"objectIdCopy"];
+                [result addObject:[self getUser:userID]];
+            }
+            
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_SUCCEEDED, kOperationResult,
+                                     result, kResultAllUsers,
+                                     nil];
+            response((id)resData);
+        }
+    }];
+}
+
 - (NSArray *)getFollowersForUser:(NSString *)objectID {
     NSMutableArray *result = [NSMutableArray array];
     
