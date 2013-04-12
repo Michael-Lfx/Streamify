@@ -107,7 +107,7 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:requets];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"SUCCESS: CREEATE REQUEST");
+        NSLog(@"SUCCESS: CREATE REQUEST");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"FAIL: CREATE REQUEST");
     }];
