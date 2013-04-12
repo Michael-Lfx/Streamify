@@ -68,12 +68,16 @@ typedef enum {
 
 #define kResultLiveChannels @"ResultLiveChannels"
 
-#define kMessageChannel @"MessageChannel"
-#define kMessageText @"MessageText"
-#define kMessageTime @"MessageTime"
+// Chating function
+#define kMessageChannel @"channel"
+#define kMessageText @"text"
+#define kMessageUser @"facebookID"
+#define kMessageFetchingLimit 20
+#define kResultNewMessages @"NewMessages"
 
 #define kResultFollowers @"ResultFollowers"
 #define kResultFollowing @"ResultFollowing"
 #define kResultAllUsers @"ResultAllUsers"
+
 
 #endif

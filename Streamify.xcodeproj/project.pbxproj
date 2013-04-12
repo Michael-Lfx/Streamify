@@ -54,6 +54,7 @@
 		1AE32128170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE32127170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib */; };
 		9C93677E170601B0006108F9 /* SFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C93677D170601B0006108F9 /* SFUser.m */; };
 		9C936781170601BC006108F9 /* SFSocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C936780170601BC006108F9 /* SFSocialManager.m */; };
+		9C975CA417180F7F00C5FDDC /* SFMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C975CA317180F7F00C5FDDC /* SFMessage.m */; };
 		9CACEFE216F7529C0067C352 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACEFE116F7529C0067C352 /* UIKit.framework */; };
 		9CACEFE416F7529C0067C352 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACEFE316F7529C0067C352 /* Foundation.framework */; };
 		9CACEFE616F7529C0067C352 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACEFE516F7529C0067C352 /* CoreGraphics.framework */; };
@@ -264,6 +265,8 @@
 		9C93677D170601B0006108F9 /* SFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUser.m; sourceTree = "<group>"; };
 		9C93677F170601BC006108F9 /* SFSocialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSocialManager.h; sourceTree = "<group>"; };
 		9C936780170601BC006108F9 /* SFSocialManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSocialManager.m; sourceTree = "<group>"; };
+		9C975CA217180F7F00C5FDDC /* SFMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMessage.h; sourceTree = "<group>"; };
+		9C975CA317180F7F00C5FDDC /* SFMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMessage.m; sourceTree = "<group>"; };
 		9CACEFDE16F7529C0067C352 /* Streamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CACEFE116F7529C0067C352 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CACEFE316F7529C0067C352 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -788,6 +791,8 @@
 		9CACF02C16F755AC0067C352 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9C975CA217180F7F00C5FDDC /* SFMessage.h */,
+				9C975CA317180F7F00C5FDDC /* SFMessage.m */,
 				9C93677C170601B0006108F9 /* SFUser.h */,
 				9C93677D170601B0006108F9 /* SFUser.m */,
 				9CACF02D16F755AC0067C352 /* Superclass */,
@@ -1359,6 +1364,7 @@
 				C0E12175171154AC00A09C6C /* SFChatTableViewController.m in Sources */,
 				C0E12179171162C400A09C6C /* SFChatMessageCell.m in Sources */,
 				9CCE45A51715D18E0015825F /* GCDTimer.m in Sources */,
+				9C975CA417180F7F00C5FDDC /* SFMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
