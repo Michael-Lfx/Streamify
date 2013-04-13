@@ -72,11 +72,11 @@
 //-------------------------------------------------------------------------------------------------
 
 #ifdef DEBUG
-#define SERVER_ADDRESS_SECURED          @"http://janapp.torinnguyen.com/"
-#define SERVER_ADDRESS                  @"http://janapp.torinnguyen.com/"
+#define SERVER_ADDRESS_SECURED          @"http://54.251.250.31"
+#define SERVER_ADDRESS                  @"http://54.251.250.31"
 #else
-#define SERVER_ADDRESS_SECURED          @"https://janapp.ap01.aws.af.cm/"
-#define SERVER_ADDRESS                  @"http://janapp.ap01.aws.af.cm/"
+#define SERVER_ADDRESS_SECURED          @"http://54.251.250.31"
+#define SERVER_ADDRESS                  @"http://54.251.250.31"
 #endif
 
 
