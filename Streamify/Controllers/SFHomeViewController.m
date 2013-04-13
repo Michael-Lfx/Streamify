@@ -56,7 +56,8 @@
     
     // Canvas
     self.canvasLoading = YES;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCanvas) name:kUpdateMeSuccessNotification object:nil];
+    [self canvasDidTriggeredToRefresh];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCanvas) name:kUpdateMeSuccessNotification object:nil];
     self.canvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array] delegate:self];
     CGRect canvasFrame = self.canvasViewController.view.frame;
     self.canvasViewController.view.frame = CGRectMake(kSFCanvasFrameXInHomeView,
