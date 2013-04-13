@@ -138,7 +138,9 @@
             NSMutableArray *result = [NSMutableArray array];
             
             for (PFUser *row in objects) {
-                [result addObject:[[SFUser alloc] initWithPFUser:row]];
+                SFUser *user = [[SFUser alloc] initWithPFUser:row];
+                user.followed = TRUE;
+                [result addObject:user];
             }
             self.following = result;
             

@@ -13,8 +13,7 @@
 - (id)initWithPFUser:(PFUser *)user {
     if (self = [super initWithDictionary:[user objectForKey:@"profile"]]) {
         self.objectID = user.objectId;
-        
-        
+        self.followed = NO;
     }
     return self;
 }
