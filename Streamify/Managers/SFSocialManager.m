@@ -48,14 +48,38 @@
         self.currentUser.followers = [self getFollowersForUser:self.currentUser.objectID];
         [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateMeSuccessNotification object:self userInfo:nil];
         
-//        [self follows:@"TESTUSER"];
+        //        [self follows:@"TESTUSER"];
     }];
     
-//    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(updateLiveChannels) userInfo:nil repeats:YES];
-//    [self.timer fire];
+    //    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(updateLiveChannels) userInfo:nil repeats:YES];
+    //    [self.timer fire];
     [self updateLiveChannels];
     
     return  YES;
+}
+
+- (void)updateMeWithCallback:(SFResponseBlock)response {
+    FBRequest *request = [FBRequest requestForMe];
+    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        NSDictionary *userData = (NSDictionary *)result;
+        
+        NSString *facebookID = userData[@"id"];
+        NSLog(@"%@", facebookID);
+        NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+        
+        NSDictionary *userProfile = @{@"facebookId": facebookID,
+                                      @"name": userData[@"name"],
+                                      @"pictureURL": [pictureURL absoluteString]};
+        
+        [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
+        [[PFUser currentUser] setObject:[PFUser currentUser].objectId forKey:@"objectIdCopy"];
+        [[PFUser currentUser] saveInBackground];
+        
+        self.currentUser = [[SFUser alloc] initWithPFUser:[PFUser currentUser]];
+        
+        NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:OPERATION_SUCCEEDED, kOperationResult, nil];
+        response(resData);
+    }];
 }
 
 - (NSArray *)getAllUsers{
@@ -105,7 +129,7 @@
         NSString *objectID = [row objectForKey:@"follower"];
         [result addObject:[self getUser:objectID]];
     }
-
+    
     return result;
 }
 
@@ -169,7 +193,7 @@
         [result addObject:[self getUser:objectID]];
     }
     
-//    NSLog(@"Number of followings: %lu", (unsigned long)result.count);
+    //    NSLog(@"Number of followings: %lu", (unsigned long)result.count);
     return result;
 }
 
@@ -246,13 +270,14 @@
             response((id)resData);
         }
     }];
-
+    
 }
 
 - (void)fetchLiveChannelsWithCallback:(SFResponseBlock)response {
-    [self getQueryServerPath:@"/getLive.php"
-                  parameters:nil
-                withCallback:response];
+    [self queryServerPath:@"/getLive.php"
+            requestMethod:@"GET"
+               parameters:nil
+             withCallback:response];
 }
 
 - (void)postMessage:(NSDictionary *)dict withCallback:(SFResponseBlock)response {
@@ -323,9 +348,82 @@
     }];
 }
 
-- (void)getQueryServerPath:(NSString*)apiSubPath
-                 parameters:(NSDictionary*)parameters
-               withCallback:(SFResponseBlock)responseCallback {
+/*
+ - (void)getQueryServerPath:(NSString*)apiSubPath
+ parameters:(NSDictionary*)parameters
+ withCallback:(SFResponseBlock)responseCallback {
+ 
+ NSURL *baseURL = [NSURL URLWithString:SERVER_ADDRESS];
+ AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+ 
+ if ([apiSubPath hasPrefix:@"/"] == NO)
+ apiSubPath = [NSString stringWithFormat:@"/%@", apiSubPath];
+ 
+ NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:apiSubPath parameters:parameters];
+ 
+ AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+ success:^(NSURLRequest *request, NSHTTPURLResponse *response, id json)
+ {
+ [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+ NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+ OPERATION_SUCCEEDED, kOperationResult,
+ json, kResultJSON,
+ nil];
+ responseCallback((id)resData);
+ } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSString *json) {
+ [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+ NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+ OPERATION_FAILED, kOperationResult,
+ nil];
+ responseCallback((id)resData);
+ }];
+ 
+ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+ 
+ [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+ [queue addOperation:operation];
+ }
+ 
+ - (void)postQueryServerPath:(NSString*)apiSubPath
+ parameters:(NSDictionary*)parameters
+ withCallback:(SFResponseBlock)responseCallback {
+ 
+ NSURL *baseURL = [NSURL URLWithString:SERVER_ADDRESS];
+ AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+ 
+ if ([apiSubPath hasPrefix:@"/"] == NO)
+ apiSubPath = [NSString stringWithFormat:@"/%@", apiSubPath];
+ 
+ NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:apiSubPath parameters:parameters];
+ 
+ AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+ success:^(NSURLRequest *request, NSHTTPURLResponse *response, id json)
+ {
+ [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+ NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+ OPERATION_SUCCEEDED, kOperationResult,
+ json, kResultJSON,
+ nil];
+ responseCallback((id)resData);
+ } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSString *json) {
+ [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+ NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+ OPERATION_FAILED, kOperationResult,
+ nil];
+ responseCallback((id)resData);
+ }];
+ 
+ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+ 
+ [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+ [queue addOperation:operation];
+ }
+ */
+
+- (void)queryServerPath:(NSString*)apiSubPath
+          requestMethod:(NSString *)reqMethod
+             parameters:(NSDictionary*)parameters
+           withCallback:(SFResponseBlock)responseCallback {
     
     NSURL *baseURL = [NSURL URLWithString:SERVER_ADDRESS];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
@@ -333,7 +431,7 @@
     if ([apiSubPath hasPrefix:@"/"] == NO)
         apiSubPath = [NSString stringWithFormat:@"/%@", apiSubPath];
     
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:apiSubPath parameters:parameters];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:reqMethod path:apiSubPath parameters:parameters];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id json)
@@ -350,41 +448,6 @@
                                                                       OPERATION_FAILED, kOperationResult,
                                                                       nil];
                                              responseCallback((id)resData);
-                                         }];
-    
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
-    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
-    [queue addOperation:operation];
-}
-
-- (void)postQueryServerPath:(NSString*)apiSubPath
-             parameters:(NSDictionary*)parameters
-           withCallback:(SFResponseBlock)responseCallback {
-    
-    NSURL *baseURL = [NSURL URLWithString:SERVER_ADDRESS];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
-    
-    if ([apiSubPath hasPrefix:@"/"] == NO)
-        apiSubPath = [NSString stringWithFormat:@"/%@", apiSubPath];
-    
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:apiSubPath parameters:parameters];
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id json)
-                                         {
-                                             [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-                                             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                                     OPERATION_SUCCEEDED, kOperationResult,
-                                                                     json, kResultJSON,
-                                                                     nil];
-                                             responseCallback((id)resData);
-                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSString *json) {
-                                             [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-                                             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                                      OPERATION_FAILED, kOperationResult,
-                                                                      nil];
-                                            responseCallback((id)resData);
                                          }];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];

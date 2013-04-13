@@ -57,16 +57,16 @@
             }
         } else if (user.isNew) {
             NSLog(@"User with facebook signed up and logged in!");
-            [[SFSocialManager sharedInstance] updateMe];
-//            [self performSegueWithIdentifier:@"HomeViewSegue" sender:self];
-            SFHomeViewController *homeViewController = [[SFHomeViewController alloc] init];
-            [self.navigationController pushViewController:homeViewController animated:YES];
+            [[SFSocialManager sharedInstance] updateMeWithCallback:^(id returnedObject) {
+                SFHomeViewController *homeViewController = [[SFHomeViewController alloc] init];
+                [self.navigationController pushViewController:homeViewController animated:YES];
+            }];
         } else {
             NSLog(@"User with facebook logged in!");
-            [[SFSocialManager sharedInstance] updateMe];
-//            [self performSegueWithIdentifier:@"HomeViewSegue" sender:self];
-            SFHomeViewController *homeViewController = [[SFHomeViewController alloc] init];
-            [self.navigationController pushViewController:homeViewController animated:YES];
+            [[SFSocialManager sharedInstance] updateMeWithCallback:^(id returnedObject) {
+                SFHomeViewController *homeViewController = [[SFHomeViewController alloc] init];
+                [self.navigationController pushViewController:homeViewController animated:YES];
+            }];
         }
     }];
     

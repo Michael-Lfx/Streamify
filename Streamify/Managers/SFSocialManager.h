@@ -16,6 +16,7 @@ typedef void (^SFResponseBlock)(id returnedObject);
 @property (nonatomic, strong) NSArray *liveChannels;
 + (SFSocialManager* )sharedInstance;
 - (BOOL)updateMe;
+- (void)updateMeWithCallback:(SFResponseBlock)response;
 - (NSArray *)getFollowersForUser:(NSString *)objectID;
 - (NSArray *)getFollowingForUser:(NSString *)objectID;
 - (BOOL)follows:(NSString *)objectID;
