@@ -49,6 +49,11 @@
     [self.controlButton setImage:[self buttonIconForCurrentState] forState:UIControlStateNormal];
 }
 
+- (void)setVolume:(float)volume {
+    _volume = volume;
+    [self.volumeSlider setValue:volume];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

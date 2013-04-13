@@ -16,6 +16,7 @@
 @interface SFTopbarViewController : BaseViewController
 
 @property (nonatomic) SFChannelState channelState;
+@property (nonatomic) float volume;
 @property (nonatomic) NSDictionary *listeningInfo;
 
 @property (strong, nonatomic) IBOutlet UIButton *controlButton;

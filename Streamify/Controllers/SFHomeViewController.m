@@ -81,6 +81,13 @@
     [super viewWillAppear:animated];
     [self.canvasViewController viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+    
+    if ([SFAudioStreamer sharedInstance].isPlaying) {
+        self.topbarViewController.channelState = kSFPlayingOrRecordingState;
+    } else if (![SFAudioStreamer sharedInstance].isPlaying) {
+        self.topbarViewController.channelState = kSFStoppedOrPausedState;
+    }
+    self.topbarViewController.volume = [SFAudioStreamer sharedInstance].volume;
 }
 
 - (void)trendingPressed:(id)sender {
