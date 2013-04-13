@@ -13,7 +13,7 @@
 @interface SFChatViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) NSDate *lastUpdateTime;
 @property (nonatomic, strong) NSTimer *timer;
-
+@property (nonatomic) BOOL doneFetching;
 @end
 
 @implementation SFChatViewController
@@ -99,6 +99,7 @@
 
     [self.view addSubview:self.chatTableViewController.tableView];
     
+    self.doneFetching = YES;
     self.lastUpdateTime = [NSDate date];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(updateMessages) userInfo:nil repeats:YES];
@@ -106,6 +107,8 @@
 }
 
 - (void)updateMessages {
+    if (!self.doneFetching) return;
+    self.doneFetching = NO;
     [[SFSocialManager sharedInstance] fetchChannelMessages:self.channel
                                                lastUpdated:self.lastUpdateTime
                                               withCallback:^(id returnedObject) {
@@ -122,6 +125,7 @@
                                                           [self.chatTableViewController.tableView reloadData];
                                                       }
                                                   }
+                                                  self.doneFetching = YES;
                                               }];
 }
 
