@@ -55,9 +55,6 @@
     [self.view addSubview:self.canvasTitle];
     
     // Canvas
-    self.canvasLoading = YES;
-    [self canvasDidTriggeredToRefresh];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCanvas) name:kUpdateMeSuccessNotification object:nil];
     self.canvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array] delegate:self];
     CGRect canvasFrame = self.canvasViewController.view.frame;
     self.canvasViewController.view.frame = CGRectMake(kSFCanvasFrameXInHomeView,
@@ -65,6 +62,7 @@
                                                       canvasFrame.size.width,
                                                       canvasFrame.size.height);
     [self.view addSubview:self.canvasViewController.view];
+    [self canvasDidTriggeredToRefresh];
     
     // Sidebar must be added after main column for shadow
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarFull
@@ -146,12 +144,13 @@
     NSLog(@"fuckkkkk\n");
     [[SFSocialManager sharedInstance] getFollowingForUser:[SFSocialManager sharedInstance].currentUser.objectID
                                              withCallback:^(id returnedObject) {
-                                                 self.canvasLoading = NO;
-                                                 [self.canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
-                                                 NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
-                                                 [self.canvasViewController refreshWithTiles:tiles];
+                                                 [self performSelectorInBackground:@selector(refreshCanvasWithTiles:)
+                                                                        withObject:returnedObject];
+//                                                 self.canvasLoading = NO;
+//                                                 [self.canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
+//                                                 NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
+//                                                 [self.canvasViewController refreshWithTiles:tiles];
                                              }];
-//    [self performSelectorInBackground:@selector(requestUpdateTile) withObject:nil];
 }
 
 - (BOOL)canvasDataSourceIsLoading
@@ -159,27 +158,13 @@
     return self.canvasLoading;
 }
 
-//- (void)requestUpdateTile
-//{
-//    NSLog(@"fuk her");
-//    [[SFSocialManager sharedInstance] updateMe];
-//    [[SFSocialManager sharedInstance] getFollowingForUser:[SFSocialManager sharedInstance].currentUser.objectID
-//                                             withCallback:^(id returnedObject) {
-//                                                 self.canvasLoading = NO;
-//                                                 [self.canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
-//                                                 NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
-//                                                 [self.canvasViewController refreshWithTiles:tiles];
-//                                             }];
-//}
-
-- (void)refreshCanvas
+- (void)refreshCanvasWithTiles:(id)returnedObject
 {
+    [NSThread sleepForTimeInterval:5];
     self.canvasLoading = NO;
+    NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
     [self.canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
-    NSArray *tiles = [SFSocialManager sharedInstance].currentUser.followings;
-    NSLog(@"tiles %@\n", tiles);
     [self.canvasViewController refreshWithTiles:tiles];
-    
 }
 
 @end

@@ -137,6 +137,10 @@
             && scrollView.contentOffset.x > -kMetroPullToRefreshOffsetLimit
             && scrollView.contentOffset.x < 0
             && !loading) {
+            self.canvasState = SFMetroPullRefreshNormal;
+        } else if (self.canvasState == SFMetroPullRefreshNormal
+                   && scrollView.contentOffset.x < -kMetroPullToRefreshOffsetLimit
+                   && !loading) {
             self.canvasState = SFMetroPullRefreshPulling;
         }
         
@@ -144,7 +148,7 @@
             scrollView.contentInset = UIEdgeInsetsZero;
         }
     }
-        NSLog(@"scrolling contentInset = %@\n", NSStringFromUIEdgeInsets(scrollView.contentInset));
+//    NSLog(@"scrolling contentInset = %@\n", NSStringFromUIEdgeInsets(scrollView.contentInset));
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -160,17 +164,30 @@
         }
         
         self.canvasState = SFMetroPullRefreshLoading;
-        scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
+//        scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
     }
-    NSLog(@"end contentInset = %@\n", NSStringFromUIEdgeInsets(scrollView.contentInset));
+//    NSLog(@"end contentInset = %@\n", NSStringFromUIEdgeInsets(scrollView.contentInset));
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    BOOL loading = NO;
+    
+    if ([self.delegate respondsToSelector:@selector(canvasDataSourceIsLoading)]) {
+        loading = [self.delegate canvasDataSourceIsLoading];
+    }
+    
+    if (loading) {
+        scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
+    }
+}
 
 #pragma mark - Pull To Refresh public helpers
 
 - (void)canvasScrollViewDataSourceDidFinishedLoading
 {
     self.canvasState = SFMetroPullRefreshNormal;
+    
     self.scrollView.contentInset = UIEdgeInsetsZero;
 }
 
