@@ -101,7 +101,7 @@
     
     self.lastUpdateTime = [NSDate date];
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateMessages) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(updateMessages) userInfo:nil repeats:YES];
     [self.timer fire];
 }
 
@@ -112,9 +112,13 @@
                                                   if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
                                                       NSArray *newMessages = [returnedObject objectForKey:kResultNewMessages];
                                                       if (newMessages.count > 0) {
-                                                          SFMessage *lastMessage = [newMessages lastObject];
-                                                          self.lastUpdateTime = lastMessage.timeCreated;
-                                                          [self.chatTableViewController.messagesData addObjectsFromArray:newMessages];
+                                                          for (SFMessage *message in newMessages) {
+                                                              if ([message.timeCreated laterDate:self.lastUpdateTime]) {
+                                                                  [self.chatTableViewController.messagesData addObject:message];
+                                                                  self.lastUpdateTime = message.timeCreated;
+                                                              }
+                                                          }
+                                                          
                                                           [self.chatTableViewController.tableView reloadData];
                                                       }
                                                   }
