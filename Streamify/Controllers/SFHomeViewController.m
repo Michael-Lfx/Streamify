@@ -123,7 +123,8 @@
 }
 
 - (void)volumeSliderChanged:(id)sender {
-    
+    UISlider *slider = (UISlider *)sender;
+    [SFAudioStreamer sharedInstance].volume = slider.value;
 }
 
 - (void)controlButtonPressed:(id)sender {
