@@ -58,14 +58,26 @@
         } else if (user.isNew) {
             NSLog(@"User with facebook signed up and logged in!");
             [[SFSocialManager sharedInstance] updateMeWithCallback:^(id returnedObject) {
-                SFHomeViewController *homeViewController = [[SFHomeViewController alloc] init];
-                [self.navigationController pushViewController:homeViewController animated:YES];
+                if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
+                    SFHomeViewController *homeViewController = [[SFHomeViewController alloc] init];
+                    [self.navigationController pushViewController:homeViewController animated:YES];
+                } else {
+                    NSLog(@"Uh oh. An error occurred");
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                    [alert show];
+                }
             }];
         } else {
             NSLog(@"User with facebook logged in!");
             [[SFSocialManager sharedInstance] updateMeWithCallback:^(id returnedObject) {
-                SFHomeViewController *homeViewController = [[SFHomeViewController alloc] init];
-                [self.navigationController pushViewController:homeViewController animated:YES];
+                if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
+                    SFHomeViewController *homeViewController = [[SFHomeViewController alloc] init];
+                    [self.navigationController pushViewController:homeViewController animated:YES];
+                } else {
+                    NSLog(@"Uh oh. An error occurred");
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                    [alert show];
+                }
             }];
         }
     }];
