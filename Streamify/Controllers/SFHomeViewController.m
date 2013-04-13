@@ -15,7 +15,7 @@
 
 @property (nonatomic) SFHomeBrowsingType browsingType;
 @property (nonatomic) SFChannelState channelState;
-@property (nonatomic) BOOL canvasLoading;
+//@property (nonatomic) BOOL canvasLoading;
 
 @end
 
@@ -140,29 +140,20 @@
 
 - (void)canvasDidTriggeredToRefresh
 {
-    self.canvasLoading = YES;
-    NSLog(@"fuckkkkk\n");
     [[SFSocialManager sharedInstance] getFollowingForUser:[SFSocialManager sharedInstance].currentUser.objectID
                                              withCallback:^(id returnedObject) {
                                                  [self performSelectorInBackground:@selector(refreshCanvasWithTiles:)
                                                                         withObject:returnedObject];
-//                                                 self.canvasLoading = NO;
-//                                                 [self.canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
-//                                                 NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
-//                                                 [self.canvasViewController refreshWithTiles:tiles];
                                              }];
-}
-
-- (BOOL)canvasDataSourceIsLoading
-{
-    return self.canvasLoading;
 }
 
 - (void)refreshCanvasWithTiles:(id)returnedObject
 {
-    [NSThread sleepForTimeInterval:5];
-    self.canvasLoading = NO;
     NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
+//    NSMutableArray *temptiles = [NSMutableArray arrayWithArray:tiles];
+//    for (int i = 0; i < 7; i++) {
+//        [fucktiles addObjectsFromArray:tiles];
+//    }
     [self.canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
     [self.canvasViewController refreshWithTiles:tiles];
 }

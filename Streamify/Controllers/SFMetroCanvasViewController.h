@@ -14,7 +14,6 @@
 
 - (void)tileDidTapped:(SFUser *)user;
 - (void)canvasDidTriggeredToRefresh;
-- (BOOL)canvasDataSourceIsLoading;
 
 @end
 

@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSMutableArray *pageViews;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) SFMetroRefreshHeaderView *refreshHeaderView;
+@property (nonatomic) BOOL canvasLoading;
 
 @end
 
@@ -69,10 +70,15 @@
 
 - (void)resetPageViews {
     self.pageViews = [[NSMutableArray alloc] init];
-    NSInteger numOfPages = self.tiles.count/kMetroNumTilesPerPage + 1;
+    NSInteger numOfPages = ((int)self.tiles.count - 1)/kMetroNumTilesPerPage + 1;
     for (NSInteger i = 0; i < numOfPages; ++i) {
         [self.pageViews addObject:[NSNull null]];
     }
+}
+
+- (void)resetScrollViewContentSize {
+    CGSize pagesScrollViewSize = self.scrollView.frame.size;
+    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageViews.count, pagesScrollViewSize.height);
 }
 
 // The contenSize initialization should go here instead of viewDidLoad
@@ -83,9 +89,7 @@
 {
     [super viewWillAppear:animated];
 
-    CGSize pagesScrollViewSize = self.scrollView.frame.size;
-    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageViews.count, pagesScrollViewSize.height);
-    NSLog(@"will appear contentInset = %@\n", NSStringFromUIEdgeInsets(self.scrollView.contentInset));
+    [self resetScrollViewContentSize];
     [self loadVisiblePages];
 }
 
@@ -109,10 +113,19 @@
 
 - (void)refreshWithTiles:(NSArray *)tiles
 {
-    NSLog(@"Canvas is being refreshed...\n");
     self.tiles = tiles;
     [self resetPageViews];
+    [self resetScrollViewContentSize];
     [self performSelectorOnMainThread:@selector(loadVisiblePages) withObject:nil waitUntilDone:NO];
+//    [UIView transitionWithView:self.scrollView
+//                      duration:5
+//                       options:UIViewAnimationOptionTransitionCrossDissolve
+//                    animations:^{
+//                        
+//                    }
+//                    completion:^(BOOL finished) {
+//                        
+//                    }];
 }
 
 
@@ -121,26 +134,19 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self loadVisiblePages];
-    
     if (self.canvasState == SFMetroPullRefreshLoading) {
         CGFloat offset = MAX(-scrollView.contentOffset.x, 0);
         offset = MIN(offset, kMetroPullToRefreshOffset);
         scrollView.contentInset = UIEdgeInsetsMake(0, offset, 0, 0);
     } else if (scrollView.isDragging) {
-        BOOL loading = NO;
-        
-        if ([self.delegate respondsToSelector:@selector(refreshHeaderDataSourceIsLoading:)]) {
-            loading = [self.delegate canvasDataSourceIsLoading];
-        }
-        
         if (self.canvasState == SFMetroPullRefreshPulling
             && scrollView.contentOffset.x > -kMetroPullToRefreshOffsetLimit
             && scrollView.contentOffset.x < 0
-            && !loading) {
+            && !self.canvasLoading) {
             self.canvasState = SFMetroPullRefreshNormal;
         } else if (self.canvasState == SFMetroPullRefreshNormal
                    && scrollView.contentOffset.x < -kMetroPullToRefreshOffsetLimit
-                   && !loading) {
+                   && !self.canvasLoading) {
             self.canvasState = SFMetroPullRefreshPulling;
         }
         
@@ -148,37 +154,34 @@
             scrollView.contentInset = UIEdgeInsetsZero;
         }
     }
-//    NSLog(@"scrolling contentInset = %@\n", NSStringFromUIEdgeInsets(scrollView.contentInset));
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    BOOL loading = NO;
-    if ([self.delegate respondsToSelector:@selector(canvasDataSourceIsLoading)]) {
-        loading = [self.delegate canvasDataSourceIsLoading];
-    }
-    
-    if (scrollView.contentOffset.x <= -kMetroPullToRefreshOffsetLimit && !loading) {
+    if (scrollView.contentOffset.x <= -kMetroPullToRefreshOffsetLimit
+        && !self.canvasLoading) {
         if ([self.delegate respondsToSelector:@selector(canvasDidTriggeredToRefresh)]) {
+            self.canvasLoading = YES;
+            self.scrollView.pagingEnabled = NO;
             [self.delegate canvasDidTriggeredToRefresh];
         }
         
         self.canvasState = SFMetroPullRefreshLoading;
-//        scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
     }
-//    NSLog(@"end contentInset = %@\n", NSStringFromUIEdgeInsets(scrollView.contentInset));
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    BOOL loading = NO;
-    
-    if ([self.delegate respondsToSelector:@selector(canvasDataSourceIsLoading)]) {
-        loading = [self.delegate canvasDataSourceIsLoading];
-    }
-    
-    if (loading) {
+    if (self.canvasLoading) {
+        NSInteger currentPage = [self getCurrentPage];
+//        [UIView animateWithDuration:10.0 animations:^{
+//            scrollView.contentOffset = CGPointMake(currentPage * scrollView.frame.size.width, 0);
+//            scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
+//            NSLog(@"hihi");
+//        }];
+        scrollView.contentOffset = CGPointMake(currentPage * scrollView.frame.size.width, 0);
         scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
+		self.scrollView.pagingEnabled = YES;
     }
 }
 
@@ -186,18 +189,23 @@
 
 - (void)canvasScrollViewDataSourceDidFinishedLoading
 {
+    self.canvasLoading = NO;
     self.canvasState = SFMetroPullRefreshNormal;
-    
     self.scrollView.contentInset = UIEdgeInsetsZero;
 }
 
 
 #pragma mark - ScrollView helpers for paging
 
-- (void)loadVisiblePages
+- (NSInteger)getCurrentPage
 {
     CGFloat pageWidth = self.scrollView.frame.size.width;
-    NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    return (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+}
+
+- (void)loadVisiblePages
+{
+    NSInteger page = [self getCurrentPage];
     NSInteger firstPage = page - 1;
     NSInteger lastPage = page + 1;
     
