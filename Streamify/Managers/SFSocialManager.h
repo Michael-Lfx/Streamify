@@ -14,6 +14,10 @@ typedef void (^SFResponseBlock)(id returnedObject);
 @interface SFSocialManager : NSObject
 @property (nonatomic, strong) SFUser *currentUser;
 @property (nonatomic, strong) NSArray *liveChannels;
+@property (nonatomic, strong) NSArray *followers;
+@property (nonatomic, strong) NSArray *following;
+@property (nonatomic, strong) NSArray *allUsers;
+
 + (SFSocialManager* )sharedInstance;
 - (void)updateMeWithCallback:(SFResponseBlock)response;
 - (BOOL)follows:(NSString *)objectID;
@@ -23,4 +27,5 @@ typedef void (^SFResponseBlock)(id returnedObject);
 - (void)fetchChannelMessages:(NSString *)channelID lastUpdated:(NSDate *)updateTime limit:(NSInteger)limit withCallback:(SFResponseBlock)response;
 - (void)fetchChannelMessages:(NSString *)channelID lastUpdated:(NSDate *)updateTime withCallback:(SFResponseBlock)response;
 - (void)fetchLiveChannelsWithCallback:(SFResponseBlock)response;
+
 @end

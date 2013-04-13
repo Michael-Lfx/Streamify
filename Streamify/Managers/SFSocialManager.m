@@ -63,6 +63,8 @@
                 [result addObject:[[SFUser alloc] initWithPFUser:row]];
             }
             
+            self.allUsers = result;
+            
             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
                                      OPERATION_SUCCEEDED, kOperationResult,
                                      result, kResultAllUsers,
@@ -91,6 +93,8 @@
             for (PFUser *row in objects) {
                 [result addObject:[[SFUser alloc] initWithPFUser:row]];
             }
+            
+            self.followers = result;
             
             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
                                      OPERATION_SUCCEEDED, kOperationResult,
@@ -136,6 +140,7 @@
             for (PFUser *row in objects) {
                 [result addObject:[[SFUser alloc] initWithPFUser:row]];
             }
+            self.following = result;
             
             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
                                      OPERATION_SUCCEEDED, kOperationResult,
@@ -158,17 +163,20 @@
 - (void)postMessage:(NSDictionary *)dict withCallback:(SFResponseBlock)response {
     NSString *channel = [dict objectForKey:kMessageChannel];
     NSString *text = [dict objectForKey:kMessageText];
-    NSString *userID = [dict objectForKey:kMessageUser];
+    NSString *name = [dict objectForKey:kMessageName];
+    NSString *pictureURL = [dict objectForKey:kMessagePictureURL];
     
     PFObject *newMessage = [PFObject objectWithClassName:@"Comment"];
     [newMessage setObject:channel forKey:kMessageChannel];
     [newMessage setObject:text forKey:kMessageText];
-    [newMessage setObject:userID forKey:kMessageUser];
+    [newMessage setObject:name forKey:kMessageName];
+    [newMessage setObject:pictureURL forKey:kMessagePictureURL];
     
     [newMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
                                      OPERATION_SUCCEEDED, kOperationResult,
+                                     dict, kResultMessage,
                                      nil];
             response((id)resData);
         } else {
@@ -204,13 +212,13 @@
             for (id row in objects) {
                 [result addObject:[[SFMessage alloc] initWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                          [row objectForKey:kMessageChannel], kMessageChannel,
-                                                                         [row objectForKey:kMessageUser], kMessageUser,
+                                                                         [row objectForKey:kMessageName], kMessageName,
                                                                          [row objectForKey:kMessageText], kMessageText,
                                                                          nil]]];
             }
             
             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
-                                     OPERATION_FAILED, kOperationResult,
+                                     OPERATION_SUCCEEDED, kOperationResult,
                                      result, kResultNewMessages,
                                      nil];
             response((id)resData);
