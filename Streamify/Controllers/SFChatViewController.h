@@ -16,6 +16,7 @@
 
 @interface SFChatViewController : BaseViewController
 
+@property (nonatomic, strong) NSString *channel;
 @property (strong, nonatomic) NSMutableArray *messagesData;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (strong, nonatomic) SFChatTableViewController *chatTableViewController;

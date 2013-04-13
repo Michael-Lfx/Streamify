@@ -41,6 +41,7 @@
 
     // Add Chat View
     self.chatViewController = [[SFChatViewController alloc] initChatViewWithDelegate:self];
+    self.chatViewController.channel = self.user.objectID;
     self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
                                                           kSFChatViewFrameY,
                                                           kSFChatViewFrameW,
@@ -111,9 +112,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+/*
 - (void)sendText:(NSString *)text {
     NSString *trimmedString = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString *name = [SFSocialManager sharedInstance].currentUser.facebookId;
+    NSString *name = [SFSocialManager sharedInstance].currentUser.name;
     NSString *pictureURL = [SFSocialManager sharedInstance].currentUser.pictureURL;
     
     if (trimmedString.length > 0) {
@@ -131,7 +133,7 @@
         }];
     }
 }
-
+*/
 
 - (void)volumeSliderChanged:(id)sender {
     UISlider *slider = (UISlider *)sender;
