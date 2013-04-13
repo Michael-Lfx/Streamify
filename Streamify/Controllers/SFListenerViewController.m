@@ -113,16 +113,20 @@
 
 - (void)sendText:(NSString *)text {
     NSString *trimmedString = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString *facebookID = [SFSocialManager sharedInstance].currentUser.facebookId;
+    NSString *name = [SFSocialManager sharedInstance].currentUser.facebookId;
+    NSString *pictureURL = [SFSocialManager sharedInstance].currentUser.pictureURL;
+    
     if (trimmedString.length > 0) {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               self.user.objectID, kMessageChannel,
-                              facebookID, kMessageUser,
+                              name, kMessageName,
+                              pictureURL, kMessagePictureURL,
                               trimmedString, kMessageText,
                               nil];
+        
         [[SFSocialManager sharedInstance] postMessage:dict withCallback:^(id returnedObject) {
             if ([[returnedObject objectForKey:kOperationResult] isEqual: OPERATION_SUCCEEDED]){
-                NSLog(@"Succeeded sending: %@", dict);
+                NSLog(@"Succeeded sending: %@", [returnedObject objectForKey:kResultMessage]);
             }
         }];
     }

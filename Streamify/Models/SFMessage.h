@@ -11,7 +11,7 @@
 @interface SFMessage : BaseModel
 
 @property (nonatomic, strong) NSString *channel;
-@property (nonatomic, strong) NSString *facebookID;
 @property (nonatomic, strong) NSString *text;
-
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *pictureURL;
 @end
