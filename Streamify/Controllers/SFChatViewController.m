@@ -93,7 +93,8 @@
     self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, self.chatTextField.frame.origin.y,
                                        self.sendButton.frame.size.width, kSFChatTextFrameH);
     
-    self.chatTableViewController = [[SFChatTableViewController alloc] init];
+//    self.chatTableViewController = [[SFChatTableViewController alloc] init];
+    self.chatTableViewController = [[SFChatTableViewController alloc] initWithNibName:@"SFChatTableViewController" bundle:[NSBundle mainBundle]];
     self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH);
 
     [self.view addSubview:self.chatTableViewController.tableView];
