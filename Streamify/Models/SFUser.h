@@ -15,4 +15,5 @@
 @property (nonatomic, strong) NSString *facebookId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *pictureURL;
+@property (nonatomic) BOOL followed;
 @end
