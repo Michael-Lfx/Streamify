@@ -31,6 +31,7 @@
 
     // Add Chat View
     self.chatViewController = [[SFChatViewController alloc] initChatViewWithDelegate:self];
+    self.chatViewController.channel = [SFSocialManager sharedInstance].currentUser.objectID;
     self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
                                                     kSFChatViewFrameY,
                                                     kSFChatViewFrameW,
