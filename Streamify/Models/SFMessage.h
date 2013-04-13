@@ -14,4 +14,5 @@
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *pictureURL;
+@property (nonatomic, strong) NSDate *timeCreated;
 @end

@@ -11,6 +11,8 @@
 #import "SFChatTableViewController.h"
 
 @interface SFChatViewController () <UITextFieldDelegate>
+@property (nonatomic, strong) NSDate *lastUpdateTime;
+@property (nonatomic, strong) NSTimer *timer;
 
 @end
 
@@ -49,7 +51,27 @@
 }
 
 - (IBAction)sendButtonPressed:(id)sender {
-    [self.delegate sendText:self.chatTextField.text];
+    NSString *text = self.chatTextField.text;
+    NSString *trimmedString = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *name = [SFSocialManager sharedInstance].currentUser.name;
+    NSString *pictureURL = [SFSocialManager sharedInstance].currentUser.pictureURL;
+    
+    if (trimmedString.length > 0) {
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              self.channel, kMessageChannel,
+                              name, kMessageName,
+                              pictureURL, kMessagePictureURL,
+                              trimmedString, kMessageText,
+                              [NSDate date], kMessageTime,
+                              nil];
+        
+        [[SFSocialManager sharedInstance] postMessage:dict withCallback:^(id returnedObject) {
+            if ([[returnedObject objectForKey:kOperationResult] isEqual: OPERATION_SUCCEEDED]){
+                NSLog(@"Succeeded sending: %@", [returnedObject objectForKey:kResultMessage]);
+            }
+        }];
+    }
+
     self.chatTextField.text = @"";
     [self.chatTextField resignFirstResponder];
 }
@@ -71,32 +93,40 @@
     self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, self.chatTextField.frame.origin.y,
                                        self.sendButton.frame.size.width, kSFChatTextFrameH);
     
-    //Test
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
-                                                                   forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
-    
-    NSMutableDictionary *dict2 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
-                                                                   forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
-    NSMutableDictionary *dict3 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
-                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
-    NSMutableDictionary *dict4 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
-                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
-    NSMutableDictionary *dict5 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
-                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
-    NSMutableDictionary *dict6 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
-                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
-    NSMutableDictionary *dict7 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
-                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
-    NSMutableDictionary *dict8 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
-                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
-    NSMutableDictionary *dict9 = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Richard", @"Lorem ipsum dolor sit amet", nil]
-                                                                    forKeys:[NSArray arrayWithObjects:@"userName", @"message", nil]];
-    
-    self.messagesData = [NSMutableArray arrayWithObjects:dict, dict2, dict3, dict4, dict5, dict6, dict7, dict8, dict9, nil];
-    self.chatTableViewController = [[SFChatTableViewController alloc] initWithData:self.messagesData];
+    self.chatTableViewController = [[SFChatTableViewController alloc] init];
     self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH);
 
     [self.view addSubview:self.chatTableViewController.tableView];
+    
+    self.lastUpdateTime = [NSDate date];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateMessages) userInfo:nil repeats:YES];
+    [self.timer fire];
+}
+
+- (void)updateMessages {
+    [[SFSocialManager sharedInstance] fetchChannelMessages:self.channel
+                                               lastUpdated:self.lastUpdateTime
+                                              withCallback:^(id returnedObject) {
+                                                  if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
+                                                      NSArray *newMessages = [returnedObject objectForKey:kResultNewMessages];
+                                                      if (newMessages.count > 0) {
+                                                          SFMessage *lastMessage = [newMessages lastObject];
+                                                          self.lastUpdateTime = lastMessage.timeCreated;
+                                                          [self.chatTableViewController.messagesData addObjectsFromArray:newMessages];
+                                                          [self.chatTableViewController.tableView reloadData];
+                                                      }
+                                                  }
+                                              }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.timer invalidate];
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning

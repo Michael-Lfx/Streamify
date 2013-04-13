@@ -167,12 +167,14 @@
     NSString *text = [dict objectForKey:kMessageText];
     NSString *name = [dict objectForKey:kMessageName];
     NSString *pictureURL = [dict objectForKey:kMessagePictureURL];
+    NSDate *time = [dict objectForKey:kMessageTime];
     
     PFObject *newMessage = [PFObject objectWithClassName:@"Comment"];
     [newMessage setObject:channel forKey:kMessageChannel];
     [newMessage setObject:text forKey:kMessageText];
     [newMessage setObject:name forKey:kMessageName];
     [newMessage setObject:pictureURL forKey:kMessagePictureURL];
+    [newMessage setObject:time forKey:kMessageTime];
     
     [newMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
@@ -203,19 +205,21 @@
                 withCallback:(SFResponseBlock)response {
     PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
     [query whereKey:kMessageChannel equalTo:channelID];
-    [query whereKey:@"createdAt" greaterThan:updateTime];
-    [query addDescendingOrder:@"createdAt"];
+    [query whereKey:kMessageTime greaterThan:updateTime];
+    [query addDescendingOrder:kMessageTime];
     query.limit = limit;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             NSMutableArray *result = [NSMutableArray array];
             
-            for (id row in objects) {
+            for (PFObject *row in objects) {
                 [result addObject:[[SFMessage alloc] initWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                          [row objectForKey:kMessageChannel], kMessageChannel,
                                                                          [row objectForKey:kMessageName], kMessageName,
                                                                          [row objectForKey:kMessageText], kMessageText,
+                                                                         [row objectForKey:kMessagePictureURL], kMessagePictureURL,
+                                                                         [row objectForKey:kMessageTime], kMessageTime,
                                                                          nil]]];
             }
             

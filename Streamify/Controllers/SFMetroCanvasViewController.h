@@ -20,7 +20,7 @@
 
 @interface SFMetroCanvasViewController : BaseViewController
 
-@property (nonatomic) SFMetroPullRefreshState canvasState;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *canvasInitIndicator;
 
 - (id)initWithTiles:(NSArray *)tiles delegate:(id)delegate;
 - (void)refreshWithTiles:(NSArray *)tiles;

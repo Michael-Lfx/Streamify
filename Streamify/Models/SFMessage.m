@@ -10,4 +10,11 @@
 
 @implementation SFMessage
 
+- (id)initWithDictionary:(NSDictionary *)dict {
+    if (self = [super initWithDictionary:dict]) {
+        self.timeCreated = [dict objectForKey:kMessageTime];
+    }
+    return self;
+}
+
 @end

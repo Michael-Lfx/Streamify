@@ -24,9 +24,10 @@
     return self;
 }
 
-- (id)initWithData:(NSMutableArray *)data {
-    self = [self initWithNibName:@"SFChatTableViewController" bundle:[NSBundle mainBundle]];
-    self.messagesData = data;
+- (id)init {
+    if (self = [super init]) {
+        self.messagesData = [NSMutableArray array];
+    }
     return self;
 }
 
@@ -80,9 +81,11 @@
 }
 
 - (void)loadDataToCell:(SFChatMessageCell *)cell indexPath:(NSIndexPath *)indexPath {
-    NSDictionary *cellData = [self.messagesData objectAtIndex:indexPath.section];
-    cell.userNameLabel.text = (NSString *)[cellData valueForKey:@"userName"];
-    cell.messageLabel.text = (NSString *)[cellData valueForKey:@"message"];
+    SFMessage *cellData = [self.messagesData objectAtIndex:indexPath.section];
+    cell.userNameLabel.text = cellData.name;
+    cell.messageLabel.text = cellData.text;
+    [cell.avatarImageView setImageWithURL:[NSURL URLWithString:cellData.pictureURL]
+                         placeholderImage:[UIImage imageNamed:@"placeholder"]];
 }
 
 /*
