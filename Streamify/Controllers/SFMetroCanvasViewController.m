@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSMutableArray *pageViews;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) SFMetroRefreshHeaderView *refreshHeaderView;
+@property (nonatomic) SFMetroPullRefreshState canvasState;
 @property (nonatomic) BOOL canvasLoading;
 
 @end
@@ -114,8 +115,16 @@
 - (void)refreshWithTiles:(NSArray *)tiles
 {
     self.tiles = tiles;
+    
+    // Reset canvas' scrollview
+    NSInteger currentPage = [self getCurrentPage];
+    [self purgePage:(currentPage - 1)];
+    [self purgePage:currentPage];
+    [self purgePage:(currentPage + 1)];
     [self resetPageViews];
     [self resetScrollViewContentSize];
+    
+    // Refresh
     [self performSelectorOnMainThread:@selector(loadVisiblePages) withObject:nil waitUntilDone:NO];
 //    [UIView transitionWithView:self.scrollView
 //                      duration:5
@@ -302,5 +311,9 @@
     }
 }
 
+- (void)viewDidUnload {
+    [self setCanvasInitIndicator:nil];
+    [super viewDidUnload];
+}
 @end
 

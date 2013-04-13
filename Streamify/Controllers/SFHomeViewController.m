@@ -15,7 +15,6 @@
 
 @property (nonatomic) SFHomeBrowsingType browsingType;
 @property (nonatomic) SFChannelState channelState;
-//@property (nonatomic) BOOL canvasLoading;
 
 @end
 
@@ -62,6 +61,7 @@
                                                       canvasFrame.size.width,
                                                       canvasFrame.size.height);
     [self.view addSubview:self.canvasViewController.view];
+    [self.canvasViewController.canvasInitIndicator startAnimating];
     [self canvasDidTriggeredToRefresh];
     
     // Sidebar must be added after main column for shadow
@@ -92,16 +92,27 @@
 - (void)trendingPressed:(id)sender {
     self.browsingType = kSFTrendingBrowsing;
     self.canvasTitle.text = @"Trending";
+    [self.canvasViewController.canvasInitIndicator startAnimating];
+    [self canvasDidTriggeredToRefresh];
+    
 }
 
 - (void)favouritePressed:(id)sender {
     self.browsingType = kSFFavoriteBrowsing;
     self.canvasTitle.text = @"Favorite";
+    [self.canvasViewController.canvasInitIndicator startAnimating];
+    [self canvasDidTriggeredToRefresh];
 }
 
 - (void)recentPressed:(id)sender {
-    self.browsingType = kSFRecentBrowsing;
-    self.canvasTitle.text = @"Recent";
+//    self.browsingType = kSFRecentBrowsing;
+//    self.canvasTitle.text = @"Recent";
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Supported"
+                                                    message:@"Searching coming in future version !"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)searchPressed:(id)sender {
@@ -140,22 +151,44 @@
 
 - (void)canvasDidTriggeredToRefresh
 {
-    [[SFSocialManager sharedInstance] getFollowingForUser:[SFSocialManager sharedInstance].currentUser.objectID
-                                             withCallback:^(id returnedObject) {
-                                                 [self performSelectorInBackground:@selector(refreshCanvasWithTiles:)
-                                                                        withObject:returnedObject];
-                                             }];
+    switch (self.browsingType) {
+        case kSFTrendingBrowsing:
+        {
+            [[SFSocialManager sharedInstance] fetchLiveChannelsWithCallback:^(id returnedObject) {
+                                                         [self performSelectorInBackground:@selector(refreshCanvasWithTiles:)
+                                                                                withObject:returnedObject];
+                                                     }];
+        }
+            break;
+            
+        case kSFFavoriteBrowsing:
+        {
+            [[SFSocialManager sharedInstance] getFollowingForUser:[SFSocialManager sharedInstance].currentUser.objectID
+                                                     withCallback:^(id returnedObject) {
+                                                         [self performSelectorInBackground:@selector(refreshCanvasWithTiles:)
+                                                                                withObject:returnedObject];
+                                                     }];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 - (void)refreshCanvasWithTiles:(id)returnedObject
 {
     NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
-//    NSMutableArray *temptiles = [NSMutableArray arrayWithArray:tiles];
-//    for (int i = 0; i < 7; i++) {
-//        [fucktiles addObjectsFromArray:tiles];
-//    }
+    NSMutableArray *temptiles = [NSMutableArray arrayWithArray:tiles];
+    for (int i = 0; i < 7; i++) {
+        [temptiles addObjectsFromArray:tiles];
+    }
+    if (self.canvasViewController.canvasInitIndicator.isAnimating) {
+        [self.canvasViewController.canvasInitIndicator stopAnimating];
+    }
     [self.canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
-    [self.canvasViewController refreshWithTiles:tiles];
+    [self.canvasViewController refreshWithTiles:temptiles];
 }
 
 @end
