@@ -198,8 +198,11 @@
 }
 
 - (void)getFollowingForUser:(NSString *)userID withCallback:(SFResponseBlock)response {
-    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
-    [query whereKey:@"follower" equalTo:userID];
+    PFQuery *followQuery = [PFQuery queryWithClassName:@"Follow"];
+    [followQuery whereKey:@"follower" equalTo:userID];
+    
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"objectId" matchesKey:@"following" inQuery:followQuery];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
@@ -210,9 +213,9 @@
         } else {
             NSMutableArray *result = [NSMutableArray array];
             
-            for (id row in objects) {
-                NSString *objectID = [row objectForKey:@"following"];
-                [result addObject:[self getUser:objectID]];
+            for (PFUser *row in objects) {
+//                NSString *objectID = [row objectForKey:@"following"];
+                [result addObject:[[SFUser alloc] initWithPFUser:row]];
             }
             
             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
