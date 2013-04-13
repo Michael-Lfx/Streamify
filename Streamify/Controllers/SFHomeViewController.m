@@ -133,8 +133,16 @@
 
 - (void)canvasDidTriggeredToRefresh
 {
-    self.canvasLoading = TRUE;
-    [self performSelectorInBackground:@selector(requestUpdateTile) withObject:nil];
+    self.canvasLoading = YES;
+    NSLog(@"fuckkkkk\n");
+    [[SFSocialManager sharedInstance] getFollowingForUser:[SFSocialManager sharedInstance].currentUser.objectID
+                                             withCallback:^(id returnedObject) {
+                                                 self.canvasLoading = NO;
+                                                 [self.canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
+                                                 NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
+                                                 [self.canvasViewController refreshWithTiles:tiles];
+                                             }];
+//    [self performSelectorInBackground:@selector(requestUpdateTile) withObject:nil];
 }
 
 - (BOOL)canvasDataSourceIsLoading
@@ -142,16 +150,27 @@
     return self.canvasLoading;
 }
 
-- (void)requestUpdateTile
-{
-    [[SFSocialManager sharedInstance] updateMe];
-}
+//- (void)requestUpdateTile
+//{
+//    NSLog(@"fuk her");
+//    [[SFSocialManager sharedInstance] updateMe];
+//    [[SFSocialManager sharedInstance] getFollowingForUser:[SFSocialManager sharedInstance].currentUser.objectID
+//                                             withCallback:^(id returnedObject) {
+//                                                 self.canvasLoading = NO;
+//                                                 [self.canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
+//                                                 NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
+//                                                 [self.canvasViewController refreshWithTiles:tiles];
+//                                             }];
+//}
 
 - (void)refreshCanvas
 {
     self.canvasLoading = NO;
+    [self.canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
     NSArray *tiles = [SFSocialManager sharedInstance].currentUser.followings;
+    NSLog(@"tiles %@\n", tiles);
     [self.canvasViewController refreshWithTiles:tiles];
+    
 }
 
 @end

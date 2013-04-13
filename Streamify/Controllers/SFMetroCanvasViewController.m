@@ -84,8 +84,8 @@
     [super viewWillAppear:animated];
 
     CGSize pagesScrollViewSize = self.scrollView.frame.size;
-    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageViews.count + 10, pagesScrollViewSize.height);
-    
+    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageViews.count, pagesScrollViewSize.height);
+    NSLog(@"will appear contentInset = %@\n", NSStringFromUIEdgeInsets(self.scrollView.contentInset));
     [self loadVisiblePages];
 }
 
@@ -110,7 +110,6 @@
 - (void)refreshWithTiles:(NSArray *)tiles
 {
     NSLog(@"Canvas is being refreshed...\n");
-    NSLog(@"Tiles are %@\n", tiles);
     self.tiles = tiles;
     [self resetPageViews];
     [self performSelectorOnMainThread:@selector(loadVisiblePages) withObject:nil waitUntilDone:NO];
@@ -121,8 +120,10 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    [self loadVisiblePages];
+    
     if (self.canvasState == SFMetroPullRefreshLoading) {
-        CGFloat offset = MAX(-scrollView.contentOffset.y, 0);
+        CGFloat offset = MAX(-scrollView.contentOffset.x, 0);
         offset = MIN(offset, kMetroPullToRefreshOffset);
         scrollView.contentInset = UIEdgeInsetsMake(0, offset, 0, 0);
     } else if (scrollView.isDragging) {
@@ -143,8 +144,7 @@
             scrollView.contentInset = UIEdgeInsetsZero;
         }
     }
-    
-    [self loadVisiblePages];
+        NSLog(@"scrolling contentInset = %@\n", NSStringFromUIEdgeInsets(scrollView.contentInset));
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -162,15 +162,16 @@
         self.canvasState = SFMetroPullRefreshLoading;
         scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
     }
+    NSLog(@"end contentInset = %@\n", NSStringFromUIEdgeInsets(scrollView.contentInset));
 }
 
 
-#pragma mark - Pull To Refresh helpers
+#pragma mark - Pull To Refresh public helpers
 
 - (void)canvasScrollViewDataSourceDidFinishedLoading
 {
-    [self.scrollView setContentInset:UIEdgeInsetsZero];
     self.canvasState = SFMetroPullRefreshNormal;
+    self.scrollView.contentInset = UIEdgeInsetsZero;
 }
 
 

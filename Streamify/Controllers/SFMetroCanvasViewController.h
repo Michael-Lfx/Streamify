@@ -25,5 +25,6 @@
 
 - (id)initWithTiles:(NSArray *)tiles delegate:(id)delegate;
 - (void)refreshWithTiles:(NSArray *)tiles;
+- (void)canvasScrollViewDataSourceDidFinishedLoading;
 
 @end

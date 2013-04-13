@@ -9,7 +9,8 @@
 #import "SFMetroConstants.h"
 #import "SFMetroTileView.h"
 
-#define kTitleFormatString @"\t\t\t%@"
+#define kMetroTileFormatString @"\t\t\t%@"
+#define kMetroTileCoverImagePlaceHolder @"placeholder.png"
 
 @interface SFMetroTileView ()
 
@@ -38,7 +39,7 @@
 - (void)setUser:(SFUser *)user {
     _user = user;
     NSString *title = [NSString stringWithFormat:@"%@ %@", user.name, user.objectID];
-    NSString *formattedTitle = [NSString stringWithFormat:kTitleFormatString, title];
+    NSString *formattedTitle = [NSString stringWithFormat:kMetroTileFormatString, title];
     self.titleView.text = formattedTitle;
     
     [self.coverView setImageWithURL:[NSURL URLWithString:user.pictureURL] placeholderImage:nil];
@@ -51,10 +52,11 @@
         self.user = user;
         
         NSString *title = [NSString stringWithFormat:@"%@ %@", user.name, user.objectID];
-        NSString *formattedTitle = [NSString stringWithFormat:kTitleFormatString, title];
+        NSString *formattedTitle = [NSString stringWithFormat:kMetroTileFormatString, title];
         self.titleView.text = formattedTitle;
         
-        [self.coverView setImageWithURL:[NSURL URLWithString:user.pictureURL] placeholderImage:nil];
+        [self.coverView setImageWithURL:[NSURL URLWithString:user.pictureURL]
+                       placeholderImage:[UIImage imageNamed:@"placeholder"]];
     }
     return self;
 }

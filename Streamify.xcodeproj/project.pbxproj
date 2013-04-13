@@ -16,6 +16,7 @@
 		1A7932BF1705FE7F00005CBF /* SFMetroCanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7932BD1705FE7F00005CBF /* SFMetroCanvasViewController.m */; };
 		1A7932C01705FE7F00005CBF /* SFMetroCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7932BE1705FE7F00005CBF /* SFMetroCanvasViewController.xib */; };
 		1A7932C41706169E00005CBF /* SFMetroCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7932C31706169E00005CBF /* SFMetroCanvasView.m */; };
+		1AB6A55517195E3F00DD2B2B /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB6A55417195E3F00DD2B2B /* placeholder.png */; };
 		1AE32125170DC8DC00D740E5 /* SFTopbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE32123170DC8DC00D740E5 /* SFTopbarViewController.m */; };
 		1AE32126170DC8DC00D740E5 /* SFTopbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE32124170DC8DC00D740E5 /* SFTopbarViewController.xib */; };
 		1AE32128170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE32127170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib */; };
@@ -191,6 +192,7 @@
 		1A7932BE1705FE7F00005CBF /* SFMetroCanvasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMetroCanvasViewController.xib; sourceTree = "<group>"; };
 		1A7932C21706169E00005CBF /* SFMetroCanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroCanvasView.h; sourceTree = "<group>"; };
 		1A7932C31706169E00005CBF /* SFMetroCanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMetroCanvasView.m; sourceTree = "<group>"; };
+		1AB6A55417195E3F00DD2B2B /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../Assets/placeholder.png; sourceTree = "<group>"; };
 		1AE32122170DC8DC00D740E5 /* SFTopbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTopbarViewController.h; sourceTree = "<group>"; };
 		1AE32123170DC8DC00D740E5 /* SFTopbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTopbarViewController.m; sourceTree = "<group>"; };
 		1AE32124170DC8DC00D740E5 /* SFTopbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTopbarViewController.xib; sourceTree = "<group>"; };
@@ -505,13 +507,14 @@
 		1A49F9F51704E9CA00969CFA /* Metro Components */ = {
 			isa = PBXGroup;
 			children = (
+				1AB6A55417195E3F00DD2B2B /* placeholder.png */,
+				1A49FA111704EACA00969CFA /* SFMetroConstants.h */,
 				9CB483FA171832E000E90107 /* SFMetroTileView.h */,
+				1A49FA071704EAC400969CFA /* SFMetroTileView.m */,
+				1A49FA081704EAC400969CFA /* SFMetroTileView.xib */,
 				9CB483F517182B9100E90107 /* SFMetroRefreshHeaderView.h */,
 				9CB483F617182B9100E90107 /* SFMetroRefreshHeaderView.m */,
 				9CB483F717182B9100E90107 /* SFMetroRefreshHeaderView.xib */,
-				1A49FA071704EAC400969CFA /* SFMetroTileView.m */,
-				1A49FA081704EAC400969CFA /* SFMetroTileView.xib */,
-				1A49FA111704EACA00969CFA /* SFMetroConstants.h */,
 				1A7932C21706169E00005CBF /* SFMetroCanvasView.h */,
 				1A7932C31706169E00005CBF /* SFMetroCanvasView.m */,
 			);
@@ -1159,6 +1162,7 @@
 				C0C1366F1717040C006D8C6D /* topbar-icon-play.png in Resources */,
 				C0C136701717040C006D8C6D /* topbar-icon-play@2x.png in Resources */,
 				9CB483F917182B9100E90107 /* SFMetroRefreshHeaderView.xib in Resources */,
+				1AB6A55517195E3F00DD2B2B /* placeholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
