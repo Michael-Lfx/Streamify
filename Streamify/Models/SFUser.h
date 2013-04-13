@@ -14,7 +14,5 @@
 @property (nonatomic, strong) NSString *objectID;
 @property (nonatomic, strong) NSString *facebookId;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSArray *followers;
-@property (nonatomic, strong) NSArray *followings;
 @property (nonatomic, strong) NSString *pictureURL;
 @end
