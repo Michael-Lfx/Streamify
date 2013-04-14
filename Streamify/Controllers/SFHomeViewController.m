@@ -199,7 +199,7 @@
 
 - (void)refreshTrendingCanvas:(id)returnedObject
 {
-    NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
+    NSArray *tiles = [returnedObject objectForKey:kResultLiveChannels];
     [self refreshCanvas:self.trendingCanvasViewController withTiles:tiles];
 }
 
@@ -212,18 +212,18 @@
 - (void)refreshCanvas:(SFMetroCanvasViewController *)canvasViewController
             withTiles:(NSArray *)tiles
 {
-    [NSThread sleepForTimeInterval:3];
-    NSMutableArray *temptiles = [NSMutableArray arrayWithArray:tiles];
-    for (int i = 0; i < 7; i++) {
-        [temptiles addObjectsFromArray:tiles];
-    }
+//    [NSThread sleepForTimeInterval:3];
+//    NSMutableArray *temptiles = [NSMutableArray arrayWithArray:tiles];
+//    for (int i = 0; i < 7; i++) {
+//        [temptiles addObjectsFromArray:tiles];
+//    }
     
     if (canvasViewController.canvasInitIndicator.isAnimating) {
         [canvasViewController.canvasInitIndicator stopAnimating];
     }
     
     [canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
-    [canvasViewController refreshWithTiles:temptiles];
+    [canvasViewController refreshWithTiles:tiles];
 }
 
 @end

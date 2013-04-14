@@ -196,7 +196,7 @@
     self.canvasState = SFMetroPullRefreshNormal;
     [UIView animateWithDuration:kMetroRefreshHeaderOnDataSourceFinishedLoadingAnimationDuration animations:^{
         self.scrollView.contentInset = UIEdgeInsetsZero;
-        NSLog(@"Data Source finished loading");
+//        NSLog(@"Data Source finished loading");
     }];
 }
 
