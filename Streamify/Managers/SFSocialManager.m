@@ -121,13 +121,87 @@
 }
 
 
+
+//- (void)getFollowingForUser:(NSString *)userID withCallback:(SFResponseBlock)response {
+//    PFQuery *followQuery = [PFQuery queryWithClassName:@"Follow"];
+//    [followQuery whereKey:@"follower" equalTo:userID];
+//    
+//    PFQuery *query = [PFUser query];
+//    [query whereKey:@"objectId" matchesKey:@"following" inQuery:followQuery];
+//    
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (error) {
+//            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                     OPERATION_FAILED, kOperationResult,
+//                                     nil];
+//            response((id)resData);
+//        } else {
+//            NSMutableArray *result = [NSMutableArray array];
+//            
+//            for (PFUser *row in objects) {
+//                SFUser *user = [[SFUser alloc] initWithPFUser:row];
+//                user.followed = TRUE;
+//                [result addObject:user];
+//            }
+//            self.following = result;
+//            
+//            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                     OPERATION_SUCCEEDED, kOperationResult,
+//                                     result, kResultFollowing,
+//                                     nil];
+//            
+//            response((id)resData);
+//        }
+//    }];
+//}
+
 - (void)getFollowingForUser:(NSString *)userID withCallback:(SFResponseBlock)response {
-    PFQuery *followQuery = [PFQuery queryWithClassName:@"Follow"];
-    [followQuery whereKey:@"follower" equalTo:userID];
-    
+    [self fetchLiveChannelsWithCallback:^(id returnedObject) {
+        NSArray *onlineChannels = [returnedObject objectForKey:kResultLiveChannels];
+        
+        PFQuery *followQuery = [PFQuery queryWithClassName:@"Follow"];
+        [followQuery whereKey:@"follower" equalTo:userID];
+        
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"objectId" matchesKey:@"following" inQuery:followQuery];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (error) {
+                NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         OPERATION_FAILED, kOperationResult,
+                                         nil];
+                response((id)resData);
+            } else {
+                NSMutableArray *result = [NSMutableArray array];
+                
+                for (PFUser *row in objects) {
+                    SFUser *user = [[SFUser alloc] initWithPFUser:row];
+                    user.followed = TRUE;
+                    if (onlineChannels) {
+                        for (SFUser *channel in onlineChannels) {
+                            if ([channel.objectID isEqualToString:user.objectID]) {
+                                user.isLive = YES;
+                            }
+                        }
+                    }
+                    [result addObject:user];
+                }
+                self.following = result;
+                
+                NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         OPERATION_SUCCEEDED, kOperationResult,
+                                         result, kResultFollowing,
+                                         nil];
+                
+                response((id)resData);
+            }
+        }];
+    }];
+}
+
+- (void)getUsersWithObjectIDs:(NSArray *)objectIDs withCallback:(SFResponseBlock)response{
     PFQuery *query = [PFUser query];
-    [query whereKey:@"objectId" matchesKey:@"following" inQuery:followQuery];
-    
+    [query whereKey:@"objectId" containedIn:objectIDs];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -139,14 +213,12 @@
             
             for (PFUser *row in objects) {
                 SFUser *user = [[SFUser alloc] initWithPFUser:row];
-                user.followed = TRUE;
                 [result addObject:user];
             }
-            self.following = result;
             
             NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
                                      OPERATION_SUCCEEDED, kOperationResult,
-                                     result, kResultFollowing,
+                                     result, kResultUsers,
                                      nil];
             
             response((id)resData);
@@ -154,12 +226,33 @@
     }];
 }
 
-
 - (void)fetchLiveChannelsWithCallback:(SFResponseBlock)response {
-    [self queryServerPath:@"/getLive.php"
-            requestMethod:@"GET"
-               parameters:nil
-             withCallback:response];
+    [self queryServerPath:@"getLive.php" requestMethod:@"GET" parameters:nil withCallback:^(id returnedObject) {
+        if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
+            NSMutableArray *liveChannelNames = [NSMutableArray array];
+            
+            id json = [returnedObject objectForKey:kResultJSON];
+            if (json != NULL) {
+                for (id row in json) {
+                    [liveChannelNames addObject:[row objectForKey:@"users_object_id"]];
+                }
+            }
+            
+            [self getUsersWithObjectIDs:liveChannelNames withCallback:^(id returnedObject) {
+                if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
+                    NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                             OPERATION_SUCCEEDED, kOperationResult,
+                                             [returnedObject objectForKey:kResultUsers], kResultLiveChannels,
+                                             nil];
+                    response((id)resData);
+                } else {
+                    response(returnedObject);
+                }
+            }];
+        } else {
+            response(returnedObject);
+        }
+    }];
 }
 
 - (void)postMessage:(NSDictionary *)dict withCallback:(SFResponseBlock)response {

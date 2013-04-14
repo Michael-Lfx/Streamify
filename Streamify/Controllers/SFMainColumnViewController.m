@@ -45,6 +45,10 @@
     [self.delegate volumeSliderChanged:sender];
 }
 
+- (IBAction)shareButtonPressed:(id)sender {
+    [self.delegate shareButtonPressed:sender];
+}
+
 - (void)setChannelState:(SFChannelState)channelState {
     _channelState = channelState;
     [self.controlButton setImage:[self buttonIconForCurrentState] forState:UIControlStateNormal];
