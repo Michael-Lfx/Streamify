@@ -14,24 +14,11 @@ typedef enum {
     SFMetroPullRefreshLoading,
 } SFMetroPullRefreshState;
 
-//@class SFMetroRefreshHeaderView;
-//
-//@protocol SFMetroRefreshHeaderDelegate <NSObject>
-//
-//- (void)refreshHeaderDidTriggerRefresh:(SFMetroRefreshHeaderView *)view;
-//- (BOOL)refreshHeaderDataSourceIsLoading:(SFMetroRefreshHeaderView *)view;
-//
-//@end
-
 @interface SFMetroRefreshHeaderView : UIView
 
 @property (strong, nonatomic) IBOutlet UILabel *status;
+@property (strong, nonatomic) IBOutlet UIImageView *arrow;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (nonatomic) SFMetroPullRefreshState state;
-
-//@property (nonatomic, retain) id<SFMetroRefreshHeaderDelegate> delegate;
-//
-//- (void)canvasScrollViewDidScroll:(UIScrollView *)scrollView;
-//- (void)canvasScrollViewDidEndDragging:(UIScrollView *)scrollView;
-//- (void)canvasScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView;
 
 @end

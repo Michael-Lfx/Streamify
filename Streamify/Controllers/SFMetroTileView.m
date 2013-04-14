@@ -57,6 +57,9 @@
         
         [self.coverView setImageWithURL:[NSURL URLWithString:user.pictureURL]
                        placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        if (!user.isLive) {
+            self.alpha = 0.3;
+        }
     }
     return self;
 }

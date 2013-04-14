@@ -170,28 +170,21 @@
     if (scrollView.contentOffset.x <= -kMetroPullToRefreshOffsetLimit
         && !self.canvasLoading) {
         if ([self.delegate respondsToSelector:@selector(canvasDidTriggeredToRefresh)]) {
-            self.canvasLoading = YES;
-            self.scrollView.pagingEnabled = NO;
             [self.delegate canvasDidTriggeredToRefresh];
         }
         
+        self.canvasLoading = YES;
         self.canvasState = SFMetroPullRefreshLoading;
-    }
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    if (self.canvasLoading) {
-        NSInteger currentPage = [self getCurrentPage];
-//        [UIView animateWithDuration:10.0 animations:^{
-//            scrollView.contentOffset = CGPointMake(currentPage * scrollView.frame.size.width, 0);
-//            scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
-//            NSLog(@"hihi");
-//        }];
-        scrollView.contentOffset = CGPointMake(currentPage * scrollView.frame.size.width, 0);
+        scrollView.pagingEnabled = NO;
+        scrollView.contentOffset = CGPointMake(0, 0);
         scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
-		self.scrollView.pagingEnabled = YES;
     }
+    
+//    NSInteger currentPage = [self getCurrentPage];
+//    NSLog(@"current page %d", currentPage);
+//    if (self.canvasLoading == YES && currentPage == 0) {
+//             
+//    }
 }
 
 #pragma mark - Pull To Refresh public helpers
@@ -199,8 +192,12 @@
 - (void)canvasScrollViewDataSourceDidFinishedLoading
 {
     self.canvasLoading = NO;
+    self.scrollView.pagingEnabled = YES;
     self.canvasState = SFMetroPullRefreshNormal;
-    self.scrollView.contentInset = UIEdgeInsetsZero;
+    [UIView animateWithDuration:kMetroRefreshHeaderOnDataSourceFinishedLoadingAnimationDuration animations:^{
+        self.scrollView.contentInset = UIEdgeInsetsZero;
+        NSLog(@"Data Source finished loading");
+    }];
 }
 
 

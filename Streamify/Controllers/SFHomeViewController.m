@@ -53,21 +53,31 @@
                                         canvasTitleFrame.size.height);
     [self.view addSubview:self.canvasTitle];
     
-    // Canvas
-    self.canvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array] delegate:self];
-    CGRect canvasFrame = self.canvasViewController.view.frame;
-    self.canvasViewController.view.frame = CGRectMake(kSFCanvasFrameXInHomeView,
-                                                      kSFCanvasFrameYInHomeView,
-                                                      canvasFrame.size.width,
-                                                      canvasFrame.size.height);
-    [self.view addSubview:self.canvasViewController.view];
-    [self.canvasViewController.canvasInitIndicator startAnimating];
+    // Trending canvas
+    self.trendingCanvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array] delegate:self];
+    [self positeCanvasViewController:self.trendingCanvasViewController];
+    [self.view addSubview:self.trendingCanvasViewController.view];
+    [self.trendingCanvasViewController.canvasInitIndicator startAnimating];
     [self canvasDidTriggeredToRefresh];
+    [self.view addSubview:self.trendingCanvasViewController.view];
     
+    // Favorite canvas
+    self.favoriteCanvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array] delegate:self];
+    [self positeCanvasViewController:self.favoriteCanvasViewController];
+        
     // Sidebar must be added after main column for shadow
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarFull
                                                                                delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
+}
+
+- (void)positeCanvasViewController:(SFMetroCanvasViewController *)canvasViewController
+{
+    CGRect canvasFrame = canvasViewController.view.frame;
+    canvasViewController.view.frame = CGRectMake(kSFCanvasFrameXInHomeView,
+                                                 kSFCanvasFrameYInHomeView,
+                                                 canvasFrame.size.width,
+                                                 canvasFrame.size.height);
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,7 +88,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.canvasViewController viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
     
     if ([SFAudioStreamer sharedInstance].isPlaying) {
@@ -92,23 +101,34 @@
 - (void)trendingPressed:(id)sender {
     self.browsingType = kSFTrendingBrowsing;
     self.canvasTitle.text = @"Trending";
-    [self.canvasViewController.canvasInitIndicator startAnimating];
+    [self removeAllCanvases];
+    [self.view addSubview:self.trendingCanvasViewController.view];
+    [self.trendingCanvasViewController.canvasInitIndicator startAnimating];
     [self canvasDidTriggeredToRefresh];
-    
 }
 
 - (void)favouritePressed:(id)sender {
     self.browsingType = kSFFavoriteBrowsing;
     self.canvasTitle.text = @"Favorite";
-    [self.canvasViewController.canvasInitIndicator startAnimating];
+    [self removeAllCanvases];
+    [self.view addSubview:self.favoriteCanvasViewController.view];
+    [self.favoriteCanvasViewController.canvasInitIndicator startAnimating];
     [self canvasDidTriggeredToRefresh];
+}
+
+- (void)removeAllCanvases
+{
+    [self.trendingCanvasViewController.view removeFromSuperview];
+    [self.trendingCanvasViewController refreshWithTiles:[NSArray array]];
+    [self.favoriteCanvasViewController.view removeFromSuperview];
+    [self.favoriteCanvasViewController refreshWithTiles:[NSArray array]];
 }
 
 - (void)recentPressed:(id)sender {
 //    self.browsingType = kSFRecentBrowsing;
 //    self.canvasTitle.text = @"Recent";
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Supported"
-                                                    message:@"Searching coming in future version !"
+                                                    message:@"Searching coming in the next version !"
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
@@ -117,7 +137,7 @@
 
 - (void)searchPressed:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Supported"
-                                                    message:@"Searching coming in future version !"
+                                                    message:@"History coming in the next version !"
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
@@ -155,7 +175,7 @@
         case kSFTrendingBrowsing:
         {
             [[SFSocialManager sharedInstance] fetchLiveChannelsWithCallback:^(id returnedObject) {
-                                                         [self performSelectorInBackground:@selector(refreshCanvasWithTiles:)
+                                                         [self performSelectorInBackground:@selector(refreshTrendingCanvas:)
                                                                                 withObject:returnedObject];
                                                      }];
         }
@@ -165,7 +185,7 @@
         {
             [[SFSocialManager sharedInstance] getFollowingForUser:[SFSocialManager sharedInstance].currentUser.objectID
                                                      withCallback:^(id returnedObject) {
-                                                         [self performSelectorInBackground:@selector(refreshCanvasWithTiles:)
+                                                         [self performSelectorInBackground:@selector(refreshFavoriteCanvas:)
                                                                                 withObject:returnedObject];
                                                      }];
         }
@@ -177,18 +197,33 @@
     
 }
 
-- (void)refreshCanvasWithTiles:(id)returnedObject
+- (void)refreshTrendingCanvas:(id)returnedObject
 {
     NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
+    [self refreshCanvas:self.trendingCanvasViewController withTiles:tiles];
+}
+
+- (void)refreshFavoriteCanvas:(id)returnedObject
+{
+    NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
+    [self refreshCanvas:self.favoriteCanvasViewController withTiles:tiles];
+}
+
+- (void)refreshCanvas:(SFMetroCanvasViewController *)canvasViewController
+            withTiles:(NSArray *)tiles
+{
+    [NSThread sleepForTimeInterval:3];
     NSMutableArray *temptiles = [NSMutableArray arrayWithArray:tiles];
     for (int i = 0; i < 7; i++) {
         [temptiles addObjectsFromArray:tiles];
     }
-    if (self.canvasViewController.canvasInitIndicator.isAnimating) {
-        [self.canvasViewController.canvasInitIndicator stopAnimating];
+    
+    if (canvasViewController.canvasInitIndicator.isAnimating) {
+        [canvasViewController.canvasInitIndicator stopAnimating];
     }
-    [self.canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
-    [self.canvasViewController refreshWithTiles:temptiles];
+    
+    [canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
+    [canvasViewController refreshWithTiles:temptiles];
 }
 
 @end

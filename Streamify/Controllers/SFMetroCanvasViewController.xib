@@ -39,9 +39,10 @@
 					<object class="IBUIScrollView" id="938720604">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{25, 20}, {840, 520}}</string>
+						<string key="NSFrame">{{0, 20}, {840, 520}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="809920312"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -134,8 +135,8 @@
 						<int key="objectID">2</int>
 						<reference key="object" ref="766721923"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="938720604"/>
 							<reference ref="809920312"/>
+							<reference ref="938720604"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

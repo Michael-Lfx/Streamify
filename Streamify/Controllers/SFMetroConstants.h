@@ -13,8 +13,11 @@
 #define kMetroNumTilesPerRow (3)
 #define kMetroPaddingBetweenTiles (20.0f)
 #define kMetroPaddingBetweenPages (40.0f)
-#define kMetroPullToRefreshOffsetLimit (80.0f)
-#define kMetroPullToRefreshOffset (80.0f)
+#define kMetroPullToRefreshOffsetLimit (100.0f)
+#define kMetroPullToRefreshOffset (100.0f)
 
-#define kMetroDebug TRUE
+#define kMetroRefreshHeaderArrowFlipAnimationDuration (0.18f)
+#define kMetroRefreshHeaderOnDataSourceFinishedLoadingAnimationDuration (0.2f)
+
+#define kMetroDebug FALSE
 

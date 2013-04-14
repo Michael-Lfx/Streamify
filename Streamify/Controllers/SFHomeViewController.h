@@ -13,7 +13,8 @@
 
 @interface SFHomeViewController : BaseViewController <SFSidebarViewControllerProtocol, SFMetroCanvasViewControllerProtocol, SFTopbarViewControllerProtocol>
 
-@property (nonatomic, strong) SFMetroCanvasViewController *canvasViewController;
+@property (nonatomic, strong) SFMetroCanvasViewController *trendingCanvasViewController;
+@property (nonatomic, strong) SFMetroCanvasViewController *favoriteCanvasViewController;
 @property (nonatomic, strong) SFSidebarViewController *sidebarViewController;
 @property (nonatomic, strong) SFTopbarViewController *topbarViewController;
 @property (nonatomic, strong) UILabel *canvasTitle;
