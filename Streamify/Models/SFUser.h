@@ -10,10 +10,14 @@
 #import <Parse/Parse.h>
 
 @interface SFUser : BaseModel
+
 - (id)initWithPFUser:(PFUser *)user;
+
 @property (nonatomic, strong) NSString *objectID;
 @property (nonatomic, strong) NSString *facebookId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *pictureURL;
 @property (nonatomic) BOOL followed;
+@property (nonatomic) BOOL isLive;
+
 @end
