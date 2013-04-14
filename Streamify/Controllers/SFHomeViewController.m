@@ -54,7 +54,9 @@
     [self.view addSubview:self.canvasTitle];
     
     // Trending canvas
-    self.trendingCanvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array] delegate:self];
+    self.trendingCanvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array]
+                                                                        emptyCanvasMessage:@"There is currently no live channels"
+                                                                                  delegate:self];
     [self positeCanvasViewController:self.trendingCanvasViewController];
     [self.view addSubview:self.trendingCanvasViewController.view];
     [self.trendingCanvasViewController.canvasInitIndicator startAnimating];
@@ -62,7 +64,9 @@
     [self.view addSubview:self.trendingCanvasViewController.view];
     
     // Favorite canvas
-    self.favoriteCanvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array] delegate:self];
+    self.favoriteCanvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array]
+                                                                                  emptyCanvasMessage:@"You're not following any channel"
+                                                                                  delegate:self];
     [self positeCanvasViewController:self.favoriteCanvasViewController];
         
     // Sidebar must be added after main column for shadow

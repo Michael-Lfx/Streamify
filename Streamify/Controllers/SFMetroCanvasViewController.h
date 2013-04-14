@@ -22,7 +22,7 @@
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *canvasInitIndicator;
 
-- (id)initWithTiles:(NSArray *)tiles delegate:(id)delegate;
+- (id)initWithTiles:(NSArray *)tiles emptyCanvasMessage:(NSString *)message delegate:(id)delegate;
 - (void)refreshWithTiles:(NSArray *)tiles;
 - (void)canvasScrollViewDataSourceDidFinishedLoading;
 

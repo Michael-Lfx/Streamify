@@ -19,16 +19,19 @@
 @property (nonatomic, strong) NSArray *tiles;
 @property (nonatomic, strong) NSMutableArray *pageViews;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UILabel *notificationLabel;
 @property (nonatomic, strong) SFMetroRefreshHeaderView *refreshHeaderView;
 @property (nonatomic) SFMetroPullRefreshState canvasState;
 @property (nonatomic) BOOL canvasLoading;
+@property (nonatomic, strong) NSString *emptyCanvasMessage;
 
 @end
 
 
 @implementation SFMetroCanvasViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -37,10 +40,13 @@
     return self;
 }
 
-- (id)initWithTiles:(NSArray *)tiles delegate:(id)delegate {
+- (id)initWithTiles:(NSArray *)tiles
+ emptyCanvasMessage:(NSString *)message
+           delegate:(id)delegate {
     self = [self initWithNib];
     if (self) {
         self.tiles = tiles;
+        self.emptyCanvasMessage = message;
         self.delegate = delegate;
     }
     return self;
@@ -49,7 +55,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
 	// Do any additional setup after loading the view.
     [self resetPageViews];
     self.view.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.01f];
@@ -60,6 +66,10 @@
     CGSize refreshHeaderSize = self.refreshHeaderView.frame.size;
     self.refreshHeaderView.frame = CGRectMake(-refreshHeaderSize.width, 0, refreshHeaderSize.width, refreshHeaderSize.height);
     [self.scrollView addSubview:self.refreshHeaderView];
+    
+    // Add empty message
+    self.notificationLabel.text = self.emptyCanvasMessage;
+    self.notificationLabel.hidden = YES;
     
     if (kMetroDebug) {
         self.view.layer.borderColor = [UIColor redColor].CGColor;
@@ -115,6 +125,11 @@
 - (void)refreshWithTiles:(NSArray *)tiles
 {
     self.tiles = tiles;
+    if (self.tiles.count == 0) {
+        self.notificationLabel.hidden = NO;
+    } else {
+        self.notificationLabel.hidden = YES;
+    }
     
     // Reset canvas' scrollview
     NSInteger currentPage = [self getCurrentPage];
@@ -167,6 +182,7 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
+    NSLog(@"scroll end dragging");
     if (scrollView.contentOffset.x <= -kMetroPullToRefreshOffsetLimit
         && !self.canvasLoading) {
         if ([self.delegate respondsToSelector:@selector(canvasDidTriggeredToRefresh)]) {
@@ -179,12 +195,6 @@
         scrollView.contentOffset = CGPointMake(0, 0);
         scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
     }
-    
-//    NSInteger currentPage = [self getCurrentPage];
-//    NSLog(@"current page %d", currentPage);
-//    if (self.canvasLoading == YES && currentPage == 0) {
-//             
-//    }
 }
 
 #pragma mark - Pull To Refresh public helpers
@@ -196,7 +206,6 @@
     self.canvasState = SFMetroPullRefreshNormal;
     [UIView animateWithDuration:kMetroRefreshHeaderOnDataSourceFinishedLoadingAnimationDuration animations:^{
         self.scrollView.contentInset = UIEdgeInsetsZero;
-//        NSLog(@"Data Source finished loading");
     }];
 }
 
@@ -277,7 +286,6 @@
     for (int i = 0; i < tiles.count; i++) {
         SFUser *user = (SFUser *)[tiles objectAtIndex:i];
         SFMetroTileView *tileView = [[SFMetroTileView alloc] initWithUser:user];
-        tileView.backgroundColor = [UIColor yellowColor];
         UITapGestureRecognizer *tapOnTileRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tileDidTapped:)];
         tapOnTileRecognizer.numberOfTapsRequired = 1;
         tapOnTileRecognizer.numberOfTouchesRequired = 1;
@@ -310,6 +318,7 @@
 
 - (void)viewDidUnload {
     [self setCanvasInitIndicator:nil];
+    [self setNotificationLabel:nil];
     [super viewDidUnload];
 }
 @end
