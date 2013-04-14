@@ -240,9 +240,16 @@
             
             [self getUsersWithObjectIDs:liveChannelNames withCallback:^(id returnedObject) {
                 if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
+                    NSMutableArray *result = [NSMutableArray array];
+                    
+                    for (SFUser *user in [returnedObject objectForKey:kResultUsers]) {
+                        user.isLive = YES;
+                        [result addObject:user];
+                    }
+                    
                     NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
                                              OPERATION_SUCCEEDED, kOperationResult,
-                                             [returnedObject objectForKey:kResultUsers], kResultLiveChannels,
+                                             result, kResultLiveChannels,
                                              nil];
                     response((id)resData);
                 } else {
