@@ -14,6 +14,7 @@
     if (self = [super initWithDictionary:[user objectForKey:@"profile"]]) {
         self.objectID = user.objectId;
         self.followed = NO;
+        self.isLive = NO;
     }
     return self;
 }
