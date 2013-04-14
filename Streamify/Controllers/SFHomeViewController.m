@@ -100,6 +100,10 @@
         self.topbarViewController.channelState = kSFStoppedOrPausedState;
     }
     self.topbarViewController.volume = [SFAudioStreamer sharedInstance].volume;
+    
+    [self.topbarViewController setListeningInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                 [SFAudioStreamer sharedInstance].channelPlaying, @"channelName",
+                                                 nil]];
 }
 
 - (void)trendingPressed:(id)sender {
@@ -162,7 +166,16 @@
 }
 
 - (void)controlButtonPressed:(id)sender {
+    if ([SFAudioStreamer sharedInstance].isPlaying) {
+        [[SFAudioStreamer sharedInstance] stop];
+        self.topbarViewController.channelState = kSFStoppedOrPausedState;
+    }
     
+    self.topbarViewController.volume = [SFAudioStreamer sharedInstance].volume;
+    
+    [self.topbarViewController setListeningInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                 [SFAudioStreamer sharedInstance].channelPlaying, @"channelName",
+                                                 nil]];
 }
 
 #pragma mark - SFMetroCanvasViewControlProtocol

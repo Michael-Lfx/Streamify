@@ -54,6 +54,14 @@
     [self.volumeSlider setValue:volume];
 }
 
+- (void)setListeningInfo:(NSDictionary *)listeningInfo {
+    if ([listeningInfo objectForKey:@"channelName"]) {
+        self.infoLabel.text = [NSString stringWithFormat:@"Playing channel %@", [listeningInfo objectForKey:@"channelName"]];
+    } else {
+        self.infoLabel.text = @"No channel";
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

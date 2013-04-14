@@ -80,6 +80,11 @@
     [super viewWillAppear:animated];
 }
 
+- (void)setChannelState:(SFChannelState)channelState {
+    _channelState = channelState;
+    [self.mainColumnViewController setChannelState:channelState];
+}
+
 - (void)play {
     [[SFAudioStreamer sharedInstance] playChannel:self.user.objectID];
 }
@@ -105,7 +110,6 @@
         
         self.channelState = kSFStoppedOrPausedState;
     }
-    [self.mainColumnViewController setChannelState:self.channelState];
 }
 
 - (void)shareButtonPressed:(id)sender {
