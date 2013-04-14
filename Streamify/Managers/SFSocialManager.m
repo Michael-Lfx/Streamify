@@ -267,14 +267,14 @@
     NSString *text = [dict objectForKey:kMessageText];
     NSString *name = [dict objectForKey:kMessageName];
     NSString *pictureURL = [dict objectForKey:kMessagePictureURL];
-    NSDate *time = [dict objectForKey:kMessageTime];
+//    NSDate *time = [dict objectForKey:kMessageTime];
     
     PFObject *newMessage = [PFObject objectWithClassName:@"Comment"];
     [newMessage setObject:channel forKey:kMessageChannel];
     [newMessage setObject:text forKey:kMessageText];
     [newMessage setObject:name forKey:kMessageName];
     [newMessage setObject:pictureURL forKey:kMessagePictureURL];
-    [newMessage setObject:time forKey:kMessageTime];
+//    [newMessage setObject:time forKey:kMessageTime];
     
     [newMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
@@ -319,7 +319,7 @@
                                                                          [row objectForKey:kMessageName], kMessageName,
                                                                          [row objectForKey:kMessageText], kMessageText,
                                                                          [row objectForKey:kMessagePictureURL], kMessagePictureURL,
-                                                                         [row objectForKey:kMessageTime], kMessageTime,
+                                                                         row.createdAt, kMessageTime,
                                                                          nil]]];
             }
             

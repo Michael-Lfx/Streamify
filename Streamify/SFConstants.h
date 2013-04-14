@@ -73,7 +73,7 @@ typedef enum {
 #define kMessageText @"text"
 #define kMessageName @"name"
 #define kMessagePictureURL @"pictureURL"
-#define kMessageTime @"time"
+#define kMessageTime @"createdAt"
 #define kMessageFetchingLimit 20
 #define kResultNewMessages @"NewMessages"
 #define kResultMessage @"ResultMessage"

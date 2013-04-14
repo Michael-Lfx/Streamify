@@ -62,7 +62,7 @@
                               name, kMessageName,
                               pictureURL, kMessagePictureURL,
                               trimmedString, kMessageText,
-                              [NSDate date], kMessageTime,
+//                              [NSDate date], kMessageTime,
                               nil];
         
         [[SFSocialManager sharedInstance] postMessage:dict withCallback:^(id returnedObject) {
