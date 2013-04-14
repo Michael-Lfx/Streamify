@@ -61,7 +61,7 @@
 - (void)stop {
     [self.streamPlayer stop];
     self.isPlaying = NO;
-    self.channelPlaying = @"";
+    self.channelPlaying = NULL;
 }
 
 @end
