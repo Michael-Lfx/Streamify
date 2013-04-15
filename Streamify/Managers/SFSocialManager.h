@@ -20,7 +20,8 @@ typedef void (^SFResponseBlock)(id returnedObject);
 
 + (SFSocialManager* )sharedInstance;
 - (void)updateMeWithCallback:(SFResponseBlock)response;
-- (BOOL)follows:(NSString *)objectID;
+- (void)follows:(NSString *)objectID withCallback:(SFResponseBlock)response;
+- (void)unfollows:(NSString *)objectID withCallback:(SFResponseBlock)response;
 - (void)getFollowingForUser:(NSString *)userID withCallback:(SFResponseBlock)response;
 - (void)getFollowersForUser:(NSString *)userID withCallback:(SFResponseBlock)response;
 - (void)postMessage:(NSDictionary *)dict withCallback:(SFResponseBlock)response;

@@ -106,21 +106,53 @@
     }];
 }
 
-- (BOOL)follows:(NSString *)objectID {
+- (void)follows:(NSString *)objectID withCallback:(SFResponseBlock)response{
     PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
     [query whereKey:@"follower" equalTo:self.currentUser.objectID];
     [query whereKey:@"following" equalTo:objectID];
-    NSArray *dataArray = [query findObjects];
-    if (dataArray.count > 0) return FALSE;
-    
-    PFObject *relation = [PFObject objectWithClassName:@"Follow"];
-    [relation setObject:self.currentUser.objectID forKey:@"follower"];
-    [relation setObject:objectID forKey:@"following"];
-    [relation saveInBackground];
-    return YES;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (objects.count > 0) {
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_FAILED, kOperationResult,
+                                     @"You already followed this channel", kOperationError,
+                                     nil];
+            response((id)resData);
+        } else {
+            PFObject *relation = [PFObject objectWithClassName:@"Follow"];
+            [relation setObject:self.currentUser.objectID forKey:@"follower"];
+            [relation setObject:objectID forKey:@"following"];
+            [relation saveInBackground];
+            
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_SUCCEEDED, kOperationResult,
+                                     nil];
+            response((id)resData);
+        }
+    }];
 }
 
-
+- (void)unfollows:(NSString *)objectID withCallback:(SFResponseBlock)response {
+    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+    [query whereKey:@"follower" equalTo:self.currentUser.objectID];
+    [query whereKey:@"following" equalTo:objectID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (objects.count == 0) {
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_FAILED, kOperationResult,
+                                     @"You have not followed this channel", kOperationError,
+                                     nil];
+            response((id)resData);
+        } else {
+            PFObject *relation = [objects objectAtIndex:0];
+            [relation deleteInBackground];
+            
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_SUCCEEDED, kOperationResult,
+                                     nil];
+            response((id)resData);
+        }
+    }];
+}
 
 //- (void)getFollowingForUser:(NSString *)userID withCallback:(SFResponseBlock)response {
 //    PFQuery *followQuery = [PFQuery queryWithClassName:@"Follow"];
