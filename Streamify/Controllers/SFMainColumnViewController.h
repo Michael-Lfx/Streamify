@@ -13,6 +13,7 @@
 - (void)controlButtonPressed:(id)sender;
 - (void)volumeSliderChanged:(id)sender;
 - (void)shareButtonPressed:(id)sender;
+- (void)followButtonPressed:(id)sender;
 @end
 
 @interface SFMainColumnViewController : BaseViewController
@@ -38,11 +39,13 @@
 @property (strong, nonatomic) IBOutlet UIButton *effect3Button;
 @property (strong, nonatomic) IBOutlet UIButton *effect4Button;
 
-- (id)initMainColumnWithOption:(SFMainColumnType)mainColumnType delegate:(id)delegate channelState:(SFChannelState)channelState;
+- (id)initMainColumnWithOption:(SFMainColumnType)mainColumnType delegate:(id)delegate channelState:(SFChannelState)channelState followingState:(BOOL)followingState;
 - (IBAction)controlButtonPressed:(id)sender;
 - (IBAction)volumeSliderChanged:(id)sender;
 - (IBAction)shareButtonPressed:(id)sender;
+- (IBAction)followButtonPressed:(id)sender;
 
 - (void)setChannelState:(SFChannelState)channelState;
+- (void)setFollowingState:(BOOL)followingState;
 
 @end

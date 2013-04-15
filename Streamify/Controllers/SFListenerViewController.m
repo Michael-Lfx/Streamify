@@ -31,6 +31,7 @@
         
         // Default Channel State in controller when started
         self.channelState = kSFStoppedOrPausedState;
+        
     }
     return self;
 }
@@ -52,7 +53,8 @@
     // Add Main Column
     self.mainColumnViewController = [[SFMainColumnViewController alloc] initMainColumnWithOption:kSFMainColumnListener
                                                                                         delegate:self
-                                                                                    channelState:self.channelState];
+                                                                                    channelState:self.channelState
+                                                                                  followingState:self.user.followed];
     self.mainColumnViewController.view.frame = CGRectMake(kSFMainColumnFrameX,
                                                           kSFMainColumnFrameY,
                                                           kSFMainColumnFrameW,
@@ -134,6 +136,11 @@
             self.mainColumnViewController.shareButton.enabled = NO;
         }];
     }
+}
+
+- (void)followButtonPressed:(id)sender {
+    // ...
+    // [self.mainColumnViewController setFollowingState:self.user.followed];
 }
 
 - (void) performPublishAction:(void (^)(void)) action {

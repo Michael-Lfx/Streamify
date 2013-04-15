@@ -182,6 +182,8 @@
 		C0D21CFD170B1D32004EC17F /* SFBroadcasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D21CFC170B1D32004EC17F /* SFBroadcasterViewController.m */; };
 		C0D21D00170B23D1004EC17F /* maincol-icon-record.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D21CFE170B23D1004EC17F /* maincol-icon-record.png */; };
 		C0D21D01170B23D1004EC17F /* maincol-icon-record@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D21CFF170B23D1004EC17F /* maincol-icon-record@2x.png */; };
+		C0D2CDF0171C49E4000AF520 /* maincol-icon-unfollow.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D2CDEE171C49E4000AF520 /* maincol-icon-unfollow.png */; };
+		C0D2CDF1171C49E4000AF520 /* maincol-icon-unfollow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0D2CDEF171C49E4000AF520 /* maincol-icon-unfollow@2x.png */; };
 		C0E12175171154AC00A09C6C /* SFChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E12173171154AC00A09C6C /* SFChatTableViewController.m */; };
 		C0E12176171154AC00A09C6C /* SFChatTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0E12174171154AC00A09C6C /* SFChatTableViewController.xib */; };
 		C0E12179171162C400A09C6C /* SFChatMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E12178171162C400A09C6C /* SFChatMessageCell.m */; };
@@ -434,6 +436,8 @@
 		C0D21CFC170B1D32004EC17F /* SFBroadcasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBroadcasterViewController.m; sourceTree = "<group>"; };
 		C0D21CFE170B23D1004EC17F /* maincol-icon-record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-record.png"; path = "Theme/maincol-icon-record.png"; sourceTree = "<group>"; };
 		C0D21CFF170B23D1004EC17F /* maincol-icon-record@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-record@2x.png"; path = "Theme/maincol-icon-record@2x.png"; sourceTree = "<group>"; };
+		C0D2CDEE171C49E4000AF520 /* maincol-icon-unfollow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-unfollow.png"; path = "Theme/maincol-icon-unfollow.png"; sourceTree = "<group>"; };
+		C0D2CDEF171C49E4000AF520 /* maincol-icon-unfollow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-unfollow@2x.png"; path = "Theme/maincol-icon-unfollow@2x.png"; sourceTree = "<group>"; };
 		C0E12172171154AB00A09C6C /* SFChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFChatTableViewController.h; sourceTree = "<group>"; };
 		C0E12173171154AC00A09C6C /* SFChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFChatTableViewController.m; sourceTree = "<group>"; };
 		C0E12174171154AC00A09C6C /* SFChatTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFChatTableViewController.xib; sourceTree = "<group>"; };
@@ -932,6 +936,8 @@
 				C0AC8AA7170597AB00422723 /* maincol-icon-stop@2x.png */,
 				C0D21CF2170B0FFE004EC17F /* maincol-icon-follow.png */,
 				C0D21CF3170B0FFE004EC17F /* maincol-icon-follow@2x.png */,
+				C0D2CDEE171C49E4000AF520 /* maincol-icon-unfollow.png */,
+				C0D2CDEF171C49E4000AF520 /* maincol-icon-unfollow@2x.png */,
 				C0D21CFE170B23D1004EC17F /* maincol-icon-record.png */,
 				C0D21CFF170B23D1004EC17F /* maincol-icon-record@2x.png */,
 				C0D21CF4170B0FFE004EC17F /* maincol-icon-share.png */,
@@ -1210,6 +1216,8 @@
 				1AB5ED42171A9585009EFE67 /* whiteArrow.png in Resources */,
 				9CEC488F171BFC10002E1B52 /* README.md in Resources */,
 				9CEC4890171BFC10002E1B52 /* release_notes.md in Resources */,
+				C0D2CDF0171C49E4000AF520 /* maincol-icon-unfollow.png in Resources */,
+				C0D2CDF1171C49E4000AF520 /* maincol-icon-unfollow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

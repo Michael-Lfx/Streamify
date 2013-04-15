@@ -41,7 +41,8 @@
     // Add Main Column
     self.mainColumnViewController = [[SFMainColumnViewController alloc] initMainColumnWithOption:kSFMainColumnBroadcaster
                                                                                         delegate:self
-                                                                                    channelState:self.channelState];
+                                                                                    channelState:self.channelState
+                                                                                  followingState:NO];
     self.mainColumnViewController.view.frame = CGRectMake(kSFMainColumnFrameX,
                                                           kSFMainColumnFrameY,
                                                           kSFMainColumnFrameW,
