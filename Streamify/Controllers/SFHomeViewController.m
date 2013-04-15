@@ -33,6 +33,11 @@
 {
     [super viewDidLoad];
     
+    // Background image
+    UIImage *img = [UIImage imageNamed:@"mainbackground.png"];
+    self.backgroundImage = [[UIImageView alloc] initWithImage:img];
+    [self.view addSubview:self.backgroundImage];
+    
     // Topbar
     self.topbarViewController = [[SFTopbarViewController alloc] initTopbarWithDelegate:self
                                                                           channelState:self.channelState];
@@ -242,4 +247,7 @@
     [canvasViewController refreshWithTiles:tiles];
 }
 
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
 @end

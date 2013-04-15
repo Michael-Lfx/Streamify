@@ -18,5 +18,6 @@
 @property (nonatomic, strong) SFSidebarViewController *sidebarViewController;
 @property (nonatomic, strong) SFTopbarViewController *topbarViewController;
 @property (nonatomic, strong) UILabel *canvasTitle;
+@property (nonatomic, strong) UIImageView *backgroundImage;
 
 @end

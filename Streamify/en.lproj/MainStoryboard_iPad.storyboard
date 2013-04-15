@@ -11,12 +11,6 @@
                     <view key="view" contentMode="scaleToFill" id="btP-La-ivl">
                         <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mainbackground.png" id="ZBH-Bu-rOL">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="748"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -168,7 +162,6 @@
         <image name="login-background.png" width="1024" height="768"/>
         <image name="login-button.png" width="162" height="34"/>
         <image name="logo.png" width="348" height="128"/>
-        <image name="mainbackground.png" width="1024" height="768"/>
     </resources>
     <classes>
         <class className="BaseViewController" superclassName="UIViewController">
@@ -176,13 +169,6 @@
         </class>
         <class className="SFBroadcasterViewController" superclassName="BaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SFBroadcasterViewController.h"/>
-        </class>
-        <class className="SFHomeTestViewController" superclassName="BaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SFHomeTestViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="genderField" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameField" candidateClass="UILabel"/>
-            </relationships>
         </class>
         <class className="SFHomeViewController" superclassName="BaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SFHomeViewController.h"/>

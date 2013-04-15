@@ -7,6 +7,7 @@
 //
 
 #import "SFConstants.h"
+#import "SFUIDefaultTheme.h"
 #import "SFChatViewController.h"
 #import "SFChatTableViewController.h"
 
@@ -88,6 +89,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [SFUIDefaultTheme themeButton:self.sendButton];
+    
     self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, self.chatTextField.frame.origin.y,
                                           self.chatTextField.frame.size.width, kSFChatTextFrameH);
     self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, self.chatTextField.frame.origin.y,
