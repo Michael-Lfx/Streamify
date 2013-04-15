@@ -22,6 +22,9 @@
     
     [PFFacebookUtils initializeFacebook];
     
+//    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+    [TestFlight takeOff:@"b557c4f7-5889-40e9-87bd-d1789b10efdb"];
+    
     return YES;
 }
 							

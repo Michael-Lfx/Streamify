@@ -40,6 +40,7 @@
 //Vendors
 #import "SVPullToRefresh.h"
 #import "AFNetworking.h"
+#import "TestFlight.h"
 
 //Models
 #import "BaseModel.h"

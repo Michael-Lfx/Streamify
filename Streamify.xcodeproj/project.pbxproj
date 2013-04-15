@@ -100,6 +100,10 @@
 		9CDD6AEC17034C47005A42C8 /* SFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD6AEB17034C47005A42C8 /* SFLoginViewController.m */; };
 		9CE76B081712B09600D60D7D /* SFAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE76B071712B09600D60D7D /* SFAudioRecorder.m */; };
 		9CE76B0B1712B0B200D60D7D /* SFAudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE76B0A1712B0B200D60D7D /* SFAudioStreamer.m */; };
+		9CEC488E171BFC10002E1B52 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEC488A171BFC10002E1B52 /* libTestFlight.a */; };
+		9CEC488F171BFC10002E1B52 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9CEC488B171BFC10002E1B52 /* README.md */; };
+		9CEC4890171BFC10002E1B52 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 9CEC488C171BFC10002E1B52 /* release_notes.md */; };
+		9CEC4892171BFC45002E1B52 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEC4891171BFC45002E1B52 /* libz.dylib */; };
 		C0A3B966171126FE0005B3ED /* brillant.png in Resources */ = {isa = PBXBuildFile; fileRef = C0A3B964171126FE0005B3ED /* brillant.png */; };
 		C0A3B967171126FE0005B3ED /* brillant@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0A3B965171126FE0005B3ED /* brillant@2x.png */; };
 		C0AB0918171578C3009FEBC1 /* login-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB0914171578C3009FEBC1 /* login-background.png */; };
@@ -343,6 +347,11 @@
 		9CE76B071712B09600D60D7D /* SFAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAudioRecorder.m; sourceTree = "<group>"; };
 		9CE76B091712B0B200D60D7D /* SFAudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAudioStreamer.h; sourceTree = "<group>"; };
 		9CE76B0A1712B0B200D60D7D /* SFAudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAudioStreamer.m; sourceTree = "<group>"; };
+		9CEC488A171BFC10002E1B52 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		9CEC488B171BFC10002E1B52 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		9CEC488C171BFC10002E1B52 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		9CEC488D171BFC10002E1B52 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		9CEC4891171BFC45002E1B52 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C0A3B964171126FE0005B3ED /* brillant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brillant.png; path = Theme/brillant.png; sourceTree = "<group>"; };
 		C0A3B965171126FE0005B3ED /* brillant@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brillant@2x.png"; path = "Theme/brillant@2x.png"; sourceTree = "<group>"; };
 		C0AB0914171578C3009FEBC1 /* login-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-background.png"; path = "Theme/login-background.png"; sourceTree = "<group>"; };
@@ -445,6 +454,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CEC4892171BFC45002E1B52 /* libz.dylib in Frameworks */,
 				1A1D850017061FC8002C1CB4 /* MediaPlayer.framework in Frameworks */,
 				1A1D84FE17061FC2002C1CB4 /* AVFoundation.framework in Frameworks */,
 				9CCC322017036A3600910B22 /* Social.framework in Frameworks */,
@@ -466,6 +476,7 @@
 				9CACEFE416F7529C0067C352 /* Foundation.framework in Frameworks */,
 				9CACF07C16F755AC0067C352 /* FacebookSDK.framework in Frameworks */,
 				9CDD6AD31703478C005A42C8 /* Parse.framework in Frameworks */,
+				9CEC488E171BFC10002E1B52 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +584,7 @@
 		9CACEFE016F7529C0067C352 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CEC4891171BFC45002E1B52 /* libz.dylib */,
 				1A1D84FF17061FC8002C1CB4 /* MediaPlayer.framework */,
 				1A1D84FD17061FC2002C1CB4 /* AVFoundation.framework */,
 				9CDD6AC817034264005A42C8 /* Accounts.framework */,
@@ -744,6 +756,7 @@
 		9CACF03016F755AC0067C352 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				9CEC4889171BFC10002E1B52 /* TestFlightSDK */,
 				9CCE45A11715D18E0015825F /* GCDTimer */,
 				9CACF03116F755AC0067C352 /* AFNetworking */,
 				9CACF04616F755AC0067C352 /* SDWebImage */,
@@ -861,6 +874,17 @@
 				9CE76B0A1712B0B200D60D7D /* SFAudioStreamer.m */,
 			);
 			path = AudioComponents;
+			sourceTree = "<group>";
+		};
+		9CEC4889171BFC10002E1B52 /* TestFlightSDK */ = {
+			isa = PBXGroup;
+			children = (
+				9CEC488A171BFC10002E1B52 /* libTestFlight.a */,
+				9CEC488B171BFC10002E1B52 /* README.md */,
+				9CEC488C171BFC10002E1B52 /* release_notes.md */,
+				9CEC488D171BFC10002E1B52 /* TestFlight.h */,
+			);
+			path = TestFlightSDK;
 			sourceTree = "<group>";
 		};
 		C0AB091C17157AFF009FEBC1 /* Login */ = {
@@ -1203,6 +1227,8 @@
 				C0C8E3861719C4F40042A827 /* iTunesArtwork@2x.png in Resources */,
 				1AB5ED41171A9585009EFE67 /* whiteArrow@2x.png in Resources */,
 				1AB5ED42171A9585009EFE67 /* whiteArrow.png in Resources */,
+				9CEC488F171BFC10002E1B52 /* README.md in Resources */,
+				9CEC4890171BFC10002E1B52 /* release_notes.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1380,6 +1406,10 @@
 				GCC_PREFIX_HEADER = "Streamify/Streamify-Prefix.pch";
 				INFOPLIST_FILE = "Streamify/Streamify-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Streamify/Vendors/TestFlightSDK\"",
+				);
 				OTHER_LDFLAGS = (
 					"-lsqlite3.0",
 					"-ObjC",
@@ -1402,6 +1432,10 @@
 				GCC_PREFIX_HEADER = "Streamify/Streamify-Prefix.pch";
 				INFOPLIST_FILE = "Streamify/Streamify-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Streamify/Vendors/TestFlightSDK\"",
+				);
 				OTHER_LDFLAGS = (
 					"-lsqlite3.0",
 					"-ObjC",
