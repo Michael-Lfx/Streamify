@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A1D84FE17061FC2002C1CB4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1D84FD17061FC2002C1CB4 /* AVFoundation.framework */; };
 		1A1D850017061FC8002C1CB4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1D84FF17061FC8002C1CB4 /* MediaPlayer.framework */; };
-		1A1D8504170620B7002C1CB4 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1D8503170620B7002C1CB4 /* RecordViewController.m */; };
 		1A49FA0D1704EAC400969CFA /* SFMetroTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA071704EAC400969CFA /* SFMetroTileView.m */; };
 		1A49FA0E1704EAC400969CFA /* SFMetroTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A49FA081704EAC400969CFA /* SFMetroTileView.xib */; };
 		1A49FA661704F57C00969CFA /* SFListenerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A49FA651704F57C00969CFA /* SFListenerViewController.m */; };
@@ -83,7 +82,6 @@
 		9CACF0A916F759BA0067C352 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CACF0A816F759BA0067C352 /* MapKit.framework */; };
 		9CB483F817182B9100E90107 /* SFMetroRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB483F617182B9100E90107 /* SFMetroRefreshHeaderView.m */; };
 		9CB483F917182B9100E90107 /* SFMetroRefreshHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB483F717182B9100E90107 /* SFMetroRefreshHeaderView.xib */; };
-		9CCC3214170359C400910B22 /* SFHomeTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC3213170359C400910B22 /* SFHomeTestViewController.m */; };
 		9CCC322017036A3600910B22 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCC321F17036A3600910B22 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9CCE45A51715D18E0015825F /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE45A41715D18E0015825F /* GCDTimer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9CDD6AC917034265005A42C8 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDD6AC817034264005A42C8 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -194,8 +192,6 @@
 /* Begin PBXFileReference section */
 		1A1D84FD17061FC2002C1CB4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1A1D84FF17061FC8002C1CB4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		1A1D8502170620B7002C1CB4 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordViewController.h; path = Controllers/RecordViewController.h; sourceTree = "<group>"; };
-		1A1D8503170620B7002C1CB4 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordViewController.m; path = Controllers/RecordViewController.m; sourceTree = "<group>"; };
 		1A49FA071704EAC400969CFA /* SFMetroTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMetroTileView.m; sourceTree = "<group>"; };
 		1A49FA081704EAC400969CFA /* SFMetroTileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMetroTileView.xib; sourceTree = "<group>"; };
 		1A49FA111704EACA00969CFA /* SFMetroConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroConstants.h; sourceTree = "<group>"; };
@@ -325,8 +321,6 @@
 		9CB483F617182B9100E90107 /* SFMetroRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMetroRefreshHeaderView.m; sourceTree = "<group>"; };
 		9CB483F717182B9100E90107 /* SFMetroRefreshHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMetroRefreshHeaderView.xib; sourceTree = "<group>"; };
 		9CB483FA171832E000E90107 /* SFMetroTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMetroTileView.h; sourceTree = "<group>"; };
-		9CCC3212170359C400910B22 /* SFHomeTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHomeTestViewController.h; sourceTree = "<group>"; };
-		9CCC3213170359C400910B22 /* SFHomeTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHomeTestViewController.m; sourceTree = "<group>"; };
 		9CCC321F17036A3600910B22 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		9CCE45A31715D18E0015825F /* GCDTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDTimer.h; sourceTree = "<group>"; };
 		9CCE45A41715D18E0015825F /* GCDTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDTimer.m; sourceTree = "<group>"; };
@@ -483,16 +477,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A1D8501170620A4002C1CB4 /* TestAudio */ = {
-			isa = PBXGroup;
-			children = (
-				1A1D8502170620B7002C1CB4 /* RecordViewController.h */,
-				1A1D8503170620B7002C1CB4 /* RecordViewController.m */,
-			);
-			name = TestAudio;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		1A49F9E61704BE0900969CFA /* Home Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,8 +492,6 @@
 			children = (
 				9CDD6AEA17034C47005A42C8 /* SFLoginViewController.h */,
 				9CDD6AEB17034C47005A42C8 /* SFLoginViewController.m */,
-				9CCC3212170359C400910B22 /* SFHomeTestViewController.h */,
-				9CCC3213170359C400910B22 /* SFHomeTestViewController.m */,
 			);
 			name = "Login Screen";
 			sourceTree = "<group>";
@@ -689,7 +671,6 @@
 		9CACF02016F755AC0067C352 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1A1D8501170620A4002C1CB4 /* TestAudio */,
 				9CACF02116F755AC0067C352 /* Superclass */,
 				1A49F9E71704BE4500969CFA /* Login Screen */,
 				1A49F9E61704BE0900969CFA /* Home Screen */,
@@ -1282,7 +1263,6 @@
 				9CACF09F16F7589A0067C352 /* BaseViewController.m in Sources */,
 				C0AC8A68170575B900422723 /* SFSidebarViewController.m in Sources */,
 				9CDD6AEC17034C47005A42C8 /* SFLoginViewController.m in Sources */,
-				9CCC3214170359C400910B22 /* SFHomeTestViewController.m in Sources */,
 				1A49FA0D1704EAC400969CFA /* SFMetroTileView.m in Sources */,
 				1A49FA661704F57C00969CFA /* SFListenerViewController.m in Sources */,
 				C0AC8A631705731D00422723 /* SFMainColumnViewController.m in Sources */,
@@ -1292,7 +1272,6 @@
 				9C93677E170601B0006108F9 /* SFUser.m in Sources */,
 				9C936781170601BC006108F9 /* SFSocialManager.m in Sources */,
 				1A7932C41706169E00005CBF /* SFMetroCanvasView.m in Sources */,
-				1A1D8504170620B7002C1CB4 /* RecordViewController.m in Sources */,
 				C0D21CFD170B1D32004EC17F /* SFBroadcasterViewController.m in Sources */,
 				1AE32125170DC8DC00D740E5 /* SFTopbarViewController.m in Sources */,
 				C0D16177170F3666006C1475 /* SFChatViewController.m in Sources */,
