@@ -12,8 +12,12 @@
 
 @property (nonatomic) BOOL isRecording;
 
+@property (nonatomic, strong) NSString *channel;
+@property (nonatomic, strong) NSString *sessionToken;
+@property (nonatomic) int currentIndex;
+
 + (SFAudioRecorder *)sharedInstance;
-- (void)prepareRecord;
+- (void)prepareRecordWithChannel:(NSString *)channel sessionToken:(NSString *)token;
 - (void)record;
 - (void)stop;
 
