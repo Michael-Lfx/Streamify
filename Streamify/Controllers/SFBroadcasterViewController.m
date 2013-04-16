@@ -70,9 +70,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - SFMainColumnViewController protocol
+
 - (void)controlButtonPressed:(id)sender {
 //    if (self.channelState == kSFStoppedOrPausedState) {
     if (![SFAudioRecorder sharedInstance].isRecording) {
+        [[SFAudioRecorder sharedInstance] prepareRecordWithChannel:[PFUser currentUser].objectId
+                                                      sessionToken:[PFUser currentUser].sessionToken];
         [[SFAudioRecorder sharedInstance] record];
         
         self.channelState = kSFPlayingOrRecordingState;
@@ -85,12 +89,14 @@
     [self.mainColumnViewController setChannelState:self.channelState];
 }
 
-- (void)backPressed:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void)volumeSliderChanged:(id)sender {
     
+}
+
+#pragma mark - SFSideBarViewController protocol
+
+- (void)backPressed:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

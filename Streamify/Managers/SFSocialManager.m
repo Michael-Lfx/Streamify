@@ -27,24 +27,37 @@
 - (void)updateMeWithCallback:(SFResponseBlock)response {
     FBRequest *request = [FBRequest requestForMe];
     [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-        NSDictionary *userData = (NSDictionary *)result;
-        
-        NSString *facebookID = userData[@"id"];
-        NSLog(@"%@", facebookID);
-        NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
-        
-        NSDictionary *userProfile = @{@"facebookId": facebookID,
-                                      @"name": userData[@"name"],
-                                      @"pictureURL": [pictureURL absoluteString]};
-        
-        [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
-        [[PFUser currentUser] setObject:[PFUser currentUser].objectId forKey:@"objectIdCopy"];
-        [[PFUser currentUser] saveInBackground];
-        
-        self.currentUser = [[SFUser alloc] initWithPFUser:[PFUser currentUser]];
-        
-        NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:OPERATION_SUCCEEDED, kOperationResult, nil];
-        response(resData);
+        if (!error) {
+            NSDictionary *userData = (NSDictionary *)result;
+            
+            NSString *facebookID = userData[@"id"];
+            NSLog(@"%@", facebookID);
+            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+            
+            NSDictionary *userProfile = @{@"facebookId": facebookID,
+                                          @"name": userData[@"name"],
+                                          @"pictureURL": [pictureURL absoluteString]};
+            
+            [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
+            [[PFUser currentUser] setObject:[PFUser currentUser].objectId forKey:@"objectIdCopy"];
+            [[PFUser currentUser] saveInBackground];
+            
+            self.currentUser = [[SFUser alloc] initWithPFUser:[PFUser currentUser]];
+            
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:OPERATION_SUCCEEDED, kOperationResult, nil];
+            response(resData);
+        } else if ([[[[error userInfo] objectForKey:@"error"] objectForKey:@"type"]
+                      isEqualToString: @"OAuthException"]) { // Since the request failed, we can check if it was due to an invalid session
+            NSLog(@"The facebook session was invalidated");
+            [PFUser logOut];
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:OPERATION_FAILED, kOperationResult, nil];
+            response(resData);
+        } else {
+            NSLog(@"Some other error: %@", error);
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:OPERATION_FAILED, kOperationResult, nil];
+            response(resData);
+        }
+
     }];
 }
 
@@ -157,10 +170,10 @@
 //- (void)getFollowingForUser:(NSString *)userID withCallback:(SFResponseBlock)response {
 //    PFQuery *followQuery = [PFQuery queryWithClassName:@"Follow"];
 //    [followQuery whereKey:@"follower" equalTo:userID];
-//    
+//
 //    PFQuery *query = [PFUser query];
 //    [query whereKey:@"objectId" matchesKey:@"following" inQuery:followQuery];
-//    
+//
 //    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 //        if (error) {
 //            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -169,19 +182,19 @@
 //            response((id)resData);
 //        } else {
 //            NSMutableArray *result = [NSMutableArray array];
-//            
+//
 //            for (PFUser *row in objects) {
 //                SFUser *user = [[SFUser alloc] initWithPFUser:row];
 //                user.followed = TRUE;
 //                [result addObject:user];
 //            }
 //            self.following = result;
-//            
+//
 //            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
 //                                     OPERATION_SUCCEEDED, kOperationResult,
 //                                     result, kResultFollowing,
 //                                     nil];
-//            
+//
 //            response((id)resData);
 //        }
 //    }];
@@ -299,14 +312,14 @@
     NSString *text = [dict objectForKey:kMessageText];
     NSString *name = [dict objectForKey:kMessageName];
     NSString *pictureURL = [dict objectForKey:kMessagePictureURL];
-//    NSDate *time = [dict objectForKey:kMessageTime];
+    //    NSDate *time = [dict objectForKey:kMessageTime];
     
     PFObject *newMessage = [PFObject objectWithClassName:@"Comment"];
     [newMessage setObject:channel forKey:kMessageChannel];
     [newMessage setObject:text forKey:kMessageText];
     [newMessage setObject:name forKey:kMessageName];
     [newMessage setObject:pictureURL forKey:kMessagePictureURL];
-//    [newMessage setObject:time forKey:kMessageTime];
+    //    [newMessage setObject:time forKey:kMessageTime];
     
     [newMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
@@ -328,7 +341,7 @@
 - (void)fetchChannelMessages:(NSString *)channelID
                  lastUpdated:(NSDate *)updateTime
                 withCallback:(SFResponseBlock)response {
-    [self fetchChannelMessages:channelID lastUpdated:updateTime limit:1000 withCallback:response];
+    [self fetchChannelMessages:channelID lastUpdated:updateTime limit:20 withCallback:response];
 }
 
 - (void)fetchChannelMessages:(NSString *)channelID
@@ -337,7 +350,7 @@
                 withCallback:(SFResponseBlock)response {
     PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
     [query whereKey:kMessageChannel equalTo:channelID];
-    [query whereKey:kMessageTime greaterThan:updateTime];
+    //[query whereKey:kMessageTime greaterThan:updateTime];
     [query addDescendingOrder:kMessageTime];
     query.limit = limit;
     

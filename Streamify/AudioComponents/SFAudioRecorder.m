@@ -14,10 +14,7 @@
 @interface SFAudioRecorder() <AVAudioRecorderDelegate>
 @property (nonatomic, strong) AVAudioRecorder *audioRecorder;
 @property (nonatomic, strong) NSString *fileName;
-//@property (nonatomic, strong) NSTimer *timer;
-@property (nonatomic) int count;
 @property (nonatomic) NSUInteger lastBytes;
-@property (nonatomic, strong) NSString *userID;
 @property GCDTimer *timer;
 @end
 
@@ -33,17 +30,32 @@
     return _sharedInstance;
 }
 
+/*
 - (void)prepareRecord {
     self.userID = [SFSocialManager sharedInstance].currentUser.objectID;
     self.count = -1;
     self.lastBytes = -1;
     self.isRecording = NO;
 }
+ */
+
+- (id)init {
+    if (self = [super init]) {
+        self.isRecording = NO;
+    }
+    return self;
+}
+
+- (void)prepareRecordWithChannel:(NSString *)channel sessionToken:(NSString *)token{
+    self.channel = channel;
+    self.sessionToken = token;
+    self.currentIndex = -1;
+    self.lastBytes = -1;
+    self.isRecording = NO;
+}
 
 - (void)record
 {
-    [self prepareRecord];
-    
     NSArray *dirPaths;
     NSString *docsDir;
     
@@ -101,7 +113,7 @@
 - (BOOL)sendCreateRequestToServer {
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://54.251.250.31"]];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:self.userID, [PFUser currentUser].sessionToken, nil]
+    NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:self.channel, self.sessionToken, nil]
                                                        forKeys:[NSArray arrayWithObjects:@"username", @"session_token", nil]];
     NSMutableURLRequest *requets = [client requestWithMethod:@"POST" path:@"/create.php" parameters:params];
     
@@ -121,7 +133,7 @@
 - (BOOL)sendStopRequestToServer {
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://54.251.250.31"]];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:self.userID, [PFUser currentUser].sessionToken, nil]
+    NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:self.channel, self.sessionToken, nil]
                                                        forKeys:[NSArray arrayWithObjects:@"username", @"session_token", nil]];
     NSMutableURLRequest *requets = [client requestWithMethod:@"POST" path:@"/stop.php" parameters:params];
     
@@ -144,7 +156,7 @@
     
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://54.251.250.31"]];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObject:self.userID forKey:@"username"];
+    NSDictionary *params = [NSDictionary dictionaryWithObject:self.channel forKey:@"username"];
     NSMutableURLRequest *myRequest = [client multipartFormRequestWithMethod:@"POST" path:@"/upload.php" parameters:params constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
         [formData appendPartWithFileData:d name:@"userfile" fileName:self.fileName mimeType:@"audio/x-aac"];
     }];
@@ -163,8 +175,8 @@
 }
 
 - (void)changeFileName {
-    self.count++;
-    self.fileName = [NSString stringWithFormat:@"sound%d.aac", self.count];
+    self.currentIndex++;
+    self.fileName = [NSString stringWithFormat:@"sound%d.aac", self.currentIndex];
 }
 
 - (void)send {
