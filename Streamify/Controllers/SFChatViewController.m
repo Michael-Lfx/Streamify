@@ -126,8 +126,6 @@
                                                                   self.lastUpdateTime = message.timeCreated;
                                                               }
                                                           }
-                                                          NSLog(@"%d", [self.chatTableViewController.tableView numberOfSections]);
-                                                          
                                                           [self.chatTableViewController.tableView reloadData];
                                                           NSIndexPath* path = [NSIndexPath indexPathForRow: 0 inSection: 19];
                                                           [self.chatTableViewController.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionTop animated:YES];
