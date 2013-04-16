@@ -53,6 +53,12 @@
 
 - (IBAction)followButtonPressed:(id)sender {
     [self.delegate followButtonPressed:sender];
+    if(self.followingState == YES){
+        [self setFollowingState:NO];
+    }
+    else{
+        [self setFollowingState:YES];
+    }
 }
 
 - (void)setChannelState:(SFChannelState)channelState {
