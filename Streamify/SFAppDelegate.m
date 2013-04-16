@@ -10,82 +10,6 @@
 #import <Parse/Parse.h>
 #import <AVFoundation/AVFoundation.h>
 
-#pragma mark Audio session callbacks_______________________
-
-// Audio session callback function for responding to audio route changes. If playing
-//		back application audio when the headset is unplugged, this callback pauses
-//		playback and displays an alert that allows the user to resume or stop playback.
-//
-//		The system takes care of iPod audio pausing during route changes--this callback
-//		is not involved with pausing playback of iPod audio.
-void audioRouteChangeListenerCallback (
-                                       void                      *inUserData,
-                                       AudioSessionPropertyID    inPropertyID,
-                                       UInt32                    inPropertyValueSize,
-                                       const void                *inPropertyValue
-                                       ) {
-	
-	// ensure that this callback was invoked for a route change
-	if (inPropertyID != kAudioSessionProperty_AudioRouteChange) return;
-    
-	// This callback, being outside the implementation block, needs a reference to the
-	//		MainViewController object, which it receives in the inUserData parameter.
-	//		You provide this reference when registering this callback (see the call to
-	//		AudioSessionAddPropertyListener).
-	MainViewController *controller = (MainViewController *) inUserData;
-	
-	// if application sound is not playing, there's nothing to do, so return.
-	if (controller.appSoundPlayer.playing == 0 ) {
-        
-		NSLog (@"Audio route change while application audio is stopped.");
-		return;
-		
-	} else {
-        
-		// Determines the reason for the route change, to ensure that it is not
-		//		because of a category change.
-		CFDictionaryRef	routeChangeDictionary = inPropertyValue;
-		
-		CFNumberRef routeChangeReasonRef =
-        CFDictionaryGetValue (
-                              routeChangeDictionary,
-                              CFSTR (kAudioSession_AudioRouteChangeKey_Reason)
-                              );
-        
-		SInt32 routeChangeReason;
-		
-		CFNumberGetValue (
-                          routeChangeReasonRef,
-                          kCFNumberSInt32Type,
-                          &routeChangeReason
-                          );
-		
-		// "Old device unavailable" indicates that a headset was unplugged, or that the
-		//	device was removed from a dock connector that supports audio output. This is
-		//	the recommended test for when to pause audio.
-		if (routeChangeReason == kAudioSessionRouteChangeReason_OldDeviceUnavailable) {
-            
-			[controller.appSoundPlayer pause];
-			NSLog (@"Output device removed, so application audio was paused.");
-            
-			UIAlertView *routeChangeAlertView =
-            [[UIAlertView alloc]	initWithTitle: NSLocalizedString (@"Playback Paused", @"Title for audio hardware route-changed alert view")
-                                       message: NSLocalizedString (@"Audio output was changed", @"Explanation for route-changed alert view")
-                                      delegate: controller
-                             cancelButtonTitle: NSLocalizedString (@"StopPlaybackAfterRouteChange", @"Stop button title")
-                             otherButtonTitles: NSLocalizedString (@"ResumePlaybackAfterRouteChange", @"Play button title"), nil];
-			[routeChangeAlertView show];
-			// release takes place in alertView:clickedButtonAtIndex: method
-            
-		} else {
-            
-			NSLog (@"A route change occurred that does not require pausing of application audio.");
-		}
-	}
-}
-
-
-
 
 @implementation SFAppDelegate
 
@@ -119,19 +43,12 @@ void audioRouteChangeListenerCallback (
         /* handle the error in setCategoryError */
     }
     
-    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
-    
-    AudioSessionAddPropertyListener (kAudioSessionProperty_AudioRouteChange,
-                                     audioRouteChangeListenerCallback,
-                                     self
-                                     );
-    
+   
     NSError *activationError = nil;
     success = [[AVAudioSession sharedInstance] setActive: YES error: &activationError];
     if (!success) {
         /* handle the error in activationError */
     }
-    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
