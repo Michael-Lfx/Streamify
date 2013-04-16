@@ -26,15 +26,44 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.navigationController setNavigationBarHidden:YES];
     
     self.loginButton.layer.shadowColor = [UIColor blackColor].CGColor;
     self.loginButton.layer.shadowOpacity = 0.3f;
     self.loginButton.layer.shadowRadius = 3.0f;
     self.loginButton.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
     self.loginButton.layer.masksToBounds = NO;
+    self.loginButton.hidden = YES;
+    
+    NSError *error;
+    
+    if ([PFUser currentUser] && // Check if a user is cached
+        [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) // Check if user is linked to Facebook
+    {
+        // Push the next view controller without animation
+        [[SFSocialManager sharedInstance] updateMeWithCallback:^(id returnedObject) {
+            if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
+                SFHomeViewController *homeViewController = [[SFHomeViewController alloc] init];
+                [self.navigationController pushViewController:homeViewController animated:NO];
+            } else {
+                NSLog(@"Uh oh. An error occurred");
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                [alert show];
+                
+                self.loginButton.hidden = NO;
+            }
+        }];
+    } else {
+        self.loginButton.hidden = NO;
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
