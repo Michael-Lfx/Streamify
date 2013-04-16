@@ -118,6 +118,8 @@
                                                   if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
                                                       NSArray *newMessages = [returnedObject objectForKey:kResultNewMessages];
                                                       if (newMessages.count > 0) {
+                                                          [self.chatTableViewController.messagesData removeAllObjects];
+                                                          newMessages = [[newMessages reverseObjectEnumerator] allObjects];
                                                           for (SFMessage *message in newMessages) {
                                                               if ([message.timeCreated laterDate:self.lastUpdateTime]) {
                                                                   [self.chatTableViewController.messagesData addObject:message];
@@ -151,5 +153,9 @@
     [self setChatTextField:nil];
     [self setSendButton:nil];
     [super viewDidUnload];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    
 }
 @end

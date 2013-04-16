@@ -328,7 +328,7 @@
 - (void)fetchChannelMessages:(NSString *)channelID
                  lastUpdated:(NSDate *)updateTime
                 withCallback:(SFResponseBlock)response {
-    [self fetchChannelMessages:channelID lastUpdated:updateTime limit:1000 withCallback:response];
+    [self fetchChannelMessages:channelID lastUpdated:updateTime limit:20 withCallback:response];
 }
 
 - (void)fetchChannelMessages:(NSString *)channelID
@@ -337,7 +337,7 @@
                 withCallback:(SFResponseBlock)response {
     PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
     [query whereKey:kMessageChannel equalTo:channelID];
-    [query whereKey:kMessageTime greaterThan:updateTime];
+    //[query whereKey:kMessageTime greaterThan:updateTime];
     [query addDescendingOrder:kMessageTime];
     query.limit = limit;
     
