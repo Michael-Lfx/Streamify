@@ -1425,9 +1425,7 @@
 				9CCE45A51715D18E0015825F /* GCDTimer.m in Sources */,
 				9C975CA417180F7F00C5FDDC /* SFMessage.m in Sources */,
 				9CB483F817182B9100E90107 /* SFMetroRefreshHeaderView.m in Sources */,
-<<<<<<< HEAD
 				1A7B503D171ECC8600F89D0F /* SFAudioSession.m in Sources */,
-=======
 				9C37E085171EE72D0021F16E /* AEAudioController+Audiobus.m in Sources */,
 				9C37E086171EE72D0021F16E /* AEAudioController.m in Sources */,
 				9C37E087171EE72D0021F16E /* AEAudioFileLoaderOperation.m in Sources */,
@@ -1448,7 +1446,6 @@
 				9C37E096171EE72D0021F16E /* AEUtilities.c in Sources */,
 				9C37E098171EE72D0021F16E /* TPCircularBuffer+AudioBufferList.c in Sources */,
 				9C37E099171EE72D0021F16E /* TPCircularBuffer.c in Sources */,
->>>>>>> using TAAE for recording intead of AVRecorder
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
