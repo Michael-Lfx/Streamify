@@ -8,16 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SFAudioRecorder : NSObject
+@interface SFAudioBroadcaster : NSObject
 
 @property (nonatomic) BOOL isRecording;
 
 @property (nonatomic, strong) NSString *channel;
-@property (nonatomic, strong) NSString *sessionToken;
 @property (nonatomic) int currentIndex;
 
-+ (SFAudioRecorder *)sharedInstance;
-- (void)prepareRecordWithChannel:(NSString *)channel sessionToken:(NSString *)token;
++ (SFAudioBroadcaster *)sharedInstance;
+- (void)prepareRecordWithChannel:(NSString *)channel;
 - (void)record;
 - (void)stop;
 

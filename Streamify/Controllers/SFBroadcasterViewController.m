@@ -60,7 +60,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     self.channelState = kSFStoppedOrPausedState;
-    [[SFAudioRecorder sharedInstance] stop];
+    [[SFAudioBroadcaster sharedInstance] stop];
     [super viewWillDisappear:animated];
 }
 
@@ -74,15 +74,14 @@
 
 - (void)controlButtonPressed:(id)sender {
 //    if (self.channelState == kSFStoppedOrPausedState) {
-    if (![SFAudioRecorder sharedInstance].isRecording) {
-        [[SFAudioRecorder sharedInstance] prepareRecordWithChannel:[PFUser currentUser].objectId
-                                                      sessionToken:[PFUser currentUser].sessionToken];
-        [[SFAudioRecorder sharedInstance] record];
+    if (![SFAudioBroadcaster sharedInstance].isRecording) {
+        [[SFAudioBroadcaster sharedInstance] prepareRecordWithChannel:[PFUser currentUser].objectId];
+        [[SFAudioBroadcaster sharedInstance] record];
         
         self.channelState = kSFPlayingOrRecordingState;
 //    } else if (self.channelState == kSFPlayingOrRecordingState) {
-    } else if ([SFAudioRecorder sharedInstance].isRecording) {
-        [[SFAudioRecorder sharedInstance] stop];
+    } else if ([SFAudioBroadcaster sharedInstance].isRecording) {
+        [[SFAudioBroadcaster sharedInstance] stop];
         
         self.channelState = kSFStoppedOrPausedState;
     }
