@@ -298,7 +298,7 @@
                     
                     NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
                                              OPERATION_SUCCEEDED, kOperationResult,
-                                             result, kResultLiveChannels,
+                                             result, kResultUsers,
                                              nil];
                     response((id)resData);
                 } else {

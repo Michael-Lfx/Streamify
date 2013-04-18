@@ -223,11 +223,16 @@
         case kSFRecentBrowsing:
         {
             NSArray *objectIDsOfRecentChannels = [SFStorageManager retrieveRecentChannelsUserDefaults];
-            [[SFSocialManager sharedInstance] getUsersWithObjectIDs:objectIDsOfRecentChannels
-                                                       withCallback:^(id returnedObject) {
-                                                           [self performSelectorInBackground:@selector(refreshRecentCanvas:)
-                                                                                  withObject:returnedObject];
-                                                       }];
+            [[SFSocialManager sharedInstance] getUsersWithLiveStatusForObjectIDs:objectIDsOfRecentChannels
+                                                                    withCallback:^(id returnedObject) {
+                                                                        [self performSelectorInBackground:@selector(refreshRecentCanvas:)
+                                                                                               withObject:returnedObject];
+                                                                    }];
+//            [[SFSocialManager sharedInstance] getUsersWithObjectIDs:objectIDsOfRecentChannels
+//                                                       withCallback:^(id returnedObject) {
+//                                                           [self performSelectorInBackground:@selector(refreshRecentCanvas:)
+//                                                                                  withObject:returnedObject];
+//                                                       }];
         }
             break;
         default:

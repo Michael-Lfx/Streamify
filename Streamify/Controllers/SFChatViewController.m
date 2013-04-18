@@ -127,8 +127,8 @@
                                                               }
                                                           }
                                                           [self.chatTableViewController.tableView reloadData];
-                                                          NSIndexPath* path = [NSIndexPath indexPathForRow: 0 inSection: 19];
-                                                          [self.chatTableViewController.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//                                                          NSIndexPath* path = [NSIndexPath indexPathForRow: 0 inSection: 19];
+//                                                          [self.chatTableViewController.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionTop animated:YES];
                                                       }
                                                   }
                                                   self.doneFetching = YES;
