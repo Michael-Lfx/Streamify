@@ -271,6 +271,47 @@
     }];
 }
 
+- (void)getUsersWithLiveStatusForObjectIDs:(NSArray *)objectIDs withCallback:(SFResponseBlock)response {
+    [self queryServerPath:@"getLive.php" requestMethod:@"GET" parameters:nil withCallback:^(id returnedObject) {
+        if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
+            NSMutableArray *liveChannelNames = [NSMutableArray array];
+            
+            id json = [returnedObject objectForKey:kResultJSON];
+            if (json != NULL) {
+                for (id row in json) {
+                    [liveChannelNames addObject:[row objectForKey:@"users_object_id"]];
+                }
+            }
+            
+            [self getUsersWithObjectIDs:objectIDs withCallback:^(id returnedObject) {
+                if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
+                    NSMutableArray *result = [NSMutableArray array];
+                    
+                    for (SFUser *user in [returnedObject objectForKey:kResultUsers]) {
+                        for (NSString *liveChannelName in liveChannelNames) {
+                            if ([liveChannelName isEqualToString:user.objectID]) {
+                                user.isLive = YES;
+                            }
+                        }
+                        [result addObject:user];
+                    }
+                    
+                    NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                             OPERATION_SUCCEEDED, kOperationResult,
+                                             result, kResultLiveChannels,
+                                             nil];
+                    response((id)resData);
+                } else {
+                    response(returnedObject);
+                }
+
+            }];
+        } else {
+            response(returnedObject);
+        }
+    }];
+}
+
 - (void)fetchLiveChannelsWithCallback:(SFResponseBlock)response {
     [self queryServerPath:@"getLive.php" requestMethod:@"GET" parameters:nil withCallback:^(id returnedObject) {
         if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {

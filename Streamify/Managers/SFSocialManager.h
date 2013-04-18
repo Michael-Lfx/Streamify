@@ -24,6 +24,7 @@ typedef void (^SFResponseBlock)(id returnedObject);
 - (void)unfollows:(NSString *)objectID withCallback:(SFResponseBlock)response;
 - (void)getFollowingForUser:(NSString *)userID withCallback:(SFResponseBlock)response;
 - (void)getFollowersForUser:(NSString *)userID withCallback:(SFResponseBlock)response;
+- (void)getUsersWithLiveStatusForObjectIDs:(NSArray *)objectIDs withCallback:(SFResponseBlock)response;
 - (void)postMessage:(NSDictionary *)dict withCallback:(SFResponseBlock)response;
 - (void)fetchChannelMessages:(NSString *)channelID lastUpdated:(NSDate *)updateTime limit:(NSInteger)limit withCallback:(SFResponseBlock)response;
 - (void)fetchChannelMessages:(NSString *)channelID lastUpdated:(NSDate *)updateTime withCallback:(SFResponseBlock)response;
