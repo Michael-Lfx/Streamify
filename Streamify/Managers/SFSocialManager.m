@@ -32,7 +32,7 @@
             
             NSString *facebookID = userData[@"id"];
             NSLog(@"%@", facebookID);
-            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square&return_ssl_resources=1", facebookID]];
+            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?with=200&height=200", facebookID]];
             
             NSDictionary *userProfile = @{@"facebookId": facebookID,
                                           @"name": userData[@"name"],
