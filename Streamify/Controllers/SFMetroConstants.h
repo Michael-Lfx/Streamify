@@ -8,6 +8,7 @@
 
 #define kMetroTileViewNibName @"SFMetroTileView"
 #define kMetroCanvasViewNibName @"SFMetroCanvasView"
+#define kMetroRefreshHeaderViewNibName @"SFMetroRefreshHeaderView"
 
 #define kMetroNumTilesPerPage (6)
 #define kMetroNumTilesPerRow (3)
@@ -16,8 +17,11 @@
 #define kMetroPullToRefreshOffsetLimit (100.0f)
 #define kMetroPullToRefreshOffset (100.0f)
 
+// Animation constants
 #define kMetroRefreshHeaderArrowFlipAnimationDuration (0.18f)
 #define kMetroRefreshHeaderOnDataSourceFinishedLoadingAnimationDuration (0.2f)
+#define kMetroRefreshHeaderOnReleaseRetractAnimationDuration (0.1f)
+#define kMetroRefreshHeaderOnCanvasRefreshAnimationDuration (0.5f)
 
 #define kMetroDebug FALSE
 

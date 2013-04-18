@@ -62,7 +62,7 @@
     [self loadVisiblePages];
     
     // Add header view
-    self.refreshHeaderView = [[[NSBundle mainBundle] loadNibNamed:@"SFMetroRefreshHeaderView" owner:self options:nil] lastObject];
+    self.refreshHeaderView = [[[NSBundle mainBundle] loadNibNamed:kMetroRefreshHeaderViewNibName owner:self options:nil] lastObject];
     CGSize refreshHeaderSize = self.refreshHeaderView.frame.size;
     self.refreshHeaderView.frame = CGRectMake(-refreshHeaderSize.width, 0, refreshHeaderSize.width, refreshHeaderSize.height);
     [self.scrollView addSubview:self.refreshHeaderView];
@@ -120,7 +120,7 @@
 }
 
 
-#pragma mark - Public Message
+#pragma mark - Canvas Refresh
 
 - (void)refreshWithTiles:(NSArray *)tiles
 {
@@ -140,18 +140,23 @@
     [self resetScrollViewContentSize];
     
     // Refresh
-    [self performSelectorOnMainThread:@selector(loadVisiblePages) withObject:nil waitUntilDone:NO];
-//    [UIView transitionWithView:self.scrollView
-//                      duration:5
-//                       options:UIViewAnimationOptionTransitionCrossDissolve
-//                    animations:^{
-//                        
-//                    }
-//                    completion:^(BOOL finished) {
-//                        
-//                    }];
+    [self performSelectorOnMainThread:@selector(refreshCanvas) withObject:nil waitUntilDone:NO];
 }
 
+- (void)refreshCanvas
+{
+    [UIView transitionWithView:self.scrollView
+                      duration:kMetroRefreshHeaderOnCanvasRefreshAnimationDuration
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        self.scrollView.contentInset = UIEdgeInsetsZero;
+                        self.scrollView.contentOffset = CGPointMake(0, 0);
+                    }
+                    completion:^(BOOL finished) {
+                        
+                    }];
+    [self loadVisiblePages];
+}
 
 #pragma mark - ScrollViewDelegate
 
@@ -182,7 +187,6 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    NSLog(@"scroll end dragging");
     if (scrollView.contentOffset.x <= -kMetroPullToRefreshOffsetLimit
         && !self.canvasLoading) {
         if ([self.delegate respondsToSelector:@selector(canvasDidTriggeredToRefresh)]) {
@@ -192,8 +196,10 @@
         self.canvasLoading = YES;
         self.canvasState = SFMetroPullRefreshLoading;
         scrollView.pagingEnabled = NO;
-        scrollView.contentOffset = CGPointMake(0, 0);
-        scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
+        [UIView animateWithDuration:kMetroRefreshHeaderOnReleaseRetractAnimationDuration animations:^{
+            scrollView.contentOffset = CGPointMake(0, 0);
+            scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
+        }];
     }
 }
 
@@ -204,9 +210,6 @@
     self.canvasLoading = NO;
     self.scrollView.pagingEnabled = YES;
     self.canvasState = SFMetroPullRefreshNormal;
-    [UIView animateWithDuration:kMetroRefreshHeaderOnDataSourceFinishedLoadingAnimationDuration animations:^{
-        self.scrollView.contentInset = UIEdgeInsetsZero;
-    }];
 }
 
 
@@ -321,5 +324,6 @@
     [self setNotificationLabel:nil];
     [super viewDidUnload];
 }
+
 @end
 
