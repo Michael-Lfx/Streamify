@@ -95,6 +95,7 @@
 #pragma mark - SFSideBarViewController protocol
 
 - (void)backPressed:(id)sender {
+    [[SFAudioBroadcaster sharedInstance] stop];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

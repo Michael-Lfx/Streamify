@@ -56,8 +56,19 @@
             // Report error
             NSLog(@"%@", error);
         }
+        
+        self.audioRecorder = [[AERecorder alloc] initWithAudioController:self.audioController];
+        NSString *documentsFolder = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
+                                     objectAtIndex:0];
+        self.recordFilePath = [documentsFolder stringByAppendingPathComponent:@"Record.aac"];
+        
+        self.recordVolume = 0.5;
     }
     return self;
+}
+
+- (void)setRecordVolume:(float)recordVolume {
+    _recordVolume = recordVolume;
 }
 
 - (void)prepareRecordWithChannel:(NSString *)channel {
@@ -117,13 +128,7 @@
 //}
 
 - (void)record {
-    self.audioRecorder = [[AERecorder alloc] initWithAudioController:self.audioController];
-    NSString *documentsFolder = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
-                                 objectAtIndex:0];
-    self.recordFilePath = [documentsFolder stringByAppendingPathComponent:@"Record.aac"];
-
     // Start the recording process
-    NSLog(@"%@", self.recordFilePath);
     NSError *error = NULL;
     if ( ![_audioRecorder beginRecordingToFileAtPath:self.recordFilePath
                                             fileType:kAudioFileAAC_ADTSType
@@ -221,18 +226,12 @@
 
 - (void)send {
     [self changeFileName];
-//    NSLog(@"stoped");
-//    NSLog(@"%@", self.audioRecorder.url);
     NSData *data = [NSData dataWithContentsOfFile:self.recordFilePath];
-    
     NSUInteger length = [data length];
-//    NSLog(@"LENGTH = %lu", (unsigned long)length);
     NSRange range;
     range.location = self.lastBytes + 1;
     range.length = (length - range.location);
     if (range.length > 0) {
-//        NSLog(@"LOCATION = %lu", (unsigned long)range.location);
-//        NSLog(@"LENGTH TO SEND = %lu", (unsigned long)range.length);
         self.lastBytes = length - 1;
         NSData *dataToSend = [data subdataWithRange:range];
         [self sendAudioToServer:dataToSend];
@@ -247,7 +246,7 @@
 
 
 - (void)stop {
-    if (self.audioController) {
+    if (self.isRecording) {
         [self.audioController removeInputReceiver:self.audioRecorder];
         [self.audioController removeOutputReceiver:self.audioRecorder];
         [self.audioRecorder finishRecording];
