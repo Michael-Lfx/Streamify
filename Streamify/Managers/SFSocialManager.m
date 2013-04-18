@@ -32,13 +32,14 @@
             
             NSString *facebookID = userData[@"id"];
             NSLog(@"%@", facebookID);
-            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square&return_ssl_resources=1", facebookID]];
             
             NSDictionary *userProfile = @{@"facebookId": facebookID,
                                           @"name": userData[@"name"],
                                           @"pictureURL": [pictureURL absoluteString]};
             
             [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
+            [[PFUser currentUser] setObject:userData[@"name"] forKey:@"facebookName"];
             [[PFUser currentUser] setObject:[PFUser currentUser].objectId forKey:@"objectIdCopy"];
             [[PFUser currentUser] saveInBackground];
             
@@ -244,6 +245,47 @@
     }];
 }
 
+//- (void)getFollowingForUser:(NSString *)userID withCallback:(SFResponseBlock)response {    
+//    NSDictionary *queryDict = [NSDictionary dictionaryWithObjectsAndKeys:
+//                               self.currentUser.objectID, @"follower_object_id",
+//                               @"getAllFollowingAndStatus", @"action",
+//                               nil];
+//    [self queryServerPath:@"/follow.php" requestMethod:@"POST" parameters:queryDict withCallback:^(id returnedObject) {
+//        if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
+//            NSMutableArray *followingArray = [NSMutableArray array];
+//            
+//            id json = [returnedObject objectForKey:kResultJSON];
+//            if (json != NULL) {
+//                for (id row in json) {
+//                    [followingArray addObject:[row objectForKey:@"users_object_id"]];
+//                }
+//            }
+//            
+//            [self getUsersWithObjectIDs:followingArray withCallback:^(id returnedObject) {
+//                if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
+//                    NSMutableArray *result = [NSMutableArray array];
+//                    
+//                    for (SFUser *user in [returnedObject objectForKey:kResultUsers]) {
+//                        user.isLive = NO;
+//                        [result addObject:user];
+//                    }
+//                    
+//                    NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                             OPERATION_SUCCEEDED, kOperationResult,
+//                                             result, kResultFollowing,
+//                                             nil];
+//                    response((id)resData);
+//                } else {
+//                    response(returnedObject);
+//                }
+//            }];
+//        } else {
+//            response(returnedObject);
+//        }
+//
+//    }];
+//}
+
 - (void)getUsersWithObjectIDs:(NSArray *)objectIDs withCallback:(SFResponseBlock)response{
     PFQuery *query = [PFUser query];
     [query whereKey:@"objectId" containedIn:objectIDs];
@@ -344,6 +386,30 @@
             }];
         } else {
             response(returnedObject);
+        }
+    }];
+}
+
+- (void)searchChannelsForKeyword:(NSString *)keyword withCallback:(SFResponseBlock)response {
+    NSString *regex = [NSString stringWithFormat:@".*%@.*", keyword];
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"facebookName" matchesRegex:regex modifiers:@"i"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     OPERATION_FAILED, kOperationResult,
+                                     nil];
+            response((id)resData);
+        } else {
+            NSMutableArray *objectIDs = [NSMutableArray array];
+            
+            for (PFUser *row in objects) {
+                [objectIDs addObject:row.objectId];
+            }
+            
+            [self getUsersWithLiveStatusForObjectIDs:objectIDs withCallback:^(id returnedObject) {
+                response(returnedObject);
+            }];
         }
     }];
 }
