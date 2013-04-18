@@ -28,5 +28,6 @@ typedef void (^SFResponseBlock)(id returnedObject);
 - (void)fetchChannelMessages:(NSString *)channelID lastUpdated:(NSDate *)updateTime limit:(NSInteger)limit withCallback:(SFResponseBlock)response;
 - (void)fetchChannelMessages:(NSString *)channelID lastUpdated:(NSDate *)updateTime withCallback:(SFResponseBlock)response;
 - (void)fetchLiveChannelsWithCallback:(SFResponseBlock)response;
+- (void)getUsersWithObjectIDs:(NSArray *)objectIDs withCallback:(SFResponseBlock)response;
 
 @end

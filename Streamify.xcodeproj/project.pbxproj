@@ -16,6 +16,7 @@
 		1A7932C01705FE7F00005CBF /* SFMetroCanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7932BE1705FE7F00005CBF /* SFMetroCanvasViewController.xib */; };
 		1A7932C41706169E00005CBF /* SFMetroCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7932C31706169E00005CBF /* SFMetroCanvasView.m */; };
 		1A7B503D171ECC8600F89D0F /* SFAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B503C171ECC8600F89D0F /* SFAudioSession.m */; };
+		1A7B5040171EE2F500F89D0F /* SFStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B503F171EE2F500F89D0F /* SFStorageManager.m */; };
 		1AB5ED41171A9585009EFE67 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */; };
 		1AB5ED42171A9585009EFE67 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB5ED40171A9585009EFE67 /* whiteArrow.png */; };
 		1AB6A55517195E3F00DD2B2B /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB6A55417195E3F00DD2B2B /* placeholder.png */; };
@@ -207,6 +208,8 @@
 		1A7932C31706169E00005CBF /* SFMetroCanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMetroCanvasView.m; sourceTree = "<group>"; };
 		1A7B503B171ECC8600F89D0F /* SFAudioSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAudioSession.h; sourceTree = "<group>"; };
 		1A7B503C171ECC8600F89D0F /* SFAudioSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAudioSession.m; sourceTree = "<group>"; };
+		1A7B503E171EE2F500F89D0F /* SFStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFStorageManager.h; sourceTree = "<group>"; };
+		1A7B503F171EE2F500F89D0F /* SFStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFStorageManager.m; sourceTree = "<group>"; };
 		1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		1AB5ED40171A9585009EFE67 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		1AB6A55417195E3F00DD2B2B /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../Assets/placeholder.png; sourceTree = "<group>"; };
@@ -704,6 +707,8 @@
 		9CACF02816F755AC0067C352 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				1A7B503E171EE2F500F89D0F /* SFStorageManager.h */,
+				1A7B503F171EE2F500F89D0F /* SFStorageManager.m */,
 				9C93677F170601BC006108F9 /* SFSocialManager.h */,
 				9C936780170601BC006108F9 /* SFSocialManager.m */,
 				9CACF02916F755AC0067C352 /* Superclass */,
@@ -1296,6 +1301,7 @@
 				9C975CA417180F7F00C5FDDC /* SFMessage.m in Sources */,
 				9CB483F817182B9100E90107 /* SFMetroRefreshHeaderView.m in Sources */,
 				1A7B503D171ECC8600F89D0F /* SFAudioSession.m in Sources */,
+				1A7B5040171EE2F500F89D0F /* SFStorageManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

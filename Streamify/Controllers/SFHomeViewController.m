@@ -9,6 +9,7 @@
 #import "SFHomeViewController.h"
 #import "SFListenerViewController.h"
 #import "SFBroadcasterViewController.h"
+#import "SFStorageManager.h"
 
 @interface SFHomeViewController ()
 
@@ -72,6 +73,12 @@
                                                                                   emptyCanvasMessage:@"You're not following any channel"
                                                                                   delegate:self];
     [self positeCanvasViewController:self.favoriteCanvasViewController];
+    
+    // Recents canvas
+    self.recentCanvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array]
+                                                                       emptyCanvasMessage:@"There is currently no history"
+                                                                                 delegate:self];
+    [self positeCanvasViewController:self.recentCanvasViewController];
         
     // Sidebar must be added after main column for shadow
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarFull
@@ -128,28 +135,28 @@
     [self canvasDidTriggeredToRefresh];
 }
 
+- (void)recentPressed:(id)sender {
+    self.browsingType = kSFRecentBrowsing;
+    self.canvasTitle.text = @"Recent";
+    [self removeAllCanvases];
+    [self.view addSubview:self.recentCanvasViewController.view];
+    [self.recentCanvasViewController.canvasInitIndicator startAnimating];
+    [self canvasDidTriggeredToRefresh];
+}
+
 - (void)removeAllCanvases
 {
     [self.trendingCanvasViewController.view removeFromSuperview];
     [self.trendingCanvasViewController refreshWithTiles:[NSArray array]];
     [self.favoriteCanvasViewController.view removeFromSuperview];
     [self.favoriteCanvasViewController refreshWithTiles:[NSArray array]];
-}
-
-- (void)recentPressed:(id)sender {
-//    self.browsingType = kSFRecentBrowsing;
-//    self.canvasTitle.text = @"Recent";
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Supported"
-                                                    message:@"Searching coming in the next version !"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
+    [self.recentCanvasViewController.view removeFromSuperview];
+    [self.recentCanvasViewController refreshWithTiles:[NSArray array]];
 }
 
 - (void)searchPressed:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Supported"
-                                                    message:@"History coming in the next version !"
+                                                    message:@"Searching coming in the next version !"
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
@@ -188,6 +195,7 @@
 {
     SFListenerViewController *listenerViewController = [[SFListenerViewController alloc] initWithUser:user];
     [self.navigationController pushViewController:listenerViewController animated:YES];
+    [SFStorageManager saveRecentChannelsUserDefaults:user.objectID];
 }
 
 - (void)canvasDidTriggeredToRefresh
@@ -212,6 +220,16 @@
         }
             break;
             
+        case kSFRecentBrowsing:
+        {
+            NSArray *objectIDsOfRecentChannels = [SFStorageManager retrieveRecentChannelsUserDefaults];
+            [[SFSocialManager sharedInstance] getUsersWithObjectIDs:objectIDsOfRecentChannels
+                                                       withCallback:^(id returnedObject) {
+                                                           [self performSelectorInBackground:@selector(refreshRecentCanvas:)
+                                                                                  withObject:returnedObject];
+                                                       }];
+        }
+            break;
         default:
             break;
     }
@@ -228,6 +246,12 @@
 {
     NSArray *tiles = [returnedObject objectForKey:kResultFollowing];
     [self refreshCanvas:self.favoriteCanvasViewController withTiles:tiles];
+}
+
+- (void)refreshRecentCanvas:(id)returnedObject
+{
+    NSArray *tiles = [returnedObject objectForKey:kResultUsers];
+    [self refreshCanvas:self.recentCanvasViewController withTiles:tiles];
 }
 
 - (void)refreshCanvas:(SFMetroCanvasViewController *)canvasViewController
