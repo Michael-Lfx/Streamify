@@ -58,7 +58,7 @@
 #import "SFConstants.h"
 
 // AudioComponents
-#import "SFAudioRecorder.h"
+#import "SFAudioBroadcaster.h"
 #import "SFAudioStreamer.h"
 
 
