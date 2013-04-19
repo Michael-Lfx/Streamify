@@ -17,8 +17,7 @@
 		1A7932C41706169E00005CBF /* SFMetroCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7932C31706169E00005CBF /* SFMetroCanvasView.m */; };
 		1A7B503D171ECC8600F89D0F /* SFAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B503C171ECC8600F89D0F /* SFAudioSession.m */; };
 		1A7B5040171EE2F500F89D0F /* SFStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B503F171EE2F500F89D0F /* SFStorageManager.m */; };
-		1A868B1917216F12007F93A4 /* SFMusicPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A868B1717216F12007F93A4 /* SFMusicPickerViewController.m */; };
-		1A868B1A17216F12007F93A4 /* SFMusicPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */; };
+		1A868B1D17217A9C007F93A4 /* SFPlaylistManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A868B1C17217A9C007F93A4 /* SFPlaylistManagerViewController.m */; };
 		1AB5ED41171A9585009EFE67 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */; };
 		1AB5ED42171A9585009EFE67 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB5ED40171A9585009EFE67 /* whiteArrow.png */; };
 		1AB6A55517195E3F00DD2B2B /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB6A55417195E3F00DD2B2B /* placeholder.png */; };
@@ -247,6 +246,8 @@
 		1A868B1617216F12007F93A4 /* SFMusicPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMusicPickerViewController.h; sourceTree = "<group>"; };
 		1A868B1717216F12007F93A4 /* SFMusicPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMusicPickerViewController.m; sourceTree = "<group>"; };
 		1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMusicPickerViewController.xib; sourceTree = "<group>"; };
+		1A868B1B17217A9C007F93A4 /* SFPlaylistManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistManagerViewController.h; sourceTree = "<group>"; };
+		1A868B1C17217A9C007F93A4 /* SFPlaylistManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistManagerViewController.m; sourceTree = "<group>"; };
 		1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		1AB5ED40171A9585009EFE67 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		1AB6A55417195E3F00DD2B2B /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../Assets/placeholder.png; sourceTree = "<group>"; };
@@ -589,9 +590,8 @@
 		1A031485172140BF00A60E67 /* Playlist Manager Screen */ = {
 			isa = PBXGroup;
 			children = (
-				1A868B1617216F12007F93A4 /* SFMusicPickerViewController.h */,
-				1A868B1717216F12007F93A4 /* SFMusicPickerViewController.m */,
-				1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */,
+				1A868B1B17217A9C007F93A4 /* SFPlaylistManagerViewController.h */,
+				1A868B1C17217A9C007F93A4 /* SFPlaylistManagerViewController.m */,
 			);
 			name = "Playlist Manager Screen";
 			sourceTree = "<group>";
@@ -618,6 +618,7 @@
 		1A49F9E81704C0A700969CFA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1A868B1E17217AC2007F93A4 /* Music Picker VC */,
 				C0D16173170F3624006C1475 /* Chat VC */,
 				C0AC8A5F170572E100422723 /* MainColumn VC */,
 				C0B22125170558B30045A248 /* MetroCanvas VC */,
@@ -653,6 +654,16 @@
 				1A7932C31706169E00005CBF /* SFMetroCanvasView.m */,
 			);
 			name = "Metro Components";
+			sourceTree = "<group>";
+		};
+		1A868B1E17217AC2007F93A4 /* Music Picker VC */ = {
+			isa = PBXGroup;
+			children = (
+				1A868B1617216F12007F93A4 /* SFMusicPickerViewController.h */,
+				1A868B1717216F12007F93A4 /* SFMusicPickerViewController.m */,
+				1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */,
+			);
+			name = "Music Picker VC";
 			sourceTree = "<group>";
 		};
 		1AE32121170DC7EE00D740E5 /* Topbar VC */ = {
@@ -1528,6 +1539,7 @@
 				9C1EC5CB17216BDB001E7CAE /* SFPlaylistViewController.m in Sources */,
 				9C1EC5CF17217081001E7CAE /* SFPlaylistItem.m in Sources */,
 				9C1EC5D217217200001E7CAE /* SFPlaylistItemTableViewCell.m in Sources */,
+				1A868B1D17217A9C007F93A4 /* SFPlaylistManagerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

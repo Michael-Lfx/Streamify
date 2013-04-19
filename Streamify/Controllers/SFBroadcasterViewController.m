@@ -8,6 +8,7 @@
 
 #import "SFConstants.h"
 #import "SFBroadcasterViewController.h"
+#import "SFPlaylistManagerViewController.h"
 
 @interface SFBroadcasterViewController ()
 @property (nonatomic) SFChannelState channelState;
@@ -36,7 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    
     // Add Chat View
 //    self.chatViewController = [[SFChatViewController alloc] initChatViewWithDelegate:self];
     self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.channel];
@@ -45,6 +47,16 @@
                                                     kSFChatViewFrameW,
                                                     kSFChatViewFrameH);
     [self.view addSubview:self.chatViewController.view];
+    
+    // Button to music edit
+    UIButton *managePlaylist = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [managePlaylist addTarget:self
+                       action:@selector(openManagePlaylist:)
+             forControlEvents:UIControlEventTouchDown];
+    [managePlaylist setTitle:@"Manage Playlist" forState:UIControlStateNormal];
+    managePlaylist.frame = CGRectMake(800.0, 610.0, 160.0, 40.0);
+    [self.view addSubview:managePlaylist];
+    
     
     // Add Main Column
     self.mainColumnViewController = [[SFMainColumnViewController alloc] initMainColumnWithOption:kSFMainColumnBroadcaster
@@ -63,7 +75,12 @@
     [self.view addSubview:self.sidebarViewController.view];
     
     //[self.mainColumnViewController.controlButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchDown];
+}
 
+- (void)openManagePlaylist:(id)sender
+{
+    SFPlaylistManagerViewController *playlistManagerViewController = [[SFPlaylistManagerViewController alloc] init];
+    [self.navigationController pushViewController:playlistManagerViewController animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
