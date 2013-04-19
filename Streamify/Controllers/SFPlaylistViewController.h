@@ -9,5 +9,8 @@
 #import "BaseViewController.h"
 
 @interface SFPlaylistViewController : BaseViewController
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+- (void)save;
 @end
