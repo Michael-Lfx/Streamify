@@ -36,12 +36,12 @@
 }
 
 /*
-- (void)prepareRecord {
-    self.userID = [SFSocialManager sharedInstance].currentUser.objectID;
-    self.count = -1;
-    self.lastBytes = -1;
-    self.isRecording = NO;
-}
+ - (void)prepareRecord {
+ self.userID = [SFSocialManager sharedInstance].currentUser.objectID;
+ self.count = -1;
+ self.lastBytes = -1;
+ self.isRecording = NO;
+ }
  */
 
 - (id)init {
@@ -83,14 +83,14 @@
 //{
 //    NSArray *dirPaths;
 //    NSString *docsDir;
-//    
+//
 //    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //    docsDir = [dirPaths objectAtIndex:0];
 //    NSString *soundFilePath = [docsDir
 //                               stringByAppendingPathComponent:@"recordedfile.aac"];
-//    
+//
 //    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
-//    
+//
 //    NSDictionary *recordSettings = [NSDictionary dictionaryWithObjectsAndKeys:
 //                                    [NSNumber numberWithInt:kAudioFormatMPEG4AAC], AVFormatIDKey,
 //                                    [NSNumber numberWithInt:AVAudioQualityMax], AVEncoderAudioQualityKey,
@@ -98,22 +98,22 @@
 //                                    [NSNumber numberWithInt: 2], AVNumberOfChannelsKey,
 //                                    [NSNumber numberWithFloat:22050.0], AVSampleRateKey,
 //                                    nil];
-//    
+//
 //    NSError *error = nil;
-//    
+//
 //    self.audioRecorder = [[AVAudioRecorder alloc]
 //                          initWithURL:soundFileURL
 //                          settings:recordSettings
 //                          error:&error];
 //    self.audioRecorder.delegate = self;
-//    
+//
 //    if (error) {
 //        NSLog(@"error: %@", [error localizedDescription]);
 //    } else {
 //        [self.audioRecorder prepareToRecord];
 //        [self sendCreateRequestToServer];
 //    }
-//    
+//
 //    [self.audioRecorder record];
 //    self.isRecording = YES;
 //    /*
@@ -202,7 +202,10 @@
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://54.251.250.31"]];
     
     NSDictionary *params = [NSDictionary dictionaryWithObject:self.channel forKey:@"username"];
-    NSMutableURLRequest *myRequest = [client multipartFormRequestWithMethod:@"POST" path:@"/upload.php" parameters:params constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+    NSMutableURLRequest *myRequest = [client multipartFormRequestWithMethod:@"POST"
+                                                                       path:@"/upload.php"
+                                                                 parameters:params
+                                                  constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
         [formData appendPartWithFileData:d name:@"userfile" fileName:self.fileName mimeType:@"audio/x-aac"];
     }];
     
