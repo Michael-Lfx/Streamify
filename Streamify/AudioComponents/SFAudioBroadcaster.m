@@ -36,12 +36,12 @@
 }
 
 /*
-- (void)prepareRecord {
-    self.userID = [SFSocialManager sharedInstance].currentUser.objectID;
-    self.count = -1;
-    self.lastBytes = -1;
-    self.isRecording = NO;
-}
+ - (void)prepareRecord {
+ self.userID = [SFSocialManager sharedInstance].currentUser.objectID;
+ self.count = -1;
+ self.lastBytes = -1;
+ self.isRecording = NO;
+ }
  */
 
 - (id)init {
@@ -56,8 +56,19 @@
             // Report error
             NSLog(@"%@", error);
         }
+        
+        self.audioRecorder = [[AERecorder alloc] initWithAudioController:self.audioController];
+        NSString *documentsFolder = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
+                                     objectAtIndex:0];
+        self.recordFilePath = [documentsFolder stringByAppendingPathComponent:@"Record.aac"];
+        
+        self.recordVolume = 0.5;
     }
     return self;
+}
+
+- (void)setRecordVolume:(float)recordVolume {
+    _recordVolume = recordVolume;
 }
 
 - (void)prepareRecordWithChannel:(NSString *)channel {
@@ -72,14 +83,14 @@
 //{
 //    NSArray *dirPaths;
 //    NSString *docsDir;
-//    
+//
 //    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //    docsDir = [dirPaths objectAtIndex:0];
 //    NSString *soundFilePath = [docsDir
 //                               stringByAppendingPathComponent:@"recordedfile.aac"];
-//    
+//
 //    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
-//    
+//
 //    NSDictionary *recordSettings = [NSDictionary dictionaryWithObjectsAndKeys:
 //                                    [NSNumber numberWithInt:kAudioFormatMPEG4AAC], AVFormatIDKey,
 //                                    [NSNumber numberWithInt:AVAudioQualityMax], AVEncoderAudioQualityKey,
@@ -87,22 +98,22 @@
 //                                    [NSNumber numberWithInt: 2], AVNumberOfChannelsKey,
 //                                    [NSNumber numberWithFloat:22050.0], AVSampleRateKey,
 //                                    nil];
-//    
+//
 //    NSError *error = nil;
-//    
+//
 //    self.audioRecorder = [[AVAudioRecorder alloc]
 //                          initWithURL:soundFileURL
 //                          settings:recordSettings
 //                          error:&error];
 //    self.audioRecorder.delegate = self;
-//    
+//
 //    if (error) {
 //        NSLog(@"error: %@", [error localizedDescription]);
 //    } else {
 //        [self.audioRecorder prepareToRecord];
 //        [self sendCreateRequestToServer];
 //    }
-//    
+//
 //    [self.audioRecorder record];
 //    self.isRecording = YES;
 //    /*
@@ -117,13 +128,7 @@
 //}
 
 - (void)record {
-    self.audioRecorder = [[AERecorder alloc] initWithAudioController:self.audioController];
-    NSString *documentsFolder = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
-                                 objectAtIndex:0];
-    self.recordFilePath = [documentsFolder stringByAppendingPathComponent:@"Record.aac"];
-
     // Start the recording process
-    NSLog(@"%@", self.recordFilePath);
     NSError *error = NULL;
     if ( ![_audioRecorder beginRecordingToFileAtPath:self.recordFilePath
                                             fileType:kAudioFileAAC_ADTSType
@@ -197,7 +202,10 @@
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://54.251.250.31"]];
     
     NSDictionary *params = [NSDictionary dictionaryWithObject:self.channel forKey:@"username"];
-    NSMutableURLRequest *myRequest = [client multipartFormRequestWithMethod:@"POST" path:@"/upload.php" parameters:params constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+    NSMutableURLRequest *myRequest = [client multipartFormRequestWithMethod:@"POST"
+                                                                       path:@"/upload.php"
+                                                                 parameters:params
+                                                  constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
         [formData appendPartWithFileData:d name:@"userfile" fileName:self.fileName mimeType:@"audio/x-aac"];
     }];
     
@@ -221,18 +229,12 @@
 
 - (void)send {
     [self changeFileName];
-//    NSLog(@"stoped");
-//    NSLog(@"%@", self.audioRecorder.url);
     NSData *data = [NSData dataWithContentsOfFile:self.recordFilePath];
-    
     NSUInteger length = [data length];
-//    NSLog(@"LENGTH = %lu", (unsigned long)length);
     NSRange range;
     range.location = self.lastBytes + 1;
     range.length = (length - range.location);
     if (range.length > 0) {
-//        NSLog(@"LOCATION = %lu", (unsigned long)range.location);
-//        NSLog(@"LENGTH TO SEND = %lu", (unsigned long)range.length);
         self.lastBytes = length - 1;
         NSData *dataToSend = [data subdataWithRange:range];
         [self sendAudioToServer:dataToSend];
@@ -247,7 +249,7 @@
 
 
 - (void)stop {
-    if (self.audioController) {
+    if (self.isRecording) {
         [self.audioController removeInputReceiver:self.audioRecorder];
         [self.audioController removeOutputReceiver:self.audioRecorder];
         [self.audioRecorder finishRecording];

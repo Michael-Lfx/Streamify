@@ -41,8 +41,8 @@
     [super viewDidLoad];
     
     // Add Chat View
-    self.chatViewController = [[SFChatViewController alloc] initChatViewWithDelegate:self];
-    self.chatViewController.channel = self.user.objectID;
+//    self.chatViewController = [[SFChatViewController alloc] initChatViewWithDelegate:self];
+    self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.user];
     self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
                                                     kSFChatViewFrameY,
                                                     kSFChatViewFrameW,
@@ -139,8 +139,15 @@
 }
 
 - (void)followButtonPressed:(id)sender {
-    // ...
-    // [self.mainColumnViewController setFollowingState:self.user.followed];
+    if (self.user.followed == YES) {
+        self.user.followed = NO;
+        [[SFSocialManager sharedInstance] unfollows:self.user.objectID withCallback:^(id returnedObject) {
+        }];
+    } else {
+        self.user.followed = YES;
+        [[SFSocialManager sharedInstance] follows:self.user.objectID withCallback:^(id returnedObject) {
+        }];
+    }
 }
 
 - (void) performPublishAction:(void (^)(void)) action {

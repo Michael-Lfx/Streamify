@@ -46,6 +46,7 @@
 #import "BaseModel.h"
 #import "SFUser.h"
 #import "SFMessage.h"
+#import "SFPlaylistItem.h"
 
 //Views
 #import "BaseTableViewCell.h"

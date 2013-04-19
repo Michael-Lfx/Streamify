@@ -59,11 +59,10 @@
     
     if (trimmedString.length > 0) {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              self.channel, kMessageChannel,
+                              self.channel.objectID, kMessageChannel,
                               name, kMessageName,
                               pictureURL, kMessagePictureURL,
                               trimmedString, kMessageText,
-//                              [NSDate date], kMessageTime,
                               nil];
         
         [[SFSocialManager sharedInstance] postMessage:dict withCallback:^(id returnedObject) {
@@ -86,6 +85,15 @@
     return self;
 }
 
+- (id)initWithChannel:(SFUser *)channel {
+    if (self = [self initWithNib]) {
+        self.channel = channel;
+        self.chatTextField.delegate = self;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -96,7 +104,6 @@
     self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, self.chatTextField.frame.origin.y,
                                        self.sendButton.frame.size.width, kSFChatTextFrameH);
     
-//    self.chatTableViewController = [[SFChatTableViewController alloc] init];
     self.chatTableViewController = [[SFChatTableViewController alloc] initWithNibName:@"SFChatTableViewController" bundle:[NSBundle mainBundle]];
     self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH);
 
@@ -112,7 +119,7 @@
 - (void)updateMessages {
     if (!self.doneFetching) return;
     self.doneFetching = NO;
-    [[SFSocialManager sharedInstance] fetchChannelMessages:self.channel
+    [[SFSocialManager sharedInstance] fetchChannelMessages:self.channel.objectID
                                                lastUpdated:self.lastUpdateTime
                                               withCallback:^(id returnedObject) {
                                                   if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
@@ -127,8 +134,6 @@
                                                               }
                                                           }
                                                           [self.chatTableViewController.tableView reloadData];
-//                                                          NSIndexPath* path = [NSIndexPath indexPathForRow: 0 inSection: 19];
-//                                                          [self.chatTableViewController.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionTop animated:YES];
                                                       }
                                                   }
                                                   self.doneFetching = YES;
@@ -157,6 +162,7 @@
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
-    
+    [super viewDidDisappear:animated];
 }
+
 @end

@@ -53,10 +53,9 @@
 
 - (IBAction)followButtonPressed:(id)sender {
     [self.delegate followButtonPressed:sender];
-    if(self.followingState == YES){
+    if (self.followingState == YES) {
         [self setFollowingState:NO];
-    }
-    else{
+    } else {
         [self setFollowingState:YES];
     }
 }
@@ -148,6 +147,8 @@
             return [UIImage imageNamed:@"maincol-icon-play.png"];
         }
     }
+    
+    return NULL;
 }
 
 - (UIImage*)followButtonIconForCurrentFollowingState {

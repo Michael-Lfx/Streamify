@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "SFSlider.h"
 
 @protocol SFTopbarViewControllerProtocol <NSObject>
 - (void)controlButtonPressed:(id)sender;
@@ -21,7 +22,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *controlButton;
 @property (strong, nonatomic) IBOutlet UILabel *infoLabel;
-@property (strong, nonatomic) IBOutlet UISlider *volumeSlider;
+@property (strong, nonatomic) IBOutlet SFSlider *volumeSlider;
 
 - (id)initTopbarWithDelegate:(id)delegate channelState:(SFChannelState)channelState;
 - (IBAction)volumeSliderChanged:(id)sender;

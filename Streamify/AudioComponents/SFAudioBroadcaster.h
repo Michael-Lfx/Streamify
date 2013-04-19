@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) NSString *channel;
 @property (nonatomic) int currentIndex;
+@property (nonatomic) float recordVolume;
 
 + (SFAudioBroadcaster *)sharedInstance;
 - (void)prepareRecordWithChannel:(NSString *)channel;

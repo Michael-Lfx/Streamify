@@ -11,7 +11,7 @@
 #import "SFMainColumnViewController.h"
 #import "SFChatViewController.h"
 
-@interface SFListenerViewController : BaseViewController <SFSidebarViewControllerProtocol, SFMainColumnViewControllerProtocol, SFChatViewControllerProtocol>
+@interface SFListenerViewController : BaseViewController <SFSidebarViewControllerProtocol, SFMainColumnViewControllerProtocol>
 
 @property (nonatomic, strong) SFMainColumnViewController *mainColumnViewController;
 @property (nonatomic, strong) SFSidebarViewController *sidebarViewController;
