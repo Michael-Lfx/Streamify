@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SFPlaylistItemTableViewCell : BaseTableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *songNameLabel;
+@interface SFSongTableViewCell : BaseTableViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *albumCoverView;
+@property (weak, nonatomic) IBOutlet UILabel *songTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
+
 @end

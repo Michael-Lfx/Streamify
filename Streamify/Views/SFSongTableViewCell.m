@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "SFPlaylistItemTableViewCell.h"
+#import "SFSongTableViewCell.h"
 
-@implementation SFPlaylistItemTableViewCell
+@implementation SFSongTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -19,7 +19,7 @@
     return self;
 }
 
-+ (NSString*)cellIdentifier {
++ (NSString *)cellIdentifier {
     return @"PlaylistItemTableViewCellIdentifier";
 }
 

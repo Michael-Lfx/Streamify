@@ -7,11 +7,14 @@
 //
 
 #import "SFPlaylistViewController.h"
-#import "SFPlaylistItemTableViewCell.h"
+#import "SFSongTableViewCell.h"
 
 @interface SFPlaylistViewController () <UITableViewDataSource, UITableViewDelegate>
+
 @property (nonatomic, strong) NSMutableArray *itemsList;
+
 @end
+
 
 @implementation SFPlaylistViewController
 
@@ -49,23 +52,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *identifier = [SFPlaylistItemTableViewCell cellIdentifier];
-    SFPlaylistItemTableViewCell *cell = (SFPlaylistItemTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+    NSString *identifier = [SFSongTableViewCell cellIdentifier];
+    SFSongTableViewCell *cell = (SFSongTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SFPlaylistItemTableViewCell" owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SFSongTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     
-    SFPlaylistItem *item = [self.itemsList objectAtIndex:indexPath.row];
+    SFSong *item = [self.itemsList objectAtIndex:indexPath.row];
     
-    cell.songNameLabel.text = item.songName;
+    cell.songTitleLabel.text = item.title;
     cell.artistNameLabel.text = item.artistName;
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 66;
+    return 80;
 }
 
 #pragma mark - UITableViewDelegate

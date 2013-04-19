@@ -7,8 +7,13 @@
 //
 
 #import "SFPlaylistManagerViewController.h"
+#import "SFPlaylistViewController.h"
+#import "SFMusicPickerViewController.h"
 
 @interface SFPlaylistManagerViewController ()
+
+@property (nonatomic, strong) SFMusicPickerViewController *musicPickerViewController;
+@property (nonatomic, strong) SFPlaylistViewController *playlistViewController;
 
 @end
 
@@ -28,6 +33,14 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    self.playlistViewController = [[SFPlaylistViewController alloc] initWithNib];
+    self.musicPickerViewController = [[SFMusicPickerViewController alloc] initWithNib];
+    [self.musicPickerViewController.view setFrame:CGRectMake(512,
+                                                             0,
+                                                             self.musicPickerViewController.view.size.width,
+                                                             self.musicPickerViewController.view.size.height)];
+    [self.view addSubview:self.playlistViewController.view];
+    [self.view addSubview:self.musicPickerViewController.view];
 }
 
 - (void)didReceiveMemoryWarning
