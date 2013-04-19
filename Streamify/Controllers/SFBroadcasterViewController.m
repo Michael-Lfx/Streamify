@@ -25,13 +25,21 @@
     return self;
 }
 
+- (id)initWithChannel:(SFUser *)channel {
+    if (self = [super init]) {
+        self.channel = channel;
+    }
+
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     // Add Chat View
-    self.chatViewController = [[SFChatViewController alloc] initChatViewWithDelegate:self];
-    self.chatViewController.channel = [SFSocialManager sharedInstance].currentUser.objectID;
+//    self.chatViewController = [[SFChatViewController alloc] initChatViewWithDelegate:self];
+    self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.channel];
     self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
                                                     kSFChatViewFrameY,
                                                     kSFChatViewFrameW,

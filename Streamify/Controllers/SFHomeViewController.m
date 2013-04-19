@@ -167,7 +167,7 @@
 //  RecordViewController *vc = [[RecordViewController alloc] init];
 //  vc.username = [SFSocialManager sharedInstance].currentUser.objectID;
     
-    SFBroadcasterViewController *broadcasterViewController = [[SFBroadcasterViewController alloc] init];
+    SFBroadcasterViewController *broadcasterViewController = [[SFBroadcasterViewController alloc] initWithChannel:[SFSocialManager sharedInstance].currentUser];
     [self.navigationController pushViewController:broadcasterViewController animated:YES];
 }
 

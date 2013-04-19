@@ -9,14 +9,13 @@
 #import "BaseViewController.h"
 
 @protocol SFChatViewControllerProtocol<NSObject>
-- (void)sendText:(NSString *)text;
 @end
 
 @class SFChatTableViewController;
 
 @interface SFChatViewController : BaseViewController
 
-@property (nonatomic, strong) NSString *channel;
+@property (nonatomic, strong) SFUser *channel;
 @property (strong, nonatomic) NSMutableArray *messagesData;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (strong, nonatomic) SFChatTableViewController *chatTableViewController;
@@ -26,6 +25,7 @@
 - (IBAction)chatTextEditBeginned:(id)sender;
 - (IBAction)chatTextEditEnded:(id)sender;
 
-- (id)initChatViewWithDelegate:(id<SFChatViewControllerProtocol>)delegate;
+//- (id)initChatViewWithDelegate:(id<SFChatViewControllerProtocol>)delegate;
+- (id)initWithChannel:(SFUser *)channel;
 
 @end
