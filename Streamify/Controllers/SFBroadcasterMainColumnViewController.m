@@ -68,10 +68,6 @@
     [SFUIDefaultTheme themeSlider:self.volumeSlider];
     
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
-    [self.effect1Button setImage:[self followButtonIconForCurrentFollowingState] forState:UIControlStateNormal];
-    [self.effect2Button setImage:[self followButtonIconForCurrentFollowingState] forState:UIControlStateNormal];
-    [self.effect3Button setImage:[self followButtonIconForCurrentFollowingState] forState:UIControlStateNormal];
-    [self.effect4Button setImage:[self followButtonIconForCurrentFollowingState] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,13 +103,11 @@
 }
 
 - (UIImage*)followButtonIconForCurrentFollowingState {
-    /*
-     if (self.user.followed) {
-     return [UIImage imageNamed:@"maincol-icon-follow.png"];
-     } else {
-     return [UIImage imageNamed:@"maincol-icon-unfollow.png"];
-     }*/
-    return NULL;
+    if (self.user.followed) {
+        return [UIImage imageNamed:@"maincol-icon-follow.png"];
+    } else {
+        return [UIImage imageNamed:@"maincol-icon-unfollow.png"];
+    }
 }
 
 @end

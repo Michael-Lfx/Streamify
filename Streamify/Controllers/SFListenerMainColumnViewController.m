@@ -103,4 +103,12 @@
 }
 
 
+- (UIImage*)followButtonIconForCurrentFollowingState {
+    if (self.user.followed) {
+        return [UIImage imageNamed:@"maincol-icon-follow.png"];
+    } else {
+        return [UIImage imageNamed:@"maincol-icon-unfollow.png"];
+    }
+}
+
 @end
