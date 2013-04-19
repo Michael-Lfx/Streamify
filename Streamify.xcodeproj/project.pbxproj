@@ -173,6 +173,7 @@
 		C0BE8C9D17214EEE007AA21A /* SFListenerMainColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BE8C9717214C5A007AA21A /* SFListenerMainColumnViewController.m */; };
 		C0BE8C9F17215B76007AA21A /* SFBroadcasterMainColumnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0BE8C9E17215B76007AA21A /* SFBroadcasterMainColumnViewController.xib */; };
 		C0BE8CA317215C17007AA21A /* SFBroadcasterMainColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BE8CA217215C16007AA21A /* SFBroadcasterMainColumnViewController.m */; };
+		C0BE8CA617216A24007AA21A /* SFSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BE8CA517216A24007AA21A /* SFSlider.m */; };
 		C0C1366F1717040C006D8C6D /* topbar-icon-play.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C1366D1717040C006D8C6D /* topbar-icon-play.png */; };
 		C0C136701717040C006D8C6D /* topbar-icon-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C1366E1717040C006D8C6D /* topbar-icon-play@2x.png */; };
 		C0C8E37F1719C4F40042A827 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C8E3771719C4F40042A827 /* Default-Landscape.png */; };
@@ -480,6 +481,8 @@
 		C0BE8C9E17215B76007AA21A /* SFBroadcasterMainColumnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFBroadcasterMainColumnViewController.xib; sourceTree = "<group>"; };
 		C0BE8CA017215BE8007AA21A /* SFBroadcasterMainColumnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBroadcasterMainColumnViewController.h; sourceTree = "<group>"; };
 		C0BE8CA217215C16007AA21A /* SFBroadcasterMainColumnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBroadcasterMainColumnViewController.m; sourceTree = "<group>"; };
+		C0BE8CA417216A24007AA21A /* SFSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSlider.h; sourceTree = "<group>"; };
+		C0BE8CA517216A24007AA21A /* SFSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSlider.m; sourceTree = "<group>"; };
 		C0C1366D1717040C006D8C6D /* topbar-icon-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "topbar-icon-play.png"; path = "Theme/topbar-icon-play.png"; sourceTree = "<group>"; };
 		C0C1366E1717040C006D8C6D /* topbar-icon-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "topbar-icon-play@2x.png"; path = "Theme/topbar-icon-play@2x.png"; sourceTree = "<group>"; };
 		C0C8E3771719C4F40042A827 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
@@ -967,6 +970,8 @@
 			isa = PBXGroup;
 			children = (
 				9CACF09916F7584A0067C352 /* Superclass */,
+				C0BE8CA417216A24007AA21A /* SFSlider.h */,
+				C0BE8CA517216A24007AA21A /* SFSlider.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1472,6 +1477,7 @@
 				9C37E098171EE72D0021F16E /* TPCircularBuffer+AudioBufferList.c in Sources */,
 				9C37E099171EE72D0021F16E /* TPCircularBuffer.c in Sources */,
 				1A7B5040171EE2F500F89D0F /* SFStorageManager.m in Sources */,
+				C0BE8CA617216A24007AA21A /* SFSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

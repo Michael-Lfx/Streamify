@@ -7,6 +7,7 @@
 //
 
 #import "SFConstants.h"
+#import "SFSlider.h"
 #import "BaseViewController.h"
 #import "SFUser.h"
 
@@ -26,7 +27,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *effect3Button;
 @property (strong, nonatomic) IBOutlet UIButton *effect4Button;
 
-@property (strong, nonatomic) IBOutlet UISlider *volumeSlider;
+@property (strong, nonatomic) IBOutlet SFSlider *volumeSlider;
 
 - (id)initBroadcasterMainColumnWithUser:(SFUser *)user;
 

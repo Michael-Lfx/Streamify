@@ -7,6 +7,7 @@
 //
 
 #import "SFConstants.h"
+#import "SFSlider.h"
 #import "BaseViewController.h"
 
 @protocol SFMainColumnViewControllerProtocol <NSObject>
@@ -32,7 +33,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *followButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 
-@property (strong, nonatomic) IBOutlet UISlider *volumeSlider;
+@property (strong, nonatomic) IBOutlet SFSlider *volumeSlider;
 
 @property (strong, nonatomic) IBOutlet UIButton *effect1Button;
 @property (strong, nonatomic) IBOutlet UIButton *effect2Button;
