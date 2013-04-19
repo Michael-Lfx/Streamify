@@ -11,8 +11,6 @@
 
 @interface SFBroadcasterMainColumnViewController ()
 
-@property (nonatomic) SFChannelState channelState;
-@property (nonatomic) BOOL followingState;
 @property (nonatomic, strong) SFUser *user;
 
 @end
