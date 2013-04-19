@@ -86,4 +86,7 @@ typedef enum {
 
 #define kResultJSON @"ResultJSON"
 
+// Storage Keys
+#define kSFStoragePlaylist @"StoragePlaylist"
+
 #endif

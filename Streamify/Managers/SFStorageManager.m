@@ -51,4 +51,16 @@
     [userDefaults synchronize];
 }
 
++ (NSArray *)retrievePlaylist {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSArray *playlist = [userDefaults arrayForKey:kSFStoragePlaylist];
+    return playlist;
+}
+
++ (void)savePlaylistUserDefaults:(NSArray *)playlist {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:playlist forKey:kSFStoragePlaylist];
+    [userDefaults synchronize];
+}
+
 @end

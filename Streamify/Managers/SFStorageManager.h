@@ -13,5 +13,7 @@
 + (SFStorageManager *)sharedInstance;
 + (NSArray *)retrieveRecentChannelsUserDefaults;
 + (void)saveRecentChannelsUserDefaults:(NSString *)channelID;
++ (NSArray *)retrievePlaylist;
++ (void)savePlaylistUserDefaults:(NSArray *)playlist;
 
 @end

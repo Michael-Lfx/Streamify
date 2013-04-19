@@ -54,6 +54,7 @@
 
 //Managers
 #import "SFSocialManager.h"
+#import "SFStorageManager.h"
 
 //Constants
 #import "SFConstants.h"

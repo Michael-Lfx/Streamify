@@ -33,6 +33,15 @@
     self.tableView.delegate = self;
 }
 
+- (void)save {
+    [SFStorageManager savePlaylistUserDefaults:self.itemsList];
+}
+
+- (void)load {
+    self.itemsList = [[SFStorageManager retrievePlaylist] mutableCopy];
+    [self.tableView reloadData];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -58,6 +67,17 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 66;
 }
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.itemsList removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
+    }
+}
+
+#pragma mark - SFMusicPickerDelegate
 
 - (void)didReceiveMemoryWarning
 {
