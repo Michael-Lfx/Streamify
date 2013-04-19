@@ -84,6 +84,14 @@
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarFull
                                                                                delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
+    
+//    [[SFSocialManager sharedInstance] searchChannelsForKeyword:@"Zuyet" withCallback:^(id returnedObject) {
+//        SFUser *user = [returnedObject[kResultUsers] objectAtIndex:0];
+//        DLog(@"%@", user);
+//        if (user.followed) {
+//            DLog(@"YESSS");
+//        }
+//    }];
 }
 
 - (void)positeCanvasViewController:(SFMetroCanvasViewController *)canvasViewController

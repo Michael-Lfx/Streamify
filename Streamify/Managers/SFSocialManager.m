@@ -46,8 +46,13 @@
             self.currentUser = [[SFUser alloc] initWithPFUser:[PFUser currentUser]];
             [self sendCreateBroadcastRequest:self.currentUser.objectID withCallback:nil];
             
-            NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:OPERATION_SUCCEEDED, kOperationResult, nil];
-            response(resData);
+            self.following = [NSMutableArray array];
+            self.liveChannels = [NSMutableArray array];
+            
+            [self getFollowingForUser:self.currentUser.objectID withCallback:^(id returnedObject) {
+                NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:OPERATION_SUCCEEDED, kOperationResult, nil];
+                response(resData);
+            }];
         } else if ([[[[error userInfo] objectForKey:@"error"] objectForKey:@"type"]
                     isEqualToString: @"OAuthException"]) { // Since the request failed, we can check if it was due to an invalid session
             NSLog(@"The facebook session was invalidated");
@@ -164,6 +169,9 @@
                                @"createFollow", @"action",
                                nil];
     [self queryServerPath:@"/follow.php" requestMethod:@"POST" parameters:queryDict withCallback:^(id returnedObject) {
+        if ([[returnedObject objectForKey:kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
+            [self.following addObject:objectID];
+        }
         response(returnedObject);
     }];
 }
@@ -176,7 +184,15 @@
                                @"blank", @"user_followed_fb_id",
                                @"deleteFollow", @"action",
                                nil];
+    
     [self queryServerPath:@"/follow.php" requestMethod:@"POST" parameters:queryDict withCallback:^(id returnedObject) {
+        if ([[returnedObject objectForKey:kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
+            for (NSString *channelID in self.following) {
+                if ([channelID isEqualToString:objectID]) {
+                    [self.following removeObject:channelID];
+                }
+            }
+        }
         response(returnedObject);
     }];
 }
@@ -267,6 +283,7 @@
             [self getUsersWithObjectIDs:followingArray withCallback:^(id returnedObject) {
                 if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
                     NSMutableArray *result = [NSMutableArray array];
+                    self.following = [NSMutableArray array];
                     
                     for (SFUser *user in [returnedObject objectForKey:kResultUsers]) {
                         for (id row in json) {
@@ -276,12 +293,15 @@
                         }
                         user.followed = YES;
                         [result addObject:user];
+                        [self.following addObject:user.objectID];
                     }
+                    
                     
                     NSDictionary *resData = [NSDictionary dictionaryWithObjectsAndKeys:
                                              OPERATION_SUCCEEDED, kOperationResult,
                                              result, kResultFollowing,
                                              nil];
+    
                     response((id)resData);
                 } else {
                     response(returnedObject);
@@ -424,10 +444,25 @@
             }
             
             [self getUsersWithLiveStatusForObjectIDs:objectIDs withCallback:^(id returnedObject) {
-                response(returnedObject);
+                if ([returnedObject[kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
+                    for (SFUser *channel in returnedObject[kResultUsers]) {
+                        [self checkFollowed:channel];
+                    }
+                    response(returnedObject);
+                } else {
+                    response(returnedObject);
+                }
             }];
         }
     }];
+}
+
+- (void)checkFollowed:(SFUser *)channel {
+    for (NSString *following in self.following) {
+        if ([channel.objectID isEqualToString:following]) {
+            channel.followed = YES;
+        }
+    }
 }
 
 - (void)postMessage:(NSDictionary *)dict withCallback:(SFResponseBlock)response {
