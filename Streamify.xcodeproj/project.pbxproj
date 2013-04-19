@@ -23,6 +23,11 @@
 		1AE32125170DC8DC00D740E5 /* SFTopbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE32123170DC8DC00D740E5 /* SFTopbarViewController.m */; };
 		1AE32126170DC8DC00D740E5 /* SFTopbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE32124170DC8DC00D740E5 /* SFTopbarViewController.xib */; };
 		1AE32128170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE32127170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib */; };
+		9C1EC5CB17216BDB001E7CAE /* SFPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EC5C917216BDB001E7CAE /* SFPlaylistViewController.m */; };
+		9C1EC5CC17216BDB001E7CAE /* SFPlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EC5CA17216BDB001E7CAE /* SFPlaylistViewController.xib */; };
+		9C1EC5CF17217081001E7CAE /* SFPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EC5CE17217081001E7CAE /* SFPlaylistItem.m */; };
+		9C1EC5D217217200001E7CAE /* SFPlaylistItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EC5D117217200001E7CAE /* SFPlaylistItemTableViewCell.m */; };
+		9C1EC5D417217219001E7CAE /* SFPlaylistItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EC5D317217219001E7CAE /* SFPlaylistItemTableViewCell.xib */; };
 		9C37E056171EE5250021F16E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C37E055171EE5250021F16E /* Accelerate.framework */; };
 		9C37E085171EE72D0021F16E /* AEAudioController+Audiobus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C37E059171EE72D0021F16E /* AEAudioController+Audiobus.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9C37E086171EE72D0021F16E /* AEAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C37E05C171EE72D0021F16E /* AEAudioController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -244,6 +249,14 @@
 		1AE32123170DC8DC00D740E5 /* SFTopbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTopbarViewController.m; sourceTree = "<group>"; };
 		1AE32124170DC8DC00D740E5 /* SFTopbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTopbarViewController.xib; sourceTree = "<group>"; };
 		1AE32127170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHomeViewCanvasTitle.xib; sourceTree = "<group>"; };
+		9C1EC5C817216BDB001E7CAE /* SFPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistViewController.h; sourceTree = "<group>"; };
+		9C1EC5C917216BDB001E7CAE /* SFPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistViewController.m; sourceTree = "<group>"; };
+		9C1EC5CA17216BDB001E7CAE /* SFPlaylistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPlaylistViewController.xib; sourceTree = "<group>"; };
+		9C1EC5CD17217081001E7CAE /* SFPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistItem.h; sourceTree = "<group>"; };
+		9C1EC5CE17217081001E7CAE /* SFPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistItem.m; sourceTree = "<group>"; };
+		9C1EC5D017217200001E7CAE /* SFPlaylistItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistItemTableViewCell.h; sourceTree = "<group>"; };
+		9C1EC5D117217200001E7CAE /* SFPlaylistItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistItemTableViewCell.m; sourceTree = "<group>"; };
+		9C1EC5D317217219001E7CAE /* SFPlaylistItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPlaylistItemTableViewCell.xib; sourceTree = "<group>"; };
 		9C37E055171EE5250021F16E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9C37E058171EE72D0021F16E /* AEAudioController+Audiobus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AEAudioController+Audiobus.h"; sourceTree = "<group>"; };
 		9C37E059171EE72D0021F16E /* AEAudioController+Audiobus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AEAudioController+Audiobus.m"; sourceTree = "<group>"; };
@@ -637,6 +650,16 @@
 			name = "Topbar VC";
 			sourceTree = "<group>";
 		};
+		9C1EC5C717216BA2001E7CAE /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				9C1EC5C817216BDB001E7CAE /* SFPlaylistViewController.h */,
+				9C1EC5C917216BDB001E7CAE /* SFPlaylistViewController.m */,
+				9C1EC5CA17216BDB001E7CAE /* SFPlaylistViewController.xib */,
+			);
+			name = Playlist;
+			sourceTree = "<group>";
+		};
 		9C37E057171EE72D0021F16E /* TheAmazingAudioEngine */ = {
 			isa = PBXGroup;
 			children = (
@@ -822,6 +845,7 @@
 		9CACF02016F755AC0067C352 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9C1EC5C717216BA2001E7CAE /* Playlist */,
 				9CACF02116F755AC0067C352 /* Superclass */,
 				1A49F9E71704BE4500969CFA /* Login Screen */,
 				1A49F9E61704BE0900969CFA /* Home Screen */,
@@ -871,6 +895,8 @@
 			children = (
 				9C975CA217180F7F00C5FDDC /* SFMessage.h */,
 				9C975CA317180F7F00C5FDDC /* SFMessage.m */,
+				9C1EC5CD17217081001E7CAE /* SFPlaylistItem.h */,
+				9C1EC5CE17217081001E7CAE /* SFPlaylistItem.m */,
 				9C93677C170601B0006108F9 /* SFUser.h */,
 				9C93677D170601B0006108F9 /* SFUser.m */,
 				9CACF02D16F755AC0067C352 /* Superclass */,
@@ -970,8 +996,14 @@
 			isa = PBXGroup;
 			children = (
 				9CACF09916F7584A0067C352 /* Superclass */,
+<<<<<<< HEAD
 				C0BE8CA417216A24007AA21A /* SFSlider.h */,
 				C0BE8CA517216A24007AA21A /* SFSlider.m */,
+=======
+				9C1EC5D017217200001E7CAE /* SFPlaylistItemTableViewCell.h */,
+				9C1EC5D117217200001E7CAE /* SFPlaylistItemTableViewCell.m */,
+				9C1EC5D317217219001E7CAE /* SFPlaylistItemTableViewCell.xib */,
+>>>>>>> add Playlist things
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1381,6 +1413,8 @@
 				9C37E097171EE72D0021F16E /* README.markdown in Resources */,
 				C0BE8C9617214C48007AA21A /* SFListenerMainColumnViewController.xib in Resources */,
 				C0BE8C9F17215B76007AA21A /* SFBroadcasterMainColumnViewController.xib in Resources */,
+				9C1EC5CC17216BDB001E7CAE /* SFPlaylistViewController.xib in Resources */,
+				9C1EC5D417217219001E7CAE /* SFPlaylistItemTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1477,7 +1511,13 @@
 				9C37E098171EE72D0021F16E /* TPCircularBuffer+AudioBufferList.c in Sources */,
 				9C37E099171EE72D0021F16E /* TPCircularBuffer.c in Sources */,
 				1A7B5040171EE2F500F89D0F /* SFStorageManager.m in Sources */,
+<<<<<<< HEAD
 				C0BE8CA617216A24007AA21A /* SFSlider.m in Sources */,
+=======
+				9C1EC5CB17216BDB001E7CAE /* SFPlaylistViewController.m in Sources */,
+				9C1EC5CF17217081001E7CAE /* SFPlaylistItem.m in Sources */,
+				9C1EC5D217217200001E7CAE /* SFPlaylistItemTableViewCell.m in Sources */,
+>>>>>>> add Playlist things
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
