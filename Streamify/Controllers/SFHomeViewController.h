@@ -16,9 +16,11 @@
 @property (nonatomic, strong) SFMetroCanvasViewController *trendingCanvasViewController;
 @property (nonatomic, strong) SFMetroCanvasViewController *favoriteCanvasViewController;
 @property (nonatomic, strong) SFMetroCanvasViewController *recentCanvasViewController;
+@property (nonatomic, strong) SFMetroCanvasViewController *searchCanvasViewController;
 @property (nonatomic, strong) SFSidebarViewController *sidebarViewController;
 @property (nonatomic, strong) SFTopbarViewController *topbarViewController;
 @property (nonatomic, strong) UILabel *canvasTitle;
 @property (nonatomic, strong) UIImageView *backgroundImage;
+@property (nonatomic, strong) UISearchBar *searchBar;
 
 @end

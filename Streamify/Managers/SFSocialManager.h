@@ -15,7 +15,7 @@ typedef void (^SFResponseBlock)(id returnedObject);
 @property (nonatomic, strong) SFUser *currentUser;
 @property (nonatomic, strong) NSArray *liveChannels;
 @property (nonatomic, strong) NSArray *followers;
-@property (nonatomic, strong) NSArray *following;
+@property (nonatomic, strong) NSMutableArray *following;
 @property (nonatomic, strong) NSArray *allUsers;
 
 + (SFSocialManager* )sharedInstance;
