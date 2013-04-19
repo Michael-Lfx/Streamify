@@ -32,6 +32,7 @@
 		9C1EC5CF17217081001E7CAE /* SFSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EC5CE17217081001E7CAE /* SFSong.m */; };
 		9C1EC5D217217200001E7CAE /* SFSongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EC5D117217200001E7CAE /* SFSongTableViewCell.m */; };
 		9C1EC5D417217219001E7CAE /* SFSongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EC5D317217219001E7CAE /* SFSongTableViewCell.xib */; };
+		9C1EC5D61721D249001E7CAE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1EC5D51721D249001E7CAE /* CoreMedia.framework */; };
 		9C37E056171EE5250021F16E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C37E055171EE5250021F16E /* Accelerate.framework */; };
 		9C37E085171EE72D0021F16E /* AEAudioController+Audiobus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C37E059171EE72D0021F16E /* AEAudioController+Audiobus.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9C37E086171EE72D0021F16E /* AEAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C37E05C171EE72D0021F16E /* AEAudioController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -267,6 +268,7 @@
 		9C1EC5D017217200001E7CAE /* SFSongTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSongTableViewCell.h; sourceTree = "<group>"; };
 		9C1EC5D117217200001E7CAE /* SFSongTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSongTableViewCell.m; sourceTree = "<group>"; };
 		9C1EC5D317217219001E7CAE /* SFSongTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSongTableViewCell.xib; sourceTree = "<group>"; };
+		9C1EC5D51721D249001E7CAE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9C37E055171EE5250021F16E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9C37E058171EE72D0021F16E /* AEAudioController+Audiobus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AEAudioController+Audiobus.h"; sourceTree = "<group>"; };
 		9C37E059171EE72D0021F16E /* AEAudioController+Audiobus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AEAudioController+Audiobus.m"; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C1EC5D61721D249001E7CAE /* CoreMedia.framework in Frameworks */,
 				9C37E056171EE5250021F16E /* Accelerate.framework in Frameworks */,
 				9CEC4892171BFC45002E1B52 /* libz.dylib in Frameworks */,
 				1A1D850017061FC8002C1CB4 /* MediaPlayer.framework in Frameworks */,
@@ -770,6 +773,7 @@
 		9CACEFE016F7529C0067C352 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C1EC5D51721D249001E7CAE /* CoreMedia.framework */,
 				9C37E055171EE5250021F16E /* Accelerate.framework */,
 				9CEC4891171BFC45002E1B52 /* libz.dylib */,
 				1A1D84FF17061FC8002C1CB4 /* MediaPlayer.framework */,
