@@ -17,6 +17,8 @@
 		1A7932C41706169E00005CBF /* SFMetroCanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7932C31706169E00005CBF /* SFMetroCanvasView.m */; };
 		1A7B503D171ECC8600F89D0F /* SFAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B503C171ECC8600F89D0F /* SFAudioSession.m */; };
 		1A7B5040171EE2F500F89D0F /* SFStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B503F171EE2F500F89D0F /* SFStorageManager.m */; };
+		1A868B1917216F12007F93A4 /* SFMusicPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A868B1717216F12007F93A4 /* SFMusicPickerViewController.m */; };
+		1A868B1A17216F12007F93A4 /* SFMusicPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */; };
 		1AB5ED41171A9585009EFE67 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */; };
 		1AB5ED42171A9585009EFE67 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB5ED40171A9585009EFE67 /* whiteArrow.png */; };
 		1AB6A55517195E3F00DD2B2B /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB6A55417195E3F00DD2B2B /* placeholder.png */; };
@@ -232,6 +234,9 @@
 		1A7B503C171ECC8600F89D0F /* SFAudioSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAudioSession.m; sourceTree = "<group>"; };
 		1A7B503E171EE2F500F89D0F /* SFStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFStorageManager.h; sourceTree = "<group>"; };
 		1A7B503F171EE2F500F89D0F /* SFStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFStorageManager.m; sourceTree = "<group>"; };
+		1A868B1617216F12007F93A4 /* SFMusicPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMusicPickerViewController.h; sourceTree = "<group>"; };
+		1A868B1717216F12007F93A4 /* SFMusicPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMusicPickerViewController.m; sourceTree = "<group>"; };
+		1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMusicPickerViewController.xib; sourceTree = "<group>"; };
 		1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		1AB5ED40171A9585009EFE67 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		1AB6A55417195E3F00DD2B2B /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../Assets/placeholder.png; sourceTree = "<group>"; };
@@ -555,6 +560,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A031485172140BF00A60E67 /* Playlist Manager Screen */ = {
+			isa = PBXGroup;
+			children = (
+				1A868B1617216F12007F93A4 /* SFMusicPickerViewController.h */,
+				1A868B1717216F12007F93A4 /* SFMusicPickerViewController.m */,
+				1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */,
+			);
+			name = "Playlist Manager Screen";
+			sourceTree = "<group>";
+		};
 		1A49F9E61704BE0900969CFA /* Home Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -814,6 +829,7 @@
 				1A49F9E61704BE0900969CFA /* Home Screen */,
 				1A49F9EA1704C2DB00969CFA /* Listener Screen */,
 				C0D21CFA170B1CBC004EC17F /* Broadcaster Screen */,
+				1A031485172140BF00A60E67 /* Playlist Manager Screen */,
 				1A49F9E81704C0A700969CFA /* Common */,
 			);
 			path = Controllers;
@@ -1358,6 +1374,7 @@
 				C0D2CDF0171C49E4000AF520 /* maincol-icon-unfollow.png in Resources */,
 				C0D2CDF1171C49E4000AF520 /* maincol-icon-unfollow@2x.png in Resources */,
 				9C37E097171EE72D0021F16E /* README.markdown in Resources */,
+				1A868B1A17216F12007F93A4 /* SFMusicPickerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1452,6 +1469,7 @@
 				9C37E098171EE72D0021F16E /* TPCircularBuffer+AudioBufferList.c in Sources */,
 				9C37E099171EE72D0021F16E /* TPCircularBuffer.c in Sources */,
 				1A7B5040171EE2F500F89D0F /* SFStorageManager.m in Sources */,
+				1A868B1917216F12007F93A4 /* SFMusicPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
