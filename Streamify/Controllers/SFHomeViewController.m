@@ -117,6 +117,8 @@
                                                  nil]];
 }
 
+#pragma mark - SideBarViewController protocal
+
 - (void)trendingPressed:(id)sender {
     self.browsingType = kSFTrendingBrowsing;
     self.canvasTitle.text = @"Trending";
@@ -170,6 +172,8 @@
     SFBroadcasterViewController *broadcasterViewController = [[SFBroadcasterViewController alloc] initWithChannel:[SFSocialManager sharedInstance].currentUser];
     [self.navigationController pushViewController:broadcasterViewController animated:YES];
 }
+
+#pragma mark - SFTopBarViewController protocol
 
 - (void)volumeSliderChanged:(id)sender {
     UISlider *slider = (UISlider *)sender;
