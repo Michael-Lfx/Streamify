@@ -996,14 +996,11 @@
 			isa = PBXGroup;
 			children = (
 				9CACF09916F7584A0067C352 /* Superclass */,
-<<<<<<< HEAD
 				C0BE8CA417216A24007AA21A /* SFSlider.h */,
 				C0BE8CA517216A24007AA21A /* SFSlider.m */,
-=======
 				9C1EC5D017217200001E7CAE /* SFPlaylistItemTableViewCell.h */,
 				9C1EC5D117217200001E7CAE /* SFPlaylistItemTableViewCell.m */,
 				9C1EC5D317217219001E7CAE /* SFPlaylistItemTableViewCell.xib */,
->>>>>>> add Playlist things
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1511,13 +1508,10 @@
 				9C37E098171EE72D0021F16E /* TPCircularBuffer+AudioBufferList.c in Sources */,
 				9C37E099171EE72D0021F16E /* TPCircularBuffer.c in Sources */,
 				1A7B5040171EE2F500F89D0F /* SFStorageManager.m in Sources */,
-<<<<<<< HEAD
 				C0BE8CA617216A24007AA21A /* SFSlider.m in Sources */,
-=======
 				9C1EC5CB17216BDB001E7CAE /* SFPlaylistViewController.m in Sources */,
 				9C1EC5CF17217081001E7CAE /* SFPlaylistItem.m in Sources */,
 				9C1EC5D217217200001E7CAE /* SFPlaylistItemTableViewCell.m in Sources */,
->>>>>>> add Playlist things
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
