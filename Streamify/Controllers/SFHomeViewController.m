@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     // Background image
     UIImage *img = [UIImage imageNamed:@"mainbackground.png"];
     self.backgroundImage = [[UIImageView alloc] initWithImage:img];
@@ -79,11 +79,21 @@
                                                                        emptyCanvasMessage:@"There is currently no history"
                                                                                  delegate:self];
     [self positeCanvasViewController:self.recentCanvasViewController];
-        
+    
+    // Search canvas
+    //self.searchCanvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array]
+                                                                      //emptyCanvasMessage:@"There is currently no history"
+                                                                                //delegate:self];
+    //[self positeCanvasViewController:self.searchCanvasViewController;
+    
     // Sidebar must be added after main column for shadow
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarFull
                                                                                delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
+    
+    // Search bar
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(90, 100, 0, 40)];
+    [self.view addSubview:self.searchBar];
     
 //    [[SFSocialManager sharedInstance] searchChannelsForKeyword:@"Zuyet" withCallback:^(id returnedObject) {
 //        SFUser *user = [returnedObject[kResultUsers] objectAtIndex:0];
@@ -128,6 +138,10 @@
 #pragma mark - SideBarViewController protocal
 
 - (void)trendingPressed:(id)sender {
+    if (self.browsingType == kSFSearchBrowsing) {
+        [self hideSearchBar];
+    }
+    
     self.browsingType = kSFTrendingBrowsing;
     self.canvasTitle.text = @"Trending";
     [self removeAllCanvases];
@@ -137,6 +151,10 @@
 }
 
 - (void)favouritePressed:(id)sender {
+    if (self.browsingType == kSFSearchBrowsing) {
+        [self hideSearchBar];
+    }
+
     self.browsingType = kSFFavoriteBrowsing;
     self.canvasTitle.text = @"Favorite";
     [self removeAllCanvases];
@@ -146,12 +164,32 @@
 }
 
 - (void)recentPressed:(id)sender {
+    if (self.browsingType == kSFSearchBrowsing) {
+        [self hideSearchBar];
+    }
+
     self.browsingType = kSFRecentBrowsing;
     self.canvasTitle.text = @"Recent";
     [self removeAllCanvases];
     [self.view addSubview:self.recentCanvasViewController.view];
     [self.recentCanvasViewController.canvasInitIndicator startAnimating];
     [self canvasDidTriggeredToRefresh];
+}
+
+- (void)searchPressed:(id)sender {
+    self.browsingType = kSFSearchBrowsing;
+    [self showSearchBar];
+        
+    //self.canvasTitle.text = @"Search";
+    //[self removeAllCanvases];
+    //[self.view addSubview:self.searchCanvasViewController.view];
+    //[self.searchCanvasViewController.canvasInitIndicator startAnimating];
+    //[self canvasDidTriggeredToRefresh];
+}
+
+- (void)broadcastPressed:(id)sender {
+    SFBroadcasterViewController *broadcasterViewController = [[SFBroadcasterViewController alloc] initWithChannel:[SFSocialManager sharedInstance].currentUser];
+    [self.navigationController pushViewController:broadcasterViewController animated:YES];
 }
 
 - (void)removeAllCanvases
@@ -162,23 +200,23 @@
     [self.favoriteCanvasViewController refreshWithTiles:[NSArray array]];
     [self.recentCanvasViewController.view removeFromSuperview];
     [self.recentCanvasViewController refreshWithTiles:[NSArray array]];
-}
-
-- (void)searchPressed:(id)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Supported"
-                                                    message:@"Searching coming in the next version !"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-}
-
-- (void)broadcastPressed:(id)sender {
-//  RecordViewController *vc = [[RecordViewController alloc] init];
-//  vc.username = [SFSocialManager sharedInstance].currentUser.objectID;
     
-    SFBroadcasterViewController *broadcasterViewController = [[SFBroadcasterViewController alloc] initWithChannel:[SFSocialManager sharedInstance].currentUser];
-    [self.navigationController pushViewController:broadcasterViewController animated:YES];
+}
+
+- (void)showSearchBar {
+    [UIView animateWithDuration:0.6
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{self.searchBar.frame = CGRectMake(90, 100, 320, 40);}
+                     completion:^(BOOL finished) {}];
+}
+
+- (void)hideSearchBar {
+    [UIView animateWithDuration:0.6
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{self.searchBar.frame = CGRectMake(90, 100, 0, 40);}
+                     completion:^(BOOL finished) {}];
 }
 
 #pragma mark - SFTopBarViewController protocol
@@ -291,4 +329,6 @@
 - (void)viewDidUnload {
     [super viewDidUnload];
 }
+
+
 @end

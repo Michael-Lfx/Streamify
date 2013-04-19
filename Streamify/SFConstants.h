@@ -50,7 +50,8 @@ typedef enum {
 typedef enum {
     kSFTrendingBrowsing,
     kSFFavoriteBrowsing,
-    kSFRecentBrowsing
+    kSFRecentBrowsing,
+    kSFSearchBrowsing
 } SFHomeBrowsingType;
 
 typedef enum {
