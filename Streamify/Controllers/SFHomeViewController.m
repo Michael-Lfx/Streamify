@@ -206,7 +206,7 @@
 - (void)showSearchBar {
     [UIView animateWithDuration:0.6
                           delay:0.0
-                        options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState
+                        options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionLayoutSubviews
                      animations:^{self.searchBar.frame = CGRectMake(90, 100, 320, 40);}
                      completion:^(BOOL finished) {}];
 }
@@ -214,7 +214,7 @@
 - (void)hideSearchBar {
     [UIView animateWithDuration:0.6
                           delay:0.0
-                        options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState
+                        options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionLayoutSubviews
                      animations:^{self.searchBar.frame = CGRectMake(90, 100, 0, 40);}
                      completion:^(BOOL finished) {}];
 }
