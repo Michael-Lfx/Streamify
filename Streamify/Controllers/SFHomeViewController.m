@@ -94,6 +94,10 @@
     // Search bar
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(90, 100, 0, 40)];
     [self.view addSubview:self.searchBar];
+    self.searchBar.clipsToBounds = YES;
+    [[self.searchBar.subviews objectAtIndex:0] removeFromSuperview];
+    
+
     
 //    [[SFSocialManager sharedInstance] searchChannelsForKeyword:@"Zuyet" withCallback:^(id returnedObject) {
 //        SFUser *user = [returnedObject[kResultUsers] objectAtIndex:0];
@@ -204,17 +208,17 @@
 }
 
 - (void)showSearchBar {
-    [UIView animateWithDuration:0.6
+    [UIView animateWithDuration:0.4
                           delay:0.0
-                        options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionLayoutSubviews
+                        options:UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionLayoutSubviews
                      animations:^{self.searchBar.frame = CGRectMake(90, 100, 320, 40);}
                      completion:^(BOOL finished) {}];
 }
 
 - (void)hideSearchBar {
-    [UIView animateWithDuration:0.6
+    [UIView animateWithDuration:0.4
                           delay:0.0
-                        options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionLayoutSubviews
+                        options:UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionLayoutSubviews
                      animations:^{self.searchBar.frame = CGRectMake(90, 100, 0, 40);}
                      completion:^(BOOL finished) {}];
 }
