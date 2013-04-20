@@ -27,14 +27,19 @@
     return _sharedInstance;
 }
 
+- (id)init {
+    if (self = [super init]) {
+        self.streamPlayer = [[MPMoviePlayerController alloc] init];
+        self.isPlaying = NO;
+        self.channelPlaying = NULL;
+    }
+    return self;
+}
+
 - (void)preparePlayer {
-    self.streamPlayer = [[MPMoviePlayerController alloc] init];
-    self.isPlaying = NO;
 }
 
 - (void)playChannel:(NSString *)channelID {
-    [self preparePlayer];
-    
     NSString *urlString = [NSString stringWithFormat:@"http://54.251.250.31/streams/%@/a.m3u8", channelID];
     NSLog(@"%@", urlString);
     NSURL *streamURL = [NSURL URLWithString:urlString];

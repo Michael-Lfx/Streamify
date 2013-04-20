@@ -187,10 +187,16 @@
     
     [self queryServerPath:@"/follow.php" requestMethod:@"POST" parameters:queryDict withCallback:^(id returnedObject) {
         if ([[returnedObject objectForKey:kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
+            NSString *idToRemoved;
+            
             for (NSString *channelID in self.following) {
                 if ([channelID isEqualToString:objectID]) {
-                    [self.following removeObject:channelID];
+                    idToRemoved = channelID;
                 }
+            }
+            
+            if (idToRemoved) {
+                [self.following removeObject:idToRemoved];
             }
         }
         response(returnedObject);
@@ -342,7 +348,10 @@
 }
 
 - (void)getUsersWithLiveStatusForObjectIDs:(NSArray *)objectIDs withCallback:(SFResponseBlock)response {
-    [self queryServerPath:@"getLive.php" requestMethod:@"GET" parameters:nil withCallback:^(id returnedObject) {
+    NSDictionary *queryDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                               self.currentUser.objectID, @"users_object_id",
+                               nil];
+    [self queryServerPath:@"getLive.php" requestMethod:@"POST" parameters:queryDict withCallback:^(id returnedObject) {
         if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
             NSMutableArray *liveChannelNames = [NSMutableArray array];
             
@@ -363,6 +372,13 @@
                                 user.isLive = YES;
                             }
                         }
+                        
+                        for (NSString *following in self.following) {
+                            if ([following isEqualToString:user.objectID]) {
+                                user.followed = YES;
+                            }
+                        }
+                        
                         [result addObject:user];
                     }
                     

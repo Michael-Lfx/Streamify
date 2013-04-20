@@ -40,13 +40,12 @@
     
     
     // Add Chat View
-//    self.chatViewController = [[SFChatViewController alloc] initChatViewWithDelegate:self];
-//    self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.channel];
-//    self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
-//                                                    kSFChatViewFrameY,
-//                                                    kSFChatViewFrameW,
-//                                                    kSFChatViewFrameH);
-//    [self.view addSubview:self.chatViewController.view];
+    self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.channel];
+    self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
+                                                    kSFChatViewFrameY,
+                                                    kSFChatViewFrameW,
+                                                    kSFChatViewFrameH);
+    [self.view addSubview:self.chatViewController.view];
     
     // Button to music edit
     UIButton *managePlaylist = [UIButton buttonWithType:UIButtonTypeRoundedRect];

@@ -27,23 +27,73 @@
 }
 
 - (id)initListenerMainColumnWithUser:(SFUser *)user {
-    self = [self initWithNib];
-    self.user = user;
+    if (self = [super initWithNib]) {
+        self.user = user;
+    }
+    
     return self;
 }
 
 - (IBAction)controlButtonPressed:(id)sender {
-    
+    if ([SFAudioStreamer sharedInstance].isPlaying) {
+        [[SFAudioStreamer sharedInstance] stop];
+    } else {
+        [[SFAudioStreamer sharedInstance] playChannel:self.user.objectID];
+    }
+    [self.controlButton setImage:[self controlButtonIconForCurrentChannelState]
+                        forState:UIControlStateNormal];
 }
 
 - (IBAction)volumeSliderChanged:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    [SFAudioStreamer sharedInstance].volume = slider.value;
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
+    BOOL displayedNativeDialog = [FBNativeDialogs presentShareDialogModallyFrom:self
+                                                                    initialText:nil
+                                                                          image:nil
+                                                                            url:nil
+                                                                        handler:nil];
+    if (!displayedNativeDialog) {
+        [self performPublishAction:^{
+            // otherwise fall back on a request for permissions and a direct post
+            NSString *message = [NSString stringWithFormat:@"I am listening to %@ channel on Streamify!", self.user.name];
+            
+            [FBRequestConnection startForPostStatusUpdate:message
+                                        completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                            
+                                            [self showAlert:message result:result error:error];
+                                            self.shareButton.enabled = YES;
+                                        }];
+            
+            self.shareButton.enabled = NO;
+        }];
+    }
+
 }
 
 - (IBAction)followButtonPressed:(id)sender {
-    
+    self.followButton.enabled = NO;
+    if (self.user.followed) {
+        [[SFSocialManager sharedInstance] unfollows:self.user.objectID withCallback:^(id returnedObject) {
+            if ([returnedObject[kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
+                self.user.followed = NO;
+            }
+            self.followButton.enabled = YES;
+            [self.followButton setImage:[self followButtonIconForCurrentFollowingState]
+                               forState:UIControlStateNormal];
+        }];
+    } else {
+        [[SFSocialManager sharedInstance] follows:self.user.objectID withCallback:^(id returnedObject) {
+            if ([returnedObject[kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
+                self.user.followed = YES;
+            }
+            self.followButton.enabled = YES;
+            [self.followButton setImage:[self followButtonIconForCurrentFollowingState]
+                               forState:UIControlStateNormal];
+        }];
+    }
 }
 
 - (void)viewDidLoad
@@ -63,13 +113,35 @@
     self.coverImageView.layer.shadowRadius = 4.0f;
     self.coverImageView.layer.shadowOpacity = 0.5f;
     self.coverImageView.layer.shadowPath = coverShadowPath.CGPath;
+    [self.coverImageView setImageWithURL:[NSURL URLWithString:self.user.pictureURL]
+                        placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     [SFUIDefaultTheme themeButton:self.followButton];
     [SFUIDefaultTheme themeButton:self.shareButton];
     [SFUIDefaultTheme themeSlider:self.volumeSlider];
     
+    
+    if ([SFAudioStreamer sharedInstance].isPlaying &&
+        ![[SFAudioStreamer sharedInstance].channelPlaying isEqualToString:self.user.objectID]){
+        [[SFAudioStreamer sharedInstance] stop];
+    }
+    
+    
+    // Buttons
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
     [self.followButton setImage:[self followButtonIconForCurrentFollowingState] forState:UIControlStateNormal];
+    
+    if (!self.user.isLive) {
+        self.controlButton.enabled = NO;
+        self.coverImageView.alpha = 0.3;
+    }
+    
+    // Channel Info
+    self.channelInfoLabel.text = [NSString stringWithFormat:@"%@'s Channel", self.user.name];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,23 +164,71 @@
     [super viewDidUnload];
 }
 
-- (UIImage*)controlButtonIconForCurrentChannelState {
-    /*
-    if (self.user.) {
+- (UIImage *)controlButtonIconForCurrentChannelState {
+    if ([SFAudioStreamer sharedInstance].isPlaying) {
         return [UIImage imageNamed:@"maincol-icon-pause.png"];
-    } else if (self.channelState == kSFStoppedOrPausedState) {
+    } else {
         return [UIImage imageNamed:@"maincol-icon-play.png"];
-    }*/
-    return NULL;
+    }
 }
 
 
-- (UIImage*)followButtonIconForCurrentFollowingState {
+- (UIImage *)followButtonIconForCurrentFollowingState {
     if (self.user.followed) {
-        return [UIImage imageNamed:@"maincol-icon-follow.png"];
-    } else {
         return [UIImage imageNamed:@"maincol-icon-unfollow.png"];
+    } else {
+        return [UIImage imageNamed:@"maincol-icon-follow.png"];
     }
+}
+
+#pragma mark - FBShare
+
+- (void) performPublishAction:(void (^)(void)) action {
+    // we defer request for permission to post to the moment of post, then we check for the permission
+    if ([FBSession.activeSession.permissions indexOfObject:@"publish_actions"] == NSNotFound) {
+        // if we don't already have the permission, then we request it now
+        [FBSession.activeSession requestNewPublishPermissions:@[@"publish_actions"]
+                                              defaultAudience:FBSessionDefaultAudienceFriends
+                                            completionHandler:^(FBSession *session, NSError *error) {
+                                                if (!error) {
+                                                    action();
+                                                }
+                                                //For this example, ignore errors (such as if user cancels).
+                                            }];
+    } else {
+        action();
+    }
+    
+}
+
+// UIAlertView helper for post buttons
+- (void)showAlert:(NSString *)message
+           result:(id)result
+            error:(NSError *)error {
+    
+    NSString *alertMsg;
+    NSString *alertTitle;
+    if (error) {
+        alertTitle = @"Error";
+        if (error.fberrorShouldNotifyUser ||
+            error.fberrorCategory == FBErrorCategoryPermissions ||
+            error.fberrorCategory == FBErrorCategoryAuthenticationReopenSession) {
+            alertMsg = error.fberrorUserMessage;
+        } else {
+            alertMsg = @"Operation failed due to a connection problem, retry later.";
+        }
+    } else {
+        alertMsg = [NSString stringWithFormat:@"Successfully posted '%@'.",
+                    message];
+        alertTitle = @"Success";
+    }
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                        message:alertMsg
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    [alertView show];
 }
 
 @end
