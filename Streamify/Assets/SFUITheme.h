@@ -23,6 +23,7 @@ typedef enum {
 
 + (void)themeButton:(UIButton *)button;
 + (void)themeSlider:(UISlider *)slider;
++ (void)themeSearchBar:(UISearchBar *)searchBar;
 
 + (UIColor *)mainTextColor;
 + (void)themeButton:(UIButton *)button forType:(SFButtonType)buttonType;

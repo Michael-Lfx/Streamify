@@ -21,6 +21,14 @@
     [slider setThumbImage:[[UIImage alloc] init] forState:UIControlStateNormal];
 }
 
++ (void)themeSearchBar:(UISearchBar *)searchBar {
+    searchBar.backgroundImage = [[UIImage alloc] init];
+    [searchBar setSearchFieldBackgroundImage:[SFUIDefaultTheme getSearchBarBackgroundImage] forState:UIControlStateNormal];
+    
+    UITextField *searchField = [searchBar valueForKey:@"_searchField"];
+    searchField.textColor = [SFUIDefaultTheme mainTextColor];
+}
+
 + (UIColor *)mainTextColor {
     return [UIColor colorWithRed:101.0/255 green:246.0/255 blue:227.0/255 alpha:1];
 }
@@ -84,6 +92,13 @@
     } else if (sliderTrackType == kSFSliderMaxTrack) {
         image = [[UIImage imageNamed:@"topbar-track-max.png"] resizableImageWithCapInsets:insets];
     }
+    return image;
+}
+
++ (UIImage *)getSearchBarBackgroundImage {
+    UIImage *image;
+    UIEdgeInsets insets = UIEdgeInsetsMake(15, 20, 15, 20);
+    image = [[UIImage imageNamed:@"ui-searchbox.png"] resizableImageWithCapInsets:insets];
     return image;
 }
 
