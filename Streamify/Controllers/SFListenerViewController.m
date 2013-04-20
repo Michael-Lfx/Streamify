@@ -38,12 +38,12 @@
     
     // Add Chat View
 //    self.chatViewController = [[SFChatViewController alloc] initChatViewWithDelegate:self];
-//    self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.user];
-//    self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
-//                                                    kSFChatViewFrameY,
-//                                                    kSFChatViewFrameW,
-//                                                    kSFChatViewFrameH);
-//    [self.view addSubview:self.chatViewController.view];
+    self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.user];
+    self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
+                                                    kSFChatViewFrameY,
+                                                    kSFChatViewFrameW,
+                                                    kSFChatViewFrameH);
+    [self.view addSubview:self.chatViewController.view];
     
     
     // Add Main Column
