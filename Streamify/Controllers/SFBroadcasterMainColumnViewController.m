@@ -12,6 +12,9 @@
 @interface SFBroadcasterMainColumnViewController ()
 
 @property (nonatomic, strong) SFUser *user;
+@property (nonatomic, strong) NSDate *startBroadcastingTime;
+@property (nonatomic, strong) NSTimer *pollingTimer;
+@property (nonatomic) NSTimeInterval duration;
 
 @end
 
@@ -63,6 +66,8 @@
     self.coverImageView.layer.shadowRadius = 4.0f;
     self.coverImageView.layer.shadowOpacity = 0.5f;
     self.coverImageView.layer.shadowPath = coverShadowPath.CGPath;
+    [self.coverImageView setImageWithURL:[NSURL URLWithString:self.user.pictureURL]
+                        placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     [SFUIDefaultTheme themeButton:self.effect1Button];
     [SFUIDefaultTheme themeButton:self.effect2Button];
@@ -70,17 +75,52 @@
     [SFUIDefaultTheme themeButton:self.effect4Button];
     [SFUIDefaultTheme themeSlider:self.volumeSlider];
     
+    // Buttons
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
+    
+    // Channel Info
+    self.channelInfoLabel.text = [NSString stringWithFormat:@"%@'s Channel", self.user.name];
+    
+    self.duration = 0;
 }
 
 - (void)stopRecording {
     [[SFAudioBroadcaster sharedInstance] stop];
+    [self.pollingTimer invalidate];
+    self.duration = 0;
 }
 
 - (void)startRecording {
     [[SFAudioBroadcaster sharedInstance] prepareRecordWithChannel:self.user.objectID];
     [[SFAudioBroadcaster sharedInstance] record];
+    [self startTimer];
 }
+
+- (void)startTimer {
+    self.startBroadcastingTime = [NSDate date];
+    self.pollingTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                         target:self
+                                                       selector:@selector(updateTime)
+                                                       userInfo:nil
+                                                        repeats:YES];
+}
+
+- (void)updateTime {
+    self.duration = -[self.startBroadcastingTime timeIntervalSinceNow];
+}
+
+- (void)setDuration:(NSTimeInterval)duration {
+    _duration = duration;
+    NSInteger intDuration = duration;
+    NSInteger minutes = intDuration / 60;
+    NSInteger seconds = intDuration % 60;
+    if (seconds >= 10) {
+        self.timeLabel.text = [NSString stringWithFormat:@"%d:%d", minutes, seconds];
+    } else {
+        self.timeLabel.text = [NSString stringWithFormat:@"%d:0%d", minutes, seconds];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -13,6 +13,10 @@
 
 @property (nonatomic, strong) SFUser *user;
 
+@property (nonatomic, strong) NSDate *startListeningTime;
+@property (nonatomic, strong) NSTimer *pollingTimer;
+@property (nonatomic) NSTimeInterval duration;
+
 @end
 
 @implementation SFListenerMainColumnViewController
@@ -34,11 +38,46 @@
     return self;
 }
 
+- (void)startTimer {
+    self.startListeningTime = [NSDate date];
+    self.pollingTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                         target:self
+                                                       selector:@selector(updateTime)
+                                                       userInfo:nil
+                                                        repeats:YES];
+}
+
+- (void)updateTime {
+    self.duration = -[self.startListeningTime timeIntervalSinceNow];
+}
+
+- (void)setDuration:(NSTimeInterval)duration {
+    _duration = duration;
+    NSInteger intDuration = duration;
+    NSInteger minutes = intDuration / 60;
+    NSInteger seconds = intDuration % 60;
+    if (seconds >= 10) {
+        self.timeLabel.text = [NSString stringWithFormat:@"%d:%d", minutes, seconds];
+    } else {
+        self.timeLabel.text = [NSString stringWithFormat:@"%d:0%d", minutes, seconds];
+    }
+}
+
+- (void)start {
+    [[SFAudioStreamer sharedInstance] playChannel:self.user.objectID];
+}
+
+- (void)stop {
+    [[SFAudioStreamer sharedInstance] stop];
+    self.duration = 0;
+}
+
 - (IBAction)controlButtonPressed:(id)sender {
     if ([SFAudioStreamer sharedInstance].isPlaying) {
-        [[SFAudioStreamer sharedInstance] stop];
+        [self stop];
     } else {
-        [[SFAudioStreamer sharedInstance] playChannel:self.user.objectID];
+        [self start];
+        [self startTimer];
     }
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState]
                         forState:UIControlStateNormal];
@@ -70,7 +109,7 @@
             self.shareButton.enabled = NO;
         }];
     }
-
+    
 }
 
 - (IBAction)followButtonPressed:(id)sender {
@@ -138,6 +177,8 @@
     
     // Channel Info
     self.channelInfoLabel.text = [NSString stringWithFormat:@"%@'s Channel", self.user.name];
+    
+    self.duration = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
