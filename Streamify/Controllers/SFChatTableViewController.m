@@ -86,6 +86,8 @@
     cell.messageLabel.text = cellData.text;
     [cell.avatarImageView setImageWithURL:[NSURL URLWithString:cellData.pictureURL]
                          placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    cell.avatarImageView.layer.cornerRadius = 7;
+    cell.avatarImageView.layer.masksToBounds = YES;
 }
 
 /*
