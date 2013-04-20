@@ -161,7 +161,7 @@
 	channelLayout.mChannelLayoutTag = kAudioChannelLayoutTag_Stereo;
 	NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
 									[NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
-									[NSNumber numberWithFloat:44100.0], AVSampleRateKey,
+									[NSNumber numberWithFloat:44100.0/2], AVSampleRateKey,
 									[NSNumber numberWithInt:2], AVNumberOfChannelsKey,
 									[NSData dataWithBytes:&channelLayout length:sizeof(AudioChannelLayout)], AVChannelLayoutKey,
 									[NSNumber numberWithInt:16], AVLinearPCMBitDepthKey,
