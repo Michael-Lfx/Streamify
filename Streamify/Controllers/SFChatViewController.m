@@ -98,7 +98,7 @@
 {
     [super viewDidLoad];
     [SFUIDefaultTheme themeButton:self.sendButton];
-    //[SFUIDefaultTheme themeTextField:self.chatTextField];
+    [SFUIDefaultTheme themeTextField:self.chatTextField];
     
     self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, self.chatTextField.frame.origin.y,
                                           self.chatTextField.frame.size.width, kSFChatTextFrameH);

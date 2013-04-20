@@ -63,10 +63,10 @@
     /* cell components */
     self.userNameLabel.backgroundColor = [UIColor clearColor];
     self.userNameLabel.textColor = [SFUIDefaultTheme mainTextColor];
-    self.userNameLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    self.userNameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16];
     self.messageLabel.backgroundColor = [UIColor clearColor];
     self.messageLabel.textColor = [UIColor colorWithWhite:0.8 alpha:1.0];
-    self.messageLabel.font = [UIFont systemFontOfSize:15.0];
+    self.messageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
 }
 
 - (void)layoutSubviews {

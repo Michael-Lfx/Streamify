@@ -35,7 +35,7 @@
 }
 
 + (void)themeTextField:(UITextField *)textField {
-    [textField setBackground:[SFUIDefaultTheme getSearchBarBackgroundImage]];
+    [textField setBackground:[SFUIDefaultTheme getTextFieldBackgroundImage]];
     textField.textColor = [SFUIDefaultTheme mainTextColor];
     textField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
 }
@@ -107,6 +107,13 @@
 }
 
 + (UIImage *)getSearchBarBackgroundImage {
+    UIImage *image;
+    UIEdgeInsets insets = UIEdgeInsetsMake(15, 20, 15, 20);
+    image = [[UIImage imageNamed:@"ui-searchbox.png"] resizableImageWithCapInsets:insets];
+    return image;
+}
+
++ (UIImage *)getTextFieldBackgroundImage {
     UIImage *image;
     UIEdgeInsets insets = UIEdgeInsetsMake(15, 20, 15, 20);
     image = [[UIImage imageNamed:@"ui-searchbox.png"] resizableImageWithCapInsets:insets];
