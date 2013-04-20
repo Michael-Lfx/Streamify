@@ -68,6 +68,7 @@
     self.coverImageView.layer.shadowPath = coverShadowPath.CGPath;
     [self.coverImageView setImageWithURL:[NSURL URLWithString:self.user.pictureURL]
                         placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    self.coverImageView.alpha = 0.3;
     
     [SFUIDefaultTheme themeButton:self.effect1Button];
     [SFUIDefaultTheme themeButton:self.effect2Button];
@@ -88,12 +89,14 @@
     [[SFAudioBroadcaster sharedInstance] stop];
     [self.pollingTimer invalidate];
     self.duration = 0;
+    self.coverImageView.alpha = 0.3;
 }
 
 - (void)startRecording {
     [[SFAudioBroadcaster sharedInstance] prepareRecordWithChannel:self.user.objectID];
     [[SFAudioBroadcaster sharedInstance] record];
     [self startTimer];
+    self.coverImageView.alpha = 1.0;
 }
 
 - (void)startTimer {
