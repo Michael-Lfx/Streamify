@@ -25,6 +25,9 @@
     searchBar.backgroundImage = [[UIImage alloc] init];
     [searchBar setSearchFieldBackgroundImage:[SFUIDefaultTheme getSearchBarBackgroundImage] forState:UIControlStateNormal];
     
+    [searchBar setImage:[UIImage imageNamed:@"ui-searchbar-icon-search.png"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+    [searchBar setImage:[UIImage imageNamed:@"ui-searchbar-icon-cancel.png"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateNormal];
+    
     UITextField *searchField = [searchBar valueForKey:@"_searchField"];
     searchField.textColor = [SFUIDefaultTheme mainTextColor];
 }
