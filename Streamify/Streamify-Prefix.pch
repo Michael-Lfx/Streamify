@@ -58,6 +58,7 @@
 
 //Constants
 #import "SFConstants.h"
+#import "SFConstantsNibNames.h"
 
 // AudioComponents
 #import "SFAudioBroadcaster.h"

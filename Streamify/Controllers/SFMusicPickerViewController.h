@@ -8,6 +8,16 @@
 
 #import "BaseViewController.h"
 
+@protocol SFMusicPickerViewControllerDelegate <NSObject>
+
+- (void)songSelected:(SFSong *)song;
+
+@end
+
+
+
 @interface SFMusicPickerViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate>
+
+- (id)initWithDelegate:(id)delegate;
 
 @end

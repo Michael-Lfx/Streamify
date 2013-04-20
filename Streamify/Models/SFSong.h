@@ -22,4 +22,6 @@
         albumTitle:(NSString *)albumTitle
        albumCover:(UIImage *)albumCover;
 
+- (id)initWithURL:(NSURL *)URL;
+
 @end

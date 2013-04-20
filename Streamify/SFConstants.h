@@ -37,6 +37,11 @@
 #define kSFKeyboardHeight 352
 #define kSFScreenHeight 768
 
+#define kSFStreamifyPlaylistViewFrameXInPlaylistManagerView 80
+#define kSFStreamifyPlaylistViewFrameYInPlaylistManagerView 0
+#define kSFLibraryPlaylistViewFrameXInPlaylistManagerView 552
+#define kSFLibraryPlaylistViewFrameYInPlaylistManagerView 0
+
 typedef enum {
     kSFSidebarFull,
     kSFSidebarBackOnly
@@ -89,5 +94,9 @@ typedef enum {
 
 // Storage Keys
 #define kSFStoragePlaylist @"StoragePlaylist"
+
+// Image
+#define kSFSongAlbumCoverImageHolder @"no_artwork.png"
+
 
 #endif

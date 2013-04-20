@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1552</int>
+		<int key="IBDocument.SystemTarget">1536</int>
 		<string key="IBDocument.SystemVersion">11G63b</string>
-		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
 		<string key="IBDocument.AppKitVersion">1138.51</string>
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">2083</string>
+			<string key="NS.object.0">1930</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -56,7 +56,7 @@
 					<object class="IBUILabel" id="1056452710">
 						<reference key="NSNextResponder" ref="174774606"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrameSize">{524, 70}</string>
+						<string key="NSFrameSize">{472, 70}</string>
 						<reference key="NSSuperview" ref="174774606"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="695740813"/>
@@ -93,9 +93,10 @@
 					<object class="IBUITableView" id="695740813">
 						<reference key="NSNextResponder" ref="174774606"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{0, 70}, {524, 698}}</string>
+						<string key="NSFrame">{{0, 70}, {472, 698}}</string>
 						<reference key="NSSuperview" ref="174774606"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -112,7 +113,7 @@
 						<float key="IBUISectionFooterHeight">22</float>
 					</object>
 				</array>
-				<string key="NSFrameSize">{512, 768}</string>
+				<string key="NSFrameSize">{472, 768}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="191201014"/>
@@ -253,6 +254,6 @@
 			<string key="NS.key.0">chat-background.png</string>
 			<string key="NS.object.0">{524, 768}</string>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">2083</string>
+		<string key="IBCocoaTouchPluginVersion">1930</string>
 	</data>
 </archive>

@@ -12,6 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-- (void)save;
+- (void)addSong:(SFSong *)song;
 
 @end

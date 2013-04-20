@@ -11,7 +11,7 @@
 
 @interface SFPlaylistViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray *itemsList;
+@property (nonatomic, strong) NSMutableArray *playlist;
 
 @end
 
@@ -34,48 +34,77 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [self loadPlaylist];
+    [self.tableView reloadData];
 }
 
-- (void)save {
-    [SFStorageManager savePlaylistUserDefaults:self.itemsList];
+- (void)viewWillDisappear:(BOOL)animated {
+    [SFStorageManager savePlaylistUserDefaults:[self getPlaylistURLs]];
+    [super viewWillDisappear:animated];
 }
 
-- (void)load {
-    self.itemsList = [[SFStorageManager retrievePlaylist] mutableCopy];
+- (void)loadPlaylist
+{
+    NSArray *playlistURLs = [SFStorageManager retrievePlaylist];
+    if (!playlistURLs) {
+        playlistURLs = [NSArray array];
+    }
+    
+    self.playlist = [NSMutableArray array];
+    for (NSString *URL in playlistURLs) {
+        SFSong *song = [[SFSong alloc] initWithURL:[NSURL URLWithString:URL]];
+        [self.playlist addObject:song];
+    }
+}
+     
+- (NSArray *)getPlaylistURLs
+{
+    NSMutableArray *URLs = [NSMutableArray array];
+    for (SFSong *song in self.playlist) {
+        [URLs addObject:[song.URL absoluteString]];
+    }
+    
+    return [NSArray arrayWithArray:URLs];
+}
+
+- (void)addSong:(SFSong *)song
+{
+    [self.playlist addObject:song];
     [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.itemsList.count;
+    return self.playlist.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *identifier = [SFSongTableViewCell cellIdentifier];
     SFSongTableViewCell *cell = (SFSongTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SFSongTableViewCell" owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:kSFSongTableViewCellNibName owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     
-    SFSong *item = [self.itemsList objectAtIndex:indexPath.row];
+    SFSong *song = [self.playlist objectAtIndex:indexPath.row];
     
-    cell.songTitleLabel.text = item.title;
-    cell.artistNameLabel.text = item.artistName;
+    cell.songTitleLabel.text = song.title;
+    cell.artistNameLabel.text = song.artistName;
+    cell.albumCoverView.image = song.albumCover;
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    return kSFSongTableViewCellRowHeight;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.itemsList removeObjectAtIndex:indexPath.row];
+        [self.playlist removeObjectAtIndex:indexPath.row];
         [self.tableView reloadData];
     }
 }

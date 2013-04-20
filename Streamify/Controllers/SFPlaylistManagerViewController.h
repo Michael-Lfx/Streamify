@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import "SFMusicPickerViewController.h"
 
-@interface SFPlaylistManagerViewController : BaseViewController
+@interface SFPlaylistManagerViewController : BaseViewController <SFMusicPickerViewControllerDelegate>
+
 
 @end

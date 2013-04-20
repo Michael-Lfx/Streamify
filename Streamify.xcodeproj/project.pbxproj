@@ -252,7 +252,7 @@
 		1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMusicPickerViewController.xib; sourceTree = "<group>"; };
 		1A868B1B17217A9C007F93A4 /* SFPlaylistManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistManagerViewController.h; sourceTree = "<group>"; };
 		1A868B1C17217A9C007F93A4 /* SFPlaylistManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistManagerViewController.m; sourceTree = "<group>"; };
-		1A868B241721881A007F93A4 /* no_artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_artwork.png; sourceTree = "<group>"; };
+		1A868B241721881A007F93A4 /* no_artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_artwork.png; path = ../Views/no_artwork.png; sourceTree = "<group>"; };
 		1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		1AB5ED40171A9585009EFE67 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		1AB6A55417195E3F00DD2B2B /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../Assets/placeholder.png; sourceTree = "<group>"; };
@@ -260,6 +260,7 @@
 		1AE32123170DC8DC00D740E5 /* SFTopbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTopbarViewController.m; sourceTree = "<group>"; };
 		1AE32124170DC8DC00D740E5 /* SFTopbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTopbarViewController.xib; sourceTree = "<group>"; };
 		1AE32127170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHomeViewCanvasTitle.xib; sourceTree = "<group>"; };
+		1AF390F01722C041004FC992 /* SFConstantsNibNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConstantsNibNames.h; sourceTree = "<group>"; };
 		9C1EC5C817216BDB001E7CAE /* SFPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistViewController.h; sourceTree = "<group>"; };
 		9C1EC5C917216BDB001E7CAE /* SFPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistViewController.m; sourceTree = "<group>"; };
 		9C1EC5CA17216BDB001E7CAE /* SFPlaylistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPlaylistViewController.xib; sourceTree = "<group>"; };
@@ -684,6 +685,14 @@
 			name = "Topbar VC";
 			sourceTree = "<group>";
 		};
+		1AF390F21722DFF7004FC992 /* Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				1A868B241721881A007F93A4 /* no_artwork.png */,
+			);
+			name = Miscellaneous;
+			sourceTree = "<group>";
+		};
 		9C1EC5C717216BA2001E7CAE /* Playlist VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1036,7 +1045,6 @@
 				9C1EC5D017217200001E7CAE /* SFSongTableViewCell.h */,
 				9C1EC5D117217200001E7CAE /* SFSongTableViewCell.m */,
 				9C1EC5D317217219001E7CAE /* SFSongTableViewCell.xib */,
-				1A868B241721881A007F93A4 /* no_artwork.png */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1129,6 +1137,7 @@
 				C0AB091C17157AFF009FEBC1 /* Login */,
 				C0D16179170F4098006C1475 /* Chat */,
 				C0CA2B5C170F1F2F0007C576 /* Topbar */,
+				1AF390F21722DFF7004FC992 /* Miscellaneous */,
 				C0A3B964171126FE0005B3ED /* brillant.png */,
 				C0A3B965171126FE0005B3ED /* brillant@2x.png */,
 				C0CA2B5D170F1F470007C576 /* subtle_carbon@2x.png */,
@@ -1183,6 +1192,7 @@
 			isa = PBXGroup;
 			children = (
 				C0B22122170556AA0045A248 /* SFConstants.h */,
+				1AF390F01722C041004FC992 /* SFConstantsNibNames.h */,
 			);
 			name = Constants;
 			sourceTree = "<group>";

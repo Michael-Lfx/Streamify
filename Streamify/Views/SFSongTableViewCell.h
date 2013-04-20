@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define kSFSongTableViewCellRowHeight (80)
+
 @interface SFSongTableViewCell : BaseTableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *albumCoverView;
