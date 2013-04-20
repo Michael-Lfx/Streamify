@@ -34,4 +34,6 @@
 - (IBAction)controlButtonPressed:(id)sender;
 - (IBAction)volumeSliderChanged:(id)sender;
 
+- (void)stopRecording;
+
 @end

@@ -25,7 +25,6 @@
 - (IBAction)chatTextEditBeginned:(id)sender;
 - (IBAction)chatTextEditEnded:(id)sender;
 
-//- (id)initChatViewWithDelegate:(id<SFChatViewControllerProtocol>)delegate;
 - (id)initWithChannel:(SFUser *)channel;
 
 @end

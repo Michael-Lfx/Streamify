@@ -110,12 +110,14 @@
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="442593003">
-							<int key="type">2</int>
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="780870093">
+							<string key="name">HelveticaNeue-Bold</string>
+							<string key="family">Helvetica Neue</string>
+							<int key="traits">2</int>
 							<double key="pointSize">17</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="568196526">
-							<string key="NSName">Helvetica-Bold</string>
+						<object class="NSFont" key="IBUIFont" id="801914504">
+							<string key="NSName">HelveticaNeue-Bold</string>
 							<double key="NSSize">17</double>
 							<int key="NSfFlags">16</int>
 						</object>
@@ -143,11 +145,13 @@
 						<int key="IBUIBaselineAdjustment">0</int>
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<int key="type">2</int>
+							<string key="name">HelveticaNeue-CondensedBold</string>
+							<string key="family">Helvetica Neue</string>
+							<int key="traits">2</int>
 							<double key="pointSize">19</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica-Bold</string>
+							<string key="NSName">HelveticaNeue-Bold</string>
 							<double key="NSSize">19</double>
 							<int key="NSfFlags">16</int>
 						</object>
@@ -171,8 +175,8 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<int key="IBUITextAlignment">2</int>
-						<reference key="IBUIFontDescription" ref="442593003"/>
-						<reference key="IBUIFont" ref="568196526"/>
+						<reference key="IBUIFontDescription" ref="780870093"/>
+						<reference key="IBUIFont" ref="801914504"/>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 					<object class="IBUILabel" id="919611246">
@@ -192,8 +196,8 @@
 						<reference key="IBUITextColor" ref="311302997"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
-						<reference key="IBUIFontDescription" ref="442593003"/>
-						<reference key="IBUIFont" ref="568196526"/>
+						<reference key="IBUIFontDescription" ref="780870093"/>
+						<reference key="IBUIFont" ref="801914504"/>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 					<object class="IBUIButton" id="172900037">
@@ -221,11 +225,11 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">maincol-icon-stop.png</string>
 						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="913433046">
+						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
 							<double key="pointSize">15</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="344480851">
+						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica-Bold</string>
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
@@ -295,8 +299,17 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">maincol-button-background-pressed.png</string>
 								</object>
-								<reference key="IBUIFontDescription" ref="913433046"/>
-								<reference key="IBUIFont" ref="344480851"/>
+								<object class="IBUIFontDescription" key="IBUIFontDescription" id="68649864">
+									<string key="name">HelveticaNeue-Bold</string>
+									<string key="family">Helvetica Neue</string>
+									<int key="traits">2</int>
+									<double key="pointSize">15</double>
+								</object>
+								<object class="NSFont" key="IBUIFont" id="136432211">
+									<string key="NSName">HelveticaNeue-Bold</string>
+									<double key="NSSize">15</double>
+									<int key="NSfFlags">16</int>
+								</object>
 							</object>
 							<object class="IBUIButton" id="908702938">
 								<reference key="NSNextResponder" ref="436839229"/>
@@ -304,7 +317,6 @@
 								<string key="NSFrame">{{50, 116}, {320, 46}}</string>
 								<reference key="NSSuperview" ref="436839229"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -326,8 +338,8 @@
 									<string key="NSResourceName">maincol-icon-share.png</string>
 								</object>
 								<reference key="IBUIHighlightedBackgroundImage" ref="404676599"/>
-								<reference key="IBUIFontDescription" ref="913433046"/>
-								<reference key="IBUIFont" ref="344480851"/>
+								<reference key="IBUIFontDescription" ref="68649864"/>
+								<reference key="IBUIFont" ref="136432211"/>
 							</object>
 						</array>
 						<string key="NSFrame">{{0, 504}, {420, 264}}</string>
@@ -502,7 +514,6 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="659769304"/>
 							<reference ref="1066027300"/>
-							<reference ref="491643009"/>
 							<reference ref="172900037"/>
 							<reference ref="595365269"/>
 							<reference ref="393476000"/>
@@ -511,6 +522,7 @@
 							<reference ref="436839229"/>
 							<reference ref="254459892"/>
 							<reference ref="298681562"/>
+							<reference ref="491643009"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -661,7 +673,7 @@
 						<string key="personListeningLabel">UILabel</string>
 						<string key="shareButton">UIButton</string>
 						<string key="timeLabel">UILabel</string>
-						<string key="volumeSlider">UISlider</string>
+						<string key="volumeSlider">SFSlider</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="channelInfoLabel">
@@ -698,7 +710,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="volumeSlider">
 							<string key="name">volumeSlider</string>
-							<string key="candidateClassName">UISlider</string>
+							<string key="candidateClassName">SFSlider</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

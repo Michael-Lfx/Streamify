@@ -5,7 +5,9 @@
 //  Created by Zuyet Awarmatik on 26/3/13.
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
+
 #import "SFConstants.h"
+#import "SFUIDefaultTheme.h"
 #import "SFHomeViewController.h"
 #import "SFListenerViewController.h"
 #import "SFBroadcasterViewController.h"
@@ -93,10 +95,9 @@
     
     // Search bar
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(90, 100, 0, 40)];
-    [self.view addSubview:self.searchBar];
     self.searchBar.clipsToBounds = YES;
-    [[self.searchBar.subviews objectAtIndex:0] removeFromSuperview];
-    
+    [SFUIDefaultTheme themeSearchBar:self.searchBar];
+    [self.view addSubview:self.searchBar];
 
     
 //    [[SFSocialManager sharedInstance] searchChannelsForKeyword:@"Zuyet" withCallback:^(id returnedObject) {
@@ -211,7 +212,7 @@
     [UIView animateWithDuration:0.4
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionLayoutSubviews
-                     animations:^{self.searchBar.frame = CGRectMake(90, 100, 320, 40);}
+                     animations:^{self.searchBar.frame = CGRectMake(150, 100, 320, 40);}
                      completion:^(BOOL finished) {}];
 }
 

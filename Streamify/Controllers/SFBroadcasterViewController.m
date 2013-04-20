@@ -40,7 +40,6 @@
     
     
     // Add Chat View
-//    self.chatViewController = [[SFChatViewController alloc] initChatViewWithDelegate:self];
     self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.channel];
     self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
                                                     kSFChatViewFrameY,
@@ -59,10 +58,8 @@
     
     
     // Add Main Column
-    self.mainColumnViewController = [[SFMainColumnViewController alloc] initMainColumnWithOption:kSFMainColumnBroadcaster
-                                                                                        delegate:self
-                                                                                    channelState:self.channelState
-                                                                                  followingState:NO];
+    self.mainColumnViewController = [[SFBroadcasterMainColumnViewController alloc] initBroadcasterMainColumnWithUser:self.channel];
+    
     self.mainColumnViewController.view.frame = CGRectMake(kSFMainColumnFrameX,
                                                           kSFMainColumnFrameY,
                                                           kSFMainColumnFrameW,
@@ -84,9 +81,12 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    self.channelState = kSFStoppedOrPausedState;
-    [[SFAudioBroadcaster sharedInstance] stop];
     [super viewWillDisappear:animated];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,32 +95,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - SFMainColumnViewController protocol
-
-- (void)controlButtonPressed:(id)sender {
-//    if (self.channelState == kSFStoppedOrPausedState) {
-    if (![SFAudioBroadcaster sharedInstance].isRecording) {
-        [[SFAudioBroadcaster sharedInstance] prepareRecordWithChannel:[PFUser currentUser].objectId];
-        [[SFAudioBroadcaster sharedInstance] record];
-        
-        self.channelState = kSFPlayingOrRecordingState;
-//    } else if (self.channelState == kSFPlayingOrRecordingState) {
-    } else if ([SFAudioBroadcaster sharedInstance].isRecording) {
-        [[SFAudioBroadcaster sharedInstance] stop];
-        
-        self.channelState = kSFStoppedOrPausedState;
-    }
-    [self.mainColumnViewController setChannelState:self.channelState];
-}
-
-- (void)volumeSliderChanged:(id)sender {
-    
-}
-
 #pragma mark - SFSideBarViewController protocol
 
 - (void)backPressed:(id)sender {
-    [[SFAudioBroadcaster sharedInstance] stop];
+    [self.mainColumnViewController stopRecording];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -18,6 +18,7 @@
 
 + (SFAudioBroadcaster *)sharedInstance;
 - (void)prepareRecordWithChannel:(NSString *)channel;
+- (void)addMusic:(NSURL *)musicFileURL;
 - (void)record;
 - (void)stop;
 

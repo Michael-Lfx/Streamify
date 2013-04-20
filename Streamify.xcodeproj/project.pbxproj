@@ -136,6 +136,13 @@
 		9CEC488F171BFC10002E1B52 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9CEC488B171BFC10002E1B52 /* README.md */; };
 		9CEC4890171BFC10002E1B52 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 9CEC488C171BFC10002E1B52 /* release_notes.md */; };
 		9CEC4892171BFC45002E1B52 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEC4891171BFC45002E1B52 /* libz.dylib */; };
+		C08933FD1722C29200F365FD /* ui-searchbox.png in Resources */ = {isa = PBXBuildFile; fileRef = C08933FB1722C29200F365FD /* ui-searchbox.png */; };
+		C08933FE1722C29200F365FD /* ui-searchbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C08933FC1722C29200F365FD /* ui-searchbox@2x.png */; };
+		C08934031722CB5800F365FD /* ui-searchbar-icon-cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = C08933FF1722CB5800F365FD /* ui-searchbar-icon-cancel.png */; };
+		C08934041722CB5800F365FD /* ui-searchbar-icon-cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C08934001722CB5800F365FD /* ui-searchbar-icon-cancel@2x.png */; };
+		C08934051722CB5800F365FD /* ui-searchbar-icon-search.png in Resources */ = {isa = PBXBuildFile; fileRef = C08934011722CB5800F365FD /* ui-searchbar-icon-search.png */; };
+		C08934061722CB5800F365FD /* ui-searchbar-icon-search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C08934021722CB5800F365FD /* ui-searchbar-icon-search@2x.png */; };
+		C08934091722F37000F365FD /* SFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C08934081722F37000F365FD /* SFTextField.m */; };
 		C0A3B966171126FE0005B3ED /* brillant.png in Resources */ = {isa = PBXBuildFile; fileRef = C0A3B964171126FE0005B3ED /* brillant.png */; };
 		C0A3B967171126FE0005B3ED /* brillant@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0A3B965171126FE0005B3ED /* brillant@2x.png */; };
 		C0AB0918171578C3009FEBC1 /* login-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB0914171578C3009FEBC1 /* login-background.png */; };
@@ -266,9 +273,9 @@
 		9C1EC5CA17216BDB001E7CAE /* SFPlaylistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPlaylistViewController.xib; sourceTree = "<group>"; };
 		9C1EC5CD17217081001E7CAE /* SFSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSong.h; sourceTree = "<group>"; };
 		9C1EC5CE17217081001E7CAE /* SFSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSong.m; sourceTree = "<group>"; };
-		9C1EC5D017217200001E7CAE /* SFSongTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSongTableViewCell.h; sourceTree = "<group>"; };
-		9C1EC5D117217200001E7CAE /* SFSongTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSongTableViewCell.m; sourceTree = "<group>"; };
-		9C1EC5D317217219001E7CAE /* SFSongTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSongTableViewCell.xib; sourceTree = "<group>"; };
+		9C1EC5D017217200001E7CAE /* SFSongTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFSongTableViewCell.h; path = ../Views/SFSongTableViewCell.h; sourceTree = "<group>"; };
+		9C1EC5D117217200001E7CAE /* SFSongTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFSongTableViewCell.m; path = ../Views/SFSongTableViewCell.m; sourceTree = "<group>"; };
+		9C1EC5D317217219001E7CAE /* SFSongTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SFSongTableViewCell.xib; path = ../Views/SFSongTableViewCell.xib; sourceTree = "<group>"; };
 		9C1EC5D51721D249001E7CAE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9C37E055171EE5250021F16E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9C37E058171EE72D0021F16E /* AEAudioController+Audiobus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AEAudioController+Audiobus.h"; sourceTree = "<group>"; };
@@ -452,6 +459,14 @@
 		9CEC488C171BFC10002E1B52 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
 		9CEC488D171BFC10002E1B52 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		9CEC4891171BFC45002E1B52 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C08933FB1722C29200F365FD /* ui-searchbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ui-searchbox.png"; path = "Theme/ui-searchbox.png"; sourceTree = "<group>"; };
+		C08933FC1722C29200F365FD /* ui-searchbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ui-searchbox@2x.png"; path = "Theme/ui-searchbox@2x.png"; sourceTree = "<group>"; };
+		C08933FF1722CB5800F365FD /* ui-searchbar-icon-cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ui-searchbar-icon-cancel.png"; path = "Theme/ui-searchbar-icon-cancel.png"; sourceTree = "<group>"; };
+		C08934001722CB5800F365FD /* ui-searchbar-icon-cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ui-searchbar-icon-cancel@2x.png"; path = "Theme/ui-searchbar-icon-cancel@2x.png"; sourceTree = "<group>"; };
+		C08934011722CB5800F365FD /* ui-searchbar-icon-search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ui-searchbar-icon-search.png"; path = "Theme/ui-searchbar-icon-search.png"; sourceTree = "<group>"; };
+		C08934021722CB5800F365FD /* ui-searchbar-icon-search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ui-searchbar-icon-search@2x.png"; path = "Theme/ui-searchbar-icon-search@2x.png"; sourceTree = "<group>"; };
+		C08934071722F37000F365FD /* SFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFTextField.h; path = Superclass/SFTextField.h; sourceTree = "<group>"; };
+		C08934081722F37000F365FD /* SFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFTextField.m; path = Superclass/SFTextField.m; sourceTree = "<group>"; };
 		C0A3B964171126FE0005B3ED /* brillant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brillant.png; path = Theme/brillant.png; sourceTree = "<group>"; };
 		C0A3B965171126FE0005B3ED /* brillant@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brillant@2x.png"; path = "Theme/brillant@2x.png"; sourceTree = "<group>"; };
 		C0AB0914171578C3009FEBC1 /* login-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-background.png"; path = "Theme/login-background.png"; sourceTree = "<group>"; };
@@ -668,6 +683,7 @@
 		1A868B1E17217AC2007F93A4 /* Music Picker VC */ = {
 			isa = PBXGroup;
 			children = (
+				C089340A1722F3B500F365FD /* Music Picker Component */,
 				1A868B1617216F12007F93A4 /* SFMusicPickerViewController.h */,
 				1A868B1717216F12007F93A4 /* SFMusicPickerViewController.m */,
 				1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */,
@@ -1042,9 +1058,9 @@
 				9CACF09916F7584A0067C352 /* Superclass */,
 				C0BE8CA417216A24007AA21A /* SFSlider.h */,
 				C0BE8CA517216A24007AA21A /* SFSlider.m */,
-				9C1EC5D017217200001E7CAE /* SFSongTableViewCell.h */,
-				9C1EC5D117217200001E7CAE /* SFSongTableViewCell.m */,
-				9C1EC5D317217219001E7CAE /* SFSongTableViewCell.xib */,
+				C08934071722F37000F365FD /* SFTextField.h */,
+				C08934081722F37000F365FD /* SFTextField.m */,
+				1A868B241721881A007F93A4 /* no_artwork.png */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1099,6 +1115,29 @@
 			path = TestFlightSDK;
 			sourceTree = "<group>";
 		};
+		C08933FA1722C28500F365FD /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				C08933FF1722CB5800F365FD /* ui-searchbar-icon-cancel.png */,
+				C08934001722CB5800F365FD /* ui-searchbar-icon-cancel@2x.png */,
+				C08934011722CB5800F365FD /* ui-searchbar-icon-search.png */,
+				C08934021722CB5800F365FD /* ui-searchbar-icon-search@2x.png */,
+				C08933FB1722C29200F365FD /* ui-searchbox.png */,
+				C08933FC1722C29200F365FD /* ui-searchbox@2x.png */,
+			);
+			name = SearchBar;
+			sourceTree = "<group>";
+		};
+		C089340A1722F3B500F365FD /* Music Picker Component */ = {
+			isa = PBXGroup;
+			children = (
+				9C1EC5D017217200001E7CAE /* SFSongTableViewCell.h */,
+				9C1EC5D117217200001E7CAE /* SFSongTableViewCell.m */,
+				9C1EC5D317217219001E7CAE /* SFSongTableViewCell.xib */,
+			);
+			name = "Music Picker Component";
+			sourceTree = "<group>";
+		};
 		C0AB091C17157AFF009FEBC1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1132,6 +1171,7 @@
 		C0AC8A901705780600422723 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				C08933FA1722C28500F365FD /* SearchBar */,
 				C0AC8A9117057AAC00422723 /* Main Column */,
 				C0C5DDBD1701CECA00191192 /* Sidebar */,
 				C0AB091C17157AFF009FEBC1 /* Login */,
@@ -1460,6 +1500,12 @@
 				9C1EC5D417217219001E7CAE /* SFSongTableViewCell.xib in Resources */,
 				1A868B20172180E1007F93A4 /* SFMusicPickerViewController.xib in Resources */,
 				1A868B251721881A007F93A4 /* no_artwork.png in Resources */,
+				C08933FD1722C29200F365FD /* ui-searchbox.png in Resources */,
+				C08933FE1722C29200F365FD /* ui-searchbox@2x.png in Resources */,
+				C08934031722CB5800F365FD /* ui-searchbar-icon-cancel.png in Resources */,
+				C08934041722CB5800F365FD /* ui-searchbar-icon-cancel@2x.png in Resources */,
+				C08934051722CB5800F365FD /* ui-searchbar-icon-search.png in Resources */,
+				C08934061722CB5800F365FD /* ui-searchbar-icon-search@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1562,6 +1608,7 @@
 				9C1EC5D217217200001E7CAE /* SFSongTableViewCell.m in Sources */,
 				1A868B1D17217A9C007F93A4 /* SFPlaylistManagerViewController.m in Sources */,
 				1A868B1F172180A1007F93A4 /* SFMusicPickerViewController.m in Sources */,
+				C08934091722F37000F365FD /* SFTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

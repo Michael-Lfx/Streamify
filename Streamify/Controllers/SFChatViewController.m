@@ -98,6 +98,7 @@
 {
     [super viewDidLoad];
     [SFUIDefaultTheme themeButton:self.sendButton];
+    [SFUIDefaultTheme themeTextField:self.chatTextField];
     
     self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, self.chatTextField.frame.origin.y,
                                           self.chatTextField.frame.size.width, kSFChatTextFrameH);
@@ -112,7 +113,11 @@
     self.doneFetching = YES;
     self.lastUpdateTime = [NSDate date];
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(updateMessages) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0
+                                                  target:self
+                                                selector:@selector(updateMessages)
+                                                userInfo:nil
+                                                 repeats:YES];
     [self.timer fire];
 }
 

@@ -11,6 +11,7 @@
 @implementation SFUIDefaultTheme
 
 + (void)themeButton:(UIButton *)button {
+    button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
     [SFUIDefaultTheme themeButton:button forType:kSFButtonTypeMainColumnDefault];
     [SFUIDefaultTheme themeButton:button forType:kSFButtonTypeMainColumnPressed];
 }
@@ -19,6 +20,24 @@
     [slider setMinimumTrackImage:[SFUIDefaultTheme getSliderBackgroundImageforType:kSFSliderMinTrack] forState:UIControlStateNormal];
     [slider setMaximumTrackImage:[SFUIDefaultTheme getSliderBackgroundImageforType:kSFSliderMaxTrack] forState:UIControlStateNormal];
     [slider setThumbImage:[[UIImage alloc] init] forState:UIControlStateNormal];
+}
+
++ (void)themeSearchBar:(UISearchBar *)searchBar {
+    searchBar.backgroundImage = [[UIImage alloc] init];
+    [searchBar setSearchFieldBackgroundImage:[SFUIDefaultTheme getSearchBarBackgroundImage] forState:UIControlStateNormal];
+    
+    [searchBar setImage:[UIImage imageNamed:@"ui-searchbar-icon-search.png"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+    [searchBar setImage:[UIImage imageNamed:@"ui-searchbar-icon-cancel.png"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateNormal];
+    
+    UITextField *searchField = [searchBar valueForKey:@"_searchField"];
+    searchField.textColor = [SFUIDefaultTheme mainTextColor];
+    searchField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+}
+
++ (void)themeTextField:(UITextField *)textField {
+    [textField setBackground:[SFUIDefaultTheme getTextFieldBackgroundImage]];
+    textField.textColor = [SFUIDefaultTheme mainTextColor];
+    textField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
 }
 
 + (UIColor *)mainTextColor {
@@ -84,6 +103,20 @@
     } else if (sliderTrackType == kSFSliderMaxTrack) {
         image = [[UIImage imageNamed:@"topbar-track-max.png"] resizableImageWithCapInsets:insets];
     }
+    return image;
+}
+
++ (UIImage *)getSearchBarBackgroundImage {
+    UIImage *image;
+    UIEdgeInsets insets = UIEdgeInsetsMake(15, 20, 15, 20);
+    image = [[UIImage imageNamed:@"ui-searchbox.png"] resizableImageWithCapInsets:insets];
+    return image;
+}
+
++ (UIImage *)getTextFieldBackgroundImage {
+    UIImage *image;
+    UIEdgeInsets insets = UIEdgeInsetsMake(15, 20, 15, 20);
+    image = [[UIImage imageNamed:@"ui-searchbox.png"] resizableImageWithCapInsets:insets];
     return image;
 }
 

@@ -20,7 +20,8 @@
 @property (nonatomic, strong) NSString *fileName;
 @property (nonatomic, strong) NSString *recordFilePath;
 @property (nonatomic) NSUInteger lastBytes;
-@property GCDTimer *timer;
+//@property GCDTimer *timer;
+@property NSTimer *timer;
 @end
 
 @implementation SFAudioBroadcaster
@@ -147,12 +148,32 @@
     [self startTimer];
 }
 
+- (void)addMusic:(NSURL *)musicFileURL {
+    NSError *error;
+    self.audioFilePlayer = [AEAudioFilePlayer audioFilePlayerWithURL:musicFileURL
+                                                     audioController:self.audioController
+                                                               error:&error];
+    
+    self.audioFilePlayer.volume = 0.1;
+    self.audioFilePlayer.channelIsPlaying = YES;
+    
+    [self.audioController addChannels:[NSArray arrayWithObjects:_audioFilePlayer, nil]];
+}
+
+//- (void)startTimer {
+//    dispatch_queue_t queue = dispatch_queue_create("streamify.cs3217.nus", DISPATCH_QUEUE_CONCURRENT);
+//    self.timer = [GCDTimer timerOnQueue:queue withLeeway:TIMER_LEEWAY_NONE name:@"RecorderTimer"];
+//    [self.timer scheduleBlock:^{
+//        [self send];
+//    } afterInterval:10.0 repeat:YES];
+//}
+
 - (void)startTimer {
-    dispatch_queue_t queue = dispatch_queue_create("streamify.cs3217.nus", DISPATCH_QUEUE_CONCURRENT);
-    self.timer = [GCDTimer timerOnQueue:queue withLeeway:TIMER_LEEWAY_NONE name:@"RecorderTimer"];
-    [self.timer scheduleBlock:^{
-        [self send];
-    } afterInterval:10.0 repeat:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0f
+                                                  target:self
+                                                selector:@selector(send)
+                                                userInfo:nil
+                                                 repeats:YES];
 }
 
 - (BOOL)sendCreateRequestToServer {
@@ -258,6 +279,9 @@
         [self send];
         [self sendStopRequestToServer];
         self.isRecording = NO;
+        if (self.audioFilePlayer) {
+            self.audioFilePlayer.channelIsPlaying = NO;
+        }
     }
 }
 
