@@ -147,6 +147,18 @@
     [self startTimer];
 }
 
+- (void)addMusic:(NSURL *)musicFileURL {
+    NSError *error;
+    self.audioFilePlayer = [AEAudioFilePlayer audioFilePlayerWithURL:musicFileURL
+                                                     audioController:self.audioController
+                                                               error:&error];
+    
+    self.audioFilePlayer.volume = 0.1;
+    self.audioFilePlayer.channelIsPlaying = YES;
+    
+    [self.audioController addChannels:[NSArray arrayWithObjects:_audioFilePlayer, nil]];
+}
+
 - (void)startTimer {
     dispatch_queue_t queue = dispatch_queue_create("streamify.cs3217.nus", DISPATCH_QUEUE_CONCURRENT);
     self.timer = [GCDTimer timerOnQueue:queue withLeeway:TIMER_LEEWAY_NONE name:@"RecorderTimer"];
@@ -258,6 +270,9 @@
         [self send];
         [self sendStopRequestToServer];
         self.isRecording = NO;
+        if (self.audioFilePlayer) {
+            self.audioFilePlayer.channelIsPlaying = NO;
+        }
     }
 }
 

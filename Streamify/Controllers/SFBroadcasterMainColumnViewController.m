@@ -34,12 +34,17 @@
 }
 
 - (IBAction)controlButtonPressed:(id)sender {
-    
+    if ([SFAudioBroadcaster sharedInstance].isRecording) {
+        [self stopRecording];
+        [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
+    } else {
+        [self startRecording];
+        [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)volumeSliderChanged:(id)sender {
 }
-
 
 - (void)viewDidLoad
 {
@@ -68,6 +73,15 @@
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
 }
 
+- (void)stopRecording {
+    [[SFAudioBroadcaster sharedInstance] stop];
+}
+
+- (void)startRecording {
+    [[SFAudioBroadcaster sharedInstance] prepareRecordWithChannel:self.user.objectID];
+    [[SFAudioBroadcaster sharedInstance] record];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -91,13 +105,11 @@
 }
 
 - (UIImage*)controlButtonIconForCurrentChannelState {
-/*    if (self.user.
+    if ([SFAudioBroadcaster sharedInstance].isRecording) {
         return [UIImage imageNamed:@"maincol-icon-stop.png"];
     } else {
         return [UIImage imageNamed:@"maincol-icon-record.png"];
     }
- */
-    return NULL;
 }
 
 @end

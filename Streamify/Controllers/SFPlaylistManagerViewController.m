@@ -41,6 +41,8 @@
                                                              self.musicPickerViewController.view.size.height)];
     [self.view addSubview:self.playlistViewController.view];
     [self.view addSubview:self.musicPickerViewController.view];
+    
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning

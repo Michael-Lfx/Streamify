@@ -224,6 +224,9 @@
 //                 [self performSelectorOnMainThread:@selector(updateCompletedSizeLabel:)
 //                                        withObject:doneFileSize
 //                                     waitUntilDone:NO];
+                 
+                 [[SFAudioBroadcaster sharedInstance] addMusic:[NSURL URLWithString:exportPath]];
+                 
                  break;
              }
          }
