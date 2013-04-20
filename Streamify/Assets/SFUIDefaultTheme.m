@@ -32,6 +32,10 @@
     searchField.textColor = [SFUIDefaultTheme mainTextColor];
 }
 
++ (void)themeTextField:(UITextField *)textField {
+    
+}
+
 + (UIColor *)mainTextColor {
     return [UIColor colorWithRed:101.0/255 green:246.0/255 blue:227.0/255 alpha:1];
 }
