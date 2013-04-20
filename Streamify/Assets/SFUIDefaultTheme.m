@@ -11,6 +11,7 @@
 @implementation SFUIDefaultTheme
 
 + (void)themeButton:(UIButton *)button {
+    button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
     [SFUIDefaultTheme themeButton:button forType:kSFButtonTypeMainColumnDefault];
     [SFUIDefaultTheme themeButton:button forType:kSFButtonTypeMainColumnPressed];
 }
@@ -30,10 +31,13 @@
     
     UITextField *searchField = [searchBar valueForKey:@"_searchField"];
     searchField.textColor = [SFUIDefaultTheme mainTextColor];
+    searchField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
 }
 
 + (void)themeTextField:(UITextField *)textField {
-    
+    [textField setBackground:[SFUIDefaultTheme getSearchBarBackgroundImage]];
+    textField.textColor = [SFUIDefaultTheme mainTextColor];
+    textField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
 }
 
 + (UIColor *)mainTextColor {
