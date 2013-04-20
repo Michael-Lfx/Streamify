@@ -83,10 +83,10 @@
     [self positeCanvasViewController:self.recentCanvasViewController];
     
     // Search canvas
-    //self.searchCanvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array]
-                                                                      //emptyCanvasMessage:@"There is currently no history"
-                                                                                //delegate:self];
-    //[self positeCanvasViewController:self.searchCanvasViewController;
+    self.searchCanvasViewController = [[SFMetroCanvasViewController alloc] initWithTiles:[NSArray array]
+                                                                      emptyCanvasMessage:@"There is currently no result"
+                                                                                delegate:self];
+    [self positeCanvasViewController:self.searchCanvasViewController];
     
     // Sidebar must be added after main column for shadow
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarFull
@@ -98,6 +98,7 @@
     self.searchBar.clipsToBounds = YES;
     [SFUIDefaultTheme themeSearchBar:self.searchBar];
     [self.view addSubview:self.searchBar];
+    self.searchBar.delegate = self;
 
     
 //    [[SFSocialManager sharedInstance] searchChannelsForKeyword:@"Zuyet" withCallback:^(id returnedObject) {
@@ -183,13 +184,14 @@
 
 - (void)searchPressed:(id)sender {
     self.browsingType = kSFSearchBrowsing;
+
     [self showSearchBar];
-        
-    //self.canvasTitle.text = @"Search";
-    //[self removeAllCanvases];
-    //[self.view addSubview:self.searchCanvasViewController.view];
-    //[self.searchCanvasViewController.canvasInitIndicator startAnimating];
-    //[self canvasDidTriggeredToRefresh];
+    
+    self.canvasTitle.text = @"Search";
+    [self removeAllCanvases];
+    [self.view addSubview:self.searchCanvasViewController.view];
+//    [self.searchCanvasViewController.canvasInitIndicator startAnimating];
+//    [self canvasDidTriggeredToRefresh];
 }
 
 - (void)broadcastPressed:(id)sender {
@@ -205,23 +207,43 @@
     [self.favoriteCanvasViewController refreshWithTiles:[NSArray array]];
     [self.recentCanvasViewController.view removeFromSuperview];
     [self.recentCanvasViewController refreshWithTiles:[NSArray array]];
-    
+    [self.searchCanvasViewController.view removeFromSuperview];
+    [self.searchCanvasViewController refreshWithTiles:[NSArray array]];
 }
 
 - (void)showSearchBar {
-    [UIView animateWithDuration:0.4
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionLayoutSubviews
                      animations:^{self.searchBar.frame = CGRectMake(150, 100, 320, 40);}
-                     completion:^(BOOL finished) {}];
+                     completion:^(BOOL finished) {
+                         [self.searchBar becomeFirstResponder];
+                     }];
 }
 
 - (void)hideSearchBar {
-    [UIView animateWithDuration:0.4
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionLayoutSubviews
                      animations:^{self.searchBar.frame = CGRectMake(90, 100, 0, 40);}
-                     completion:^(BOOL finished) {}];
+                     completion:^(BOOL finished) {
+                         [self.searchBar resignFirstResponder];
+                     }];
+}
+
+#pragma mark - UISearchBarDelegate protocol 
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSString *keyword = [searchBar.text stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceCharacterSet]];
+    
+    if (![keyword isEqualToString:@""]) {
+        [[SFSocialManager sharedInstance] searchChannelsForKeyword:keyword withCallback:^(id returnedObject) {
+            [self performSelectorInBackground:@selector(refreshSearchCanvas:)
+                                   withObject:returnedObject];
+            [searchBar resignFirstResponder];
+        }];
+    }
 }
 
 #pragma mark - SFTopBarViewController protocol
@@ -312,6 +334,12 @@
 {
     NSArray *tiles = [returnedObject objectForKey:kResultUsers];
     [self refreshCanvas:self.recentCanvasViewController withTiles:tiles];
+}
+
+- (void)refreshSearchCanvas:(id)returnedObject
+{
+    NSArray *tiles = [returnedObject objectForKey:kResultUsers];
+    [self refreshCanvas:self.searchCanvasViewController withTiles:tiles];
 }
 
 - (void)refreshCanvas:(SFMetroCanvasViewController *)canvasViewController

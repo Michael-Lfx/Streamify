@@ -11,7 +11,8 @@
 #import "SFSidebarViewController.h"
 #import "SFTopbarViewController.h"
 
-@interface SFHomeViewController : BaseViewController <SFSidebarViewControllerProtocol, SFMetroCanvasViewControllerProtocol, SFTopbarViewControllerProtocol>
+@interface SFHomeViewController : BaseViewController <SFSidebarViewControllerProtocol, SFMetroCanvasViewControllerProtocol,
+                                                    SFTopbarViewControllerProtocol, UISearchBarDelegate>
 
 @property (nonatomic, strong) SFMetroCanvasViewController *trendingCanvasViewController;
 @property (nonatomic, strong) SFMetroCanvasViewController *favoriteCanvasViewController;
