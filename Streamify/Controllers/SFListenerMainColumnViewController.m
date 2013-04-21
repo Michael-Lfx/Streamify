@@ -122,6 +122,7 @@
             self.followButton.enabled = YES;
             [self.followButton setImage:[self followButtonIconForCurrentFollowingState]
                                forState:UIControlStateNormal];
+            [self.followButton setTitle:[self followButtonTitleForCurrentFollowingState] forState:UIControlStateNormal];
         }];
     } else {
         [[SFSocialManager sharedInstance] follows:self.user.objectID withCallback:^(id returnedObject) {
@@ -131,6 +132,7 @@
             self.followButton.enabled = YES;
             [self.followButton setImage:[self followButtonIconForCurrentFollowingState]
                                forState:UIControlStateNormal];
+            [self.followButton setTitle:[self followButtonTitleForCurrentFollowingState] forState:UIControlStateNormal];
         }];
     }
 }
@@ -169,6 +171,7 @@
     // Buttons
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
     [self.followButton setImage:[self followButtonIconForCurrentFollowingState] forState:UIControlStateNormal];
+    [self.followButton setTitle:[self followButtonTitleForCurrentFollowingState] forState:UIControlStateNormal];
     
     if (!self.user.isLive) {
         self.controlButton.enabled = NO;
@@ -220,6 +223,15 @@
     } else {
         return [UIImage imageNamed:@"maincol-icon-follow.png"];
     }
+}
+
+- (NSString *)followButtonTitleForCurrentFollowingState {
+    if (self.user.followed) {
+        return @"Unfollow this channel";
+    } else {
+        return @"Follow this channel";
+    }
+ 
 }
 
 #pragma mark - FBShare
