@@ -221,14 +221,6 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-<<<<<<< HEAD
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">chat-background.png</string>
-			<string key="NS.object.0">{524, 768}</string>
-		</object>
-		<string key="IBCocoaTouchPluginVersion">1930</string>
-=======
 		<string key="IBCocoaTouchPluginVersion">2083</string>
->>>>>>> Music Picker Edit
 	</data>
 </archive>
