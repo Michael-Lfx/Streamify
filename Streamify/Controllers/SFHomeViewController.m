@@ -42,8 +42,7 @@
     [self.view addSubview:self.backgroundImage];
     
     // Topbar
-    self.topbarViewController = [[SFTopbarViewController alloc] initTopbarWithDelegate:self
-                                                                          channelState:self.channelState];
+    self.topbarViewController = [[SFTopbarViewController alloc] initWithNib];
     CGRect topbarFrame = self.topbarViewController.view.frame;
     self.topbarViewController.view.frame = CGRectMake(kSFTopbarFrameXInHomeView,
                                                       kSFTopbarFrameYInHomeView,
@@ -132,17 +131,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
-    
-    if ([SFAudioStreamer sharedInstance].isPlaying) {
-        self.topbarViewController.channelState = kSFPlayingOrRecordingState;
-    } else if (![SFAudioStreamer sharedInstance].isPlaying) {
-        self.topbarViewController.channelState = kSFStoppedOrPausedState;
-    }
-    self.topbarViewController.volume = [SFAudioStreamer sharedInstance].volume;
-    
-    [self.topbarViewController setListeningInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                 [SFAudioStreamer sharedInstance].channelPlaying, @"channelName",
-                                                 nil]];
 }
 
 #pragma mark - SideBarViewController protocal
@@ -254,26 +242,6 @@
             [searchBar resignFirstResponder];
         }];
     }
-}
-
-#pragma mark - SFTopBarViewController protocol
-
-- (void)volumeSliderChanged:(id)sender {
-    UISlider *slider = (UISlider *)sender;
-    [SFAudioStreamer sharedInstance].volume = slider.value;
-}
-
-- (void)controlButtonPressed:(id)sender {
-    if ([SFAudioStreamer sharedInstance].isPlaying) {
-        [[SFAudioStreamer sharedInstance] stop];
-        self.topbarViewController.channelState = kSFStoppedOrPausedState;
-    }
-    
-    self.topbarViewController.volume = [SFAudioStreamer sharedInstance].volume;
-    
-    [self.topbarViewController setListeningInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                 [SFAudioStreamer sharedInstance].channelPlaying, @"channelName",
-                                                 nil]];
 }
 
 #pragma mark - SFMetroCanvasViewControlProtocol
