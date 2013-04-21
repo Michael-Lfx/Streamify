@@ -82,7 +82,6 @@
     
     // Configure the cell...
     [self loadDataToCell:cell indexPath:indexPath];
-    [cell layoutSubviews];
     
     return cell;
 }
