@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *songTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
 
+@property (nonatomic) BOOL isStyled;
+
 @end
