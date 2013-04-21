@@ -11,11 +11,11 @@
 
 @interface SFAudioStreamer : MPMoviePlayerController
 
-@property (nonatomic, strong) NSString *channelPlaying;
+@property (nonatomic, strong) SFUser *channelPlaying;
 @property (nonatomic) float volume;
 @property (nonatomic, strong) NSDate *startStreamingTime;
 
 + (SFAudioStreamer *)sharedInstance;
-- (void)playChannel:(NSString *)channelID;
+- (void)playChannel:(SFUser *)channel;
 
 @end

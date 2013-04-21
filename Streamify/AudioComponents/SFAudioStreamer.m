@@ -34,8 +34,8 @@
     return self;
 }
 
-- (void)playChannel:(NSString *)channelID {
-    NSString *urlString = [NSString stringWithFormat:@"http://54.251.250.31/streams/%@/a.m3u8", channelID];
+- (void)playChannel:(SFUser *)channel {
+    NSString *urlString = [NSString stringWithFormat:@"http://54.251.250.31/streams/%@/a.m3u8", channel.objectID];
     NSLog(@"%@", urlString);
     NSURL *streamURL = [NSURL URLWithString:urlString];
     
@@ -45,7 +45,7 @@
     [self prepareToPlay];
     [self play];
     self.startStreamingTime = [NSDate date];
-    self.channelPlaying = channelID;
+    self.channelPlaying = channel;
 }
 
 - (float)volume {

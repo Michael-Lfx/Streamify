@@ -65,7 +65,7 @@
 }
 
 - (void)start {
-    [[SFAudioStreamer sharedInstance] playChannel:self.user.objectID];
+    [[SFAudioStreamer sharedInstance] playChannel:self.user];
 }
 
 - (void)stop {
@@ -176,7 +176,7 @@
     
     
     if ([SFAudioStreamer sharedInstance].playbackState == MPMoviePlaybackStatePlaying &&
-        [[SFAudioStreamer sharedInstance].channelPlaying isEqualToString:self.user.objectID]){
+        [[SFAudioStreamer sharedInstance].channelPlaying.objectID isEqualToString:self.user.objectID]){
         self.startListeningTime = [SFAudioStreamer sharedInstance].startStreamingTime;
         [self startTimer];
     } else {
@@ -304,6 +304,11 @@
         action();
     }
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.volumeSlider setValue:[SFAudioStreamer sharedInstance].volume];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
