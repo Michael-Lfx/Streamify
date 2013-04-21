@@ -653,6 +653,7 @@
 				C0B22125170558B30045A248 /* MetroCanvas VC */,
 				C0B22123170558000045A248 /* Sidebar VC */,
 				1AE32121170DC7EE00D740E5 /* Topbar VC */,
+				994A92BA1723F0D600EE7035 /* Settings */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -920,7 +921,6 @@
 		9CACF02016F755AC0067C352 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				994A92BA1723F0D600EE7035 /* Settings */,
 				9CACF02116F755AC0067C352 /* Superclass */,
 				1A49F9E71704BE4500969CFA /* Login Screen */,
 				1A49F9E61704BE0900969CFA /* Home Screen */,
