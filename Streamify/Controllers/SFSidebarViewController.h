@@ -40,5 +40,6 @@
 - (IBAction)favouritePressed:(id)sender;
 - (IBAction)recentPressed:(id)sender;
 - (IBAction)broadcastPressed:(id)sender;
+- (IBAction)settingsPressed:(id)sender;
 
 @end

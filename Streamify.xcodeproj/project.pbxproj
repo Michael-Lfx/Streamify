@@ -27,6 +27,8 @@
 		1AE32125170DC8DC00D740E5 /* SFTopbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE32123170DC8DC00D740E5 /* SFTopbarViewController.m */; };
 		1AE32126170DC8DC00D740E5 /* SFTopbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE32124170DC8DC00D740E5 /* SFTopbarViewController.xib */; };
 		1AE32128170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE32127170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib */; };
+		994A92BF1723F13800EE7035 /* SFSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 994A92BD1723F13800EE7035 /* SFSettingsViewController.m */; };
+		994A92C01723F13800EE7035 /* SFSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 994A92BE1723F13800EE7035 /* SFSettingsViewController.xib */; };
 		9C1EC5CB17216BDB001E7CAE /* SFPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EC5C917216BDB001E7CAE /* SFPlaylistViewController.m */; };
 		9C1EC5CC17216BDB001E7CAE /* SFPlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EC5CA17216BDB001E7CAE /* SFPlaylistViewController.xib */; };
 		9C1EC5CF17217081001E7CAE /* SFSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EC5CE17217081001E7CAE /* SFSong.m */; };
@@ -268,6 +270,9 @@
 		1AE32124170DC8DC00D740E5 /* SFTopbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTopbarViewController.xib; sourceTree = "<group>"; };
 		1AE32127170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHomeViewCanvasTitle.xib; sourceTree = "<group>"; };
 		1AF390F01722C041004FC992 /* SFConstantsNibNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConstantsNibNames.h; sourceTree = "<group>"; };
+		994A92BC1723F13800EE7035 /* SFSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSettingsViewController.h; sourceTree = "<group>"; };
+		994A92BD1723F13800EE7035 /* SFSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSettingsViewController.m; sourceTree = "<group>"; };
+		994A92BE1723F13800EE7035 /* SFSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSettingsViewController.xib; sourceTree = "<group>"; };
 		9C1EC5C817216BDB001E7CAE /* SFPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistViewController.h; sourceTree = "<group>"; };
 		9C1EC5C917216BDB001E7CAE /* SFPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistViewController.m; sourceTree = "<group>"; };
 		9C1EC5CA17216BDB001E7CAE /* SFPlaylistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPlaylistViewController.xib; sourceTree = "<group>"; };
@@ -709,6 +714,16 @@
 			name = Miscellaneous;
 			sourceTree = "<group>";
 		};
+		994A92BA1723F0D600EE7035 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				994A92BC1723F13800EE7035 /* SFSettingsViewController.h */,
+				994A92BD1723F13800EE7035 /* SFSettingsViewController.m */,
+				994A92BE1723F13800EE7035 /* SFSettingsViewController.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		9C1EC5C717216BA2001E7CAE /* Playlist VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -905,6 +920,7 @@
 		9CACF02016F755AC0067C352 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				994A92BA1723F0D600EE7035 /* Settings */,
 				9CACF02116F755AC0067C352 /* Superclass */,
 				1A49F9E71704BE4500969CFA /* Login Screen */,
 				1A49F9E61704BE0900969CFA /* Home Screen */,
@@ -1506,6 +1522,7 @@
 				C08934041722CB5800F365FD /* ui-searchbar-icon-cancel@2x.png in Resources */,
 				C08934051722CB5800F365FD /* ui-searchbar-icon-search.png in Resources */,
 				C08934061722CB5800F365FD /* ui-searchbar-icon-search@2x.png in Resources */,
+				994A92C01723F13800EE7035 /* SFSettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1609,6 +1626,7 @@
 				1A868B1D17217A9C007F93A4 /* SFPlaylistManagerViewController.m in Sources */,
 				1A868B1F172180A1007F93A4 /* SFMusicPickerViewController.m in Sources */,
 				C08934091722F37000F365FD /* SFTextField.m in Sources */,
+				994A92BF1723F13800EE7035 /* SFSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

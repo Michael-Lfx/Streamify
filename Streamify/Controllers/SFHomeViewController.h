@@ -10,6 +10,7 @@
 #import "SFMetroCanvasViewController.h"
 #import "SFSidebarViewController.h"
 #import "SFTopbarViewController.h"
+#import "SFSettingsViewController.h"
 
 @interface SFHomeViewController : BaseViewController <SFSidebarViewControllerProtocol, SFMetroCanvasViewControllerProtocol,
                                                     SFTopbarViewControllerProtocol, UISearchBarDelegate>
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) SFMetroCanvasViewController *searchCanvasViewController;
 @property (nonatomic, strong) SFSidebarViewController *sidebarViewController;
 @property (nonatomic, strong) SFTopbarViewController *topbarViewController;
+@property (nonatomic, strong) SFSettingsViewController *settingsViewController;
 @property (nonatomic, strong) UILabel *canvasTitle;
 @property (nonatomic, strong) UIImageView *backgroundImage;
 @property (nonatomic, strong) UISearchBar *searchBar;

@@ -16,6 +16,16 @@
 #define kSFTopbarFrameXInHomeView 250
 #define kSFTopbarFrameYInHomeView 0
 
+#define kSFSearchBarFrameXHiddenInHomeView 90
+#define kSFSearchBarFrameYHiddenInHomeView 100
+#define kSFSearchBarFrameWHiddenInHomeView 0
+#define kSFSearchBarFrameHHiddenInHomeView 40
+
+#define kSFSearchBarFrameXShownInHomeView 150
+#define kSFSearchBarFrameYShownInHomeView 100
+#define kSFSearchBarFrameWShownInHomeView 320
+#define kSFSearchBarFrameHShownInHomeView 40
+
 #define kSFMainColumnFrameX 80
 #define kSFMainColumnFrameY 0
 #define kSFMainColumnFrameW 420
@@ -33,6 +43,24 @@
 #define kSFChatTableFrameY 80
 #define kSFChatTableFrameW 440
 #define kSFChatTableFrameH 560
+
+#define kSFChatTableCellFrameW 440
+#define kSFChatTableCellFrameHDefault 60
+
+#define kSFChatTableCellAvatarX 6
+#define kSFChatTableCellAvatarY 6
+#define kSFChatTableCellAvatarW 48
+#define kSFChatTableCellAvatarH 48
+
+#define kSFChatTableCellUserNameFrameX 66
+#define kSFChatTableCellUserNameFrameY 6
+#define kSFChatTableCellUserNameFrameW 365
+#define kSFChatTableCellUserNameFrameH 21
+
+#define kSFChatTableCellMessageFrameX 66
+#define kSFChatTableCellMessageFrameY 27
+#define kSFChatTableCellMessageFrameW 365
+#define kSFChatTableCellMessageFrameHDefault 27
 
 #define kSFKeyboardHeight 352
 #define kSFScreenHeight 768
