@@ -32,7 +32,7 @@
 #define kSFChatTableFrameX 50
 #define kSFChatTableFrameY 80
 #define kSFChatTableFrameW 440
-#define kSFChatTableFrameH 560
+#define kSFChatTableFrameH 600
 
 #define kSFKeyboardHeight 352
 #define kSFScreenHeight 768

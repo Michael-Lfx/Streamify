@@ -31,7 +31,7 @@
 - (IBAction)chatTextEditBeginned:(id)sender {
     [UIView animateWithDuration:0.3 animations:^{
         self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH - kSFKeyboardHeight);
-        self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.chatTextField.frame.size.height - 35,
+        self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.chatTextField.frame.size.height - 50,
                                               self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
         self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.sendButton.frame.size.height - 35,
                                            self.sendButton.frame.size.width, self.sendButton.frame.size.height);
