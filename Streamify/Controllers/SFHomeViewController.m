@@ -99,7 +99,11 @@
     [SFUIDefaultTheme themeSearchBar:self.searchBar];
     [self.view addSubview:self.searchBar];
     self.searchBar.delegate = self;
-
+    
+    self.settingsViewController = [[SFSettingsViewController alloc] initWithNib];
+    self.settingsViewController.view.frame = CGRectMake(90, 450, 200, 200);
+    [self.view addSubview:self.settingsViewController.view];
+    self.settingsViewController.view.hidden = YES;
     
 //    [[SFSocialManager sharedInstance] searchChannelsForKeyword:@"Zuyet" withCallback:^(id returnedObject) {
 //        SFUser *user = [returnedObject[kResultUsers] objectAtIndex:0];
@@ -198,6 +202,14 @@
     SFBroadcasterViewController *broadcasterViewController = [[SFBroadcasterViewController alloc] initWithChannel:[SFSocialManager sharedInstance].currentUser];
     [self.navigationController pushViewController:broadcasterViewController animated:YES];
 }
+
+- (void)settingsPressed:(id)sender {
+    if(self.settingsViewController.view.hidden == YES)
+        self.settingsViewController.view.hidden = NO;
+    else
+        self.settingsViewController.view.hidden = YES;
+}
+
 
 - (void)removeAllCanvases
 {

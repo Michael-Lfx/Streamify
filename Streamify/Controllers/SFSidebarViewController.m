@@ -7,6 +7,7 @@
 //
 
 #import "SFSidebarViewController.h"
+#import "SFSettingsViewController.h"
 
 @interface SFSidebarViewController ()
 
@@ -124,6 +125,10 @@
 
 - (IBAction)broadcastPressed:(id)sender {
     [self.delegate broadcastPressed:sender];
+}
+
+- (IBAction)settingsPressed:(id)sender {
+    [self.delegate settingsPressed:sender];
 }
 
 @end
