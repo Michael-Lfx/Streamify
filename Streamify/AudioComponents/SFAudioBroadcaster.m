@@ -79,55 +79,6 @@
     self.isRecording = NO;
 }
 
-
-//- (void)record
-//{
-//    NSArray *dirPaths;
-//    NSString *docsDir;
-//
-//    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    docsDir = [dirPaths objectAtIndex:0];
-//    NSString *soundFilePath = [docsDir
-//                               stringByAppendingPathComponent:@"recordedfile.aac"];
-//
-//    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
-//
-//    NSDictionary *recordSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                    [NSNumber numberWithInt:kAudioFormatMPEG4AAC], AVFormatIDKey,
-//                                    [NSNumber numberWithInt:AVAudioQualityMax], AVEncoderAudioQualityKey,
-//                                    [NSNumber numberWithInt:40000], AVEncoderBitRateKey,
-//                                    [NSNumber numberWithInt: 2], AVNumberOfChannelsKey,
-//                                    [NSNumber numberWithFloat:22050.0], AVSampleRateKey,
-//                                    nil];
-//
-//    NSError *error = nil;
-//
-//    self.audioRecorder = [[AVAudioRecorder alloc]
-//                          initWithURL:soundFileURL
-//                          settings:recordSettings
-//                          error:&error];
-//    self.audioRecorder.delegate = self;
-//
-//    if (error) {
-//        NSLog(@"error: %@", [error localizedDescription]);
-//    } else {
-//        [self.audioRecorder prepareToRecord];
-//        [self sendCreateRequestToServer];
-//    }
-//
-//    [self.audioRecorder record];
-//    self.isRecording = YES;
-//    /*
-//    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0f
-//                                                  target:self
-//                                                selector:@selector(send)
-//                                                userInfo:nil
-//                                                 repeats:YES];
-//     */
-//
-//    [self startTimer];
-//}
-
 - (void)record {
     // Start the recording process
     NSError *error = NULL;
@@ -216,7 +167,7 @@
     return YES;
 }
 
-- (BOOL)sendAudioToServer :(NSData *)data {
+- (BOOL)sendAudioToServer:(NSData *)data withCallback:(SFBroadcastCallback)callback{
     NSData *d = [NSData dataWithData:data];
     //now you'll just have to send that NSData to your server
     
@@ -233,6 +184,7 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:myRequest];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"SUCCESS: SEND AUDIO");
+        if (callback) callback();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"FAIL: SEND AUDIO");
     }];
@@ -249,6 +201,10 @@
 }
 
 - (void)send {
+    [self sendWithCallback:nil];
+}
+
+- (void)sendWithCallback:(SFBroadcastCallback)callback {
     [self changeFileName];
     NSData *data = [NSData dataWithContentsOfFile:self.recordFilePath];
     NSUInteger length = [data length];
@@ -258,16 +214,14 @@
     if (range.length > 0) {
         self.lastBytes = length - 1;
         NSData *dataToSend = [data subdataWithRange:range];
-        [self sendAudioToServer:dataToSend];
+        [self sendAudioToServer:dataToSend withCallback:callback];
     }
 }
-
 
 -(void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag
 {
     NSLog(@"Audio Record has stopped");
 }
-
 
 - (void)stop {
     if (self.isRecording) {
@@ -276,8 +230,10 @@
         [self.audioRecorder finishRecording];
         
         [self.timer invalidate];
-        [self send];
-        [self sendStopRequestToServer];
+        [self sendWithCallback:^{
+            [self sendStopRequestToServer];
+        }];
+        
         self.isRecording = NO;
         if (self.audioFilePlayer) {
             self.audioFilePlayer.channelIsPlaying = NO;

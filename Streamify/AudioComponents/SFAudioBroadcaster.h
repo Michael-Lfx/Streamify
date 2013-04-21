@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^SFBroadcastCallback)();
+
 @interface SFAudioBroadcaster : NSObject
 
 @property (nonatomic) BOOL isRecording;
