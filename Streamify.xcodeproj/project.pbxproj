@@ -22,7 +22,6 @@
 		1A868B20172180E1007F93A4 /* SFMusicPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */; };
 		1AB5ED41171A9585009EFE67 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */; };
 		1AB5ED42171A9585009EFE67 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB5ED40171A9585009EFE67 /* whiteArrow.png */; };
-		1AB6A55517195E3F00DD2B2B /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB6A55417195E3F00DD2B2B /* placeholder.png */; };
 		1AE32125170DC8DC00D740E5 /* SFTopbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE32123170DC8DC00D740E5 /* SFTopbarViewController.m */; };
 		1AE32126170DC8DC00D740E5 /* SFTopbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE32124170DC8DC00D740E5 /* SFTopbarViewController.xib */; };
 		1AE32128170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE32127170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib */; };
@@ -202,7 +201,6 @@
 		C0C8E3841719C4F40042A827 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C8E37C1719C4F40042A827 /* Icon-Small-50@2x.png */; };
 		C0C8E3851719C4F40042A827 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C8E37D1719C4F40042A827 /* iTunesArtwork.png */; };
 		C0C8E3861719C4F40042A827 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C8E37E1719C4F40042A827 /* iTunesArtwork@2x.png */; };
-		C0C996BE1724231C0058E830 /* no_artwork.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C996BD1724231C0058E830 /* no_artwork.png */; };
 		C0CA2B69170F1F470007C576 /* subtle_carbon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CA2B5D170F1F470007C576 /* subtle_carbon@2x.png */; };
 		C0CA2B6A170F1F470007C576 /* subtle_carbon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CA2B5E170F1F470007C576 /* subtle_carbon.png */; };
 		C0CA2B6B170F1F470007C576 /* topbar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CA2B5F170F1F470007C576 /* topbar-background.png */; };
@@ -237,6 +235,8 @@
 		C0E12179171162C400A09C6C /* SFChatMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E12178171162C400A09C6C /* SFChatMessageCell.m */; };
 		C0E3A4A61709FA8800ADD132 /* mainbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = C0E3A4A41709FA8800ADD132 /* mainbackground.png */; };
 		C0E3A4A71709FA8800ADD132 /* mainbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0E3A4A51709FA8800ADD132 /* mainbackground@2x.png */; };
+		C0F84D3C17243A790060E75E /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F84D3B17243A790060E75E /* placeholder.png */; };
+		C0F84D3E17243ABE0060E75E /* no_artwork.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F84D3D17243ABE0060E75E /* no_artwork.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -261,10 +261,8 @@
 		1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMusicPickerViewController.xib; sourceTree = "<group>"; };
 		1A868B1B17217A9C007F93A4 /* SFPlaylistManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistManagerViewController.h; sourceTree = "<group>"; };
 		1A868B1C17217A9C007F93A4 /* SFPlaylistManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistManagerViewController.m; sourceTree = "<group>"; };
-		1A868B241721881A007F93A4 /* no_artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_artwork.png; path = "/Users/zuyetawarmatik/Desktop/Final/final-project-group-8/Streamify/Views/no_artwork.png"; sourceTree = "<absolute>"; };
 		1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		1AB5ED40171A9585009EFE67 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
-		1AB6A55417195E3F00DD2B2B /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../Assets/placeholder.png; sourceTree = "<group>"; };
 		1AE32122170DC8DC00D740E5 /* SFTopbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTopbarViewController.h; sourceTree = "<group>"; };
 		1AE32123170DC8DC00D740E5 /* SFTopbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTopbarViewController.m; sourceTree = "<group>"; };
 		1AE32124170DC8DC00D740E5 /* SFTopbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTopbarViewController.xib; sourceTree = "<group>"; };
@@ -539,7 +537,6 @@
 		C0C8E37C1719C4F40042A827 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
 		C0C8E37D1719C4F40042A827 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		C0C8E37E1719C4F40042A827 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		C0C996BD1724231C0058E830 /* no_artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_artwork.png; sourceTree = "<group>"; };
 		C0CA2B5D170F1F470007C576 /* subtle_carbon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "subtle_carbon@2x.png"; path = "Theme/subtle_carbon@2x.png"; sourceTree = "<group>"; };
 		C0CA2B5E170F1F470007C576 /* subtle_carbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = subtle_carbon.png; path = Theme/subtle_carbon.png; sourceTree = "<group>"; };
 		C0CA2B5F170F1F470007C576 /* topbar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "topbar-background.png"; path = "Theme/topbar-background.png"; sourceTree = "<group>"; };
@@ -578,6 +575,8 @@
 		C0E12178171162C400A09C6C /* SFChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFChatMessageCell.m; sourceTree = "<group>"; };
 		C0E3A4A41709FA8800ADD132 /* mainbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mainbackground.png; path = Theme/mainbackground.png; sourceTree = "<group>"; };
 		C0E3A4A51709FA8800ADD132 /* mainbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mainbackground@2x.png"; path = "Theme/mainbackground@2x.png"; sourceTree = "<group>"; };
+		C0F84D3B17243A790060E75E /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../Controllers/placeholder.png; sourceTree = "<group>"; };
+		C0F84D3D17243ABE0060E75E /* no_artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_artwork.png; path = Theme/no_artwork.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -671,7 +670,6 @@
 		1A49F9F51704E9CA00969CFA /* Metro Components */ = {
 			isa = PBXGroup;
 			children = (
-				1AB6A55417195E3F00DD2B2B /* placeholder.png */,
 				1AB5ED40171A9585009EFE67 /* whiteArrow.png */,
 				1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */,
 				1A49FA111704EACA00969CFA /* SFMetroConstants.h */,
@@ -711,8 +709,8 @@
 		1AF390F21722DFF7004FC992 /* Miscellaneous */ = {
 			isa = PBXGroup;
 			children = (
-				C0C996BD1724231C0058E830 /* no_artwork.png */,
-				1A868B241721881A007F93A4 /* no_artwork.png */,
+				C0F84D3D17243ABE0060E75E /* no_artwork.png */,
+				C0F84D3B17243A790060E75E /* placeholder.png */,
 			);
 			name = Miscellaneous;
 			sourceTree = "<group>";
@@ -1495,7 +1493,6 @@
 				C0C1366F1717040C006D8C6D /* topbar-icon-play.png in Resources */,
 				C0C136701717040C006D8C6D /* topbar-icon-play@2x.png in Resources */,
 				9CB483F917182B9100E90107 /* SFMetroRefreshHeaderView.xib in Resources */,
-				1AB6A55517195E3F00DD2B2B /* placeholder.png in Resources */,
 				C0C8E37F1719C4F40042A827 /* Default-Landscape.png in Resources */,
 				C0C8E3801719C4F40042A827 /* Default-Landscape@2x.png in Resources */,
 				C0C8E3811719C4F40042A827 /* Icon-72.png in Resources */,
@@ -1523,7 +1520,8 @@
 				C08934051722CB5800F365FD /* ui-searchbar-icon-search.png in Resources */,
 				C08934061722CB5800F365FD /* ui-searchbar-icon-search@2x.png in Resources */,
 				994A92C01723F13800EE7035 /* SFSettingsViewController.xib in Resources */,
-				C0C996BE1724231C0058E830 /* no_artwork.png in Resources */,
+				C0F84D3C17243A790060E75E /* placeholder.png in Resources */,
+				C0F84D3E17243ABE0060E75E /* no_artwork.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
