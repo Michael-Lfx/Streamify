@@ -79,7 +79,6 @@
 - (id)initChatViewWithDelegate:(id)delegate {
     if (self = [self initWithNib]) {
         self.delegate = delegate;
-        self.chatTextField.delegate = self;
     }
     
     return self;
@@ -88,7 +87,6 @@
 - (id)initWithChannel:(SFUser *)channel {
     if (self = [self initWithNib]) {
         self.channel = channel;
-        self.chatTextField.delegate = self;
     }
     
     return self;
@@ -119,6 +117,8 @@
                                                 userInfo:nil
                                                  repeats:YES];
     [self.timer fire];
+    
+    self.chatTextField.delegate = self;
 }
 
 - (void)updateMessages {
