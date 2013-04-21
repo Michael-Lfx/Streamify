@@ -195,6 +195,15 @@
     //                                          context:nil];
     
     [self viewWillAppear:YES];
+    
+    self.personFollowingLabel.hidden = YES;
+    [[SFSocialManager sharedInstance] getNumberOfFollwersForUser:self.user.objectID withCallback:^(id returnedObject) {
+        if ([returnedObject[kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
+            int count = [returnedObject[kResultNumberOfFollowers] intValue];
+            self.personFollowingLabel.text = [NSString stringWithFormat:@"%d Following", count];
+            self.personFollowingLabel.hidden = NO;
+        }
+    }];
 }
 
 //- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

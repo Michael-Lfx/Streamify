@@ -83,6 +83,15 @@
     self.channelInfoLabel.text = [NSString stringWithFormat:@"%@'s Channel", self.user.name];
     
     self.duration = 0;
+    
+    self.personFollowingLabel.hidden = YES;
+    [[SFSocialManager sharedInstance] getNumberOfFollwersForUser:self.user.objectID withCallback:^(id returnedObject) {
+        if ([returnedObject[kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
+            int count = [returnedObject[kResultNumberOfFollowers] intValue];
+            self.personFollowingLabel.text = [NSString stringWithFormat:@"%d Following", count];
+            self.personFollowingLabel.hidden = NO;
+        }
+    }];
 }
 
 - (void)stopRecording {
