@@ -66,6 +66,12 @@
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    SFMessage *cellData = [self.messagesData objectAtIndex:indexPath.section];
+    CGSize stringSize = [cellData.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15] constrainedToSize:CGSizeMake(kSFChatTableCellMessageFrameW, 9999) lineBreakMode:UILineBreakModeWordWrap];
+    return MAX(kSFChatTableCellFrameHDefault, kSFChatTableCellUserNameFrameY + kSFChatTableCellUserNameFrameH + stringSize.height + 6);
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"SFChatMessageCell";
@@ -76,6 +82,7 @@
     
     // Configure the cell...
     [self loadDataToCell:cell indexPath:indexPath];
+    [cell layoutSubviews];
     
     return cell;
 }
@@ -84,6 +91,7 @@
     SFMessage *cellData = [self.messagesData objectAtIndex:indexPath.section];
     cell.userNameLabel.text = cellData.name;
     cell.messageLabel.text = cellData.text;
+
     [cell.avatarImageView setImageWithURL:[NSURL URLWithString:cellData.pictureURL]
                          placeholderImage:[UIImage imageNamed:@"placeholder"]];
     cell.avatarImageView.layer.cornerRadius = 7;

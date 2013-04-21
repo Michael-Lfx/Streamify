@@ -67,14 +67,20 @@
     self.messageLabel.backgroundColor = [UIColor clearColor];
     self.messageLabel.textColor = [UIColor colorWithWhite:0.8 alpha:1.0];
     self.messageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
+    self.messageLabel.numberOfLines = 0;
+    self.messageLabel.lineBreakMode = UILineBreakModeWordWrap;
 }
-
+	
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.contentView.bounds = CGRectMake(0, 0, 440, 60);
-    self.avatarImageView.frame = CGRectMake(6, 6, 48, 48);
-    self.userNameLabel.frame = CGRectMake(66, 6, 365, 21);
-    self.messageLabel.frame = CGRectMake(66, 27, 365, 27);
+    
+    CGSize stringSize = [self.messageLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15] constrainedToSize:CGSizeMake(kSFChatTableCellMessageFrameW, 9999) lineBreakMode:UILineBreakModeWordWrap];
+    self.messageLabel.frame = CGRectMake(kSFChatTableCellMessageFrameX, kSFChatTableCellMessageFrameY, kSFChatTableCellMessageFrameW, stringSize.height);
+    
+    self.avatarImageView.frame = CGRectMake(kSFChatTableCellAvatarX, kSFChatTableCellAvatarY, kSFChatTableCellAvatarW, kSFChatTableCellAvatarH);
+    self.userNameLabel.frame = CGRectMake(kSFChatTableCellUserNameFrameX, kSFChatTableCellUserNameFrameY, kSFChatTableCellUserNameFrameW, kSFChatTableCellUserNameFrameH);
+    self.contentView.bounds = CGRectMake(0, 0, kSFChatTableCellFrameW,
+                                         MAX(kSFChatTableCellFrameHDefault, kSFChatTableCellUserNameFrameY + kSFChatTableCellUserNameFrameH + self.messageLabel.height + 6));
     
     [self styleCell];
 }

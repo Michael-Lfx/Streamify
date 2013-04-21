@@ -57,7 +57,7 @@
 					<object class="IBUITextField" id="510545262">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{42, 670}, {364, 30}}</string>
+						<string key="NSFrame">{{50, 670}, {356, 30}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="993048388"/>
@@ -130,7 +130,6 @@
 						<string key="NSFrame">{{414, 670}, {73, 30}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
