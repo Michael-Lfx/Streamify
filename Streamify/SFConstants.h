@@ -16,6 +16,16 @@
 #define kSFTopbarFrameXInHomeView 250
 #define kSFTopbarFrameYInHomeView 0
 
+#define kSFSearchBarFrameXHiddenInHomeView 90
+#define kSFSearchBarFrameYHiddenInHomeView 100
+#define kSFSearchBarFrameWHiddenInHomeView 0
+#define kSFSearchBarFrameHHiddenInHomeView 40
+
+#define kSFSearchBarFrameXShownInHomeView 150
+#define kSFSearchBarFrameYShownInHomeView 100
+#define kSFSearchBarFrameWShownInHomeView 320
+#define kSFSearchBarFrameHShownInHomeView 40
+
 #define kSFMainColumnFrameX 80
 #define kSFMainColumnFrameY 0
 #define kSFMainColumnFrameW 420

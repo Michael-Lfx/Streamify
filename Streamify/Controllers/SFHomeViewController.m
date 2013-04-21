@@ -94,7 +94,7 @@
     [self.view addSubview:self.sidebarViewController.view];
     
     // Search bar
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(90, 100, 0, 40)];
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(kSFSearchBarFrameXHiddenInHomeView, kSFSearchBarFrameYHiddenInHomeView, kSFSearchBarFrameWHiddenInHomeView, kSFSearchBarFrameHHiddenInHomeView)];
     self.searchBar.clipsToBounds = YES;
     [SFUIDefaultTheme themeSearchBar:self.searchBar];
     [self.view addSubview:self.searchBar];
@@ -215,7 +215,7 @@
     [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionLayoutSubviews
-                     animations:^{self.searchBar.frame = CGRectMake(150, 100, 320, 40);}
+                     animations:^{self.searchBar.frame = CGRectMake(kSFSearchBarFrameXShownInHomeView, kSFSearchBarFrameYShownInHomeView, kSFSearchBarFrameWShownInHomeView, kSFSearchBarFrameHShownInHomeView);}
                      completion:^(BOOL finished) {
                          [self.searchBar becomeFirstResponder];
                      }];
@@ -225,7 +225,7 @@
     [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionLayoutSubviews
-                     animations:^{self.searchBar.frame = CGRectMake(90, 100, 0, 40);}
+                     animations:^{self.searchBar.frame = CGRectMake(kSFSearchBarFrameXHiddenInHomeView, kSFSearchBarFrameYHiddenInHomeView, kSFSearchBarFrameWHiddenInHomeView, kSFSearchBarFrameHHiddenInHomeView);}
                      completion:^(BOOL finished) {
                          [self.searchBar resignFirstResponder];
                      }];
