@@ -122,15 +122,8 @@
 
 #pragma mark - Canvas Refresh
 
-- (void)refreshWithTiles:(NSArray *)tiles
+- (void)reset
 {
-    self.tiles = tiles;
-    if (self.tiles.count == 0) {
-        self.notificationLabel.hidden = NO;
-    } else {
-        self.notificationLabel.hidden = YES;
-    }
-    
     // Reset canvas' scrollview
     NSInteger currentPage = [self getCurrentPage];
     [self purgePage:(currentPage - 1)];
@@ -138,6 +131,27 @@
     [self purgePage:(currentPage + 1)];
     [self resetPageViews];
     [self resetScrollViewContentSize];
+}
+
+- (void)clear
+{
+    self.tiles = [NSArray array];
+    self.notificationLabel.hidden = YES;
+    [self reset];
+}
+
+- (void)refreshWithTiles:(NSArray *)tiles
+{
+    self.canvasLoading = NO;
+    
+    self.tiles = tiles;
+    if (self.tiles.count == 0) {
+        self.notificationLabel.hidden = NO;
+    } else {
+        self.notificationLabel.hidden = YES;
+    }
+    
+    [self reset];
     
     // Refresh
     [self performSelectorOnMainThread:@selector(refreshCanvas) withObject:nil waitUntilDone:NO];
@@ -145,17 +159,41 @@
 
 - (void)refreshCanvas
 {
+    if (self.scrollView.isDragging && self.scrollView.decelerating) {
+        [self stopCanvasScrolling];
+    }
     [UIView transitionWithView:self.scrollView
-                      duration:kMetroRefreshHeaderOnCanvasRefreshAnimationDuration
-                       options:UIViewAnimationOptionTransitionCrossDissolve
+                      duration:0.5f
+                       options:UIViewAnimationOptionShowHideTransitionViews
                     animations:^{
-                        self.scrollView.contentInset = UIEdgeInsetsZero;
                         self.scrollView.contentOffset = CGPointMake(0, 0);
-                    }
-                    completion:^(BOOL finished) {
-                        
+                        self.scrollView.contentInset = UIEdgeInsetsZero;
+                        self.canvasState = SFMetroPullRefreshNormal;
+                    } completion:^(BOOL finished) {
+                        self.scrollView.pagingEnabled = YES;
+                        [self loadVisiblePages];
+                        [UIView transitionWithView:self.scrollView
+                                          duration:kMetroRefreshHeaderOnCanvasRefreshAnimationDuration
+                                           options:UIViewAnimationOptionTransitionCrossDissolve
+                                        animations:^{
+                                        }
+                                        completion:^(BOOL finished) {
+                                        }];
                     }];
-    [self loadVisiblePages];
+    
+    
+    
+}
+
+- (void)stopCanvasScrolling
+{
+    CGPoint offset = self.scrollView.contentOffset;
+    offset.x -= 1.0;
+    offset.y -= 1.0;
+    [self.scrollView setContentOffset:offset animated:NO];
+    offset.x += 1.0;
+    offset.y += 1.0;
+    [self.scrollView setContentOffset:offset animated:NO];
 }
 
 #pragma mark - ScrollViewDelegate
@@ -189,17 +227,14 @@
 {
     if (scrollView.contentOffset.x <= -kMetroPullToRefreshOffsetLimit
         && !self.canvasLoading) {
-        if ([self.delegate respondsToSelector:@selector(canvasDidTriggeredToRefresh)]) {
-            [self.delegate canvasDidTriggeredToRefresh];
-        }
-        
         self.canvasLoading = YES;
-        self.canvasState = SFMetroPullRefreshLoading;
         scrollView.pagingEnabled = NO;
+        self.canvasState = SFMetroPullRefreshLoading;
         [UIView animateWithDuration:kMetroRefreshHeaderOnReleaseRetractAnimationDuration animations:^{
             scrollView.contentOffset = CGPointMake(0, 0);
             scrollView.contentInset = UIEdgeInsetsMake(0, kMetroPullToRefreshOffset, 0, 0);
         }];
+        [self.delegate canvasDidTriggeredToRefresh];
     }
 }
 
@@ -207,9 +242,7 @@
 
 - (void)canvasScrollViewDataSourceDidFinishedLoading
 {
-    self.canvasLoading = NO;
-    self.scrollView.pagingEnabled = YES;
-    self.canvasState = SFMetroPullRefreshNormal;
+    
 }
 
 

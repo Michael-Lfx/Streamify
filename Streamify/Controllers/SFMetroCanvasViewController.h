@@ -12,6 +12,7 @@
 
 @protocol SFMetroCanvasViewControllerProtocol <NSObject>
 
+@required
 - (void)tileDidTapped:(SFUser *)user;
 - (void)canvasDidTriggeredToRefresh;
 
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *canvasInitIndicator;
 
 - (id)initWithTiles:(NSArray *)tiles emptyCanvasMessage:(NSString *)message delegate:(id)delegate;
+- (void)clear;
 - (void)refreshWithTiles:(NSArray *)tiles;
 - (void)canvasScrollViewDataSourceDidFinishedLoading;
 

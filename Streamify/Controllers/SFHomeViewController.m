@@ -99,15 +99,6 @@
     [SFUIDefaultTheme themeSearchBar:self.searchBar];
     [self.view addSubview:self.searchBar];
     self.searchBar.delegate = self;
-
-    
-//    [[SFSocialManager sharedInstance] searchChannelsForKeyword:@"Zuyet" withCallback:^(id returnedObject) {
-//        SFUser *user = [returnedObject[kResultUsers] objectAtIndex:0];
-//        DLog(@"%@", user);
-//        if (user.followed) {
-//            DLog(@"YESSS");
-//        }
-//    }];
 }
 
 - (void)positeCanvasViewController:(SFMetroCanvasViewController *)canvasViewController
@@ -150,10 +141,7 @@
     
     self.browsingType = kSFTrendingBrowsing;
     self.canvasTitle.text = @"Trending";
-    [self removeAllCanvases];
-    [self.view addSubview:self.trendingCanvasViewController.view];
-    [self.trendingCanvasViewController.canvasInitIndicator startAnimating];
-    [self canvasDidTriggeredToRefresh];
+    [self activateCanvas:self.trendingCanvasViewController];
 }
 
 - (void)favouritePressed:(id)sender {
@@ -163,10 +151,7 @@
 
     self.browsingType = kSFFavoriteBrowsing;
     self.canvasTitle.text = @"Favorite";
-    [self removeAllCanvases];
-    [self.view addSubview:self.favoriteCanvasViewController.view];
-    [self.favoriteCanvasViewController.canvasInitIndicator startAnimating];
-    [self canvasDidTriggeredToRefresh];
+    [self activateCanvas:self.favoriteCanvasViewController];
 }
 
 - (void)recentPressed:(id)sender {
@@ -176,9 +161,15 @@
 
     self.browsingType = kSFRecentBrowsing;
     self.canvasTitle.text = @"Recent";
+    [self activateCanvas:self.recentCanvasViewController];
+}
+
+- (void)activateCanvas:(SFMetroCanvasViewController *)canvasViewController
+{
     [self removeAllCanvases];
-    [self.view addSubview:self.recentCanvasViewController.view];
-    [self.recentCanvasViewController.canvasInitIndicator startAnimating];
+    [self.view addSubview:canvasViewController.view];
+    [canvasViewController.canvasInitIndicator startAnimating];
+    canvasViewController.view.userInteractionEnabled = NO;
     [self canvasDidTriggeredToRefresh];
 }
 
@@ -190,8 +181,6 @@
     self.canvasTitle.text = @"Search";
     [self removeAllCanvases];
     [self.view addSubview:self.searchCanvasViewController.view];
-//    [self.searchCanvasViewController.canvasInitIndicator startAnimating];
-//    [self canvasDidTriggeredToRefresh];
 }
 
 - (void)broadcastPressed:(id)sender {
@@ -202,13 +191,13 @@
 - (void)removeAllCanvases
 {
     [self.trendingCanvasViewController.view removeFromSuperview];
-    [self.trendingCanvasViewController refreshWithTiles:[NSArray array]];
+    [self.trendingCanvasViewController clear];
     [self.favoriteCanvasViewController.view removeFromSuperview];
-    [self.favoriteCanvasViewController refreshWithTiles:[NSArray array]];
+    [self.favoriteCanvasViewController clear];
     [self.recentCanvasViewController.view removeFromSuperview];
-    [self.recentCanvasViewController refreshWithTiles:[NSArray array]];
+    [self.recentCanvasViewController clear];
     [self.searchCanvasViewController.view removeFromSuperview];
-    [self.searchCanvasViewController refreshWithTiles:[NSArray array]];
+    [self.searchCanvasViewController clear];
 }
 
 - (void)showSearchBar {
@@ -305,11 +294,20 @@
                                                                         [self performSelectorInBackground:@selector(refreshRecentCanvas:)
                                                                                                withObject:returnedObject];
                                                                     }];
-//            [[SFSocialManager sharedInstance] getUsersWithObjectIDs:objectIDsOfRecentChannels
-//                                                       withCallback:^(id returnedObject) {
-//                                                           [self performSelectorInBackground:@selector(refreshRecentCanvas:)
-//                                                                                  withObject:returnedObject];
-//                                                       }];
+        }
+            break;
+        case kSFSearchBrowsing:
+        {
+            NSString *keyword = [self.searchBar.text stringByTrimmingCharactersInSet:
+                                 [NSCharacterSet whitespaceCharacterSet]];
+            
+            if (![keyword isEqualToString:@""]) {
+                [[SFSocialManager sharedInstance] searchChannelsForKeyword:keyword
+                                                              withCallback:^(id returnedObject) {
+                                                                  [self performSelectorInBackground:@selector(refreshSearchCanvas:)
+                                                                                         withObject:returnedObject];
+                                                              }];
+            }
         }
             break;
         default:
@@ -353,9 +351,9 @@
     
     if (canvasViewController.canvasInitIndicator.isAnimating) {
         [canvasViewController.canvasInitIndicator stopAnimating];
+        canvasViewController.view.userInteractionEnabled = YES;
     }
     
-    [canvasViewController canvasScrollViewDataSourceDidFinishedLoading];
     [canvasViewController refreshWithTiles:tiles];
 }
 
