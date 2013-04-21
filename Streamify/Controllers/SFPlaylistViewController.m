@@ -32,21 +32,20 @@
     [super viewDidLoad];
     
     self.topBackground.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"subtle_carbon.png"]];
-    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.playlist = [NSMutableArray array];
     [self loadPlaylist];
-    [self.tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [self performSelectorInBackground:@selector(savePlaylist) withObject:nil];
+    [self savePlaylist:[self getPlaylistURLs]];
     [super viewWillDisappear:animated];
 }
 
-- (void)savePlaylist
+- (void)savePlaylist:(NSArray *)playlist
 {
-    [SFStorageManager savePlaylistUserDefaults:[self getPlaylistURLs]];
+    [SFStorageManager savePlaylistUserDefaults:playlist];
 }
 
 - (void)loadPlaylist
@@ -55,12 +54,12 @@
     if (!playlistURLs) {
         playlistURLs = [NSArray array];
     }
-    
-    self.playlist = [NSMutableArray array];
+        
     for (NSString *URL in playlistURLs) {
         SFSong *song = [[SFSong alloc] initWithURL:[NSURL URLWithString:URL]];
         [self.playlist addObject:song];
     }
+    [self.tableView reloadData];
 }
      
 - (NSArray *)getPlaylistURLs
@@ -77,6 +76,10 @@
 {
     [self.playlist addObject:song];
     [self.tableView reloadData];
+    if (self.tableView.contentSize.height > self.tableView.bounds.size.height) {
+        CGPoint bottomOffset = CGPointMake(0, self.tableView.contentSize.height - self.tableView.bounds.size.height);
+        [self.tableView setContentOffset:bottomOffset animated:YES];
+    }
 }
 
 #pragma mark - UITableViewDataSource
