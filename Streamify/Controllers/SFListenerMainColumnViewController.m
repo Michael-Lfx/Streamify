@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSDate *startListeningTime;
 @property (nonatomic, strong) NSTimer *pollingTimer;
 @property (nonatomic) NSTimeInterval duration;
+@property (nonatomic) BOOL stoppedByUser;
 
 @end
 
@@ -39,12 +40,12 @@
 }
 
 - (void)startTimer {
-    self.startListeningTime = [NSDate date];
     self.pollingTimer = [NSTimer scheduledTimerWithTimeInterval:1
                                                          target:self
                                                        selector:@selector(updateTime)
                                                        userInfo:nil
                                                         repeats:YES];
+    [self.pollingTimer fire];
 }
 
 - (void)updateTime {
@@ -69,18 +70,15 @@
 
 - (void)stop {
     [[SFAudioStreamer sharedInstance] stop];
-    self.duration = 0;
 }
 
 - (IBAction)controlButtonPressed:(id)sender {
-    if ([SFAudioStreamer sharedInstance].isPlaying) {
+    if ([SFAudioStreamer sharedInstance].playbackState == MPMoviePlaybackStatePlaying) {
+        self.stoppedByUser = YES;
         [self stop];
     } else {
         [self start];
-        [self startTimer];
     }
-    [self.controlButton setImage:[self controlButtonIconForCurrentChannelState]
-                        forState:UIControlStateNormal];
 }
 
 - (IBAction)volumeSliderChanged:(id)sender {
@@ -161,31 +159,85 @@
     [SFUIDefaultTheme themeButton:self.shareButton];
     [SFUIDefaultTheme themeSlider:self.volumeSlider];
     
-    
-    if ([SFAudioStreamer sharedInstance].isPlaying &&
-        ![[SFAudioStreamer sharedInstance].channelPlaying isEqualToString:self.user.objectID]){
-        [[SFAudioStreamer sharedInstance] stop];
+    if (!self.user.isLive) {
+        [self displayOfflineChannel];
     }
     
+    // Channel Info
+    self.channelInfoLabel.text = [NSString stringWithFormat:@"%@'s Channel", self.user.name];
+    
+    self.stoppedByUser = NO;
+    self.duration = 0;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updatePlaybackState)
+                                                 name:MPMoviePlayerPlaybackStateDidChangeNotification
+                                               object:[SFAudioStreamer sharedInstance]];
+    
+    
+    if ([SFAudioStreamer sharedInstance].playbackState == MPMoviePlaybackStatePlaying &&
+        [[SFAudioStreamer sharedInstance].channelPlaying isEqualToString:self.user.objectID]){
+        self.startListeningTime = [SFAudioStreamer sharedInstance].startStreamingTime;
+        [self startTimer];
+    } else {
+        self.stoppedByUser = YES;
+        [self stop];
+    }
     
     // Buttons
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
     [self.followButton setImage:[self followButtonIconForCurrentFollowingState] forState:UIControlStateNormal];
     [self.followButton setTitle:[self followButtonTitleForCurrentFollowingState] forState:UIControlStateNormal];
     
-    if (!self.user.isLive) {
-        self.controlButton.enabled = NO;
-        self.coverImageView.alpha = 0.3;
-    }
-    
-    // Channel Info
-    self.channelInfoLabel.text = [NSString stringWithFormat:@"%@'s Channel", self.user.name];
-    
-    self.duration = 0;
+    //    [[SFAudioStreamer sharedInstance] addObserver:self
+    //                                       forKeyPath:@"playbackState"
+    //                                          options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+    //                                          context:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+//    if ([keyPath isEqualToString:@"playbackState"]) {
+//        MPMoviePlaybackState newState = (MPMoviePlaybackState)[change objectForKey:NSKeyValueChangeNewKey];
+//
+//        if (newState == MPMoviePlaybackStatePlaying) {
+//        } else if (newState == MPMoviePlaybackStateStopped) {
+//            if (!self.stoppedByUser) {
+//                [self displayOfflineChannel];
+//                self.user.isLive = NO;
+//            }
+//            self.stoppedByUser = NO;
+//        } else {
+//            NSLog(@"Shit");
+//            NSLog(@"%d", newState);
+//        }
+//
+//        [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
+//    }
+//}
+
+- (void)updatePlaybackState {
+    MPMoviePlaybackState newState = [SFAudioStreamer sharedInstance].playbackState;
+    
+    if (newState == MPMoviePlaybackStatePlaying) {
+        self.startListeningTime = [SFAudioStreamer sharedInstance].startStreamingTime;
+        [self startTimer];
+    } else {
+        if (!self.stoppedByUser) {
+            [self displayOfflineChannel];
+            self.user.isLive = NO;
+        }
+        self.stoppedByUser = NO;
+        self.duration = 0;
+        [self.pollingTimer invalidate];
+    }
+    
+    NSLog(@"%d", newState);
+    [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
+}
+
+- (void)displayOfflineChannel {
+    self.controlButton.enabled = NO;
+    self.coverImageView.alpha = 0.3;
 }
 
 - (void)didReceiveMemoryWarning
@@ -209,7 +261,7 @@
 }
 
 - (UIImage *)controlButtonIconForCurrentChannelState {
-    if ([SFAudioStreamer sharedInstance].isPlaying) {
+    if ([SFAudioStreamer sharedInstance].playbackState == MPMoviePlaybackStatePlaying) {
         return [UIImage imageNamed:@"maincol-icon-pause.png"];
     } else {
         return [UIImage imageNamed:@"maincol-icon-play.png"];
@@ -252,6 +304,13 @@
         action();
     }
     
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerPlaybackStateDidChangeNotification
+                                                  object:[SFAudioStreamer sharedInstance]];
+    [super viewWillDisappear:animated];
 }
 
 // UIAlertView helper for post buttons

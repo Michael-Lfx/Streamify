@@ -12,7 +12,6 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface SFAudioStreamer()
-@property (nonatomic, strong) MPMoviePlayerController *streamPlayer;
 @end
 
 @implementation SFAudioStreamer
@@ -29,14 +28,10 @@
 
 - (id)init {
     if (self = [super init]) {
-        self.streamPlayer = [[MPMoviePlayerController alloc] init];
-        self.isPlaying = NO;
         self.channelPlaying = NULL;
+        self.startStreamingTime = NULL;
     }
     return self;
-}
-
-- (void)preparePlayer {
 }
 
 - (void)playChannel:(NSString *)channelID {
@@ -44,14 +39,12 @@
     NSLog(@"%@", urlString);
     NSURL *streamURL = [NSURL URLWithString:urlString];
     
-    // depending on your implementation your view may not have it's bounds set here
-    // in that case consider calling the following 4 msgs later
-    self.streamPlayer.movieSourceType = MPMovieSourceTypeStreaming;
-    [self.streamPlayer setContentURL:streamURL];
-    [self.streamPlayer.view setHidden:YES];
-    [self.streamPlayer prepareToPlay];
-    [self.streamPlayer play];
-    self.isPlaying = YES;
+    self.movieSourceType = MPMovieSourceTypeStreaming;
+    [self setContentURL:streamURL];
+    [self.view setHidden:YES];
+    [self prepareToPlay];
+    [self play];
+    self.startStreamingTime = [NSDate date];
     self.channelPlaying = channelID;
 }
 
@@ -64,9 +57,9 @@
 }
 
 - (void)stop {
-    [self.streamPlayer stop];
-    self.isPlaying = NO;
+    [super stop];
     self.channelPlaying = NULL;
+    self.startStreamingTime = NULL;
 }
 
 @end

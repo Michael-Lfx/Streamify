@@ -7,16 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface SFAudioStreamer : NSObject
+@interface SFAudioStreamer : MPMoviePlayerController
 
-@property (nonatomic) BOOL isPlaying;
 @property (nonatomic, strong) NSString *channelPlaying;
 @property (nonatomic) float volume;
+@property (nonatomic, strong) NSDate *startStreamingTime;
 
 + (SFAudioStreamer *)sharedInstance;
-- (void)preparePlayer;
 - (void)playChannel:(NSString *)channelID;
-- (void)stop;
 
 @end
