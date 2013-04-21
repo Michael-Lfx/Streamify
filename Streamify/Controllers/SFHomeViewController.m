@@ -131,6 +131,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+    
+    [self.topbarViewController viewWillAppear:YES];
 }
 
 #pragma mark - SideBarViewController protocal

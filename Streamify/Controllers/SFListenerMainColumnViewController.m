@@ -193,6 +193,8 @@
     //                                       forKeyPath:@"playbackState"
     //                                          options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
     //                                          context:nil];
+    
+    [self viewWillAppear:YES];
 }
 
 //- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
