@@ -35,7 +35,7 @@
     self.contentView.backgroundColor = [UIColor clearColor];
     self.contentView.layer.borderColor = [[SFUIDefaultTheme mainTextColor] colorWithAlphaComponent:0.5].CGColor;
     self.contentView.layer.borderWidth = 1.0;
-    self.contentView.layer.cornerRadius = 10;
+    self.contentView.layer.cornerRadius = 7;
     self.contentView.layer.masksToBounds = YES;
     
     UIColor *colorOne = [UIColor colorWithWhite:0.1 alpha:0.0];

@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) IBOutlet UIImageView *topBackground;
+
 - (void)addSong:(SFSong *)song;
 
 @end

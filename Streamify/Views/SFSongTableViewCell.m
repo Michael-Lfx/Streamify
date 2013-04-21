@@ -7,6 +7,7 @@
 //
 
 #import "SFSongTableViewCell.h"
+#import "SFUIDefaultTheme.h"
 
 @implementation SFSongTableViewCell
 
@@ -21,6 +22,38 @@
 
 + (NSString *)cellIdentifier {
     return @"PlaylistItemTableViewCellIdentifier";
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.backgroundView = nil;
+    self.backgroundColor = [UIColor clearColor];
+    
+    self.contentView.layer.borderWidth = 1;
+    self.contentView.layer.borderColor = [[UIColor colorWithWhite:0.85 alpha:0.3] CGColor];
+    
+    /* cell background */
+    self.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brillant.png"]];
+    self.contentView.layer.masksToBounds = YES;
+    
+    UIColor *colorOne = [UIColor colorWithWhite:1.0 alpha:0.5];
+    UIColor *colorTwo = [UIColor colorWithWhite:0.9 alpha:0.5];
+    
+    NSArray *colors =  [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    
+    NSNumber *stopOne = [NSNumber numberWithFloat:0.0];
+    NSNumber *stopTwo = [NSNumber numberWithFloat:1.0];
+    
+    NSArray *locations = [NSArray arrayWithObjects:stopOne, stopTwo, nil];
+    
+    CAGradientLayer *layer = [CAGradientLayer layer];
+    
+    layer.colors = colors;
+    layer.locations = locations;
+    
+    layer.frame = self.contentView.bounds;
+    [self.contentView.layer insertSublayer:layer atIndex:0];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

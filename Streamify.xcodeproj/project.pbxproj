@@ -20,7 +20,6 @@
 		1A868B1D17217A9C007F93A4 /* SFPlaylistManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A868B1C17217A9C007F93A4 /* SFPlaylistManagerViewController.m */; };
 		1A868B1F172180A1007F93A4 /* SFMusicPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A868B1717216F12007F93A4 /* SFMusicPickerViewController.m */; };
 		1A868B20172180E1007F93A4 /* SFMusicPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */; };
-		1A868B251721881A007F93A4 /* no_artwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A868B241721881A007F93A4 /* no_artwork.png */; };
 		1AB5ED41171A9585009EFE67 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */; };
 		1AB5ED42171A9585009EFE67 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB5ED40171A9585009EFE67 /* whiteArrow.png */; };
 		1AB6A55517195E3F00DD2B2B /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB6A55417195E3F00DD2B2B /* placeholder.png */; };
@@ -203,6 +202,7 @@
 		C0C8E3841719C4F40042A827 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C8E37C1719C4F40042A827 /* Icon-Small-50@2x.png */; };
 		C0C8E3851719C4F40042A827 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C8E37D1719C4F40042A827 /* iTunesArtwork.png */; };
 		C0C8E3861719C4F40042A827 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C8E37E1719C4F40042A827 /* iTunesArtwork@2x.png */; };
+		C0C996BE1724231C0058E830 /* no_artwork.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C996BD1724231C0058E830 /* no_artwork.png */; };
 		C0CA2B69170F1F470007C576 /* subtle_carbon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CA2B5D170F1F470007C576 /* subtle_carbon@2x.png */; };
 		C0CA2B6A170F1F470007C576 /* subtle_carbon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CA2B5E170F1F470007C576 /* subtle_carbon.png */; };
 		C0CA2B6B170F1F470007C576 /* topbar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C0CA2B5F170F1F470007C576 /* topbar-background.png */; };
@@ -261,7 +261,7 @@
 		1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMusicPickerViewController.xib; sourceTree = "<group>"; };
 		1A868B1B17217A9C007F93A4 /* SFPlaylistManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistManagerViewController.h; sourceTree = "<group>"; };
 		1A868B1C17217A9C007F93A4 /* SFPlaylistManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistManagerViewController.m; sourceTree = "<group>"; };
-		1A868B241721881A007F93A4 /* no_artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_artwork.png; path = ../Views/no_artwork.png; sourceTree = "<group>"; };
+		1A868B241721881A007F93A4 /* no_artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_artwork.png; path = "/Users/zuyetawarmatik/Desktop/Final/final-project-group-8/Streamify/Views/no_artwork.png"; sourceTree = "<absolute>"; };
 		1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		1AB5ED40171A9585009EFE67 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		1AB6A55417195E3F00DD2B2B /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../Assets/placeholder.png; sourceTree = "<group>"; };
@@ -539,6 +539,7 @@
 		C0C8E37C1719C4F40042A827 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
 		C0C8E37D1719C4F40042A827 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		C0C8E37E1719C4F40042A827 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		C0C996BD1724231C0058E830 /* no_artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_artwork.png; sourceTree = "<group>"; };
 		C0CA2B5D170F1F470007C576 /* subtle_carbon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "subtle_carbon@2x.png"; path = "Theme/subtle_carbon@2x.png"; sourceTree = "<group>"; };
 		C0CA2B5E170F1F470007C576 /* subtle_carbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = subtle_carbon.png; path = Theme/subtle_carbon.png; sourceTree = "<group>"; };
 		C0CA2B5F170F1F470007C576 /* topbar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "topbar-background.png"; path = "Theme/topbar-background.png"; sourceTree = "<group>"; };
@@ -710,6 +711,7 @@
 		1AF390F21722DFF7004FC992 /* Miscellaneous */ = {
 			isa = PBXGroup;
 			children = (
+				C0C996BD1724231C0058E830 /* no_artwork.png */,
 				1A868B241721881A007F93A4 /* no_artwork.png */,
 			);
 			name = Miscellaneous;
@@ -1076,7 +1078,6 @@
 				C0BE8CA517216A24007AA21A /* SFSlider.m */,
 				C08934071722F37000F365FD /* SFTextField.h */,
 				C08934081722F37000F365FD /* SFTextField.m */,
-				1A868B241721881A007F93A4 /* no_artwork.png */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1515,7 +1516,6 @@
 				9C1EC5CC17216BDB001E7CAE /* SFPlaylistViewController.xib in Resources */,
 				9C1EC5D417217219001E7CAE /* SFSongTableViewCell.xib in Resources */,
 				1A868B20172180E1007F93A4 /* SFMusicPickerViewController.xib in Resources */,
-				1A868B251721881A007F93A4 /* no_artwork.png in Resources */,
 				C08933FD1722C29200F365FD /* ui-searchbox.png in Resources */,
 				C08933FE1722C29200F365FD /* ui-searchbox@2x.png in Resources */,
 				C08934031722CB5800F365FD /* ui-searchbar-icon-cancel.png in Resources */,
@@ -1523,6 +1523,7 @@
 				C08934051722CB5800F365FD /* ui-searchbar-icon-search.png in Resources */,
 				C08934061722CB5800F365FD /* ui-searchbar-icon-search@2x.png in Resources */,
 				994A92C01723F13800EE7035 /* SFSettingsViewController.xib in Resources */,
+				C0C996BE1724231C0058E830 /* no_artwork.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

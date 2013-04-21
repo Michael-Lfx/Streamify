@@ -34,14 +34,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-       
-    // Streamify Playlist
-    self.playlistViewController = [[SFPlaylistViewController alloc] initWithNib];
-    [self.playlistViewController.view setFrame:CGRectMake(kSFStreamifyPlaylistViewFrameXInPlaylistManagerView,
-                                                          kSFStreamifyPlaylistViewFrameYInPlaylistManagerView,
-                                                          self.playlistViewController.view.size.width,
-                                                          self.playlistViewController.view.size.height)];
-    [self.view addSubview:self.playlistViewController.view];
     
     // Music Library Playlist
     self.musicPickerViewController = [[SFMusicPickerViewController alloc] initWithDelegate:self];
@@ -50,6 +42,14 @@
                                                              self.musicPickerViewController.view.size.width,
                                                              self.musicPickerViewController.view.size.height)];
     [self.view addSubview:self.musicPickerViewController.view];
+    
+    // Streamify Playlist
+    self.playlistViewController = [[SFPlaylistViewController alloc] initWithNib];
+    [self.playlistViewController.view setFrame:CGRectMake(kSFStreamifyPlaylistViewFrameXInPlaylistManagerView,
+                                                          kSFStreamifyPlaylistViewFrameYInPlaylistManagerView,
+                                                          self.playlistViewController.view.size.width,
+                                                          self.playlistViewController.view.size.height)];
+    [self.view addSubview:self.playlistViewController.view];
     
     // Side bar
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarBackOnly

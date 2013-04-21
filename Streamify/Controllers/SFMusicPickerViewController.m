@@ -44,7 +44,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.topBackground.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"subtle_carbon.png"]];
+    
+    self.tableView.layer.borderWidth = 1;
+    self.tableView.layer.borderColor = [[UIColor colorWithWhite:0.8 alpha:0.5] CGColor];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -88,6 +93,7 @@
 
 - (void)viewDidUnload {
     [self setTableView:nil];
+    [self setTopBackground:nil];
     [super viewDidUnload];
 }
 

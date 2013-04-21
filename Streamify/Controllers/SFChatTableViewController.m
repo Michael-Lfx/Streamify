@@ -94,7 +94,7 @@
 
     [cell.avatarImageView setImageWithURL:[NSURL URLWithString:cellData.pictureURL]
                          placeholderImage:[UIImage imageNamed:@"placeholder"]];
-    cell.avatarImageView.layer.cornerRadius = 7;
+    cell.avatarImageView.layer.cornerRadius = 3;
     cell.avatarImageView.layer.masksToBounds = YES;
 }
 

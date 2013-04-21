@@ -47,10 +47,10 @@
 #define kSFChatTableCellFrameW 440
 #define kSFChatTableCellFrameHDefault 60
 
-#define kSFChatTableCellAvatarX 6
-#define kSFChatTableCellAvatarY 6
-#define kSFChatTableCellAvatarW 48
-#define kSFChatTableCellAvatarH 48
+#define kSFChatTableCellAvatarX 10
+#define kSFChatTableCellAvatarY 10
+#define kSFChatTableCellAvatarW 44
+#define kSFChatTableCellAvatarH 44
 
 #define kSFChatTableCellUserNameFrameX 66
 #define kSFChatTableCellUserNameFrameY 6
@@ -65,9 +65,9 @@
 #define kSFKeyboardHeight 352
 #define kSFScreenHeight 768
 
-#define kSFStreamifyPlaylistViewFrameXInPlaylistManagerView 80
+#define kSFStreamifyPlaylistViewFrameXInPlaylistManagerView 552
 #define kSFStreamifyPlaylistViewFrameYInPlaylistManagerView 0
-#define kSFLibraryPlaylistViewFrameXInPlaylistManagerView 552
+#define kSFLibraryPlaylistViewFrameXInPlaylistManagerView 80
 #define kSFLibraryPlaylistViewFrameYInPlaylistManagerView 0
 
 typedef enum {
