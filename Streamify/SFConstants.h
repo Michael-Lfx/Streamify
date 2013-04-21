@@ -95,6 +95,8 @@ typedef enum {
 // NOTIFICATIONS
 #define kUpdateMeSuccessNotification @"updateMeSuccess"
 #define kUpdateLiveChannelsSuccessNotification @"updateLiveChannelsSuccess"
+#define kSFAudioStreamerDidFinish @"audioStreamerDidFinish"
+#define kSFAudioStreamerDidStart @"audioStreamerDidStart"
 
 #define kOperationResult @"Operation_Result"
 #define kOperationError @"Operation_Error"
@@ -117,6 +119,7 @@ typedef enum {
 #define kResultFollowing @"ResultFollowing"
 #define kResultAllUsers @"ResultAllUsers"
 #define kResultUsers @"ResultUsers"
+#define kResultNumberOfFollowers @"ResultNumberOfFollowers"
 
 #define kResultJSON @"ResultJSON"
 

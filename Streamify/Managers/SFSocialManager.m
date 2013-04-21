@@ -135,6 +135,28 @@
     }];
 }
 
+- (void)getNumberOfFollwersForUser:(NSString *)userID withCallback:(SFResponseBlock)response {
+    NSDictionary *queryDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                               userID, @"user_followed_object_id",
+                               @"getAllFollowers", @"action",
+                               nil];
+    [self queryServerPath:@"/follow.php" requestMethod:@"POST" parameters:queryDict withCallback:^(id returnedObject) {
+        if ([returnedObject[kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
+            id json = [returnedObject objectForKey:kResultJSON];
+            int count = [[json objectForKey:@"followerCount"] intValue];
+            
+            NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  OPERATION_SUCCEEDED, kOperationResult,
+                                  [NSNumber numberWithInt:count], kResultNumberOfFollowers,
+                                  nil];
+            
+            response((id)dict);
+        } else {
+            response(returnedObject);
+        }
+    }];
+}
+
 //- (void)follows:(NSString *)objectID withCallback:(SFResponseBlock)response{
 //    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
 //    [query whereKey:@"follower" equalTo:self.currentUser.objectID];
