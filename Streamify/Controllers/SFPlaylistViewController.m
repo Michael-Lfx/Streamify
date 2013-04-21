@@ -40,8 +40,13 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [SFStorageManager savePlaylistUserDefaults:[self getPlaylistURLs]];
+    [self performSelectorInBackground:@selector(savePlaylist) withObject:nil];
     [super viewWillDisappear:animated];
+}
+
+- (void)savePlaylist
+{
+    [SFStorageManager savePlaylistUserDefaults:[self getPlaylistURLs]];
 }
 
 - (void)loadPlaylist

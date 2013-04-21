@@ -9,10 +9,15 @@
 #import "SFConstants.h"
 #import "SFBroadcasterViewController.h"
 #import "SFPlaylistManagerViewController.h"
+#import "SFPlaylistViewController.h"
 
 @interface SFBroadcasterViewController ()
+
+@property (nonatomic, strong) SFPlaylistViewController *playlistViewController;
 @property (nonatomic) SFChannelState channelState;
+
 @end
+
 
 @implementation SFBroadcasterViewController
 
@@ -46,6 +51,11 @@
                                                     kSFChatViewFrameW,
                                                     kSFChatViewFrameH);
     [self.view addSubview:self.chatViewController.view];
+    
+    // Playlist View
+    self.playlistViewController = [[SFPlaylistViewController alloc] initWithNib];
+    self.playlistViewController.view.frame = CGRectMake(500, 0, 512, 748);
+    [self.view addSubview:self.playlistViewController.view];
     
     // Button to music edit
     UIButton *managePlaylist = [UIButton buttonWithType:UIButtonTypeRoundedRect];
