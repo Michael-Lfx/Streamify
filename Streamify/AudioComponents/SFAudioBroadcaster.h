@@ -16,11 +16,12 @@ typedef void (^SFBroadcastCallback)();
 
 @property (nonatomic, strong) NSString *channel;
 @property (nonatomic) int currentIndex;
-@property (nonatomic) float recordVolume;
+@property (nonatomic) float musicVolume;
 
 + (SFAudioBroadcaster *)sharedInstance;
 - (void)prepareRecordWithChannel:(NSString *)channel;
 - (void)addMusic:(NSURL *)musicFileURL;
+- (void)stopMusic;
 - (void)record;
 - (void)stop;
 

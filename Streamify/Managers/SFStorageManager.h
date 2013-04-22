@@ -6,7 +6,10 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
+
+typedef void(^SFStorageCallback)();
 
 @interface SFStorageManager : NSObject
 
@@ -15,5 +18,9 @@
 + (void)saveRecentChannelsUserDefaults:(NSString *)channelID;
 + (NSArray *)retrievePlaylist;
 + (void)savePlaylistUserDefaults:(NSArray *)playlist;
+
+- (NSString *)directoryForMusicFiles;
+- (void)convertSongAtLibraryURL:(NSURL *)URL
+                   withCallback:(SFStorageCallback)callback;
 
 @end
