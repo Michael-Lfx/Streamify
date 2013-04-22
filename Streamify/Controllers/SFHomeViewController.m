@@ -133,6 +133,27 @@
     [self.navigationController setNavigationBarHidden:YES];
     
     [self.topbarViewController viewWillAppear:YES];
+    
+    SFMetroCanvasViewController *activeCanvasViewController;
+    switch (self.browsingType) {
+        case kSFFavoriteBrowsing:
+            activeCanvasViewController = self.favoriteCanvasViewController;
+            break;
+        case kSFTrendingBrowsing:
+            activeCanvasViewController = self.trendingCanvasViewController;
+            break;
+        case kSFRecentBrowsing:
+            activeCanvasViewController = self.recentCanvasViewController;
+            break;
+        case kSFSearchBrowsing:
+            activeCanvasViewController = self.searchCanvasViewController;
+            break;
+    }
+    [self activateCanvas:activeCanvasViewController];
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
 }
 
 #pragma mark - SideBarViewController protocal
@@ -347,10 +368,5 @@
     
     [canvasViewController refreshWithTiles:tiles];
 }
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-}
-
 
 @end

@@ -58,7 +58,7 @@
         
 	// Do any additional setup after loading the view.
     [self resetPageViews];
-    self.view.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.01f];
+//    self.view.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.01f];
     [self loadVisiblePages];
     
     // Add header view
