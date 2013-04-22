@@ -113,7 +113,10 @@
 - (void)convertSongAtLibraryURL:(NSURL *)URL
                    withCallback:(SFStorageCallback)callback {
     
+    NSLog(@"BEGIN");
+    
     if ([self checkPlayable:URL]) {
+        NSLog(@"END");
         callback();
         return;
     }
@@ -211,6 +214,7 @@
                  [weakSelf.musicMap setObject:exportPath forKey:[URL absoluteString]];
                  [weakSelf saveMusicMap];
                  
+                 NSLog(@"END");
                  callback();
                  
                  break;

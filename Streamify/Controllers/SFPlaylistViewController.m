@@ -127,6 +127,11 @@
 {
     _currentSong = song;
     // call converter
+    
+    [self.tableView setUserInteractionEnabled:NO];
+    [[SFStorageManager sharedInstance] convertSongAtLibraryURL:song.URL withCallback:^{
+        [self.tableView setUserInteractionEnabled:YES];
+    }];
 }
 
 #pragma mark - UITableViewDataSource
