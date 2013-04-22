@@ -38,7 +38,7 @@
 - (id)init {
     if (self = [super init]) {
         NSDictionary *dict = [self retrieveMusicMap];
-        if (dict) dict = [NSDictionary dictionary];
+        if (!dict) dict = [NSDictionary dictionary];
         self.musicMap = [dict mutableCopy];
     }
     
@@ -86,7 +86,7 @@
 
 - (NSDictionary *)retrieveMusicMap {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    return [userDefaults objectForKey:kSFStorageMusicMap];
+    return [userDefaults dictionaryForKey:kSFStorageMusicMap];
 }
 
 - (NSURL *)checkPlayable:(NSURL *)libraryURL {
@@ -109,6 +109,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:[NSDictionary dictionaryWithDictionary:self.musicMap] forKey:kSFStorageMusicMap];
     [userDefaults synchronize];
+    NSLog(@"%@", [userDefaults objectForKey:kSFStorageMusicMap]);
 }
 
 - (void)convertSongAtLibraryURL:(NSURL *)URL
