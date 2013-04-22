@@ -76,9 +76,6 @@
                                                object:[SFAudioStreamer sharedInstance]];
     
     [self updatePlaybackState];
-//    [self.controlButton setImage:[self buttonIconForCurrentState] forState:UIControlStateNormal];
-    
-    [self viewWillAppear:YES];
 }
 
 - (void)didReceiveMemoryWarning
