@@ -10,10 +10,10 @@
 
 @interface SFPlaylistViewController : BaseViewController
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-@property (strong, nonatomic) IBOutlet UIImageView *topBackground;
-
+- (id)initWithSelectable:(BOOL)selectable editable:(BOOL)editable;
 - (void)addSong:(SFSong *)song;
+- (void)selectNextRow;
+- (void)selectPreviousRow;
+- (void)selectRow:(NSInteger)row;
 
 @end

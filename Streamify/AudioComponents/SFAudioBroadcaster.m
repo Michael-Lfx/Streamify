@@ -62,14 +62,8 @@
         NSString *documentsFolder = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
                                      objectAtIndex:0];
         self.recordFilePath = [documentsFolder stringByAppendingPathComponent:@"Record.aac"];
-        
-        self.recordVolume = 0.5;
     }
     return self;
-}
-
-- (void)setRecordVolume:(float)recordVolume {
-    _recordVolume = recordVolume;
 }
 
 - (void)prepareRecordWithChannel:(NSString *)channel {
@@ -107,8 +101,35 @@
     
     self.audioFilePlayer.volume = 0.1;
     self.audioFilePlayer.channelIsPlaying = YES;
+    self.audioFilePlayer.removeUponFinish = YES;
     
     [self.audioController addChannels:[NSArray arrayWithObjects:_audioFilePlayer, nil]];
+}
+
+- (void)stopMusic {
+    if (self.audioFilePlayer) {
+        [self.audioController removeChannels:[NSArray arrayWithObjects:_audioFilePlayer, nil]];
+        self.audioFilePlayer = nil;
+    }
+}
+
+- (void)pauseMusic {
+    if (self.audioFilePlayer) {
+        self.audioFilePlayer.channelIsPlaying = NO;
+    }
+}
+
+- (void)resumeMusic {
+    if (self.audioFilePlayer) {
+        self.audioFilePlayer.channelIsPlaying = YES;
+    }
+}
+
+- (void)setMusicVolume:(float)musicVolume {
+    _musicVolume = musicVolume;
+    if (self.audioFilePlayer) {
+        self.audioFilePlayer.volume = musicVolume;
+    }
 }
 
 //- (void)startTimer {
@@ -235,9 +256,7 @@
         }];
         
         self.isRecording = NO;
-        if (self.audioFilePlayer) {
-            self.audioFilePlayer.channelIsPlaying = NO;
-        }
+        [self stopMusic];
     }
 }
 

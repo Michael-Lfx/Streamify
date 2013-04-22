@@ -9,10 +9,17 @@
 #import "SFConstants.h"
 #import "SFBroadcasterViewController.h"
 #import "SFPlaylistManagerViewController.h"
+#import "SFPlaylistViewController.h"
+#import "SFPlaylistControlPanelViewController.h"
 
 @interface SFBroadcasterViewController ()
+
+@property (nonatomic, strong) SFPlaylistViewController *playlistViewController;
+@property (nonatomic, strong) SFPlaylistControlPanelViewController *playlistControlPanelViewController;
 @property (nonatomic) SFChannelState channelState;
+
 @end
+
 
 @implementation SFBroadcasterViewController
 
@@ -47,14 +54,21 @@
                                                     kSFChatViewFrameH);
     [self.view addSubview:self.chatViewController.view];
     
-    // Button to music edit
-    UIButton *managePlaylist = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [managePlaylist addTarget:self
-                       action:@selector(openManagePlaylist:)
-             forControlEvents:UIControlEventTouchDown];
-    [managePlaylist setTitle:@"Manage Playlist" forState:UIControlStateNormal];
-    managePlaylist.frame = CGRectMake(800.0, 610.0, 160.0, 40.0);
-    [self.view addSubview:managePlaylist];
+    // Playlist View
+    self.playlistViewController = [[SFPlaylistViewController alloc] initWithSelectable:YES editable:NO];
+    self.playlistViewController.view.frame = CGRectMake(500,
+                                                        0,
+                                                        524,
+                                                        648);
+    [self.view addSubview:self.playlistViewController.view];
+     
+    // Playlist Control Panel View
+    self.playlistControlPanelViewController = [[SFPlaylistControlPanelViewController alloc] initWithDelegate:self];
+    self.playlistControlPanelViewController.view.frame = CGRectMake(500,
+                                                                    648,
+                                                                    self.playlistControlPanelViewController.view.size.width,
+                                                                    self.playlistControlPanelViewController.view.size.height);
+    [self.view addSubview:self.playlistControlPanelViewController.view];
     
     
     // Add Main Column
@@ -70,23 +84,25 @@
     self.sidebarViewController = [[SFSidebarViewController alloc] initSidebarWithOption:kSFSidebarBackOnly
                                                                                delegate:self];
     [self.view addSubview:self.sidebarViewController.view];
-    
-    //[self.mainColumnViewController.controlButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchDown];
 }
 
-- (void)openManagePlaylist:(id)sender
+- (void)viewDidAppear:(BOOL)animated
 {
-    SFPlaylistManagerViewController *playlistManagerViewController = [[SFPlaylistManagerViewController alloc] init];
-    [self.navigationController pushViewController:playlistManagerViewController animated:YES];
+    [super viewDidAppear:animated];
+    [self.playlistViewController selectRow:0];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+    
+    [self.playlistViewController viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,10 +113,34 @@
 
 #pragma mark - SFSideBarViewController protocol
 
-- (void)backPressed:(id)sender {
+- (void)backPressed:(id)sender
+{
     [self.mainColumnViewController stopRecording];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - SFPlaylistControlPanelDelegate
+
+- (void)managePlaylistButtonPressed
+{
+    SFPlaylistManagerViewController *playlistManagerViewController = [[SFPlaylistManagerViewController alloc] init];
+    [self.navigationController pushViewController:playlistManagerViewController animated:YES];
+}
+
+- (void)playButtonPressed
+{
+    
+}
+
+- (void)nextButtonPressed
+{
+    [self.playlistViewController selectNextRow];
+}
+
+- (void)backButtonPressed
+{
+    
+    [self.playlistViewController selectPreviousRow];
+}
 
 @end
