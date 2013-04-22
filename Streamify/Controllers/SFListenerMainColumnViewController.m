@@ -276,6 +276,7 @@
 - (void)displayOfflineChannel {
     self.controlButton.enabled = NO;
     self.coverImageView.alpha = 0.3;
+    self.user.isLive = NO;
     [[[UIAlertView alloc] initWithTitle:@"Offline"
                                 message:@"This channel is now offline"
                                delegate:nil
