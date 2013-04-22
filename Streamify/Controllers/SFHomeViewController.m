@@ -13,10 +13,11 @@
 #import "SFBroadcasterViewController.h"
 #import "SFStorageManager.h"
 
-@interface SFHomeViewController ()
+@interface SFHomeViewController () <UIPopoverControllerDelegate>
 
 @property (nonatomic) SFHomeBrowsingType browsingType;
 @property (nonatomic) SFChannelState channelState;
+@property (nonatomic, strong) UIPopoverController *popoverVC;
 
 @end
 
@@ -213,12 +214,27 @@
 }
 
 - (void)settingsPressed:(id)sender {
-    if(self.settingsViewController.view.hidden == YES)
-        self.settingsViewController.view.hidden = NO;
-    else
-        self.settingsViewController.view.hidden = YES;
+//    if(self.settingsViewController.view.hidden == YES)
+//        self.settingsViewController.view.hidden = NO;
+//    else
+//        self.settingsViewController.view.hidden = YES;
+//    self.contentSizeForViewInPopover = CGSizeMake(480, 300);
+    CGRect frame = CGRectMake(self.view.centerX, 220, 0, 0);
+    SFSettingsViewController *settingsVC = [[SFSettingsViewController alloc] initWithNib];
+    UINavigationController* content = [[UINavigationController alloc] initWithRootViewController:settingsVC];
+    self.popoverVC = [[UIPopoverController alloc] initWithContentViewController:content];
+    self.popoverVC.delegate = self;
+    self.popoverVC.popoverContentSize = CGSizeMake(480, 300);
+    [self.popoverVC presentPopoverFromRect:frame
+                                    inView:self.view
+                  permittedArrowDirections:NO
+                                  animated:YES];
+    self.view.alpha = 0.5;
 }
 
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    self.view.alpha = 1.0;
+}
 
 - (void)removeAllCanvases
 {
