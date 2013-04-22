@@ -11,7 +11,12 @@
 
 @interface SFPlaylistViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIImageView *topBackground;
 @property (nonatomic, strong) NSMutableArray *playlist;
+@property (nonatomic) BOOL editable;
+@property (nonatomic) BOOL selectable;
+@property (nonatomic, strong) SFSong *currentSong;
 
 @end
 
@@ -23,6 +28,16 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+    }
+    return self;
+}
+
+- (id)initWithSelectable:(BOOL)selectable editable:(BOOL)editable
+{
+    self = [self initWithNib];
+    if (self) {
+        self.selectable = selectable;
+        self.editable = editable;
     }
     return self;
 }
@@ -82,6 +97,40 @@
     }
 }
 
+- (void)selectNextRow
+{
+    NSInteger nextRow = [self.tableView indexPathForSelectedRow].row + 1;
+    if (nextRow >= self.playlist.count) {
+        nextRow = self.playlist.count - 1;
+    }
+    [self selectRow:nextRow];
+    NSLog(@"%@", self.currentSong);
+}
+
+- (void)selectPreviousRow
+{
+    NSInteger previousRow = [self.tableView indexPathForSelectedRow].row - 1;
+    if (previousRow < 0) {
+        previousRow = 0;
+    }
+    [self selectRow:previousRow];
+    NSLog(@"%@", self.currentSong);
+}
+
+- (void)selectRow:(NSInteger)row
+{
+    self.currentSong = [self.playlist objectAtIndex:row];
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]
+                                animated:YES
+                          scrollPosition:UITableViewScrollPositionMiddle];
+}
+
+- (void)setCurrentSong:(SFSong *)song
+{
+    _currentSong = song;
+    // call converter
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -109,14 +158,32 @@
     return kSFSongTableViewCellRowHeight;
 }
 
-#pragma mark - UITableViewDelegate
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.playlist removeObjectAtIndex:indexPath.row];
         [self.tableView reloadData];
     }
 }
+
+
+#pragma mark - UITableViewDelegate
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.editable)
+    {
+        return UITableViewCellEditingStyleDelete;
+    }
+    
+    return UITableViewCellEditingStyleNone;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.currentSong = [self.playlist objectAtIndex:indexPath.row];
+    NSLog(@"%@", self.currentSong);
+}
+
 
 #pragma mark - SFMusicPickerDelegate
 

@@ -17,8 +17,6 @@
 
 @interface SFMusicPickerViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UIImageView *topBackground;
-
 - (id)initWithDelegate:(id)delegate;
 
 @end

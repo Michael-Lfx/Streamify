@@ -15,6 +15,7 @@
 
 @interface SFMusicPickerViewController ()
 
+@property (strong, nonatomic) IBOutlet UIImageView *topBackground;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *allSongs;
 @property (strong, nonatomic) id<SFMusicPickerViewControllerDelegate> delegate;
@@ -67,7 +68,7 @@
         
         // Get album cover
         MPMediaItemArtwork *artwork = [songItem valueForProperty: MPMediaItemPropertyArtwork];
-        UIImage *artworkImage = [artwork imageWithSize: CGSizeMake(70, 70)];
+        UIImage *artworkImage = [artwork imageWithSize:CGSizeMake(70, 70)];
         
         if (!artworkImage) {
             artworkImage = [UIImage imageNamed:kSFSongAlbumCoverImageHolder];

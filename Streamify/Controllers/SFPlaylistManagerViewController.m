@@ -44,7 +44,7 @@
     [self.view addSubview:self.musicPickerViewController.view];
     
     // Streamify Playlist
-    self.playlistViewController = [[SFPlaylistViewController alloc] initWithNib];
+    self.playlistViewController = [[SFPlaylistViewController alloc] initWithSelectable:NO editable:YES];
     [self.playlistViewController.view setFrame:CGRectMake(kSFStreamifyPlaylistViewFrameXInPlaylistManagerView,
                                                           kSFStreamifyPlaylistViewFrameYInPlaylistManagerView,
                                                           self.playlistViewController.view.size.width,
