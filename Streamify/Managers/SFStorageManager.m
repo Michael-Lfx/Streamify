@@ -8,6 +8,7 @@
 
 #import "SFStorageManager.h"
 #import <AVFoundation/AVFoundation.h>
+#import "NSString+MD5.h"
 
 #define kSFStorageMaximumNumOfRecentChannels 2
 #define kSFStorageRecentChannelsKey @"Recent Channels Key"
@@ -15,11 +16,9 @@
 #define kSFStorageMusicMap @"MusicMap"
 #define kSFStorageLimitMusicFiles 5
 
-#define EXPORT_NAME @"exported.caf"
-
 @interface SFStorageManager()
 
-@property (nonatomic, strong) NSString *musicMap;
+@property (nonatomic, strong) NSMutableDictionary *musicMap;
 
 @end
 
@@ -38,7 +37,9 @@
 
 - (id)init {
     if (self = [super init]) {
-        self.musicMap = [self retrieveMusicMap];
+        NSDictionary *dict = [self retrieveMusicMap];
+        if (dict) dict = [NSDictionary dictionary];
+        self.musicMap = [dict mutableCopy];
     }
     
     return self;
@@ -83,30 +84,30 @@
     [userDefaults synchronize];
 }
 
-- (NSString *)retrieveMusicMap {
+- (NSDictionary *)retrieveMusicMap {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     return [userDefaults objectForKey:kSFStorageMusicMap];
 }
 
 - (NSURL *)checkPlayable:(NSURL *)libraryURL {
-//    if (![[libraryURL absoluteString] isEqualToString:self.musicMap]) return NULL;
-//    
-//    NSString *diskURL = [[self directoryForMusicFiles] stringByAppendingPathComponent:EXPORT_NAME];
-//    
-//    BOOL isDir;
-//    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:diskURL isDirectory:&isDir];
-//    
-//    if (!fileExists || isDir) {
-//        return NULL;
-//    }
-//    
-//    return [NSURL URLWithString:diskURL];
-    return NULL;
+    NSString *EXPORT_NAME = [self.musicMap objectForKey:[libraryURL absoluteString]];
+    if (!EXPORT_NAME) return NULL;
+    
+    NSString *diskURL = [[self directoryForMusicFiles] stringByAppendingPathComponent:EXPORT_NAME];
+    
+    BOOL isDir;
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:diskURL isDirectory:&isDir];
+    
+    if (!fileExists || isDir) {
+        return NULL;
+    }
+    
+    return [NSURL URLWithString:diskURL];
 }
 
 - (void)saveMusicMap {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:self.musicMap forKey:kSFStorageMusicMap];
+    [userDefaults setObject:[NSDictionary dictionaryWithDictionary:self.musicMap] forKey:kSFStorageMusicMap];
     [userDefaults synchronize];
 }
 
@@ -124,7 +125,7 @@
                               nil];
         callback((id)dict);
     } else {
-        //    NSString *EXPORT_NAME = [NSString stringWithFormat:@"%@.caf", songName];
+        NSString *EXPORT_NAME = [NSString stringWithFormat:@"%@.caf", [[URL absoluteString] MD5Hash]];
         AVURLAsset *songAsset = [AVURLAsset URLAssetWithURL:URL options:nil];
         
         NSError *assetError = nil;
@@ -211,7 +212,7 @@
                                                            error:nil];
                      NSLog (@"Done exporting. File size is %lld", [outputFileAttributes fileSize]);
                      
-                     weakSelf.musicMap = [URL absoluteString];
+                     [weakSelf.musicMap setObject:EXPORT_NAME forKey:[URL absoluteString]];
                      [weakSelf saveMusicMap];
                      
                      NSLog(@"END");
