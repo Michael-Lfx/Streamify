@@ -15,16 +15,11 @@
 
 @interface SFChatViewController : BaseViewController
 
-@property (nonatomic, strong) SFUser *channel;
-@property (strong, nonatomic) NSMutableArray *messagesData;
-@property (weak, nonatomic) IBOutlet UIButton *sendButton;
-@property (strong, nonatomic) SFChatTableViewController *chatTableViewController;
-@property (strong, nonatomic) IBOutlet UITextField *chatTextField;
-@property (nonatomic, strong) id<SFChatViewControllerProtocol> delegate;
+- (id)initWithChannel:(SFUser *)channel;
+- (void)addFooter;
 
 - (IBAction)chatTextEditBeginned:(id)sender;
 - (IBAction)chatTextEditEnded:(id)sender;
 
-- (id)initWithChannel:(SFUser *)channel;
 
 @end

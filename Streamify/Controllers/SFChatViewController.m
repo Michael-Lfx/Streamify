@@ -12,10 +12,22 @@
 #import "SFChatTableViewController.h"
 
 @interface SFChatViewController () <UITextFieldDelegate>
+
+@property (nonatomic, strong) SFUser *channel;
+@property (strong, nonatomic) NSMutableArray *messagesData;
+@property (nonatomic, strong) id<SFChatViewControllerProtocol> delegate;
 @property (nonatomic, strong) NSDate *lastUpdateTime;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic) BOOL doneFetching;
+@property (nonatomic) BOOL isDisplayed;
+
+@property (strong, nonatomic) SFChatTableViewController *chatTableViewController;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UITextField *chatTextField;
+@property (weak, nonatomic) IBOutlet UIView *footerView;
+
 @end
+
 
 @implementation SFChatViewController
 
@@ -26,54 +38,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (IBAction)chatTextEditBeginned:(id)sender {
-    [UIView animateWithDuration:0.3 animations:^{
-        self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH - kSFKeyboardHeight + 35);
-        self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.chatTextField.frame.size.height - 35,
-                                              self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
-        self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.sendButton.frame.size.height - 35,
-                                           self.sendButton.frame.size.width, self.sendButton.frame.size.height);
-    }];
-}
-
-- (IBAction)chatTextEditEnded:(id)sender {
-    self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH);
-    self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFChatTextFrameY,
-                                          self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
-    self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, kSFChatTextFrameY,
-                                          self.sendButton.frame.size.width, self.sendButton.frame.size.height);
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
-}
-
-- (IBAction)sendButtonPressed:(id)sender {
-    NSString *text = self.chatTextField.text;
-    NSString *trimmedString = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString *name = [SFSocialManager sharedInstance].currentUser.name;
-    NSString *pictureURL = [SFSocialManager sharedInstance].currentUser.pictureURL;
-    
-    if (trimmedString.length > 0) {
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              self.channel.objectID, kMessageChannel,
-                              name, kMessageName,
-                              pictureURL, kMessagePictureURL,
-                              trimmedString, kMessageText,
-                              nil];
-        
-        [[SFSocialManager sharedInstance] postMessage:dict withCallback:^(id returnedObject) {
-            if ([[returnedObject objectForKey:kOperationResult] isEqual: OPERATION_SUCCEEDED]){
-                NSLog(@"Succeeded sending: %@", [returnedObject objectForKey:kResultMessage]);
-            }
-        }];
-    }
-
-    self.chatTextField.text = @"";
-    [self.chatTextField resignFirstResponder];
 }
 
 - (id)initChatViewWithDelegate:(id)delegate {
@@ -121,6 +85,83 @@
     self.chatTextField.delegate = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.timer invalidate];
+    [super viewWillDisappear:animated];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+}
+
+- (void)viewDidUnload {
+    [self setChatTextField:nil];
+    [self setSendButton:nil];
+    [self setFooterView:nil];
+    [self setFooterView:nil];
+    [super viewDidUnload];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -
+
+- (IBAction)chatTextEditBeginned:(id)sender {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH - kSFKeyboardHeight + 35);
+        self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.chatTextField.frame.size.height - 35,
+                                              self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
+        self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, kSFScreenHeight - kSFKeyboardHeight - self.sendButton.frame.size.height - 35,
+                                           self.sendButton.frame.size.width, self.sendButton.frame.size.height);
+    }];
+}
+
+- (IBAction)chatTextEditEnded:(id)sender {
+    self.chatTableViewController.tableView.frame = CGRectMake(kSFChatTableFrameX, kSFChatTableFrameY, kSFChatTableFrameW, kSFChatTableFrameH);
+    self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, kSFChatTextFrameY,
+                                          self.chatTextField.frame.size.width, self.chatTextField.frame.size.height);
+    self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, kSFChatTextFrameY,
+                                       self.sendButton.frame.size.width, self.sendButton.frame.size.height);
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (IBAction)sendButtonPressed:(id)sender {
+    NSString *text = self.chatTextField.text;
+    NSString *trimmedString = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *name = [SFSocialManager sharedInstance].currentUser.name;
+    NSString *pictureURL = [SFSocialManager sharedInstance].currentUser.pictureURL;
+    
+    if (trimmedString.length > 0) {
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              self.channel.objectID, kMessageChannel,
+                              name, kMessageName,
+                              pictureURL, kMessagePictureURL,
+                              trimmedString, kMessageText,
+                              nil];
+        
+        [[SFSocialManager sharedInstance] postMessage:dict withCallback:^(id returnedObject) {
+            if ([[returnedObject objectForKey:kOperationResult] isEqual: OPERATION_SUCCEEDED]){
+                NSLog(@"Succeeded sending: %@", [returnedObject objectForKey:kResultMessage]);
+            }
+        }];
+    }
+    
+    self.chatTextField.text = @"";
+    [self.chatTextField resignFirstResponder];
+}
+
 - (void)updateMessages {
     if (!self.doneFetching) return;
     self.doneFetching = NO;
@@ -145,29 +186,70 @@
                                               }];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [self.timer invalidate];
-    [super viewWillDisappear:animated];
-}
-
-- (void)didReceiveMemoryWarning
+- (void)addFooter
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.isDisplayed = YES;
+    [self.view addSubview:self.footerView];
+    self.footerView.frame = CGRectMake(0,
+                                       723,
+                                       self.footerView.size.width,
+                                       self.footerView.size.height);
+    
+    UISwipeGestureRecognizer *swipeDownGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                           action:@selector(swipeFooterDown:)];
+    swipeDownGesture.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.footerView addGestureRecognizer:swipeDownGesture];
+    
+    UISwipeGestureRecognizer *swipeUpGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                       action:@selector(swipeFooterUp:)];
+    swipeUpGesture.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.footerView addGestureRecognizer:swipeUpGesture];
+    
+    UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                       action:@selector(doubleTapFooter:)];
+    doubleTapGesture.numberOfTapsRequired = 2;
+    [self.footerView addGestureRecognizer:doubleTapGesture];
 }
 
-- (void)viewDidUnload {
-    [self setChatTextField:nil];
-    [self setSendButton:nil];
-    [super viewDidUnload];
+- (void)swipeFooterUp:(UISwipeGestureRecognizer *)gesture
+{
+    if (self.isDisplayed == YES) {
+        [self hide];
+    }
+    self.isDisplayed = NO;
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
+- (void)swipeFooterDown:(UISwipeGestureRecognizer *)gesture
+{
+    if (self.isDisplayed == NO) {
+        [self display];
+    }
+    self.isDisplayed = YES;
+}
+
+- (void)doubleTapFooter:(UITapGestureRecognizer *)gesture
+{
+    if (self.isDisplayed == YES) {
+        [self hide];
+        self.isDisplayed = NO;
+    } else {
+        [self display];
+        self.isDisplayed = YES;
+    }
+}
+
+- (void)display
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.view.center = CGPointMake(self.view.center.x, self.view.center.y + 723);
+    }];
+}
+
+- (void)hide
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.view.center = CGPointMake(self.view.center.x, self.view.center.y - 723);
+    }];
 }
 
 @end

@@ -46,14 +46,6 @@
     [super viewDidLoad];
     
     
-    // Add Chat View
-    self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.channel];
-    self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
-                                                    kSFChatViewFrameY,
-                                                    kSFChatViewFrameW,
-                                                    kSFChatViewFrameH);
-    [self.view addSubview:self.chatViewController.view];
-    
     // Playlist View
     self.playlistViewController = [[SFPlaylistViewController alloc] initWithSelectable:YES editable:NO];
     self.playlistViewController.view.frame = CGRectMake(500,
@@ -73,6 +65,14 @@
     self.playlistControlPanelViewController.playlistVC = self.playlistViewController;
     self.playlistViewController.playlistPanelVC = self.playlistControlPanelViewController;
     
+    // Add Chat View
+    self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.channel];
+    [self.chatViewController addFooter];
+    self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
+                                                    kSFChatViewFrameY,
+                                                    kSFChatViewFrameW,
+                                                    kSFChatViewFrameH);
+    [self.view addSubview:self.chatViewController.view];
     
     // Add Main Column
     self.mainColumnViewController = [[SFBroadcasterMainColumnViewController alloc] initBroadcasterMainColumnWithUser:self.channel];
