@@ -62,6 +62,8 @@
         NSString *documentsFolder = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
                                      objectAtIndex:0];
         self.recordFilePath = [documentsFolder stringByAppendingPathComponent:@"Record.aac"];
+        
+        self.musicPlaybackState = SFBroadcastMusicPlaybackStopped;
     }
     return self;
 }
@@ -93,7 +95,17 @@
     [self startTimer];
 }
 
+- (void)setMusicPlaybackState:(SFBroadcastMusicPlaybackState)musicPlaybackState {
+    if (musicPlaybackState != _musicPlaybackState) {
+        _musicPlaybackState = musicPlaybackState;
+        [[NSNotificationCenter defaultCenter] postNotificationName:SFBroadcastMusicPlaybackStateDidChangeNotification
+                                                            object:self];
+    }
+}
+
 - (void)addMusic:(NSURL *)musicFileURL {
+    [self stopMusic];
+    
     NSError *error;
     self.audioFilePlayer = [AEAudioFilePlayer audioFilePlayerWithURL:musicFileURL
                                                      audioController:self.audioController
@@ -104,6 +116,7 @@
     self.audioFilePlayer.removeUponFinish = YES;
     
     [self.audioController addChannels:[NSArray arrayWithObjects:_audioFilePlayer, nil]];
+    self.musicPlaybackState = SFBroadcastMusicPlaybackPlaying;
 }
 
 - (void)stopMusic {
@@ -111,18 +124,24 @@
         [self.audioController removeChannels:[NSArray arrayWithObjects:_audioFilePlayer, nil]];
         self.audioFilePlayer = nil;
     }
+    
+    self.musicPlaybackState = SFBroadcastMusicPlaybackStopped;
 }
 
 - (void)pauseMusic {
     if (self.audioFilePlayer) {
         self.audioFilePlayer.channelIsPlaying = NO;
     }
+    
+    self.musicPlaybackState = SFBroadcastMusicPlaybackPaused;
 }
 
 - (void)resumeMusic {
     if (self.audioFilePlayer) {
         self.audioFilePlayer.channelIsPlaying = YES;
     }
+    
+    self.musicPlaybackState = SFBroadcastMusicPlaybackPlaying;
 }
 
 - (void)setMusicVolume:(float)musicVolume {

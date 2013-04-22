@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 
+@class SFPlaylistViewController;
+
 @protocol SFPlaylistControlPanelDelegate <NSObject>
 
 @required
@@ -20,6 +22,11 @@
 
 
 @interface SFPlaylistControlPanelViewController : BaseViewController
+
+@property (nonatomic, strong) SFPlaylistViewController *playlistVC;
+@property (weak, nonatomic) IBOutlet UIButton *controlButton;
+
+@property (nonatomic, strong) SFSong *currentSong;
 
 - (id)initWithDelegate:(id)delegate;
 - (IBAction)managePlaylistButtonPressed:(id)sender;

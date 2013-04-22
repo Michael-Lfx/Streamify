@@ -8,6 +8,7 @@
 
 #import "SFPlaylistViewController.h"
 #import "SFSongTableViewCell.h"
+#import "SFPlaylistControlPanelViewController.h"
 
 @interface SFPlaylistViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -126,12 +127,7 @@
 - (void)setCurrentSong:(SFSong *)song
 {
     _currentSong = song;
-    // call converter
-    
-    [self.tableView setUserInteractionEnabled:NO];
-    [[SFStorageManager sharedInstance] convertSongAtLibraryURL:song.URL withCallback:^{
-        [self.tableView setUserInteractionEnabled:YES];
-    }];
+    self.playlistPanelVC.currentSong = song;
 }
 
 #pragma mark - UITableViewDataSource

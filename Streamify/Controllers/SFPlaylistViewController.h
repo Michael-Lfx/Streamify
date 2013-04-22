@@ -8,7 +8,11 @@
 
 #import "BaseViewController.h"
 
+@class SFPlaylistControlPanelViewController;
+
 @interface SFPlaylistViewController : BaseViewController
+
+@property (nonatomic, strong) SFPlaylistControlPanelViewController *playlistPanelVC;
 
 - (id)initWithSelectable:(BOOL)selectable editable:(BOOL)editable;
 - (void)addSong:(SFSong *)song;

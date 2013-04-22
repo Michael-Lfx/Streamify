@@ -10,6 +10,15 @@
 
 typedef void (^SFBroadcastCallback)();
 
+enum {
+    SFBroadcastMusicPlaybackStopped = 0,
+    SFBroadcastMusicPlaybackPlaying = 1,
+    SFBroadcastMusicPlaybackPaused = 2
+};
+typedef NSUInteger SFBroadcastMusicPlaybackState;
+
+#define SFBroadcastMusicPlaybackStateDidChangeNotification @"SFBroadcastMusicPlaybackStateDidChangeNotification"
+
 @interface SFAudioBroadcaster : NSObject
 
 @property (nonatomic) BOOL isRecording;
@@ -17,6 +26,7 @@ typedef void (^SFBroadcastCallback)();
 @property (nonatomic, strong) NSString *channel;
 @property (nonatomic) int currentIndex;
 @property (nonatomic) float musicVolume;
+@property (nonatomic) SFBroadcastMusicPlaybackState musicPlaybackState;
 
 + (SFAudioBroadcaster *)sharedInstance;
 - (void)prepareRecordWithChannel:(NSString *)channel;

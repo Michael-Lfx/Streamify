@@ -15,10 +15,11 @@
 #define kSFStorageMusicMap @"MusicMap"
 #define kSFStorageLimitMusicFiles 5
 
+#define EXPORT_NAME @"exported.caf"
+
 @interface SFStorageManager()
 
-@property (nonatomic, strong) NSMutableDictionary *musicMap;
-@property (nonatomic, strong) NSMutableArray *musicQueue;
+@property (nonatomic, strong) NSString *musicMap;
 
 @end
 
@@ -37,10 +38,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        NSDictionary *dict = [self retrieveMusicMap];
-        if (!dict) dict = [NSDictionary dictionary];
-        self.musicMap = [dict mutableCopy];
-        self.musicQueue = [[self.musicMap allKeys] mutableCopy];
+        self.musicMap = [self retrieveMusicMap];
     }
     
     return self;
@@ -85,23 +83,25 @@
     [userDefaults synchronize];
 }
 
-- (NSDictionary *)retrieveMusicMap {
+- (NSString *)retrieveMusicMap {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     return [userDefaults objectForKey:kSFStorageMusicMap];
 }
 
-- (BOOL)checkPlayable:(NSURL *)libraryURL {
-    NSString *diskURL = [self.musicMap objectForKey:[libraryURL absoluteString]];
-    if (diskURL == nil) return NO;
-    
-    BOOL isDir;
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:diskURL isDirectory:&isDir];
-    
-    if (!fileExists || isDir) {
-        return NO;
-    }
-    
-    return YES;
+- (NSURL *)checkPlayable:(NSURL *)libraryURL {
+//    if (![[libraryURL absoluteString] isEqualToString:self.musicMap]) return NULL;
+//    
+//    NSString *diskURL = [[self directoryForMusicFiles] stringByAppendingPathComponent:EXPORT_NAME];
+//    
+//    BOOL isDir;
+//    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:diskURL isDirectory:&isDir];
+//    
+//    if (!fileExists || isDir) {
+//        return NULL;
+//    }
+//    
+//    return [NSURL URLWithString:diskURL];
+    return NULL;
 }
 
 - (void)saveMusicMap {
@@ -115,113 +115,120 @@
     
     NSLog(@"BEGIN");
     
-    if ([self checkPlayable:URL]) {
+    NSURL *diskURL = [self checkPlayable:URL];
+    if (diskURL) {
         NSLog(@"END");
-        callback();
-        return;
-    }
-    
-//    NSString *EXPORT_NAME = [NSString stringWithFormat:@"%@.caf", songName];
-    NSString *EXPORT_NAME = @"exported.caf";
-    AVURLAsset *songAsset = [AVURLAsset URLAssetWithURL:URL options:nil];
-    
-    NSError *assetError = nil;
-    AVAssetReader *assetReader = [AVAssetReader assetReaderWithAsset:songAsset error:&assetError];
-    
-    if (assetError) {
-        NSLog (@"error: %@", assetError);
-        return;
-    }
-    
-    AVAssetReaderOutput *assetReaderOutput = [AVAssetReaderAudioMixOutput
-                                              assetReaderAudioMixOutputWithAudioTracks:songAsset.tracks
-                                              audioSettings: nil];
-    
-    if (! [assetReader canAddOutput: assetReaderOutput]) {
-        NSLog (@"can't add reader output... die!");
-        return;
-    }
-    [assetReader addOutput: assetReaderOutput];
-    
-    NSString *exportPath = [[self directoryForMusicFiles] stringByAppendingPathComponent:EXPORT_NAME];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:exportPath]) {
-        [[NSFileManager defaultManager] removeItemAtPath:exportPath error:nil];
-    }
-    NSURL *exportURL = [NSURL fileURLWithPath:exportPath];
-    AVAssetWriter *assetWriter = [AVAssetWriter assetWriterWithURL:exportURL
-                                                          fileType:AVFileTypeCoreAudioFormat
-                                                             error:&assetError];
-    
-    if (assetError) {
-        NSLog (@"error: %@", assetError);
-        return;
-    }
-    AudioChannelLayout channelLayout;
-    memset(&channelLayout, 0, sizeof(AudioChannelLayout));
-    channelLayout.mChannelLayoutTag = kAudioChannelLayoutTag_Stereo;
-    NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
-                                    [NSNumber numberWithFloat:44100.0/2], AVSampleRateKey,
-                                    [NSNumber numberWithInt:2], AVNumberOfChannelsKey,
-                                    [NSData dataWithBytes:&channelLayout length:sizeof(AudioChannelLayout)], AVChannelLayoutKey,
-                                    [NSNumber numberWithInt:16], AVLinearPCMBitDepthKey,
-                                    [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
-                                    [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,
-                                    [NSNumber numberWithBool:NO], AVLinearPCMIsBigEndianKey,
-                                    nil];
-    AVAssetWriterInput *assetWriterInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio
-                                                                              outputSettings:outputSettings];
-    
-    if ([assetWriter canAddInput:assetWriterInput]) {
-        [assetWriter addInput:assetWriterInput];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              OPERATION_SUCCEEDED, kOperationResult,
+                              diskURL, @"ResultURL",
+                              nil];
+        callback((id)dict);
     } else {
-        NSLog (@"can't add asset writer input... die!");
-        return;
-    }
-    
-    assetWriterInput.expectsMediaDataInRealTime = NO;
-    
-    [assetWriter startWriting];
-    [assetReader startReading];
-    
-    AVAssetTrack *soundTrack = [songAsset.tracks objectAtIndex:0];
-    CMTime startTime = CMTimeMake (0, soundTrack.naturalTimeScale);
-    [assetWriter startSessionAtSourceTime: startTime];
-    
-    __block UInt64 convertedByteCount = 0;
-    __weak SFStorageManager *weakSelf = self;
-    dispatch_queue_t mediaInputQueue = dispatch_queue_create("mediaInputQueue", NULL);
-    [assetWriterInput requestMediaDataWhenReadyOnQueue:mediaInputQueue
-                                            usingBlock: ^
-     {
-         while (assetWriterInput.readyForMoreMediaData) {
-             CMSampleBufferRef nextBuffer = [assetReaderOutput copyNextSampleBuffer];
-             if (nextBuffer) {
-                 [assetWriterInput appendSampleBuffer: nextBuffer];
-                 convertedByteCount += CMSampleBufferGetTotalSampleSize (nextBuffer);
-             } else {
-                 [assetWriterInput markAsFinished];
-                 [assetWriter finishWriting];
-                 [assetReader cancelReading];
-                 NSDictionary *outputFileAttributes = [[NSFileManager defaultManager]
-                                                       attributesOfItemAtPath:exportPath
-                                                       error:nil];
-                 NSLog (@"Done exporting. File size is %lld", [outputFileAttributes fileSize]);
-                 
-                 for (NSString *key in weakSelf.musicMap.allKeys) {
-                     [weakSelf.musicMap removeObjectForKey:key];
+        //    NSString *EXPORT_NAME = [NSString stringWithFormat:@"%@.caf", songName];
+        AVURLAsset *songAsset = [AVURLAsset URLAssetWithURL:URL options:nil];
+        
+        NSError *assetError = nil;
+        AVAssetReader *assetReader = [AVAssetReader assetReaderWithAsset:songAsset error:&assetError];
+        
+        if (assetError) {
+            NSLog (@"error: %@", assetError);
+            return;
+        }
+        
+        AVAssetReaderOutput *assetReaderOutput = [AVAssetReaderAudioMixOutput
+                                                  assetReaderAudioMixOutputWithAudioTracks:songAsset.tracks
+                                                  audioSettings: nil];
+        
+        if (! [assetReader canAddOutput: assetReaderOutput]) {
+            NSLog (@"can't add reader output... die!");
+            return;
+        }
+        [assetReader addOutput: assetReaderOutput];
+        
+        NSString *exportPath = [[self directoryForMusicFiles] stringByAppendingPathComponent:EXPORT_NAME];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:exportPath]) {
+            [[NSFileManager defaultManager] removeItemAtPath:exportPath error:nil];
+        }
+        NSURL *exportURL = [NSURL fileURLWithPath:exportPath];
+        AVAssetWriter *assetWriter = [AVAssetWriter assetWriterWithURL:exportURL
+                                                              fileType:AVFileTypeCoreAudioFormat
+                                                                 error:&assetError];
+        
+        if (assetError) {
+            NSLog (@"error: %@", assetError);
+            return;
+        }
+        AudioChannelLayout channelLayout;
+        memset(&channelLayout, 0, sizeof(AudioChannelLayout));
+        channelLayout.mChannelLayoutTag = kAudioChannelLayoutTag_Stereo;
+        NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
+                                        [NSNumber numberWithFloat:44100.0/2], AVSampleRateKey,
+                                        [NSNumber numberWithInt:2], AVNumberOfChannelsKey,
+                                        [NSData dataWithBytes:&channelLayout length:sizeof(AudioChannelLayout)], AVChannelLayoutKey,
+                                        [NSNumber numberWithInt:16], AVLinearPCMBitDepthKey,
+                                        [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
+                                        [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,
+                                        [NSNumber numberWithBool:NO], AVLinearPCMIsBigEndianKey,
+                                        nil];
+        AVAssetWriterInput *assetWriterInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio
+                                                                                  outputSettings:outputSettings];
+        
+        if ([assetWriter canAddInput:assetWriterInput]) {
+            [assetWriter addInput:assetWriterInput];
+        } else {
+            NSLog (@"can't add asset writer input... die!");
+            return;
+        }
+        
+        assetWriterInput.expectsMediaDataInRealTime = NO;
+        
+        [assetWriter startWriting];
+        [assetReader startReading];
+        
+        AVAssetTrack *soundTrack = [songAsset.tracks objectAtIndex:0];
+        CMTime startTime = CMTimeMake (0, soundTrack.naturalTimeScale);
+        [assetWriter startSessionAtSourceTime: startTime];
+        
+        __block UInt64 convertedByteCount = 0;
+        __weak SFStorageManager *weakSelf = self;
+        dispatch_queue_t mediaInputQueue = dispatch_queue_create("mediaInputQueue", NULL);
+        [assetWriterInput requestMediaDataWhenReadyOnQueue:mediaInputQueue
+                                                usingBlock: ^
+         {
+             while (assetWriterInput.readyForMoreMediaData) {
+                 CMSampleBufferRef nextBuffer = [assetReaderOutput copyNextSampleBuffer];
+                 if (nextBuffer) {
+                     [assetWriterInput appendSampleBuffer: nextBuffer];
+                     convertedByteCount += CMSampleBufferGetTotalSampleSize (nextBuffer);
+                     CFRelease(nextBuffer);
+                 } else {
+                     [assetWriterInput markAsFinished];
+                     [assetWriter finishWriting];
+                     [assetReader cancelReading];
+                     NSDictionary *outputFileAttributes = [[NSFileManager defaultManager]
+                                                           attributesOfItemAtPath:exportPath
+                                                           error:nil];
+                     NSLog (@"Done exporting. File size is %lld", [outputFileAttributes fileSize]);
+                     
+                     weakSelf.musicMap = [URL absoluteString];
+                     [weakSelf saveMusicMap];
+                     
+                     NSLog(@"END");
+                     
+                     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                           OPERATION_SUCCEEDED, kOperationResult,
+                                           exportURL, @"ResultURL",
+                                           nil];
+                     
+                     callback((id)dict);
+                     break;
                  }
-                 [weakSelf.musicMap setObject:exportPath forKey:[URL absoluteString]];
-                 [weakSelf saveMusicMap];
-                 
-                 NSLog(@"END");
-                 callback();
-                 
-                 break;
              }
-         }
-         
-     }];
+             
+         }];
+
+    }
 }
 
 - (NSString *)directoryForMusicFiles {

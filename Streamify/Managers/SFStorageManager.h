@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^SFStorageCallback)();
+typedef void(^SFStorageCallback)(id returnedObject);
 
 @interface SFStorageManager : NSObject
 
