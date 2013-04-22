@@ -51,7 +51,7 @@
     if (self) {
         self.user = user;
         
-        NSString *title = [NSString stringWithFormat:@"%@ %@", user.name, user.objectID];
+        NSString *title = [NSString stringWithFormat:@"%@", user.name];
         NSString *formattedTitle = [NSString stringWithFormat:kMetroTileFormatString, title];
         self.titleView.text = formattedTitle;
         
