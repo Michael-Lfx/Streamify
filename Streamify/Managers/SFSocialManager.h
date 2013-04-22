@@ -32,5 +32,7 @@ typedef void (^SFResponseBlock)(id returnedObject);
 - (void)fetchLiveChannelsWithCallback:(SFResponseBlock)response;
 - (void)getUsersWithObjectIDs:(NSArray *)objectIDs withCallback:(SFResponseBlock)response;
 - (void)searchChannelsForKeyword:(NSString *)keyword withCallback:(SFResponseBlock)response;
+- (void)getListenerCount:(NSString *)channelID withCallback:(SFResponseBlock)response;
+- (void)changeListenerCountInServer:(NSString *)channelID changeAmount:(NSString *)changeAmount;
 
 @end

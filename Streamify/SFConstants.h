@@ -120,6 +120,7 @@ typedef enum {
 #define kResultAllUsers @"ResultAllUsers"
 #define kResultUsers @"ResultUsers"
 #define kResultNumberOfFollowers @"ResultNumberOfFollowers"
+#define kResultNumberofLsiteners @"ResultNumberOfListeners"
 
 #define kResultJSON @"ResultJSON"
 

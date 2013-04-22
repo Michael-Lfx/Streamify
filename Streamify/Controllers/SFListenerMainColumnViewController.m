@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSDate *startListeningTime;
 @property (nonatomic, strong) NSTimer *pollingTimer;
+@property (nonatomic, strong) NSTimer *listenerCountTimer;
 @property (nonatomic) NSTimeInterval duration;
 @property (nonatomic) BOOL stoppedByUser;
 
@@ -76,8 +77,10 @@
     if ([SFAudioStreamer sharedInstance].playbackState == MPMoviePlaybackStatePlaying) {
         self.stoppedByUser = YES;
         [self stop];
+        [self changeServerListenerCount:@"-1"];
     } else {
         [self start];
+        [self changeServerListenerCount:@"1"];
     }
 }
 
@@ -204,6 +207,27 @@
             self.personFollowingLabel.hidden = NO;
         }
     }];
+    
+    [self updateLocalListenerCount];
+    self.listenerCountTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                                  target:self
+                                                selector:@selector(updateLocalListenerCount)
+                                                userInfo:nil
+                                                 repeats:YES];
+    [self.listenerCountTimer fire];
+}
+
+-(void)updateLocalListenerCount{
+    [[SFSocialManager sharedInstance] getListenerCount:self.user.objectID withCallback:^(id returnedObject) {
+        if ([returnedObject[kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
+            int count = [returnedObject[kResultNumberofLsiteners] intValue];
+            self.personListeningLabel.text = [NSString stringWithFormat:@"%d Listening", count];
+        }
+    }];
+}
+
+-(void)changeServerListenerCount:(NSString *)changeAmount{
+    [[SFSocialManager sharedInstance] changeListenerCountInServer:self.user.objectID changeAmount:changeAmount];
 }
 
 //- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -323,6 +347,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [self.listenerCountTimer invalidate];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerPlaybackStateDidChangeNotification
                                                   object:[SFAudioStreamer sharedInstance]];

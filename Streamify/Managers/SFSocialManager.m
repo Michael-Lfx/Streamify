@@ -577,6 +577,35 @@
     }];
 }
 
+- (void)getListenerCount:(NSString *)channelID withCallback:(SFResponseBlock)response{
+    NSDictionary *queryDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                               channelID, @"users_object_id",
+                               nil];
+    [self queryServerPath:@"/getListenerCount.php" requestMethod:@"POST" parameters:queryDict withCallback:^(id returnedObject) {
+        if ([returnedObject[kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
+            id json = [returnedObject objectForKey:kResultJSON];
+            int count = [[json objectForKey:@"listener_count"] intValue];
+            
+            NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  OPERATION_SUCCEEDED, kOperationResult,
+                                  [NSNumber numberWithInt:count], kResultNumberofLsiteners,
+                                  nil];
+            response((id)dict);
+        } else {
+            response(returnedObject);
+        }
+    }];
+}
+
+-(void)changeListenerCountInServer:(NSString *)channelID changeAmount:(NSString *)changeAmount{
+    NSDictionary *queryDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                               channelID, @"users_object_id",
+                               changeAmount, @"change_amount",
+                               nil];
+    [self queryServerPath:@"/updateListenerCount.php" requestMethod:@"POST" parameters:queryDict withCallback:^(id returnedObject) {
+    }];
+}
+
 - (void)queryServerPath:(NSString*)apiSubPath
           requestMethod:(NSString *)reqMethod
              parameters:(NSDictionary*)parameters
