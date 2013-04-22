@@ -116,7 +116,7 @@
     
     __weak SFAudioBroadcaster *weakSelf = self;
     [self.audioFilePlayer setCompletionBlock:^{
-        [weakSelf stop];
+        [weakSelf stopMusic];
     }];
     
     [self.audioController addChannels:[NSArray arrayWithObjects:_audioFilePlayer, nil]];
