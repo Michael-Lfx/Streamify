@@ -101,6 +101,8 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+    
+    [self.playlistViewController viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning

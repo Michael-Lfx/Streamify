@@ -53,11 +53,6 @@
     [self loadPlaylist];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [self savePlaylist:[self getPlaylistURLs]];
-    [super viewWillDisappear:animated];
-}
-
 - (void)savePlaylist:(NSArray *)playlist
 {
     [SFStorageManager savePlaylistUserDefaults:playlist];
@@ -95,6 +90,7 @@
         CGPoint bottomOffset = CGPointMake(0, self.tableView.contentSize.height - self.tableView.bounds.size.height);
         [self.tableView setContentOffset:bottomOffset animated:YES];
     }
+    [self savePlaylist:[self getPlaylistURLs]];
 }
 
 - (void)selectNextRow
@@ -104,7 +100,6 @@
         nextRow = self.playlist.count - 1;
     }
     [self selectRow:nextRow];
-    NSLog(@"%@", self.currentSong);
 }
 
 - (void)selectPreviousRow
@@ -114,11 +109,14 @@
         previousRow = 0;
     }
     [self selectRow:previousRow];
-    NSLog(@"%@", self.currentSong);
 }
 
 - (void)selectRow:(NSInteger)row
 {
+    if (row < 0 || row >= self.playlist.count) {
+        return;
+    }
+    
     self.currentSong = [self.playlist objectAtIndex:row];
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]
                                 animated:YES
@@ -162,6 +160,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.playlist removeObjectAtIndex:indexPath.row];
         [self.tableView reloadData];
+        [self savePlaylist:[self getPlaylistURLs]];
     }
 }
 
@@ -181,7 +180,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.currentSong = [self.playlist objectAtIndex:indexPath.row];
-    NSLog(@"%@", self.currentSong);
 }
 
 
