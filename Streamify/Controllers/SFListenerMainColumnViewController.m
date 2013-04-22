@@ -236,13 +236,14 @@
         if (!self.stoppedByUser) {
             [self displayOfflineChannel];
             self.user.isLive = NO;
+            NSLog(@"Channel offline");
         }
         self.stoppedByUser = NO;
         self.duration = 0;
         [self.pollingTimer invalidate];
     }
     
-    NSLog(@"%d", newState);
+    NSLog(@"Inside Listen Column %d", newState);
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
 }
 

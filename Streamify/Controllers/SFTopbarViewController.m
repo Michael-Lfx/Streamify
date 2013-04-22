@@ -52,7 +52,7 @@
         self.infoLabel.text = @"No Channel";
     }
     
-    NSLog(@"%d", newState);
+    NSLog(@"Topbar %d", newState);
     [self.controlButton setImage:[self buttonIconForCurrentState] forState:UIControlStateNormal];
 }
 
