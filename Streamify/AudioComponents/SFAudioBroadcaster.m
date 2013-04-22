@@ -113,7 +113,11 @@
     
     self.audioFilePlayer.volume = 0.1;
     self.audioFilePlayer.channelIsPlaying = YES;
-    self.audioFilePlayer.removeUponFinish = YES;
+    
+    __weak SFAudioBroadcaster *weakSelf = self;
+    [self.audioFilePlayer setCompletionBlock:^{
+        [weakSelf stop];
+    }];
     
     [self.audioController addChannels:[NSArray arrayWithObjects:_audioFilePlayer, nil]];
     self.musicPlaybackState = SFBroadcastMusicPlaybackPlaying;
