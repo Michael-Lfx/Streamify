@@ -168,8 +168,7 @@
     
     // Channel Info
     self.channelInfoLabel.text = [NSString stringWithFormat:@"%@'s Channel", self.user.name];
-    
-    self.stoppedByUser = NO;
+
     self.duration = 0;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -182,9 +181,12 @@
         [[SFAudioStreamer sharedInstance].channelPlaying.objectID isEqualToString:self.user.objectID]){
         self.startListeningTime = [SFAudioStreamer sharedInstance].startStreamingTime;
         [self startTimer];
-    } else {
+        self.stoppedByUser = NO;
+    } else if ([SFAudioStreamer sharedInstance].playbackState == MPMoviePlaybackStatePlaying) {
         self.stoppedByUser = YES;
         [self stop];
+    } else {
+        self.stoppedByUser = NO;
     }
     
     // Buttons
@@ -274,6 +276,12 @@
 - (void)displayOfflineChannel {
     self.controlButton.enabled = NO;
     self.coverImageView.alpha = 0.3;
+    [[[UIAlertView alloc] initWithTitle:@"Offline"
+                                message:@"This channel is now offline"
+                               delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
+    
 }
 
 - (void)didReceiveMemoryWarning

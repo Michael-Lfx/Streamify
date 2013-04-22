@@ -78,8 +78,10 @@
         [[SFStorageManager sharedInstance] convertSongAtLibraryURL:self.currentSong.URL withCallback:^(id returnedObject) {
             if ([returnedObject[kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
                 NSURL *url = returnedObject[@"ResultURL"];
-                [weakBroadcaster addMusic:url];
-            }
+                if (weakBroadcaster.isRecording == YES) {
+                    [weakBroadcaster addMusic:url];
+                }
+        }
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.controlButton.enabled = YES;
             });
