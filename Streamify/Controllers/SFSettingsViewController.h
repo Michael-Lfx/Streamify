@@ -7,7 +7,14 @@
 //
 
 #import "BaseViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface SFSettingsViewController : BaseViewController
-
+@interface SFSettingsViewController : BaseViewController{
+    UITextField *effectName;
+}
+@property (nonatomic) BOOL isRecording;
+@property (nonatomic, retain) IBOutlet UITextField *effectName;
+- (IBAction)recordPressed:(id)sender;
+- (IBAction)stopPressed:(id)sender;
+- (IBAction)playPressed:(id)sender;
 @end

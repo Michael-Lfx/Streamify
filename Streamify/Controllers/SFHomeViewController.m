@@ -100,7 +100,7 @@
     self.searchBar.delegate = self;
     
     self.settingsViewController = [[SFSettingsViewController alloc] initWithNib];
-    self.settingsViewController.view.frame = CGRectMake(90, 450, 200, 200);
+    self.settingsViewController.view.frame = CGRectMake(90, 450, 500, 300);
     [self.view addSubview:self.settingsViewController.view];
     self.settingsViewController.view.hidden = YES;
     
