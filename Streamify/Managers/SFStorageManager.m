@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "NSString+MD5.h"
 
-#define kSFStorageMaximumNumOfRecentChannels 2
+#define kSFStorageMaximumNumOfRecentChannels 1000 // Unlimited History
 #define kSFStorageRecentChannelsKey @"Recent Channels Key"
 
 #define kSFStorageMusicMap @"MusicMap"
