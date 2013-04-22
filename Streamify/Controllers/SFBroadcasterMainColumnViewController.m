@@ -155,6 +155,9 @@
     }
 }
 
+- (void)dealloc {
+    [self.pollingTimer invalidate];
+}
 
 - (void)didReceiveMemoryWarning
 {
