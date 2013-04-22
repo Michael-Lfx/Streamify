@@ -81,7 +81,7 @@
                 if (weakBroadcaster.isRecording == YES) {
                     [weakBroadcaster addMusic:url];
                 }
-        }
+            }
             dispatch_async(dispatch_get_main_queue(), ^{
                 weakSelf.controlButton.enabled = YES;
             });
@@ -118,8 +118,8 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                 name:SFBroadcastMusicPlaybackStateDidChangeNotification
-                                               object:[SFAudioBroadcaster sharedInstance]];
+                                                    name:SFBroadcastMusicPlaybackStateDidChangeNotification
+                                                  object:[SFAudioBroadcaster sharedInstance]];
     
 }
 
