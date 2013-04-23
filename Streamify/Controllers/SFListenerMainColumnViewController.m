@@ -258,9 +258,12 @@
     if (newState == MPMoviePlaybackStatePlaying) {
         self.startListeningTime = [SFAudioStreamer sharedInstance].startStreamingTime;
         [self startTimer];
+        NSLog(@"Inside Listen Column %@ %d", self, newState);
     } else if (newState == MPMoviePlaybackStatePaused) {
+        NSLog(@"Inside Listen Column %@ %d", self, newState);
         [self stop];
     } else if (newState == MPMoviePlaybackStateStopped) {
+        NSLog(@"Inside Listen Column %@ %d", self, newState);
         if (!self.stoppedByUser) {
             [self displayOfflineChannel];
             self.user.isLive = NO;
@@ -269,9 +272,9 @@
         self.stoppedByUser = NO;
         self.duration = 0;
         [self.pollingTimer invalidate];
+     
     }
     
-    NSLog(@"Inside Listen Column %@ %d", self, newState);
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
 }
 

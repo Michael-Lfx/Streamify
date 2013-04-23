@@ -71,6 +71,10 @@
     return self;
 }
 
+- (void)printInputGain {
+    NSLog(@"%f", self.audioController.inputGain);
+}
+
 #pragma mark - Record
 
 - (void)prepareRecordWithChannel:(NSString *)channel {
@@ -116,6 +120,18 @@
         self.isRecording = NO;
         [self stopMusic];
     }
+}
+
+- (void)muteRecording {
+//    [self.audioController removeInputReceiver:self.audioRecorder];
+    self.audioController.inputGain = 0;
+    NSLog(@"%f", self.audioController.inputGain);
+}
+
+- (void)unmuteRecording {
+//    [self.audioController addInputReceiver:self.audioRecorder];
+    self.audioController.inputGain = 1.0;
+    NSLog(@"%f", self.audioController.inputGain);
 }
 
 #pragma mark - Music

@@ -48,6 +48,13 @@
 }
 
 - (IBAction)muteSegmentedControlChanged:(id)sender {
+    UISegmentedControl *segmentControl = (UISegmentedControl *)sender;
+    NSInteger value = segmentControl.selectedSegmentIndex;
+    if (value == 0) {
+        [[SFAudioBroadcaster sharedInstance] unmuteRecording];
+    } else if (value == 1) {
+        [[SFAudioBroadcaster sharedInstance] muteRecording];
+    }
 }
 
 - (void)viewDidLoad
@@ -124,6 +131,8 @@
     [self.pollingTimer invalidate];
     self.duration = 0;
     self.coverImageView.alpha = 0.3;
+    self.muteSegmentedControl.selectedSegmentIndex = 0;
+    self.muteSegmentedControl.enabled = NO;
 }
 
 - (void)startRecording {
@@ -131,6 +140,7 @@
     [[SFAudioBroadcaster sharedInstance] record];
     [self startTimer];
     self.coverImageView.alpha = 1.0;
+    self.muteSegmentedControl.enabled = YES;
 }
 
 - (void)startTimer {

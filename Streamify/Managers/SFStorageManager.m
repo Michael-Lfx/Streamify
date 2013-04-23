@@ -199,6 +199,15 @@
                                         [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,
                                         [NSNumber numberWithBool:NO], AVLinearPCMIsBigEndianKey,
                                         nil];
+        
+//        NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                        [ NSNumber numberWithInt: kAudioFormatMPEG4AAC], AVFormatIDKey,
+//                                        [ NSNumber numberWithInt: 2 ], AVNumberOfChannelsKey,
+//                                        [ NSNumber numberWithFloat: 44100.0 ], AVSampleRateKey,
+//                                        [ NSData dataWithBytes: &channelLayout length: sizeof( AudioChannelLayout ) ], AVChannelLayoutKey,
+//                                        [ NSNumber numberWithInt: 64000 ], AVEncoderBitRateKey,
+//                                        nil];
+        
         AVAssetWriterInput *assetWriterInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio
                                                                                   outputSettings:outputSettings];
         

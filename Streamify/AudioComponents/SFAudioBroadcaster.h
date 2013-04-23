@@ -36,5 +36,8 @@ typedef NSUInteger SFBroadcastMusicPlaybackState;
 - (void)stopMusic;
 - (void)record;
 - (void)stop;
+- (void)muteRecording;
+- (void)unmuteRecording;
+- (void)printInputGain;
 
 @end
