@@ -6,16 +6,18 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "SFSettingsViewController.h"
+#import "SFSettingsAddEffectViewController.h"
 
-@interface SFSettingsViewController ()
+@interface SFSettingsAddEffectViewController ()
+
 @property NSTimer *timer;
 @property AVAudioRecorder *audioRecorder;
 @property AVAudioPlayer *audioPlayer;
+
 @end
 
-@implementation SFSettingsViewController
-@synthesize effectName;
+
+@implementation SFSettingsAddEffectViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +31,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:NO];
+    self.navigationItem.title = @"Settings";
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+    self.navigationItem.title = @"Effects Library";
+    self.contentSizeForViewInPopover =  CGSizeMake(480, 380);
 }
 
 - (void)didReceiveMemoryWarning

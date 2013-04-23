@@ -7,7 +7,7 @@
 //
 
 #import "SFSidebarViewController.h"
-#import "SFSettingsViewController.h"
+#import "SFSettingsAddEffectViewController.h"
 
 @interface SFSidebarViewController ()
 
@@ -61,6 +61,10 @@
         self.favouriteButton.hidden = YES;
         self.recentButton.hidden = YES;
         self.broadcastButton.hidden = YES;
+    }
+    
+    if (kSHOWCASE_MODE) {
+        self.settingsButton.enabled = NO;
     }
 }
 

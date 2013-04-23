@@ -12,7 +12,6 @@
 @interface SFListenerMainColumnViewController ()
 
 @property (nonatomic, strong) SFUser *user;
-
 @property (nonatomic, strong) NSDate *startListeningTime;
 @property (nonatomic, strong) NSTimer *pollingTimer;
 @property (nonatomic, strong) NSTimer *listenerCountTimer;
@@ -357,14 +356,11 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
-- (void)dealloc {
     [self.listenerCountTimer invalidate];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerPlaybackStateDidChangeNotification
                                                   object:[SFAudioStreamer sharedInstance]];
+    [super viewWillDisappear:animated];
 }
 
 // UIAlertView helper for post buttons

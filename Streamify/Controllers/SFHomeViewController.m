@@ -100,10 +100,10 @@
     [self.view addSubview:self.searchBar];
     self.searchBar.delegate = self;
     
-    self.settingsViewController = [[SFSettingsViewController alloc] initWithNib];
-    self.settingsViewController.view.frame = CGRectMake(90, 450, 500, 300);
-    [self.view addSubview:self.settingsViewController.view];
-    self.settingsViewController.view.hidden = YES;
+    self.settingsMenuViewController = [[SFSettingsMenuViewController alloc] initWithNib];
+    self.settingsMenuViewController.view.frame = CGRectMake(90, 450, 500, 300);
+    [self.view addSubview:self.settingsMenuViewController.view];
+    self.settingsMenuViewController.view.hidden = YES;
     
 //    [[SFSocialManager sharedInstance] searchChannelsForKeyword:@"Zuyet" withCallback:^(id returnedObject) {
 //        SFUser *user = [returnedObject[kResultUsers] objectAtIndex:0];
@@ -214,17 +214,12 @@
 }
 
 - (void)settingsPressed:(id)sender {
-//    if(self.settingsViewController.view.hidden == YES)
-//        self.settingsViewController.view.hidden = NO;
-//    else
-//        self.settingsViewController.view.hidden = YES;
-//    self.contentSizeForViewInPopover = CGSizeMake(480, 300);
-    CGRect frame = CGRectMake(self.view.centerX, 220, 0, 0);
-    SFSettingsViewController *settingsVC = [[SFSettingsViewController alloc] initWithNib];
-    UINavigationController* content = [[UINavigationController alloc] initWithRootViewController:settingsVC];
+    CGRect frame = CGRectMake(self.view.centerX, 170, 0, 0);
+    SFSettingsMenuViewController *settingsMenuVC = [[SFSettingsMenuViewController alloc] initWithNib];
+    UINavigationController* content = [[UINavigationController alloc] initWithRootViewController:settingsMenuVC];
     self.popoverVC = [[UIPopoverController alloc] initWithContentViewController:content];
     self.popoverVC.delegate = self;
-    self.popoverVC.popoverContentSize = CGSizeMake(480, 300);
+    self.popoverVC.popoverContentSize = CGSizeMake(480, 380);
     [self.popoverVC presentPopoverFromRect:frame
                                     inView:self.view
                   permittedArrowDirections:NO
