@@ -16,7 +16,7 @@
 @interface SFChatViewController : BaseViewController
 
 - (id)initWithChannel:(SFUser *)channel;
-- (void)addFooter;
+- (void)addFooterWithDisplayed:(BOOL)isDisplayed;
 
 - (IBAction)chatTextEditBeginned:(id)sender;
 - (IBAction)chatTextEditEnded:(id)sender;

@@ -191,9 +191,9 @@
                                               }];
 }
 
-- (void)addFooter
+- (void)addFooterWithDisplayed:(BOOL)isDisplayed
 {
-    self.isDisplayed = YES;
+    self.isDisplayed = isDisplayed;
     [self.view addSubview:self.footerView];
     self.footerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"subtle_carbon.png"]];
     self.footerView.layer.masksToBounds = YES;

@@ -67,9 +67,9 @@
     
     // Add Chat View
     self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.channel];
-    [self.chatViewController addFooter];
+    [self.chatViewController addFooterWithDisplayed:NO];
     self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
-                                                    kSFChatViewFrameY,
+                                                    kSFChatViewFrameY - 768,
                                                     kSFChatViewFrameW,
                                                     kSFChatViewFrameH);
     [self.view addSubview:self.chatViewController.view];
