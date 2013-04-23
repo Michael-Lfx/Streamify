@@ -81,6 +81,7 @@
     } else {
         [self start];
         [self changeServerListenerCount:@"1"];
+        [self publishGraphStory];
     }
 }
 
@@ -395,6 +396,10 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
     [alertView show];
+}
+
+-(void) publishGraphStory{
+    [[SFSocialManager sharedInstance] publishGraphStory:self.user.name];
 }
 
 @end

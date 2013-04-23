@@ -606,6 +606,23 @@
     }];
 }
 
+-(void)publishGraphStory:(NSString *)broadcasterName{
+    NSString *token = [[PFFacebookUtils session] accessToken];
+    NSString *objectURL = @"http://rahij.com/ogstory.php?fb:app_id=444148202332879&og:type=music.radio_station&og:image=https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png";
+    objectURL = [objectURL stringByAppendingString:[NSString stringWithFormat: @"&og:title=%@'s Channel", broadcasterName]];
+                           
+    NSLog(@"%@", objectURL);
+    NSDictionary *queryDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                               objectURL, @"radio_station",
+                               token, @"access_token",
+                               nil];
+    [self queryServerPath:@"https://graph.facebook.com/me/streamifysg:stream" requestMethod:@"POST" parameters:queryDict withCallback:^(id returnedObject) {
+            id json = [returnedObject objectForKey:kResultJSON];
+            NSString *gid = [json objectForKey:@"id"];
+        NSLog(@"%@", gid);
+    }];
+}
+
 - (void)queryServerPath:(NSString*)apiSubPath
           requestMethod:(NSString *)reqMethod
              parameters:(NSDictionary*)parameters
@@ -615,7 +632,7 @@
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     
     if ([apiSubPath hasPrefix:@"/"] == NO)
-        apiSubPath = [NSString stringWithFormat:@"/%@", apiSubPath];
+        apiSubPath = [NSString stringWithFormat:@"%@", apiSubPath];
     
     NSMutableURLRequest *request = [httpClient requestWithMethod:reqMethod path:apiSubPath parameters:parameters];
     
