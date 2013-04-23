@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "SFSlider.h"
 
 @class SFPlaylistViewController;
 
@@ -23,11 +24,13 @@
 @property (nonatomic, strong) SFPlaylistViewController *playlistVC;
 @property (weak, nonatomic) IBOutlet UIButton *controlButton;
 @property (strong, nonatomic) IBOutlet UIButton *manageButton;
+@property (strong, nonatomic) IBOutlet SFSlider *volumeSlider;
 
 @property (nonatomic, strong) SFSong *currentSong;
 
 - (id)initWithDelegate:(id)delegate;
 - (IBAction)managePlaylistButtonPressed:(id)sender;
 - (IBAction)playButtonPressed:(id)sender;
+- (IBAction)volumSliderChanged:(id)sender;
 
 @end

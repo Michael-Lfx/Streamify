@@ -48,7 +48,7 @@
 #define kSFChatTableCellFrameHDefault 60
 
 #define kSFChatTableCellAvatarX 10
-#define kSFChatTableCellAvatarY 10
+#define kSFChatTableCellAvatarY 8
 #define kSFChatTableCellAvatarW 44
 #define kSFChatTableCellAvatarH 44
 

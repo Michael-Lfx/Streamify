@@ -70,10 +70,7 @@
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
 									<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
 								</object>
-								<object class="NSColor" key="IBUIHighlightedColor" id="1063650836">
-									<int key="NSColorSpace">2</int>
-									<bytes key="NSRGB">MC4wNTg4MjM1MzMzNiAwLjA1ODgyMzUzMzM2IDAuMTkyMTU2ODgxMQA</bytes>
-								</object>
+								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<string key="name">HelveticaNeue-Bold</string>
@@ -105,10 +102,13 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xODA1NzEzOTYgMC42NzY4OTMyNDgyIDEAA</bytes>
 								</object>
-								<reference key="IBUIHighlightedColor" ref="1063650836"/>
+								<object class="NSColor" key="IBUIHighlightedColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
+								</object>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
-									<string key="name">HelveticaNeue</string>
+									<string key="name">HelveticaNeue-Medium</string>
 									<string key="family">Helvetica Neue</string>
 									<int key="traits">0</int>
 									<double key="pointSize">14</double>
@@ -143,7 +143,6 @@
 				<reference key="NSNextKeyView" ref="723254071"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-				<int key="IBUISelectionStyle">2</int>
 				<reference key="IBUIContentView" ref="723254071"/>
 				<string key="IBUIReuseIdentifier">PlaylistItemTableViewCellIdentifier</string>
 				<real value="80" key="IBUIRowHeight"/>

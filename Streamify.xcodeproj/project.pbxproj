@@ -153,8 +153,6 @@
 		C0AB091B171578C3009FEBC1 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB0917171578C3009FEBC1 /* logo@2x.png */; };
 		C0AB091F17157B28009FEBC1 /* login-button.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB091D17157B28009FEBC1 /* login-button.png */; };
 		C0AB092017157B28009FEBC1 /* login-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB091E17157B28009FEBC1 /* login-button@2x.png */; };
-		C0AC8A631705731D00422723 /* SFMainColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A611705731D00422723 /* SFMainColumnViewController.m */; };
-		C0AC8A641705731D00422723 /* SFMainColumnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8A621705731D00422723 /* SFMainColumnViewController.xib */; };
 		C0AC8A68170575B900422723 /* SFSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A661705755400422723 /* SFSidebarViewController.m */; };
 		C0AC8A691705768E00422723 /* SFSidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8A671705755400422723 /* SFSidebarViewController.xib */; };
 		C0AC8A6F1705771100422723 /* SFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A6E1705771100422723 /* SFHomeViewController.m */; };
@@ -198,6 +196,14 @@
 		C0AE98601716BB0200B02590 /* maincol-icon-pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AE985C1716BB0200B02590 /* maincol-icon-pause@2x.png */; };
 		C0AE98611716BB0200B02590 /* maincol-icon-play.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AE985D1716BB0200B02590 /* maincol-icon-play.png */; };
 		C0AE98621716BB0200B02590 /* maincol-icon-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AE985E1716BB0200B02590 /* maincol-icon-play@2x.png */; };
+		C0B14A7E172674A300F17C4E /* playlist-roundbutton-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A7C172674A300F17C4E /* playlist-roundbutton-background.png */; };
+		C0B14A7F172674A300F17C4E /* playlist-roundbutton-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A7D172674A300F17C4E /* playlist-roundbutton-background@2x.png */; };
+		C0B14A8417267BAE00F17C4E /* playlist-icon-play.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A8017267BAE00F17C4E /* playlist-icon-play.png */; };
+		C0B14A8517267BAE00F17C4E /* playlist-icon-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A8117267BAE00F17C4E /* playlist-icon-play@2x.png */; };
+		C0B14A8617267BAE00F17C4E /* playlist-icon-stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A8217267BAE00F17C4E /* playlist-icon-stop.png */; };
+		C0B14A8717267BAE00F17C4E /* playlist-icon-stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A8317267BAE00F17C4E /* playlist-icon-stop@2x.png */; };
+		C0B14A8A17267EC800F17C4E /* playlist-icon-list.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A8817267EC800F17C4E /* playlist-icon-list.png */; };
+		C0B14A8B17267EC800F17C4E /* playlist-icon-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A8917267EC800F17C4E /* playlist-icon-list@2x.png */; };
 		C0BE8C9617214C48007AA21A /* SFListenerMainColumnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0BE8C9517214C48007AA21A /* SFListenerMainColumnViewController.xib */; };
 		C0BE8C9D17214EEE007AA21A /* SFListenerMainColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BE8C9717214C5A007AA21A /* SFListenerMainColumnViewController.m */; };
 		C0BE8C9F17215B76007AA21A /* SFBroadcasterMainColumnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0BE8C9E17215B76007AA21A /* SFBroadcasterMainColumnViewController.xib */; };
@@ -493,9 +499,6 @@
 		C0AB0917171578C3009FEBC1 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo@2x.png"; path = "Theme/logo@2x.png"; sourceTree = "<group>"; };
 		C0AB091D17157B28009FEBC1 /* login-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-button.png"; path = "Theme/login-button.png"; sourceTree = "<group>"; };
 		C0AB091E17157B28009FEBC1 /* login-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-button@2x.png"; path = "Theme/login-button@2x.png"; sourceTree = "<group>"; };
-		C0AC8A601705731D00422723 /* SFMainColumnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMainColumnViewController.h; sourceTree = "<group>"; };
-		C0AC8A611705731D00422723 /* SFMainColumnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMainColumnViewController.m; sourceTree = "<group>"; };
-		C0AC8A621705731D00422723 /* SFMainColumnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMainColumnViewController.xib; sourceTree = "<group>"; };
 		C0AC8A651705755400422723 /* SFSidebarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFSidebarViewController.h; sourceTree = "<group>"; };
 		C0AC8A661705755400422723 /* SFSidebarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFSidebarViewController.m; sourceTree = "<group>"; };
 		C0AC8A671705755400422723 /* SFSidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFSidebarViewController.xib; sourceTree = "<group>"; };
@@ -543,6 +546,14 @@
 		C0AE985C1716BB0200B02590 /* maincol-icon-pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-pause@2x.png"; path = "Theme/maincol-icon-pause@2x.png"; sourceTree = "<group>"; };
 		C0AE985D1716BB0200B02590 /* maincol-icon-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-play.png"; path = "Theme/maincol-icon-play.png"; sourceTree = "<group>"; };
 		C0AE985E1716BB0200B02590 /* maincol-icon-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-play@2x.png"; path = "Theme/maincol-icon-play@2x.png"; sourceTree = "<group>"; };
+		C0B14A7C172674A300F17C4E /* playlist-roundbutton-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-roundbutton-background.png"; path = "Theme/playlist-roundbutton-background.png"; sourceTree = "<group>"; };
+		C0B14A7D172674A300F17C4E /* playlist-roundbutton-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-roundbutton-background@2x.png"; path = "Theme/playlist-roundbutton-background@2x.png"; sourceTree = "<group>"; };
+		C0B14A8017267BAE00F17C4E /* playlist-icon-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-icon-play.png"; path = "Theme/playlist-icon-play.png"; sourceTree = "<group>"; };
+		C0B14A8117267BAE00F17C4E /* playlist-icon-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-icon-play@2x.png"; path = "Theme/playlist-icon-play@2x.png"; sourceTree = "<group>"; };
+		C0B14A8217267BAE00F17C4E /* playlist-icon-stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-icon-stop.png"; path = "Theme/playlist-icon-stop.png"; sourceTree = "<group>"; };
+		C0B14A8317267BAE00F17C4E /* playlist-icon-stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-icon-stop@2x.png"; path = "Theme/playlist-icon-stop@2x.png"; sourceTree = "<group>"; };
+		C0B14A8817267EC800F17C4E /* playlist-icon-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-icon-list.png"; path = "Theme/playlist-icon-list.png"; sourceTree = "<group>"; };
+		C0B14A8917267EC800F17C4E /* playlist-icon-list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-icon-list@2x.png"; path = "Theme/playlist-icon-list@2x.png"; sourceTree = "<group>"; };
 		C0B22122170556AA0045A248 /* SFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFConstants.h; sourceTree = "<group>"; };
 		C0BE8C9517214C48007AA21A /* SFListenerMainColumnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFListenerMainColumnViewController.xib; sourceTree = "<group>"; };
 		C0BE8C9717214C5A007AA21A /* SFListenerMainColumnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFListenerMainColumnViewController.m; sourceTree = "<group>"; };
@@ -1206,9 +1217,6 @@
 			isa = PBXGroup;
 			children = (
 				C0AC8AA317058F5E00422723 /* thumb */,
-				C0AC8A601705731D00422723 /* SFMainColumnViewController.h */,
-				C0AC8A611705731D00422723 /* SFMainColumnViewController.m */,
-				C0AC8A621705731D00422723 /* SFMainColumnViewController.xib */,
 				C0BE8C9917214C76007AA21A /* SFListenerMainColumnViewController.h */,
 				C0BE8C9717214C5A007AA21A /* SFListenerMainColumnViewController.m */,
 				C0BE8C9517214C48007AA21A /* SFListenerMainColumnViewController.xib */,
@@ -1222,6 +1230,7 @@
 		C0AC8A901705780600422723 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				C0B14A7B1726748D00F17C4E /* Playlist */,
 				C0ADA70E172651B000363D14 /* Segmented */,
 				C08933FA1722C28500F365FD /* SearchBar */,
 				C0AC8A9117057AAC00422723 /* Main Column */,
@@ -1295,6 +1304,21 @@
 				C0ADA7141726539600363D14 /* ui-segmented-unselected@2x.png */,
 			);
 			name = Segmented;
+			sourceTree = "<group>";
+		};
+		C0B14A7B1726748D00F17C4E /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				C0B14A8817267EC800F17C4E /* playlist-icon-list.png */,
+				C0B14A8917267EC800F17C4E /* playlist-icon-list@2x.png */,
+				C0B14A8017267BAE00F17C4E /* playlist-icon-play.png */,
+				C0B14A8117267BAE00F17C4E /* playlist-icon-play@2x.png */,
+				C0B14A8217267BAE00F17C4E /* playlist-icon-stop.png */,
+				C0B14A8317267BAE00F17C4E /* playlist-icon-stop@2x.png */,
+				C0B14A7C172674A300F17C4E /* playlist-roundbutton-background.png */,
+				C0B14A7D172674A300F17C4E /* playlist-roundbutton-background@2x.png */,
+			);
+			name = Playlist;
 			sourceTree = "<group>";
 		};
 		C0B221211705566B0045A248 /* Constants */ = {
@@ -1475,7 +1499,6 @@
 				9CDD6ACD1703438D005A42C8 /* FacebookSDKResources.bundle in Resources */,
 				9CDD6ACF17034397005A42C8 /* FBUserSettingsViewResources.bundle in Resources */,
 				1A49FA0E1704EAC400969CFA /* SFMetroTileView.xib in Resources */,
-				C0AC8A641705731D00422723 /* SFMainColumnViewController.xib in Resources */,
 				C0AC8A80170577B900422723 /* sidebar-background.png in Resources */,
 				C0AC8A81170577B900422723 /* sidebar-background@2x.png in Resources */,
 				C0AC8A82170577B900422723 /* sidebar-icon-broadcaster.png in Resources */,
@@ -1587,6 +1610,14 @@
 				C0ADA7181726539600363D14 /* ui-segmented-separator@2x.png in Resources */,
 				C0ADA7191726539600363D14 /* ui-segmented-unselected.png in Resources */,
 				C0ADA71A1726539600363D14 /* ui-segmented-unselected@2x.png in Resources */,
+				C0B14A7E172674A300F17C4E /* playlist-roundbutton-background.png in Resources */,
+				C0B14A7F172674A300F17C4E /* playlist-roundbutton-background@2x.png in Resources */,
+				C0B14A8417267BAE00F17C4E /* playlist-icon-play.png in Resources */,
+				C0B14A8517267BAE00F17C4E /* playlist-icon-play@2x.png in Resources */,
+				C0B14A8617267BAE00F17C4E /* playlist-icon-stop.png in Resources */,
+				C0B14A8717267BAE00F17C4E /* playlist-icon-stop@2x.png in Resources */,
+				C0B14A8A17267EC800F17C4E /* playlist-icon-list.png in Resources */,
+				C0B14A8B17267EC800F17C4E /* playlist-icon-list@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1643,7 +1674,6 @@
 				1A49FA0D1704EAC400969CFA /* SFMetroTileView.m in Sources */,
 				1A49FA661704F57C00969CFA /* SFListenerViewController.m in Sources */,
 				C0BE8C9D17214EEE007AA21A /* SFListenerMainColumnViewController.m in Sources */,
-				C0AC8A631705731D00422723 /* SFMainColumnViewController.m in Sources */,
 				C0AC8A6F1705771100422723 /* SFHomeViewController.m in Sources */,
 				C0AC8AAF17059C7600422723 /* SFUIDefaultTheme.m in Sources */,
 				1A7932BF1705FE7F00005CBF /* SFMetroCanvasViewController.m in Sources */,

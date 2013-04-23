@@ -55,6 +55,7 @@
     self.view.layer.masksToBounds = YES;
     
     [SFUIDefaultTheme themeButton:self.manageButton];
+    [SFUIDefaultTheme themeSlider:self.volumeSlider];
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,6 +99,9 @@
     }
 }
 
+- (IBAction)volumSliderChanged:(id)sender {
+}
+
 - (void)showAlert:(NSString *)error {
     [[[UIAlertView alloc] initWithTitle:@"Sorry"
                                 message:error
@@ -124,6 +128,7 @@
 - (void)viewDidUnload {
     [self setControlButton:nil];
     [self setManageButton:nil];
+    [self setVolumeSlider:nil];
     [super viewDidUnload];
 }
 @end
