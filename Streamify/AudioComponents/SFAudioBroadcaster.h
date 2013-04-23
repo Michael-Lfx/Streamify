@@ -30,7 +30,9 @@ typedef NSUInteger SFBroadcastMusicPlaybackState;
 
 + (SFAudioBroadcaster *)sharedInstance;
 - (void)prepareRecordWithChannel:(NSString *)channel;
+- (void)addMusic:(NSURL *)musicFileURL volume:(float)musicVolume;
 - (void)addMusic:(NSURL *)musicFileURL;
+- (void)addEffect:(NSURL *)effectFileURL;
 - (void)stopMusic;
 - (void)record;
 - (void)stop;

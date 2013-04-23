@@ -27,12 +27,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *effect3Button;
 @property (strong, nonatomic) IBOutlet UIButton *effect4Button;
 
-@property (strong, nonatomic) IBOutlet SFSlider *volumeSlider;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *muteSegmentedControl;
 
 - (id)initBroadcasterMainColumnWithUser:(SFUser *)user;
 
 - (IBAction)controlButtonPressed:(id)sender;
-- (IBAction)volumeSliderChanged:(id)sender;
+- (IBAction)muteSegmentedControlChanged:(id)sender;
 
 - (void)stopRecording;
 

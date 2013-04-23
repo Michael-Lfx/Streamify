@@ -31,8 +31,10 @@
 
 - (IBAction)controlButtonPressed:(id)sender {
     if ([SFAudioStreamer sharedInstance].playbackState == MPMoviePlaybackStatePlaying) {
+        [[SFSocialManager sharedInstance] changeListenerCountInServer:[SFAudioStreamer sharedInstance].channelPlaying.objectID changeAmount:@"-1"];
         [self stop];
     } else {
+        [[SFSocialManager sharedInstance] changeListenerCountInServer:[SFAudioStreamer sharedInstance].channelPlaying.objectID changeAmount:@"1"];
         [self start];
     }
 }

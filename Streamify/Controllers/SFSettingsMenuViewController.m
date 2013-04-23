@@ -47,8 +47,8 @@
 
 - (IBAction)effectsLibraryPressed:(id)sender
 {
-    SFSettingsEffectsViewController *addEffectViewController = [[SFSettingsEffectsViewController alloc] initWithNib];
-    [self.navigationController pushViewController:addEffectViewController animated:YES];
+    SFSettingsEffectsViewController *effectsViewController = [[SFSettingsEffectsViewController alloc] initWithNib];
+    [self.navigationController pushViewController:effectsViewController animated:YES];
 }
 
 - (IBAction)aboutUsPressed:(id)sender

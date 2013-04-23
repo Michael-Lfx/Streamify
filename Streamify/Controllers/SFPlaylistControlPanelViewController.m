@@ -7,6 +7,7 @@
 //
 
 #import "SFPlaylistControlPanelViewController.h"
+#import "SFUIDefaultTheme.h"
 
 @interface SFPlaylistControlPanelViewController ()
 
@@ -38,7 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self styleSelf];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateMusicPlaybackState)
@@ -46,6 +47,15 @@
                                                object:[SFAudioBroadcaster sharedInstance]];
     
     [self updateButton];
+}
+
+
+- (void)styleSelf {
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"subtle_carbon.png"]];
+    self.view.layer.masksToBounds = YES;
+    
+    [SFUIDefaultTheme themeButton:self.manageButton];
+    [SFUIDefaultTheme themeSlider:self.volumeSlider];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,6 +99,9 @@
     }
 }
 
+- (IBAction)volumSliderChanged:(id)sender {
+}
+
 - (void)showAlert:(NSString *)error {
     [[[UIAlertView alloc] initWithTitle:@"Sorry"
                                 message:error
@@ -99,20 +112,10 @@
 
 - (void)updateButton {
     if ([SFAudioBroadcaster sharedInstance].musicPlaybackState == SFBroadcastMusicPlaybackPlaying) {
-        [self.controlButton setTitle:@"Stop" forState:UIControlStateNormal];
-        self.controlButton.backgroundColor = [UIColor redColor];
+        [self.controlButton setImage:[UIImage imageNamed:@"playlist-icon-stop.png"] forState:UIControlStateNormal];
     } else if ([SFAudioBroadcaster sharedInstance].musicPlaybackState == SFBroadcastMusicPlaybackStopped) {
-        [self.controlButton setTitle:@"Play" forState:UIControlStateNormal];
-        self.controlButton.backgroundColor = [UIColor whiteColor];
+        [self.controlButton setImage:[UIImage imageNamed:@"playlist-icon-play.png"] forState:UIControlStateNormal];
     }
-}
-
-- (IBAction)nextButtonPressed:(id)sender {
-    [self.delegate nextButtonPressed];
-}
-
-- (IBAction)backButtonPressed:(id)sender {
-    [self.delegate backButtonPressed];
 }
 
 
@@ -120,11 +123,12 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:SFBroadcastMusicPlaybackStateDidChangeNotification
                                                   object:[SFAudioBroadcaster sharedInstance]];
-    
 }
 
 - (void)viewDidUnload {
     [self setControlButton:nil];
+    [self setManageButton:nil];
+    [self setVolumeSlider:nil];
     [super viewDidUnload];
 }
 @end

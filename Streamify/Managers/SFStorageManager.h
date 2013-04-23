@@ -22,5 +22,7 @@ typedef void(^SFStorageCallback)(id returnedObject);
 - (NSString *)directoryForMusicFiles;
 - (void)convertSongAtLibraryURL:(NSURL *)URL
                    withCallback:(SFStorageCallback)callback;
+- (NSString *)directoryForEffectFiles;
+- (NSArray *)getAllEffectFiles;
 
 @end

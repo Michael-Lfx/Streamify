@@ -851,14 +851,14 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="keane_album-coverlores.jpg">{550, 550}</string>
-			<string key="maincol-background.png">{420, 768}</string>
-			<string key="maincol-button-background-pressed.png">{176, 46}</string>
-			<string key="maincol-control-background.png">{322, 72}</string>
-			<string key="maincol-icon-follow.png">{24, 24}</string>
-			<string key="maincol-icon-share.png">{24, 24}</string>
-			<string key="maincol-icon-stop.png">{48, 48}</string>
-			<string key="topbar-icon-volume.png">{48, 48}</string>
+			<string key="keane_album-coverlores.jpg">{16, 16}</string>
+			<string key="maincol-background.png">{16, 16}</string>
+			<string key="maincol-button-background-pressed.png">{16, 16}</string>
+			<string key="maincol-control-background.png">{16, 16}</string>
+			<string key="maincol-icon-follow.png">{16, 16}</string>
+			<string key="maincol-icon-share.png">{16, 16}</string>
+			<string key="maincol-icon-stop.png">{16, 16}</string>
+			<string key="topbar-icon-volume.png">{16, 16}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

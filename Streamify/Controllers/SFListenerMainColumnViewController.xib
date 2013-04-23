@@ -198,7 +198,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{159, 453}, {80, 70}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSNextKeyView" ref="298681562"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -227,24 +226,10 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="298681562">
-						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{241, 470}, {36, 36}}</string>
-						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSNextKeyView" ref="254459892"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">topbar-icon-volume.png</string>
-						</object>
-					</object>
 					<object class="IBUISlider" id="254459892">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{276, 476}, {79, 23}}</string>
+						<string key="NSFrame">{{250, 476}, {110, 23}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSNextKeyView" ref="436839229"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -253,6 +238,10 @@
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<float key="IBUIValue">0.5</float>
+						<object class="NSCustomResource" key="IBUIMinimumValueImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">topbar-icon-volume.png</string>
+						</object>
 					</object>
 					<object class="IBUIView" id="436839229">
 						<reference key="NSNextResponder" ref="766721923"/>
@@ -507,7 +496,6 @@
 							<reference ref="1056860197"/>
 							<reference ref="436839229"/>
 							<reference ref="254459892"/>
-							<reference ref="298681562"/>
 							<reference ref="491643009"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -577,11 +565,6 @@
 						<reference key="object" ref="254459892"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">69</int>
-						<reference key="object" ref="298681562"/>
-						<reference key="parent" ref="766721923"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -605,7 +588,6 @@
 				<real value="0.0" key="56.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="68.CustomClassName">SFSlider</string>
 				<string key="68.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="69.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
@@ -626,7 +608,7 @@
 			<string key="maincol-icon-follow.png">{24, 24}</string>
 			<string key="maincol-icon-share.png">{24, 24}</string>
 			<string key="maincol-icon-stop.png">{48, 48}</string>
-			<string key="topbar-icon-volume.png">{48, 48}</string>
+			<string key="topbar-icon-volume.png">{24, 24}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

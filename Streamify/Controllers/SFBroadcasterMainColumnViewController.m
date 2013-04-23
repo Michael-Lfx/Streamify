@@ -47,7 +47,7 @@
     }
 }
 
-- (IBAction)volumeSliderChanged:(id)sender {
+- (IBAction)muteSegmentedControlChanged:(id)sender {
 }
 
 - (void)viewDidLoad
@@ -75,7 +75,7 @@
     [SFUIDefaultTheme themeButton:self.effect2Button];
     [SFUIDefaultTheme themeButton:self.effect3Button];
     [SFUIDefaultTheme themeButton:self.effect4Button];
-    [SFUIDefaultTheme themeSlider:self.volumeSlider];
+    [SFUIDefaultTheme themeSegmentedControl:self.muteSegmentedControl];
     
     // Buttons
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
@@ -177,7 +177,7 @@
     [self setPersonFollowingLabel:nil];
     [self setChannelInfoLabel:nil];
     [self setPersonFollowingLabel:nil];
-    [self setVolumeSlider:nil];
+    [self setMuteSegmentedControl:nil];
     [super viewDidUnload];
 }
 

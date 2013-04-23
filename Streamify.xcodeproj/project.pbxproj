@@ -20,14 +20,16 @@
 		1A868B1D17217A9C007F93A4 /* SFPlaylistManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A868B1C17217A9C007F93A4 /* SFPlaylistManagerViewController.m */; };
 		1A868B1F172180A1007F93A4 /* SFMusicPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A868B1717216F12007F93A4 /* SFMusicPickerViewController.m */; };
 		1A868B20172180E1007F93A4 /* SFMusicPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A868B1817216F12007F93A4 /* SFMusicPickerViewController.xib */; };
-		1AB116411725D90E003AF3B3 /* SFSettingsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB1163F1725D90D003AF3B3 /* SFSettingsMenuViewController.m */; };
-		1AB116421725D90E003AF3B3 /* SFSettingsMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB116401725D90E003AF3B3 /* SFSettingsMenuViewController.xib */; };
-		1AB1164B1725DA6F003AF3B3 /* SFSettingsAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB116491725DA6F003AF3B3 /* SFSettingsAboutUsViewController.m */; };
-		1AB1164C1725DA6F003AF3B3 /* SFSettingsAboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB1164A1725DA6F003AF3B3 /* SFSettingsAboutUsViewController.xib */; };
-		1AB19C511726615A00B62179 /* SFSettingsEffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB19C4F1726615A00B62179 /* SFSettingsEffectsViewController.m */; };
-		1AB19C521726615A00B62179 /* SFSettingsEffectsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB19C501726615A00B62179 /* SFSettingsEffectsViewController.xib */; };
-		1AB19C5B172665CB00B62179 /* SFSettingsManageEffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB19C59172665CA00B62179 /* SFSettingsManageEffectsViewController.m */; };
-		1AB19C5C172665CB00B62179 /* SFSettingsManageEffectsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB19C5A172665CA00B62179 /* SFSettingsManageEffectsViewController.xib */; };
+		1AB19C5D172687E000B62179 /* SFSettingsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB1163F1725D90D003AF3B3 /* SFSettingsMenuViewController.m */; };
+		1AB19C5E172687E600B62179 /* SFSettingsManageEffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB19C59172665CA00B62179 /* SFSettingsManageEffectsViewController.m */; };
+		1AB19C5F172687EB00B62179 /* SFSettingsEffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB19C4F1726615A00B62179 /* SFSettingsEffectsViewController.m */; };
+		1AB19C60172687F000B62179 /* SFSettingsAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB116491725DA6F003AF3B3 /* SFSettingsAboutUsViewController.m */; };
+		1AB19C611726881C00B62179 /* SFSettingsMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB116401725D90E003AF3B3 /* SFSettingsMenuViewController.xib */; };
+		1AB19C621726881F00B62179 /* SFSettingsEffectsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB19C501726615A00B62179 /* SFSettingsEffectsViewController.xib */; };
+		1AB19C631726882100B62179 /* SFSettingsManageEffectsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB19C5A172665CA00B62179 /* SFSettingsManageEffectsViewController.xib */; };
+		1AB19C641726882400B62179 /* SFSettingsAboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB1164A1725DA6F003AF3B3 /* SFSettingsAboutUsViewController.xib */; };
+		1AB19C681726890400B62179 /* SFSettingsAddEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB19C661726890200B62179 /* SFSettingsAddEffectViewController.m */; };
+		1AB19C691726890400B62179 /* SFSettingsAddEffectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB19C671726890300B62179 /* SFSettingsAddEffectViewController.xib */; };
 		1AB5ED41171A9585009EFE67 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */; };
 		1AB5ED42171A9585009EFE67 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AB5ED40171A9585009EFE67 /* whiteArrow.png */; };
 		1AE32125170DC8DC00D740E5 /* SFTopbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE32123170DC8DC00D740E5 /* SFTopbarViewController.m */; };
@@ -35,8 +37,7 @@
 		1AE32128170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE32127170DD2AE00D740E5 /* SFHomeViewCanvasTitle.xib */; };
 		1AFA40AA17245EC6001289B1 /* SFPlaylistControlPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA40A817245EC6001289B1 /* SFPlaylistControlPanelViewController.m */; };
 		1AFA40AB17245EC6001289B1 /* SFPlaylistControlPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AFA40A917245EC6001289B1 /* SFPlaylistControlPanelViewController.xib */; };
-		994A92BF1723F13800EE7035 /* SFSettingsAddEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 994A92BD1723F13800EE7035 /* SFSettingsAddEffectViewController.m */; };
-		994A92C01723F13800EE7035 /* SFSettingsAddEffectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 994A92BE1723F13800EE7035 /* SFSettingsAddEffectViewController.xib */; };
+		9C09131C17266DB8007B710D /* SFEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C09131B17266DB8007B710D /* SFEffect.m */; };
 		9C1EC5CB17216BDB001E7CAE /* SFPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EC5C917216BDB001E7CAE /* SFPlaylistViewController.m */; };
 		9C1EC5CC17216BDB001E7CAE /* SFPlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EC5CA17216BDB001E7CAE /* SFPlaylistViewController.xib */; };
 		9C1EC5CF17217081001E7CAE /* SFSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EC5CE17217081001E7CAE /* SFSong.m */; };
@@ -161,8 +162,6 @@
 		C0AB091B171578C3009FEBC1 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB0917171578C3009FEBC1 /* logo@2x.png */; };
 		C0AB091F17157B28009FEBC1 /* login-button.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB091D17157B28009FEBC1 /* login-button.png */; };
 		C0AB092017157B28009FEBC1 /* login-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AB091E17157B28009FEBC1 /* login-button@2x.png */; };
-		C0AC8A631705731D00422723 /* SFMainColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A611705731D00422723 /* SFMainColumnViewController.m */; };
-		C0AC8A641705731D00422723 /* SFMainColumnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8A621705731D00422723 /* SFMainColumnViewController.xib */; };
 		C0AC8A68170575B900422723 /* SFSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A661705755400422723 /* SFSidebarViewController.m */; };
 		C0AC8A691705768E00422723 /* SFSidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8A671705755400422723 /* SFSidebarViewController.xib */; };
 		C0AC8A6F1705771100422723 /* SFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8A6E1705771100422723 /* SFHomeViewController.m */; };
@@ -192,10 +191,28 @@
 		C0AC8AA8170597AB00422723 /* maincol-icon-stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8AA6170597AA00422723 /* maincol-icon-stop.png */; };
 		C0AC8AA9170597AB00422723 /* maincol-icon-stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AC8AA7170597AB00422723 /* maincol-icon-stop@2x.png */; };
 		C0AC8AAF17059C7600422723 /* SFUIDefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AC8AAE17059C7600422723 /* SFUIDefaultTheme.m */; };
+		C0ADA70A17263BD800363D14 /* maincol-icon-vol.png in Resources */ = {isa = PBXBuildFile; fileRef = C0ADA70617263BD800363D14 /* maincol-icon-vol.png */; };
+		C0ADA70B17263BD800363D14 /* maincol-icon-vol@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0ADA70717263BD800363D14 /* maincol-icon-vol@2x.png */; };
+		C0ADA70C17263BD800363D14 /* maincol-icon-vol2.png in Resources */ = {isa = PBXBuildFile; fileRef = C0ADA70817263BD800363D14 /* maincol-icon-vol2.png */; };
+		C0ADA70D17263BD800363D14 /* maincol-icon-vol2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0ADA70917263BD800363D14 /* maincol-icon-vol2@2x.png */; };
+		C0ADA7151726539600363D14 /* ui-segmented-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C0ADA70F1726539600363D14 /* ui-segmented-selected.png */; };
+		C0ADA7161726539600363D14 /* ui-segmented-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0ADA7101726539600363D14 /* ui-segmented-selected@2x.png */; };
+		C0ADA7171726539600363D14 /* ui-segmented-separator.png in Resources */ = {isa = PBXBuildFile; fileRef = C0ADA7111726539600363D14 /* ui-segmented-separator.png */; };
+		C0ADA7181726539600363D14 /* ui-segmented-separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0ADA7121726539600363D14 /* ui-segmented-separator@2x.png */; };
+		C0ADA7191726539600363D14 /* ui-segmented-unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = C0ADA7131726539600363D14 /* ui-segmented-unselected.png */; };
+		C0ADA71A1726539600363D14 /* ui-segmented-unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0ADA7141726539600363D14 /* ui-segmented-unselected@2x.png */; };
 		C0AE985F1716BB0200B02590 /* maincol-icon-pause.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AE985B1716BB0200B02590 /* maincol-icon-pause.png */; };
 		C0AE98601716BB0200B02590 /* maincol-icon-pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AE985C1716BB0200B02590 /* maincol-icon-pause@2x.png */; };
 		C0AE98611716BB0200B02590 /* maincol-icon-play.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AE985D1716BB0200B02590 /* maincol-icon-play.png */; };
 		C0AE98621716BB0200B02590 /* maincol-icon-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0AE985E1716BB0200B02590 /* maincol-icon-play@2x.png */; };
+		C0B14A7E172674A300F17C4E /* playlist-roundbutton-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A7C172674A300F17C4E /* playlist-roundbutton-background.png */; };
+		C0B14A7F172674A300F17C4E /* playlist-roundbutton-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A7D172674A300F17C4E /* playlist-roundbutton-background@2x.png */; };
+		C0B14A8417267BAE00F17C4E /* playlist-icon-play.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A8017267BAE00F17C4E /* playlist-icon-play.png */; };
+		C0B14A8517267BAE00F17C4E /* playlist-icon-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A8117267BAE00F17C4E /* playlist-icon-play@2x.png */; };
+		C0B14A8617267BAE00F17C4E /* playlist-icon-stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A8217267BAE00F17C4E /* playlist-icon-stop.png */; };
+		C0B14A8717267BAE00F17C4E /* playlist-icon-stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A8317267BAE00F17C4E /* playlist-icon-stop@2x.png */; };
+		C0B14A8A17267EC800F17C4E /* playlist-icon-list.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A8817267EC800F17C4E /* playlist-icon-list.png */; };
+		C0B14A8B17267EC800F17C4E /* playlist-icon-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B14A8917267EC800F17C4E /* playlist-icon-list@2x.png */; };
 		C0BE8C9617214C48007AA21A /* SFListenerMainColumnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0BE8C9517214C48007AA21A /* SFListenerMainColumnViewController.xib */; };
 		C0BE8C9D17214EEE007AA21A /* SFListenerMainColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BE8C9717214C5A007AA21A /* SFListenerMainColumnViewController.m */; };
 		C0BE8C9F17215B76007AA21A /* SFBroadcasterMainColumnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0BE8C9E17215B76007AA21A /* SFBroadcasterMainColumnViewController.xib */; };
@@ -283,6 +300,9 @@
 		1AB19C58172665CA00B62179 /* SFSettingsManageEffectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSettingsManageEffectsViewController.h; sourceTree = "<group>"; };
 		1AB19C59172665CA00B62179 /* SFSettingsManageEffectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSettingsManageEffectsViewController.m; sourceTree = "<group>"; };
 		1AB19C5A172665CA00B62179 /* SFSettingsManageEffectsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSettingsManageEffectsViewController.xib; sourceTree = "<group>"; };
+		1AB19C651726890200B62179 /* SFSettingsAddEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSettingsAddEffectViewController.h; sourceTree = "<group>"; };
+		1AB19C661726890200B62179 /* SFSettingsAddEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSettingsAddEffectViewController.m; sourceTree = "<group>"; };
+		1AB19C671726890300B62179 /* SFSettingsAddEffectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSettingsAddEffectViewController.xib; sourceTree = "<group>"; };
 		1AB5ED3F171A9585009EFE67 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		1AB5ED40171A9585009EFE67 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		1AE32122170DC8DC00D740E5 /* SFTopbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTopbarViewController.h; sourceTree = "<group>"; };
@@ -293,9 +313,8 @@
 		1AFA40A717245EC6001289B1 /* SFPlaylistControlPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistControlPanelViewController.h; sourceTree = "<group>"; };
 		1AFA40A817245EC6001289B1 /* SFPlaylistControlPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistControlPanelViewController.m; sourceTree = "<group>"; };
 		1AFA40A917245EC6001289B1 /* SFPlaylistControlPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPlaylistControlPanelViewController.xib; sourceTree = "<group>"; };
-		994A92BC1723F13800EE7035 /* SFSettingsAddEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSettingsAddEffectViewController.h; sourceTree = "<group>"; };
-		994A92BD1723F13800EE7035 /* SFSettingsAddEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSettingsAddEffectViewController.m; sourceTree = "<group>"; };
-		994A92BE1723F13800EE7035 /* SFSettingsAddEffectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSettingsAddEffectViewController.xib; sourceTree = "<group>"; };
+		9C09131A17266DB8007B710D /* SFEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFEffect.h; sourceTree = "<group>"; };
+		9C09131B17266DB8007B710D /* SFEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFEffect.m; sourceTree = "<group>"; };
 		9C1EC5C817216BDB001E7CAE /* SFPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistViewController.h; sourceTree = "<group>"; };
 		9C1EC5C917216BDB001E7CAE /* SFPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistViewController.m; sourceTree = "<group>"; };
 		9C1EC5CA17216BDB001E7CAE /* SFPlaylistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPlaylistViewController.xib; sourceTree = "<group>"; };
@@ -503,9 +522,6 @@
 		C0AB0917171578C3009FEBC1 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo@2x.png"; path = "Theme/logo@2x.png"; sourceTree = "<group>"; };
 		C0AB091D17157B28009FEBC1 /* login-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-button.png"; path = "Theme/login-button.png"; sourceTree = "<group>"; };
 		C0AB091E17157B28009FEBC1 /* login-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-button@2x.png"; path = "Theme/login-button@2x.png"; sourceTree = "<group>"; };
-		C0AC8A601705731D00422723 /* SFMainColumnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMainColumnViewController.h; sourceTree = "<group>"; };
-		C0AC8A611705731D00422723 /* SFMainColumnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMainColumnViewController.m; sourceTree = "<group>"; };
-		C0AC8A621705731D00422723 /* SFMainColumnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFMainColumnViewController.xib; sourceTree = "<group>"; };
 		C0AC8A651705755400422723 /* SFSidebarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFSidebarViewController.h; sourceTree = "<group>"; };
 		C0AC8A661705755400422723 /* SFSidebarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFSidebarViewController.m; sourceTree = "<group>"; };
 		C0AC8A671705755400422723 /* SFSidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFSidebarViewController.xib; sourceTree = "<group>"; };
@@ -539,10 +555,28 @@
 		C0AC8AAC17059B1D00422723 /* SFUITheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUITheme.h; sourceTree = "<group>"; };
 		C0AC8AAD17059C7600422723 /* SFUIDefaultTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUIDefaultTheme.h; sourceTree = "<group>"; };
 		C0AC8AAE17059C7600422723 /* SFUIDefaultTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUIDefaultTheme.m; sourceTree = "<group>"; };
+		C0ADA70617263BD800363D14 /* maincol-icon-vol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-vol.png"; path = "Theme/maincol-icon-vol.png"; sourceTree = "<group>"; };
+		C0ADA70717263BD800363D14 /* maincol-icon-vol@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-vol@2x.png"; path = "Theme/maincol-icon-vol@2x.png"; sourceTree = "<group>"; };
+		C0ADA70817263BD800363D14 /* maincol-icon-vol2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-vol2.png"; path = "Theme/maincol-icon-vol2.png"; sourceTree = "<group>"; };
+		C0ADA70917263BD800363D14 /* maincol-icon-vol2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-vol2@2x.png"; path = "Theme/maincol-icon-vol2@2x.png"; sourceTree = "<group>"; };
+		C0ADA70F1726539600363D14 /* ui-segmented-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ui-segmented-selected.png"; path = "Theme/ui-segmented-selected.png"; sourceTree = "<group>"; };
+		C0ADA7101726539600363D14 /* ui-segmented-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ui-segmented-selected@2x.png"; path = "Theme/ui-segmented-selected@2x.png"; sourceTree = "<group>"; };
+		C0ADA7111726539600363D14 /* ui-segmented-separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ui-segmented-separator.png"; path = "Theme/ui-segmented-separator.png"; sourceTree = "<group>"; };
+		C0ADA7121726539600363D14 /* ui-segmented-separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ui-segmented-separator@2x.png"; path = "Theme/ui-segmented-separator@2x.png"; sourceTree = "<group>"; };
+		C0ADA7131726539600363D14 /* ui-segmented-unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ui-segmented-unselected.png"; path = "Theme/ui-segmented-unselected.png"; sourceTree = "<group>"; };
+		C0ADA7141726539600363D14 /* ui-segmented-unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ui-segmented-unselected@2x.png"; path = "Theme/ui-segmented-unselected@2x.png"; sourceTree = "<group>"; };
 		C0AE985B1716BB0200B02590 /* maincol-icon-pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-pause.png"; path = "Theme/maincol-icon-pause.png"; sourceTree = "<group>"; };
 		C0AE985C1716BB0200B02590 /* maincol-icon-pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-pause@2x.png"; path = "Theme/maincol-icon-pause@2x.png"; sourceTree = "<group>"; };
 		C0AE985D1716BB0200B02590 /* maincol-icon-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-play.png"; path = "Theme/maincol-icon-play.png"; sourceTree = "<group>"; };
 		C0AE985E1716BB0200B02590 /* maincol-icon-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maincol-icon-play@2x.png"; path = "Theme/maincol-icon-play@2x.png"; sourceTree = "<group>"; };
+		C0B14A7C172674A300F17C4E /* playlist-roundbutton-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-roundbutton-background.png"; path = "Theme/playlist-roundbutton-background.png"; sourceTree = "<group>"; };
+		C0B14A7D172674A300F17C4E /* playlist-roundbutton-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-roundbutton-background@2x.png"; path = "Theme/playlist-roundbutton-background@2x.png"; sourceTree = "<group>"; };
+		C0B14A8017267BAE00F17C4E /* playlist-icon-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-icon-play.png"; path = "Theme/playlist-icon-play.png"; sourceTree = "<group>"; };
+		C0B14A8117267BAE00F17C4E /* playlist-icon-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-icon-play@2x.png"; path = "Theme/playlist-icon-play@2x.png"; sourceTree = "<group>"; };
+		C0B14A8217267BAE00F17C4E /* playlist-icon-stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-icon-stop.png"; path = "Theme/playlist-icon-stop.png"; sourceTree = "<group>"; };
+		C0B14A8317267BAE00F17C4E /* playlist-icon-stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-icon-stop@2x.png"; path = "Theme/playlist-icon-stop@2x.png"; sourceTree = "<group>"; };
+		C0B14A8817267EC800F17C4E /* playlist-icon-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-icon-list.png"; path = "Theme/playlist-icon-list.png"; sourceTree = "<group>"; };
+		C0B14A8917267EC800F17C4E /* playlist-icon-list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playlist-icon-list@2x.png"; path = "Theme/playlist-icon-list@2x.png"; sourceTree = "<group>"; };
 		C0B22122170556AA0045A248 /* SFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFConstants.h; sourceTree = "<group>"; };
 		C0BE8C9517214C48007AA21A /* SFListenerMainColumnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFListenerMainColumnViewController.xib; sourceTree = "<group>"; };
 		C0BE8C9717214C5A007AA21A /* SFListenerMainColumnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFListenerMainColumnViewController.m; sourceTree = "<group>"; };
@@ -760,9 +794,9 @@
 				1AB19C4E1726615A00B62179 /* SFSettingsEffectsViewController.h */,
 				1AB19C4F1726615A00B62179 /* SFSettingsEffectsViewController.m */,
 				1AB19C501726615A00B62179 /* SFSettingsEffectsViewController.xib */,
-				994A92BC1723F13800EE7035 /* SFSettingsAddEffectViewController.h */,
-				994A92BD1723F13800EE7035 /* SFSettingsAddEffectViewController.m */,
-				994A92BE1723F13800EE7035 /* SFSettingsAddEffectViewController.xib */,
+				1AB19C651726890200B62179 /* SFSettingsAddEffectViewController.h */,
+				1AB19C661726890200B62179 /* SFSettingsAddEffectViewController.m */,
+				1AB19C671726890300B62179 /* SFSettingsAddEffectViewController.xib */,
 				1AB19C58172665CA00B62179 /* SFSettingsManageEffectsViewController.h */,
 				1AB19C59172665CA00B62179 /* SFSettingsManageEffectsViewController.m */,
 				1AB19C5A172665CA00B62179 /* SFSettingsManageEffectsViewController.xib */,
@@ -1017,6 +1051,8 @@
 		9CACF02C16F755AC0067C352 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9C09131A17266DB8007B710D /* SFEffect.h */,
+				9C09131B17266DB8007B710D /* SFEffect.m */,
 				9C975CA217180F7F00C5FDDC /* SFMessage.h */,
 				9C975CA317180F7F00C5FDDC /* SFMessage.m */,
 				9C1EC5CD17217081001E7CAE /* SFSong.h */,
@@ -1218,9 +1254,6 @@
 			isa = PBXGroup;
 			children = (
 				C0AC8AA317058F5E00422723 /* thumb */,
-				C0AC8A601705731D00422723 /* SFMainColumnViewController.h */,
-				C0AC8A611705731D00422723 /* SFMainColumnViewController.m */,
-				C0AC8A621705731D00422723 /* SFMainColumnViewController.xib */,
 				C0BE8C9917214C76007AA21A /* SFListenerMainColumnViewController.h */,
 				C0BE8C9717214C5A007AA21A /* SFListenerMainColumnViewController.m */,
 				C0BE8C9517214C48007AA21A /* SFListenerMainColumnViewController.xib */,
@@ -1234,6 +1267,8 @@
 		C0AC8A901705780600422723 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				C0B14A7B1726748D00F17C4E /* Playlist */,
+				C0ADA70E172651B000363D14 /* Segmented */,
 				C08933FA1722C28500F365FD /* SearchBar */,
 				C0AC8A9117057AAC00422723 /* Main Column */,
 				C0C5DDBD1701CECA00191192 /* Sidebar */,
@@ -1279,6 +1314,10 @@
 				C0D21CFF170B23D1004EC17F /* maincol-icon-record@2x.png */,
 				C0D21CF4170B0FFE004EC17F /* maincol-icon-share.png */,
 				C0D21CF5170B0FFE004EC17F /* maincol-icon-share@2x.png */,
+				C0ADA70617263BD800363D14 /* maincol-icon-vol.png */,
+				C0ADA70717263BD800363D14 /* maincol-icon-vol@2x.png */,
+				C0ADA70817263BD800363D14 /* maincol-icon-vol2.png */,
+				C0ADA70917263BD800363D14 /* maincol-icon-vol2@2x.png */,
 			);
 			name = "Main Column";
 			sourceTree = "<group>";
@@ -1289,6 +1328,34 @@
 				C0AC8AA417058F7000422723 /* keane_album-coverlores.jpg */,
 			);
 			name = thumb;
+			sourceTree = "<group>";
+		};
+		C0ADA70E172651B000363D14 /* Segmented */ = {
+			isa = PBXGroup;
+			children = (
+				C0ADA70F1726539600363D14 /* ui-segmented-selected.png */,
+				C0ADA7101726539600363D14 /* ui-segmented-selected@2x.png */,
+				C0ADA7111726539600363D14 /* ui-segmented-separator.png */,
+				C0ADA7121726539600363D14 /* ui-segmented-separator@2x.png */,
+				C0ADA7131726539600363D14 /* ui-segmented-unselected.png */,
+				C0ADA7141726539600363D14 /* ui-segmented-unselected@2x.png */,
+			);
+			name = Segmented;
+			sourceTree = "<group>";
+		};
+		C0B14A7B1726748D00F17C4E /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				C0B14A8817267EC800F17C4E /* playlist-icon-list.png */,
+				C0B14A8917267EC800F17C4E /* playlist-icon-list@2x.png */,
+				C0B14A8017267BAE00F17C4E /* playlist-icon-play.png */,
+				C0B14A8117267BAE00F17C4E /* playlist-icon-play@2x.png */,
+				C0B14A8217267BAE00F17C4E /* playlist-icon-stop.png */,
+				C0B14A8317267BAE00F17C4E /* playlist-icon-stop@2x.png */,
+				C0B14A7C172674A300F17C4E /* playlist-roundbutton-background.png */,
+				C0B14A7D172674A300F17C4E /* playlist-roundbutton-background@2x.png */,
+			);
+			name = Playlist;
 			sourceTree = "<group>";
 		};
 		C0B221211705566B0045A248 /* Constants */ = {
@@ -1469,7 +1536,6 @@
 				9CDD6ACD1703438D005A42C8 /* FacebookSDKResources.bundle in Resources */,
 				9CDD6ACF17034397005A42C8 /* FBUserSettingsViewResources.bundle in Resources */,
 				1A49FA0E1704EAC400969CFA /* SFMetroTileView.xib in Resources */,
-				C0AC8A641705731D00422723 /* SFMainColumnViewController.xib in Resources */,
 				C0AC8A80170577B900422723 /* sidebar-background.png in Resources */,
 				C0AC8A81170577B900422723 /* sidebar-background@2x.png in Resources */,
 				C0AC8A82170577B900422723 /* sidebar-icon-broadcaster.png in Resources */,
@@ -1567,14 +1633,32 @@
 				C08934041722CB5800F365FD /* ui-searchbar-icon-cancel@2x.png in Resources */,
 				C08934051722CB5800F365FD /* ui-searchbar-icon-search.png in Resources */,
 				C08934061722CB5800F365FD /* ui-searchbar-icon-search@2x.png in Resources */,
-				994A92C01723F13800EE7035 /* SFSettingsAddEffectViewController.xib in Resources */,
 				C0F84D3C17243A790060E75E /* placeholder.png in Resources */,
 				C0F84D3E17243ABE0060E75E /* no_artwork.png in Resources */,
 				1AFA40AB17245EC6001289B1 /* SFPlaylistControlPanelViewController.xib in Resources */,
-				1AB116421725D90E003AF3B3 /* SFSettingsMenuViewController.xib in Resources */,
-				1AB1164C1725DA6F003AF3B3 /* SFSettingsAboutUsViewController.xib in Resources */,
-				1AB19C521726615A00B62179 /* SFSettingsEffectsViewController.xib in Resources */,
-				1AB19C5C172665CB00B62179 /* SFSettingsManageEffectsViewController.xib in Resources */,
+				C0ADA70A17263BD800363D14 /* maincol-icon-vol.png in Resources */,
+				C0ADA70B17263BD800363D14 /* maincol-icon-vol@2x.png in Resources */,
+				C0ADA70C17263BD800363D14 /* maincol-icon-vol2.png in Resources */,
+				C0ADA70D17263BD800363D14 /* maincol-icon-vol2@2x.png in Resources */,
+				C0ADA7151726539600363D14 /* ui-segmented-selected.png in Resources */,
+				C0ADA7161726539600363D14 /* ui-segmented-selected@2x.png in Resources */,
+				C0ADA7171726539600363D14 /* ui-segmented-separator.png in Resources */,
+				C0ADA7181726539600363D14 /* ui-segmented-separator@2x.png in Resources */,
+				C0ADA7191726539600363D14 /* ui-segmented-unselected.png in Resources */,
+				C0ADA71A1726539600363D14 /* ui-segmented-unselected@2x.png in Resources */,
+				C0B14A7E172674A300F17C4E /* playlist-roundbutton-background.png in Resources */,
+				C0B14A7F172674A300F17C4E /* playlist-roundbutton-background@2x.png in Resources */,
+				C0B14A8417267BAE00F17C4E /* playlist-icon-play.png in Resources */,
+				C0B14A8517267BAE00F17C4E /* playlist-icon-play@2x.png in Resources */,
+				C0B14A8617267BAE00F17C4E /* playlist-icon-stop.png in Resources */,
+				C0B14A8717267BAE00F17C4E /* playlist-icon-stop@2x.png in Resources */,
+				C0B14A8A17267EC800F17C4E /* playlist-icon-list.png in Resources */,
+				C0B14A8B17267EC800F17C4E /* playlist-icon-list@2x.png in Resources */,
+				1AB19C611726881C00B62179 /* SFSettingsMenuViewController.xib in Resources */,
+				1AB19C621726881F00B62179 /* SFSettingsEffectsViewController.xib in Resources */,
+				1AB19C631726882100B62179 /* SFSettingsManageEffectsViewController.xib in Resources */,
+				1AB19C641726882400B62179 /* SFSettingsAboutUsViewController.xib in Resources */,
+				1AB19C691726890400B62179 /* SFSettingsAddEffectViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1631,7 +1715,6 @@
 				1A49FA0D1704EAC400969CFA /* SFMetroTileView.m in Sources */,
 				1A49FA661704F57C00969CFA /* SFListenerViewController.m in Sources */,
 				C0BE8C9D17214EEE007AA21A /* SFListenerMainColumnViewController.m in Sources */,
-				C0AC8A631705731D00422723 /* SFMainColumnViewController.m in Sources */,
 				C0AC8A6F1705771100422723 /* SFHomeViewController.m in Sources */,
 				C0AC8AAF17059C7600422723 /* SFUIDefaultTheme.m in Sources */,
 				1A7932BF1705FE7F00005CBF /* SFMetroCanvasViewController.m in Sources */,
@@ -1678,12 +1761,13 @@
 				1A868B1D17217A9C007F93A4 /* SFPlaylistManagerViewController.m in Sources */,
 				1A868B1F172180A1007F93A4 /* SFMusicPickerViewController.m in Sources */,
 				C08934091722F37000F365FD /* SFTextField.m in Sources */,
-				994A92BF1723F13800EE7035 /* SFSettingsAddEffectViewController.m in Sources */,
 				1AFA40AA17245EC6001289B1 /* SFPlaylistControlPanelViewController.m in Sources */,
-				1AB116411725D90E003AF3B3 /* SFSettingsMenuViewController.m in Sources */,
-				1AB1164B1725DA6F003AF3B3 /* SFSettingsAboutUsViewController.m in Sources */,
-				1AB19C511726615A00B62179 /* SFSettingsEffectsViewController.m in Sources */,
-				1AB19C5B172665CB00B62179 /* SFSettingsManageEffectsViewController.m in Sources */,
+				9C09131C17266DB8007B710D /* SFEffect.m in Sources */,
+				1AB19C5D172687E000B62179 /* SFSettingsMenuViewController.m in Sources */,
+				1AB19C5E172687E600B62179 /* SFSettingsManageEffectsViewController.m in Sources */,
+				1AB19C5F172687EB00B62179 /* SFSettingsEffectsViewController.m in Sources */,
+				1AB19C60172687F000B62179 /* SFSettingsAboutUsViewController.m in Sources */,
+				1AB19C681726890400B62179 /* SFSettingsAddEffectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

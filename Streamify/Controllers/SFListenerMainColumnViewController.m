@@ -80,6 +80,7 @@
     } else {
         [self start];
         [self changeServerListenerCount:@"1"];
+        [self publishGraphStory];
     }
 }
 
@@ -170,24 +171,21 @@
 
     self.duration = 0;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updatePlaybackState)
-                                                 name:MPMoviePlayerPlaybackStateDidChangeNotification
-                                               object:[SFAudioStreamer sharedInstance]];
-    
-    
     if ([SFAudioStreamer sharedInstance].playbackState == MPMoviePlaybackStatePlaying &&
         [[SFAudioStreamer sharedInstance].channelPlaying.objectID isEqualToString:self.user.objectID]){
         self.startListeningTime = [SFAudioStreamer sharedInstance].startStreamingTime;
         [self startTimer];
-        self.stoppedByUser = NO;
-    } else if ([SFAudioStreamer sharedInstance].playbackState == MPMoviePlaybackStatePlaying) {
-        self.stoppedByUser = YES;
-        [self stop];
     } else {
-        self.stoppedByUser = NO;
+        [self stop];
     }
+
+    self.stoppedByUser = NO;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updatePlaybackState)
+                                                 name:MPMoviePlayerPlaybackStateDidChangeNotification
+                                               object:[SFAudioStreamer sharedInstance]];
+
     // Buttons
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
     [self.followButton setImage:[self followButtonIconForCurrentFollowingState] forState:UIControlStateNormal];
@@ -257,7 +255,9 @@
     if (newState == MPMoviePlaybackStatePlaying) {
         self.startListeningTime = [SFAudioStreamer sharedInstance].startStreamingTime;
         [self startTimer];
-    } else {
+    } else if (newState == MPMoviePlaybackStatePaused) {
+        [self stop];
+    } else if (newState == MPMoviePlaybackStateStopped) {
         if (!self.stoppedByUser) {
             [self displayOfflineChannel];
             self.user.isLive = NO;
@@ -268,14 +268,13 @@
         [self.pollingTimer invalidate];
     }
     
-    NSLog(@"Inside Listen Column %d", newState);
+    NSLog(@"Inside Listen Column %@ %d", self, newState);
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
 }
 
 - (void)displayOfflineChannel {
     self.controlButton.enabled = NO;
     self.coverImageView.alpha = 0.3;
-    self.user.isLive = NO;
     [[[UIAlertView alloc] initWithTitle:@"Offline"
                                 message:@"This channel is now offline"
                                delegate:nil
@@ -363,6 +362,9 @@
     [super viewWillDisappear:animated];
 }
 
+- (void)dealloc {
+}
+
 // UIAlertView helper for post buttons
 - (void)showAlert:(NSString *)message
            result:(id)result
@@ -391,6 +393,10 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
     [alertView show];
+}
+
+-(void) publishGraphStory{
+    [[SFSocialManager sharedInstance] publishGraphStory:self.user.name];
 }
 
 @end

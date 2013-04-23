@@ -34,5 +34,5 @@ typedef void (^SFResponseBlock)(id returnedObject);
 - (void)searchChannelsForKeyword:(NSString *)keyword withCallback:(SFResponseBlock)response;
 - (void)getListenerCount:(NSString *)channelID withCallback:(SFResponseBlock)response;
 - (void)changeListenerCountInServer:(NSString *)channelID changeAmount:(NSString *)changeAmount;
-
+- (void)publishGraphStory:(NSString *)broadcasterName;
 @end
