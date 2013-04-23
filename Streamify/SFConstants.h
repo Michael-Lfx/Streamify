@@ -9,7 +9,7 @@
 #ifndef Streamify_SFConstants_h
 #define Streamify_SFConstants_h
 
-#define kSHOWCASE_MODE (0)
+#define kSHOWCASE_MODE (1)
 
 #define kSFCanvasTitleFrameXInHomeView 750
 #define kSFCanvasTitleFrameYInHomeView 100
