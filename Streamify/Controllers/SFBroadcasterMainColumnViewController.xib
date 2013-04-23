@@ -392,9 +392,10 @@
 					<object class="IBUISegmentedControl" id="156410825">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{265, 467}, {81, 44}}</string>
+						<string key="NSFrame">{{259, 467}, {91, 44}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIAutoresizesSubviews">NO</bool>
@@ -408,8 +409,8 @@
 							<string/>
 						</array>
 						<array class="NSMutableArray" key="IBSegmentWidths">
-							<real value="40"/>
-							<real value="40"/>
+							<real value="45"/>
+							<real value="45"/>
 						</array>
 						<array class="NSMutableArray" key="IBSegmentEnabledStates">
 							<boolean value="YES"/>
@@ -438,7 +439,7 @@
 				<string key="NSFrameSize">{420, 768}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
+				<reference key="NSNextKeyView" ref="1056860197"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
