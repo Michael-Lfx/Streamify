@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.effects = [NSMutableArray arrayWithArray:[[SFStorageManager sharedInstance] getAllEffectFiles]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,25 +57,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSString *identifier = [SFSongTableViewCell cellIdentifier];
-//    SFSongTableViewCell *cell = (SFSongTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
-//    if (cell == nil) {
-//        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:kSFSongTableViewCellNibName owner:self options:nil];
-//        cell = [nib objectAtIndex:0];
-//    }
-//    
-//    SFSong *song = [self.playlist objectAtIndex:indexPath.row];
-//    
-//    cell.songTitleLabel.text = song.title;
-//    cell.artistNameLabel.text = song.artistName;
-//    cell.albumCoverView.image = song.albumCover;
-//    
-//    return cell;
+    
+    static NSString *SFEffectCellIdentifier = @"SFEffectCellIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SFEffectCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SFEffectCellIdentifier];
+    }
+    
+    SFEffect *effect = [self.effects objectAtIndex:indexPath.row];
+    cell.textLabel.text = effect.effectName;
+    
+    return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    return kSFSongTableViewCellRowHeight;
-}
+//}
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {

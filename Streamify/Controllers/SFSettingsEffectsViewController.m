@@ -51,7 +51,6 @@
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-    NSLog(@"fuck %@", item);
     switch (item.tag) {
         case 0:
             if (self.addEffectViewController == nil) {

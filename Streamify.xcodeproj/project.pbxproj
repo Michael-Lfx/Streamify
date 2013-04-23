@@ -756,6 +756,13 @@
 			name = "Music Picker VC";
 			sourceTree = "<group>";
 		};
+		1AB19C6A1726900300B62179 /* Settings Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Settings Component";
+			sourceTree = "<group>";
+		};
 		1AE32121170DC7EE00D740E5 /* Topbar VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -788,6 +795,7 @@
 		994A92BA1723F0D600EE7035 /* Settings VC */ = {
 			isa = PBXGroup;
 			children = (
+				1AB19C6A1726900300B62179 /* Settings Component */,
 				1AB1163E1725D90D003AF3B3 /* SFSettingsMenuViewController.h */,
 				1AB1163F1725D90D003AF3B3 /* SFSettingsMenuViewController.m */,
 				1AB116401725D90E003AF3B3 /* SFSettingsMenuViewController.xib */,
