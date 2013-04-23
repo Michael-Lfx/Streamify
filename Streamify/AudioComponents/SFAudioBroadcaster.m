@@ -151,9 +151,10 @@
 - (void)setMusicPlaybackState:(SFBroadcastMusicPlaybackState)musicPlaybackState {
     if (musicPlaybackState != _musicPlaybackState) {
         _musicPlaybackState = musicPlaybackState;
-//        [self performSelectorOnMainThread:@selector(postPlaybackNotification) withObject:nil waitUntilDone:YES];
-        [[NSNotificationCenter defaultCenter] postNotificationName:SFBroadcastMusicPlaybackStateDidChangeNotification
-                                                            object:self];
+
+//        [[NSNotificationCenter defaultCenter] postNotificationName:SFBroadcastMusicPlaybackStateDidChangeNotification
+//                                                            object:self];
+        [self performSelectorOnMainThread:@selector(postPlaybackNotification) withObject:nil waitUntilDone:YES];
     }
 }
 
