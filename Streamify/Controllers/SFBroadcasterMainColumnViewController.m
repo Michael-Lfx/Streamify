@@ -111,6 +111,7 @@
                                                              userInfo:nil
                                                               repeats:YES];
     [self.listenerCountTimer fire];
+    [self disableAllEffects];
 }
 
 -(void)updateLocalListenerCount{
@@ -133,6 +134,7 @@
     self.coverImageView.alpha = 0.3;
     self.muteSegmentedControl.selectedSegmentIndex = 0;
     self.muteSegmentedControl.enabled = NO;
+    [self disableAllEffects];
 }
 
 - (void)startRecording {
@@ -141,6 +143,7 @@
     [self startTimer];
     self.coverImageView.alpha = 1.0;
     self.muteSegmentedControl.enabled = YES;
+    [self enableAllEffects];
 }
 
 - (void)startTimer {
@@ -202,40 +205,75 @@
         return [UIImage imageNamed:@"maincol-icon-record.png"];
     }
 }
+
+- (void)disableAllEffects {
+    self.effect1Button.enabled = NO;
+    self.effect1Button.alpha = 0.3;
+    self.effect2Button.enabled = NO;
+    self.effect2Button.alpha = 0.3;
+    self.effect3Button.enabled = NO;
+    self.effect3Button.alpha = 0.3;
+    self.effect4Button.enabled = NO;
+    self.effect4Button.alpha = 0.3;
+}
+
+- (void)enableAllEffects {
+    if ([SFAudioBroadcaster sharedInstance].isRecording) {
+        self.effect1Button.enabled = YES;
+        self.effect1Button.alpha = 1.0;
+        self.effect2Button.enabled = YES;
+        self.effect2Button.alpha = 1.0;
+        self.effect3Button.enabled = YES;
+        self.effect3Button.alpha = 1.0;
+        self.effect4Button.enabled = YES;
+        self.effect4Button.alpha = 1.0;
+    }
+}
+
 - (IBAction)chipmunkPressed:(id)sender {
     NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
     NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Chipmunks.caf"]];
     NSLog(@"Effect: %@", URL);
     
     if ([SFAudioBroadcaster sharedInstance].isRecording) {
+        [self disableAllEffects];
         [[SFAudioBroadcaster sharedInstance] addEffect:URL];
+        [self performSelector:@selector(enableAllEffects) withObject:nil afterDelay:15.0];
     }
 }
+
+
 - (IBAction)clappingPressed:(id)sender {
     NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
     NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Applause.caf"]];
-        NSLog(@"Effect: %@", URL);
+    NSLog(@"Effect: %@", URL);
     
     if ([SFAudioBroadcaster sharedInstance].isRecording) {
+        [self disableAllEffects];
         [[SFAudioBroadcaster sharedInstance] addEffect:URL];
+        [self performSelector:@selector(enableAllEffects) withObject:nil afterDelay:15.0];
     }
 }
 - (IBAction)bellringPressed:(id)sender {
     NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
     NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Bell Ringing.caf"]];
-        NSLog(@"Effect: %@", URL);
+    NSLog(@"Effect: %@", URL);
     
     if ([SFAudioBroadcaster sharedInstance].isRecording) {
+        [self disableAllEffects];
         [[SFAudioBroadcaster sharedInstance] addEffect:URL];
+        [self performSelector:@selector(enableAllEffects) withObject:nil afterDelay:15.0];
     }
 }
 - (IBAction)booingPressed:(id)sender {
     NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
     NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Booing.caf"]];
-        NSLog(@"Effect: %@", URL);
+    NSLog(@"Effect: %@", URL);
     
     if ([SFAudioBroadcaster sharedInstance].isRecording) {
+        [self disableAllEffects];
         [[SFAudioBroadcaster sharedInstance] addEffect:URL];
+        [self performSelector:@selector(enableAllEffects) withObject:nil afterDelay:15.0];
     }
 }
 
