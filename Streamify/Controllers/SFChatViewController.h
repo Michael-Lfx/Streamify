@@ -17,6 +17,8 @@
 
 - (id)initWithChannel:(SFUser *)channel;
 - (void)addFooterWithDisplayed:(BOOL)isDisplayed;
+- (void)showPlaylist;
+- (void)hidePlaylist;
 
 - (IBAction)chatTextEditBeginned:(id)sender;
 - (IBAction)chatTextEditEnded:(id)sender;

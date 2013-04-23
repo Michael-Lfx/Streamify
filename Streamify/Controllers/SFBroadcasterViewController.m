@@ -67,12 +67,13 @@
     
     // Add Chat View
     self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.channel];
-    [self.chatViewController addFooterWithDisplayed:NO];
+    [self.chatViewController addFooterWithDisplayed:YES];
     self.chatViewController.view.frame = CGRectMake(kSFChatViewFrameX,
-                                                    kSFChatViewFrameY - 768,
+                                                    kSFChatViewFrameY,
                                                     kSFChatViewFrameW,
                                                     kSFChatViewFrameH);
     [self.view addSubview:self.chatViewController.view];
+    [self.chatViewController showPlaylist];
     
     // Add Main Column
     self.mainColumnViewController = [[SFBroadcasterMainColumnViewController alloc] initBroadcasterMainColumnWithUser:self.channel];
