@@ -31,7 +31,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.effects = [NSMutableArray arrayWithArray:[[SFStorageManager sharedInstance] getAllEffectFiles]];
+    self.effects = [NSMutableArray arrayWithArray:[[SFStorageManager sharedInstance] getAllEffects]];
+    NSLog(@"%@", self.effects);
 }
 
 - (void)viewWillAppear:(BOOL)animated {

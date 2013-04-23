@@ -55,9 +55,8 @@
         [alert show];
         return;
     }
-    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(
-                                                            NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsDir = [dirPaths objectAtIndex:0];
+
+    NSString *docsDir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
     
     NSString *soundFilePath = [docsDir
                                stringByAppendingPathComponent:self.effectName.text];
@@ -115,9 +114,9 @@
 }
 
 -(void)play{
-    if (!self.isRecording)
-    {
+    if (!self.isRecording) {
         NSError *error;
+        NSLog(@"play");
         
         self.audioPlayer = [[AVAudioPlayer alloc]
                        initWithContentsOfURL:self.audioRecorder.url
