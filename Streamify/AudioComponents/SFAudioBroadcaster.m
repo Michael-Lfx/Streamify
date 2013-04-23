@@ -22,6 +22,7 @@
 @property (nonatomic) NSUInteger lastBytes;
 //@property GCDTimer *timer;
 @property NSTimer *timer;
+@property (nonatomic, strong) NSMutableArray *effectsArray;
 @end
 
 @implementation SFAudioBroadcaster
@@ -64,9 +65,13 @@
         self.recordFilePath = [documentsFolder stringByAppendingPathComponent:@"Record.aac"];
         
         self.musicPlaybackState = SFBroadcastMusicPlaybackStopped;
+        
+        self.effectsArray = [NSMutableArray array];
     }
     return self;
 }
+
+#pragma mark - Record
 
 - (void)prepareRecordWithChannel:(NSString *)channel {
     self.channel = channel;
@@ -95,12 +100,52 @@
     [self startTimer];
 }
 
+- (void)stop {
+    if (self.isRecording) {
+        [self stopAllEffects];
+        
+        [self.audioController removeInputReceiver:self.audioRecorder];
+        [self.audioController removeOutputReceiver:self.audioRecorder];
+        [self.audioRecorder finishRecording];
+        
+        [self.timer invalidate];
+        [self sendWithCallback:^{
+            [self sendStopRequestToServer];
+        }];
+        
+        self.isRecording = NO;
+        [self stopMusic];
+    }
+}
+
+#pragma mark - Music
+
 - (void)setMusicPlaybackState:(SFBroadcastMusicPlaybackState)musicPlaybackState {
     if (musicPlaybackState != _musicPlaybackState) {
         _musicPlaybackState = musicPlaybackState;
         [[NSNotificationCenter defaultCenter] postNotificationName:SFBroadcastMusicPlaybackStateDidChangeNotification
                                                             object:self];
     }
+}
+
+- (void)addMusic:(NSURL *)musicFileURL volume:(float)musicVolume{
+    [self stopMusic];
+    
+    NSError *error;
+    self.audioFilePlayer = [AEAudioFilePlayer audioFilePlayerWithURL:musicFileURL
+                                                     audioController:self.audioController
+                                                               error:&error];
+    
+    self.audioFilePlayer.volume = musicVolume;
+    self.audioFilePlayer.channelIsPlaying = YES;
+    
+    __weak SFAudioBroadcaster *weakSelf = self;
+    [self.audioFilePlayer setCompletionBlock:^{
+        [weakSelf stopMusic];
+    }];
+    
+    [self.audioController addChannels:[NSArray arrayWithObjects:_audioFilePlayer, nil]];
+    self.musicPlaybackState = SFBroadcastMusicPlaybackPlaying;
 }
 
 - (void)addMusic:(NSURL *)musicFileURL {
@@ -111,7 +156,7 @@
                                                      audioController:self.audioController
                                                                error:&error];
     
-    self.audioFilePlayer.volume = 0.1;
+    self.audioFilePlayer.volume = 0.2;
     self.audioFilePlayer.channelIsPlaying = YES;
     
     __weak SFAudioBroadcaster *weakSelf = self;
@@ -162,6 +207,39 @@
 //        [self send];
 //    } afterInterval:10.0 repeat:YES];
 //}
+
+#pragma mark - Effect
+
+- (void)addEffect:(NSURL *)effectFileURL {
+    NSError *error;
+    AEAudioFilePlayer *effectFilePlayer = [AEAudioFilePlayer audioFilePlayerWithURL:effectFileURL
+                                                                    audioController:self.audioController
+                                                                              error:&error];
+    effectFilePlayer.volume = 0.5;
+    effectFilePlayer.channelIsPlaying = YES;
+    
+    __weak SFAudioBroadcaster *weakSelf = self;
+    __weak AEAudioFilePlayer *copyEffect = effectFilePlayer;
+    
+    [effectFilePlayer setCompletionBlock:^{
+        [weakSelf stopEffect:copyEffect];
+    }];
+    
+    [self.audioController addChannels:[NSArray arrayWithObjects:effectFilePlayer, nil]];
+    [self.effectsArray addObject:effectFilePlayer];
+}
+
+- (void)stopEffect:(AEAudioFilePlayer *)effectFilePlayer {
+    [self.audioController removeChannels:[NSArray arrayWithObject:effectFilePlayer]];
+    [self.effectsArray removeObject:effectFilePlayer];
+}
+
+- (void)stopAllEffects {
+    [self.audioController removeChannels:self.effectsArray];
+    [self.effectsArray removeAllObjects];
+}
+
+#pragma mark - Sending
 
 - (void)startTimer {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0f
@@ -265,22 +343,6 @@
 -(void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag
 {
     NSLog(@"Audio Record has stopped");
-}
-
-- (void)stop {
-    if (self.isRecording) {
-        [self.audioController removeInputReceiver:self.audioRecorder];
-        [self.audioController removeOutputReceiver:self.audioRecorder];
-        [self.audioRecorder finishRecording];
-        
-        [self.timer invalidate];
-        [self sendWithCallback:^{
-            [self sendStopRequestToServer];
-        }];
-        
-        self.isRecording = NO;
-        [self stopMusic];
-    }
 }
 
 @end

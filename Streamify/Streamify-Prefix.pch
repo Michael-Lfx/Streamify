@@ -47,6 +47,7 @@
 #import "SFUser.h"
 #import "SFMessage.h"
 #import "SFSong.h"
+#import "SFEffect.h"
 
 //Views
 #import "BaseTableViewCell.h"

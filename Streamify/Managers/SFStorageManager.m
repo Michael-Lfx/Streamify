@@ -45,6 +45,8 @@
     return self;
 }
 
+#pragma mark - Recent Channels
+
 + (NSArray *)retrieveRecentChannelsUserDefaults
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -72,6 +74,8 @@
     [userDefaults synchronize];
 }
 
+#pragma mark - Playlist
+
 + (NSArray *)retrievePlaylist {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSArray *playlist = [userDefaults arrayForKey:kSFStoragePlaylist];
@@ -84,9 +88,38 @@
     [userDefaults synchronize];
 }
 
+#pragma mark - Music Files Management
+
+- (NSString *)directoryForMusicFiles {
+    NSString *documentsFolder = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
+                                 objectAtIndex:0];
+    NSString *musicFolder = [documentsFolder stringByAppendingPathComponent:@"MusicFiles"];
+    BOOL isDir;
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:musicFolder isDirectory:&isDir];
+    
+    if (!fileExists) {
+        NSError *error;
+        if (![[NSFileManager defaultManager] createDirectoryAtPath:musicFolder
+                                       withIntermediateDirectories:NO
+                                                        attributes:nil
+                                                             error:&error]) {
+            DLog(@"%@", error);
+        }
+    }
+    
+    return musicFolder;
+}
+
 - (NSDictionary *)retrieveMusicMap {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     return [userDefaults dictionaryForKey:kSFStorageMusicMap];
+}
+
+- (void)saveMusicMap {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[NSDictionary dictionaryWithDictionary:self.musicMap] forKey:kSFStorageMusicMap];
+    [userDefaults synchronize];
+    NSLog(@"%@", [userDefaults objectForKey:kSFStorageMusicMap]);
 }
 
 - (NSURL *)checkPlayable:(NSURL *)libraryURL {
@@ -103,13 +136,6 @@
     }
     
     return [NSURL URLWithString:diskURL];
-}
-
-- (void)saveMusicMap {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:[NSDictionary dictionaryWithDictionary:self.musicMap] forKey:kSFStorageMusicMap];
-    [userDefaults synchronize];
-    NSLog(@"%@", [userDefaults objectForKey:kSFStorageMusicMap]);
 }
 
 - (void)convertSongAtLibraryURL:(NSURL *)URL
@@ -233,16 +259,18 @@
     }
 }
 
-- (NSString *)directoryForMusicFiles {
+#pragma mark - Effect Files Management
+
+- (NSString *)directoryForEffectFiles {
     NSString *documentsFolder = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
                                  objectAtIndex:0];
-    NSString *musicFolder = [documentsFolder stringByAppendingPathComponent:@"MusicFiles"];
+    NSString *effectFolder = [documentsFolder stringByAppendingPathComponent:@"EffectFiles"];
     BOOL isDir;
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:musicFolder isDirectory:&isDir];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:effectFolder isDirectory:&isDir];
     
     if (!fileExists) {
         NSError *error;
-        if (![[NSFileManager defaultManager] createDirectoryAtPath:musicFolder
+        if (![[NSFileManager defaultManager] createDirectoryAtPath:effectFolder
                                        withIntermediateDirectories:NO
                                                         attributes:nil
                                                              error:&error]) {
@@ -250,7 +278,21 @@
         }
     }
     
-    return musicFolder;
+    return effectFolder;
+}
+
+- (NSArray *)getAllEffects {
+    NSMutableArray *result = [NSMutableArray array];
+    
+    NSString *effectDirectory = [self directoryForEffectFiles];
+    
+    NSError *error;
+    NSArray *directoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:effectDirectory
+                                                                                     error:&error];
+    
+    NSLog(@"%@", directoryContents);
+    
+    return result;
 }
 
 @end
