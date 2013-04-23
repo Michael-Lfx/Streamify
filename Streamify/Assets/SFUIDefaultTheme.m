@@ -40,6 +40,20 @@
     textField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
 }
 
++ (void)themeSegmentedControl:(UISegmentedControl *)segmentedControl {
+    [segmentedControl setBackgroundImage:[SFUIDefaultTheme getSegmentedControlBackgroundImageForState:UIControlStateNormal]
+                       forState:UIControlStateNormal
+                     barMetrics:UIBarMetricsDefault];
+    [segmentedControl setBackgroundImage:[SFUIDefaultTheme getSegmentedControlBackgroundImageForState:UIControlStateSelected]
+                                forState:UIControlStateSelected
+                              barMetrics:UIBarMetricsDefault];
+    
+    [segmentedControl setDividerImage:[SFUIDefaultTheme getSegmentedControlSeparatorImage]
+      forLeftSegmentState:UIControlStateNormal
+        rightSegmentState:UIControlStateNormal
+               barMetrics:UIBarMetricsDefault];
+}
+
 + (UIColor *)mainTextColor {
     return [UIColor colorWithRed:101.0/255 green:246.0/255 blue:227.0/255 alpha:1];
 }
@@ -118,6 +132,21 @@
     UIEdgeInsets insets = UIEdgeInsetsMake(15, 20, 15, 20);
     image = [[UIImage imageNamed:@"ui-searchbox.png"] resizableImageWithCapInsets:insets];
     return image;
+}
+
++ (UIImage *)getSegmentedControlBackgroundImageForState:(UIControlState)state {
+    UIImage *image;
+    UIEdgeInsets insets = UIEdgeInsetsMake(5, 5, 5, 5);
+    if (state == UIControlStateNormal) {
+        image = [[UIImage imageNamed:@"ui-segmented-unselected.png"] resizableImageWithCapInsets:insets];
+    } else if (state == UIControlStateSelected) {
+        image = [[UIImage imageNamed:@"ui-segmented-selected.png"] resizableImageWithCapInsets:insets];
+    }
+    return image;
+}
+
++ (UIImage *)getSegmentedControlSeparatorImage {
+    return [UIImage imageNamed:@"ui-segmented-separator"];
 }
 
 @end

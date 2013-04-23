@@ -46,7 +46,7 @@
     self.messageLabel.numberOfLines = 0;
     self.messageLabel.lineBreakMode = UILineBreakModeWordWrap;
 }
-	
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     
