@@ -80,6 +80,8 @@
     if ([SFAudioBroadcaster sharedInstance].musicPlaybackState == SFBroadcastMusicPlaybackPlaying) {
         [[SFAudioBroadcaster sharedInstance] stopMusic];
     } else if ([SFAudioBroadcaster sharedInstance].musicPlaybackState == SFBroadcastMusicPlaybackStopped) {
+//        [self.activityIndicator startAnimating];
+//        self.controlButton.hidden = YES;
         self.controlButton.enabled = NO;
         
         __weak SFPlaylistControlPanelViewController *weakSelf = self;
@@ -89,10 +91,13 @@
             if ([returnedObject[kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
                 NSURL *url = returnedObject[@"ResultURL"];
                 if (weakBroadcaster.isRecording == YES) {
-                    [weakBroadcaster addMusic:url];
+                    [weakBroadcaster addMusic:url volume:self.volumeSlider.value];
                 }
             }
+            
             dispatch_async(dispatch_get_main_queue(), ^{
+//                weakSelf.controlButton.hidden = NO;
+//                [weakSelf.activityIndicator stopAnimating];
                 weakSelf.controlButton.enabled = YES;
             });
         }];
@@ -100,6 +105,7 @@
 }
 
 - (IBAction)volumSliderChanged:(id)sender {
+    [[SFAudioBroadcaster sharedInstance] setMusicVolume:self.volumeSlider.value];
 }
 
 - (void)showAlert:(NSString *)error {
@@ -118,17 +124,21 @@
     }
 }
 
-
-- (void)dealloc {
+- (void)viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:SFBroadcastMusicPlaybackStateDidChangeNotification
                                                   object:[SFAudioBroadcaster sharedInstance]];
+    [super viewWillDisappear:animated];
+}
+
+- (void)dealloc {
 }
 
 - (void)viewDidUnload {
     [self setControlButton:nil];
     [self setManageButton:nil];
     [self setVolumeSlider:nil];
+    [self setActivityIndicator:nil];
     [super viewDidUnload];
 }
 @end

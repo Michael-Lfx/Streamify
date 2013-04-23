@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *controlButton;
 @property (strong, nonatomic) IBOutlet UIButton *manageButton;
 @property (strong, nonatomic) IBOutlet SFSlider *volumeSlider;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic, strong) SFSong *currentSong;
 
