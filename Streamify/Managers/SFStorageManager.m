@@ -146,14 +146,11 @@
     NSURL *diskURL = [self checkPlayable:URL];
     if (diskURL) {
         NSLog(@"END");
-        dispatch_queue_t queue = dispatch_queue_create("callbackQueue", NULL);
-        dispatch_async(queue, ^{
             NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                                   OPERATION_SUCCEEDED, kOperationResult,
                                   diskURL, @"ResultURL",
                                   nil];
             callback((id)dict);
-        });
     } else {
         NSString *EXPORT_NAME = [NSString stringWithFormat:@"%@.caf", [[URL absoluteString] MD5Hash]];
         AVURLAsset *songAsset = [AVURLAsset URLAssetWithURL:URL options:nil];

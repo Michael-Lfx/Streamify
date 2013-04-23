@@ -13,6 +13,7 @@
 @interface SFPlaylistViewController : BaseViewController
 
 @property (nonatomic, strong) SFPlaylistControlPanelViewController *playlistPanelVC;
+@property (nonatomic, strong) SFSong *currentSong;
 
 - (id)initWithSelectable:(BOOL)selectable editable:(BOOL)editable;
 - (void)addSong:(SFSong *)song;

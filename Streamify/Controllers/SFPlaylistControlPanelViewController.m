@@ -8,6 +8,7 @@
 
 #import "SFPlaylistControlPanelViewController.h"
 #import "SFUIDefaultTheme.h"
+#import "SFPlaylistViewController.h"
 
 @interface SFPlaylistControlPanelViewController ()
 
@@ -82,6 +83,7 @@
     } else if ([SFAudioBroadcaster sharedInstance].musicPlaybackState == SFBroadcastMusicPlaybackStopped) {
 //        [self.activityIndicator startAnimating];
 //        self.controlButton.hidden = YES;
+        self.currentSong = self.playlistVC.currentSong;
         self.controlButton.enabled = NO;
         
         __weak SFPlaylistControlPanelViewController *weakSelf = self;
@@ -91,7 +93,7 @@
             if ([returnedObject[kOperationResult] isEqualToString:OPERATION_SUCCEEDED]) {
                 NSURL *url = returnedObject[@"ResultURL"];
                 if (weakBroadcaster.isRecording == YES) {
-                    [weakBroadcaster addMusic:url volume:self.volumeSlider.value];
+                    [weakBroadcaster addMusic:url volume:weakSelf.volumeSlider.value];
                 }
             }
             

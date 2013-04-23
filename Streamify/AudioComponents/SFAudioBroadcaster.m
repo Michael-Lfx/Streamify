@@ -123,11 +123,16 @@
 - (void)setMusicPlaybackState:(SFBroadcastMusicPlaybackState)musicPlaybackState {
     if (musicPlaybackState != _musicPlaybackState) {
         _musicPlaybackState = musicPlaybackState;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:SFBroadcastMusicPlaybackStateDidChangeNotification
-                                                                object:self];
-        });
+//        [self performSelectorOnMainThread:@selector(postPlaybackNotification) withObject:nil waitUntilDone:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SFBroadcastMusicPlaybackStateDidChangeNotification
+                                                            object:self];
     }
+}
+
+- (void)postPlaybackNotification {
+    [[NSNotificationCenter defaultCenter] postNotificationName:SFBroadcastMusicPlaybackStateDidChangeNotification
+                                                        object:self];
+
 }
 
 - (void)addMusic:(NSURL *)musicFileURL volume:(float)musicVolume{
