@@ -127,13 +127,13 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:SFBroadcastMusicPlaybackStateDidChangeNotification
-                                                  object:[SFAudioBroadcaster sharedInstance]];
     [super viewWillDisappear:animated];
 }
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:SFBroadcastMusicPlaybackStateDidChangeNotification
+                                                  object:[SFAudioBroadcaster sharedInstance]];
 }
 
 - (void)viewDidUnload {
