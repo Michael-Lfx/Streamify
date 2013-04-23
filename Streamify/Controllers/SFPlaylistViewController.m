@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSMutableArray *playlist;
 @property (nonatomic) BOOL editable;
 @property (nonatomic) BOOL selectable;
-@property (nonatomic, strong) SFSong *currentSong;
+
 
 @end
 
@@ -127,7 +127,7 @@
 - (void)setCurrentSong:(SFSong *)song
 {
     _currentSong = song;
-    self.playlistPanelVC.currentSong = song;
+//    self.playlistPanelVC.currentSong = song;
 }
 
 #pragma mark - UITableViewDataSource
