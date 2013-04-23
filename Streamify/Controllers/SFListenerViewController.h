@@ -8,7 +8,6 @@
 
 #import "BaseViewController.h"
 #import "SFSidebarViewController.h"
-#import "SFMainColumnViewController.h"
 #import "SFChatViewController.h"
 #import "SFListenerMainColumnViewController.h"
 
