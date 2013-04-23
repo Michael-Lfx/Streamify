@@ -49,7 +49,19 @@
 - (id)init {
     if (self = [super init]) {
         self.isRecording = NO;
-        AudioStreamBasicDescription audioFormat = [AEAudioController nonInterleavedFloatStereoAudioDescription];
+        AudioStreamBasicDescription audioFormat = [AEAudioController nonInterleaved16BitStereoAudioDescription];
+        
+//        AudioStreamBasicDescription audioDescription;
+//        memset(&audioDescription, 0, sizeof(audioDescription));
+//        audioDescription.mFormatID          = kAudioFormatLinearPCM;
+//        audioDescription.mFormatFlags       = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked | kAudioFormatFlagsNativeEndian | kAudioFormatFlagIsNonInterleaved;
+//        audioDescription.mChannelsPerFrame  = 2;
+//        audioDescription.mBytesPerPacket    = sizeof(SInt16);
+//        audioDescription.mFramesPerPacket   = 1;
+//        audioDescription.mBytesPerFrame     = sizeof(SInt16);
+//        audioDescription.mBitsPerChannel    = 8 * sizeof(SInt16);
+//        audioDescription.mSampleRate        = 44100;
+        
         self.audioController = [[AEAudioController alloc] initWithAudioDescription:audioFormat
                                                                       inputEnabled:YES];
         NSError *error = NULL;
