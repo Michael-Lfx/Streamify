@@ -289,8 +289,14 @@
     NSError *error;
     NSArray *directoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:effectDirectory
                                                                                      error:&error];
-    
-    NSLog(@"%@", directoryContents);
+
+    for (NSString *fileName in directoryContents) {
+        if ([[fileName pathExtension] isEqualToString:@"caf"]) {
+            NSString *effectname = [fileName stringByDeletingPathExtension];
+            NSURL *URL = [NSURL URLWithString:fileName relativeToURL:[NSURL URLWithString:effectDirectory]];
+            [result addObject:[[SFEffect alloc] initWithName:effectname URL:URL]];
+        }
+    }
     
     return result;
 }
