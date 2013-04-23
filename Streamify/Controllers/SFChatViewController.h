@@ -21,5 +21,8 @@
 - (IBAction)chatTextEditBeginned:(id)sender;
 - (IBAction)chatTextEditEnded:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIImageView *arrowImage;
+@property (strong, nonatomic) IBOutlet UILabel *slideLabel;
+@property (strong, nonatomic) IBOutlet UIView *slideBorder;
 
 @end

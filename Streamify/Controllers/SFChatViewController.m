@@ -62,6 +62,8 @@
     [SFUIDefaultTheme themeButton:self.sendButton];
     [SFUIDefaultTheme themeTextField:self.chatTextField];
     
+    self.view.clipsToBounds = NO;
+    
     self.chatTextField.frame = CGRectMake(self.chatTextField.frame.origin.x, self.chatTextField.frame.origin.y,
                                           self.chatTextField.frame.size.width, kSFChatTextFrameH);
     self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, self.chatTextField.frame.origin.y,
@@ -103,6 +105,9 @@
     [self setSendButton:nil];
     [self setFooterView:nil];
     [self setFooterView:nil];
+    [self setArrowImage:nil];
+    [self setSlideLabel:nil];
+    [self setSlideBorder:nil];
     [super viewDidUnload];
 }
 
@@ -190,10 +195,12 @@
 {
     self.isDisplayed = YES;
     [self.view addSubview:self.footerView];
-    self.footerView.frame = CGRectMake(0,
-                                       723,
+    self.footerView.frame = CGRectMake(1,
+                                       724,
                                        self.footerView.size.width,
                                        self.footerView.size.height);
+
+    self.arrowImage.transform = CGAffineTransformMakeRotation(-M_PI / 2);
     
     UISwipeGestureRecognizer *swipeDownGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self
                                                                                            action:@selector(swipeFooterDown:)];
@@ -214,7 +221,7 @@
 - (void)swipeFooterUp:(UISwipeGestureRecognizer *)gesture
 {
     if (self.isDisplayed == YES) {
-        [self hide];
+        [self showPlaylist];
     }
     self.isDisplayed = NO;
 }
@@ -222,7 +229,7 @@
 - (void)swipeFooterDown:(UISwipeGestureRecognizer *)gesture
 {
     if (self.isDisplayed == NO) {
-        [self display];
+        [self hidePlaylist];
     }
     self.isDisplayed = YES;
 }
@@ -230,26 +237,40 @@
 - (void)doubleTapFooter:(UITapGestureRecognizer *)gesture
 {
     if (self.isDisplayed == YES) {
-        [self hide];
+        [self showPlaylist];
         self.isDisplayed = NO;
     } else {
-        [self display];
+        [self hidePlaylist];
         self.isDisplayed = YES;
     }
 }
 
-- (void)display
+- (void)hidePlaylist
 {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.view.center = CGPointMake(self.view.center.x, self.view.center.y + 723);
-    }];
+    [UIView animateWithDuration:0.5 animations:^
+                                        {self.view.top += 724;}
+                                    completion:^(BOOL finished)
+                                        {   self.slideLabel.text = @"Slide up to show playlist...";
+                                            self.slideBorder.top = 0;
+                                            [UIView animateWithDuration:0.5 animations:^{
+                                                self.arrowImage.transform = CGAffineTransformMakeRotation(-M_PI/2);
+                                                self.slideLabel.top -= 20;
+                                                self.arrowImage.top -= 10;}];
+                                        }];
 }
 
-- (void)hide
+- (void)showPlaylist
 {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.view.center = CGPointMake(self.view.center.x, self.view.center.y - 723);
-    }];
+    [UIView animateWithDuration:0.5 animations:^
+                                        {self.view.top -= 724;}
+                                    completion:^(BOOL finished)
+                                        {   self.slideLabel.text = @"Slide down to hide playlist...";
+                                            self.slideBorder.top = 69;
+                                            [UIView animateWithDuration:0.5 animations:^{
+                                                self.arrowImage.transform = CGAffineTransformMakeRotation(M_PI/2);
+                                                self.slideLabel.top += 20;
+                                                self.arrowImage.top += 10;}];
+                                        }];
 }
 
 @end

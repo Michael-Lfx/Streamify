@@ -48,15 +48,15 @@
     
     // Playlist View
     self.playlistViewController = [[SFPlaylistViewController alloc] initWithSelectable:YES editable:NO];
-    self.playlistViewController.view.frame = CGRectMake(500,
-                                                        0,
-                                                        524,
+    self.playlistViewController.view.frame = CGRectMake(kSFChatViewFrameX + 1,
+                                                        kSFChatViewFrameY,
+                                                        kSFChatViewFrameW,
                                                         648);
     [self.view addSubview:self.playlistViewController.view];
      
     // Playlist Control Panel View
     self.playlistControlPanelViewController = [[SFPlaylistControlPanelViewController alloc] initWithDelegate:self];
-    self.playlistControlPanelViewController.view.frame = CGRectMake(500,
+    self.playlistControlPanelViewController.view.frame = CGRectMake(kSFChatViewFrameX + 1,
                                                                     648,
                                                                     self.playlistControlPanelViewController.view.size.width,
                                                                     self.playlistControlPanelViewController.view.size.height);
