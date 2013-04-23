@@ -146,11 +146,14 @@
     NSURL *diskURL = [self checkPlayable:URL];
     if (diskURL) {
         NSLog(@"END");
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              OPERATION_SUCCEEDED, kOperationResult,
-                              diskURL, @"ResultURL",
-                              nil];
-        callback((id)dict);
+        dispatch_queue_t queue = dispatch_queue_create("callbackQueue", NULL);
+        dispatch_async(queue, ^{
+            NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  OPERATION_SUCCEEDED, kOperationResult,
+                                  diskURL, @"ResultURL",
+                                  nil];
+            callback((id)dict);
+        });
     } else {
         NSString *EXPORT_NAME = [NSString stringWithFormat:@"%@.caf", [[URL absoluteString] MD5Hash]];
         AVURLAsset *songAsset = [AVURLAsset URLAssetWithURL:URL options:nil];
@@ -289,8 +292,14 @@
     NSError *error;
     NSArray *directoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:effectDirectory
                                                                                      error:&error];
-    
-    NSLog(@"%@", directoryContents);
+
+    for (NSString *fileName in directoryContents) {
+        if ([[fileName pathExtension] isEqualToString:@"caf"]) {
+            NSString *effectname = [fileName stringByDeletingPathExtension];
+            NSURL *URL = [NSURL URLWithString:fileName relativeToURL:[NSURL URLWithString:effectDirectory]];
+            [result addObject:[[SFEffect alloc] initWithName:effectname URL:URL]];
+        }
+    }
     
     return result;
 }

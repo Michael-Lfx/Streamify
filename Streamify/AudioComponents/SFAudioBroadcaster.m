@@ -123,8 +123,10 @@
 - (void)setMusicPlaybackState:(SFBroadcastMusicPlaybackState)musicPlaybackState {
     if (musicPlaybackState != _musicPlaybackState) {
         _musicPlaybackState = musicPlaybackState;
-        [[NSNotificationCenter defaultCenter] postNotificationName:SFBroadcastMusicPlaybackStateDidChangeNotification
-                                                            object:self];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:SFBroadcastMusicPlaybackStateDidChangeNotification
+                                                                object:self];
+        });
     }
 }
 
