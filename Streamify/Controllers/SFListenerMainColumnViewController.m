@@ -158,6 +158,9 @@
     [self.coverImageView setImageWithURL:[NSURL URLWithString:self.user.pictureURL]
                         placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
+    self.coverImageView.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.4].CGColor;
+    self.coverImageView.layer.borderWidth = 1.0;
+    
     [SFUIDefaultTheme themeButton:self.followButton];
     [SFUIDefaultTheme themeButton:self.shareButton];
     [SFUIDefaultTheme themeSlider:self.volumeSlider];

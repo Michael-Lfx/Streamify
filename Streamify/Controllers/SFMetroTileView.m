@@ -57,11 +57,16 @@
         
         [self.coverView setImageWithURL:[NSURL URLWithString:user.pictureURL]
                        placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        
+        self.coverView.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.4].CGColor;
+        self.coverView.layer.borderWidth = 1.0;
+        self.coverView.layer.cornerRadius = 7;
+        self.coverView.layer.masksToBounds = YES;
+        
         if (!user.isLive) {
             self.coverView.alpha = 0.4;
         }
     }
     return self;
 }
-
 @end

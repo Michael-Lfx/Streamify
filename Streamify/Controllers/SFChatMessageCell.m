@@ -29,9 +29,14 @@
 }
 
 - (void)styleCell {
+    self.avatarImageView.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.2].CGColor;
+    self.avatarImageView.layer.borderWidth = 1.0;
+    self.avatarImageView.layer.cornerRadius = 7;
+    self.avatarImageView.layer.masksToBounds = YES;
+    
     /* cell background */
     self.contentView.backgroundColor = [UIColor clearColor];
-    self.contentView.layer.borderColor = [[SFUIDefaultTheme mainTextColor] colorWithAlphaComponent:0.7].CGColor;
+    self.contentView.layer.borderColor = [[SFUIDefaultTheme mainTextColor] colorWithAlphaComponent:0.5].CGColor;
     self.contentView.layer.borderWidth = 1.0;
     self.contentView.layer.cornerRadius = 7;
     self.contentView.layer.masksToBounds = YES;

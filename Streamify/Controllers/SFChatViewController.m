@@ -195,8 +195,10 @@
 {
     self.isDisplayed = YES;
     [self.view addSubview:self.footerView];
+    self.footerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"subtle_carbon.png"]];
+    self.footerView.layer.masksToBounds = YES;
     self.footerView.frame = CGRectMake(1,
-                                       724,
+                                       723,
                                        self.footerView.size.width,
                                        self.footerView.size.height);
 
@@ -248,28 +250,30 @@
 - (void)hidePlaylist
 {
     [UIView animateWithDuration:0.5 animations:^
-                                        {self.view.top += 724;}
+                                        {self.view.top += 700;}
                                     completion:^(BOOL finished)
                                         {   self.slideLabel.text = @"Slide up to show playlist...";
                                             self.slideBorder.top = 0;
+                                            self.footerView.top += 24;
                                             [UIView animateWithDuration:0.5 animations:^{
                                                 self.arrowImage.transform = CGAffineTransformMakeRotation(-M_PI/2);
-                                                self.slideLabel.top -= 20;
-                                                self.arrowImage.top -= 10;}];
+                                                self.slideLabel.top -= 22;
+                                                self.arrowImage.top -= 12;}];
                                         }];
 }
 
 - (void)showPlaylist
 {
     [UIView animateWithDuration:0.5 animations:^
-                                        {self.view.top -= 724;}
+                                        {self.view.top -= 700;}
                                     completion:^(BOOL finished)
                                         {   self.slideLabel.text = @"Slide down to hide playlist...";
                                             self.slideBorder.top = 69;
+                                            self.footerView.top -= 24;
                                             [UIView animateWithDuration:0.5 animations:^{
                                                 self.arrowImage.transform = CGAffineTransformMakeRotation(M_PI/2);
-                                                self.slideLabel.top += 20;
-                                                self.arrowImage.top += 10;}];
+                                                self.slideLabel.top += 22;
+                                                self.arrowImage.top += 12;}];
                                         }];
 }
 

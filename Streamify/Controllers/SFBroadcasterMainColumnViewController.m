@@ -71,6 +71,9 @@
                         placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     self.coverImageView.alpha = 0.3;
     
+    self.coverImageView.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.4].CGColor;
+    self.coverImageView.layer.borderWidth = 1.0;
+    
     [SFUIDefaultTheme themeButton:self.effect1Button];
     [SFUIDefaultTheme themeButton:self.effect2Button];
     [SFUIDefaultTheme themeButton:self.effect3Button];

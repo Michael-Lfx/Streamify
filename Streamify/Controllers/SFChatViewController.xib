@@ -130,6 +130,7 @@
 						<string key="NSFrame">{{414, 670}, {73, 30}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -161,7 +162,7 @@
 						</object>
 					</object>
 				</array>
-				<string key="NSFrameSize">{524, 793}</string>
+				<string key="NSFrameSize">{524, 768}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="822749551"/>
@@ -190,6 +191,7 @@
 						<string key="NSFrame">{{179, 5}, {255, 21}}</string>
 						<reference key="NSSuperview" ref="235294080"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
