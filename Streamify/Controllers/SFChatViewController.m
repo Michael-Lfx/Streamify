@@ -267,7 +267,7 @@
     [UIView animateWithDuration:0.5 animations:^
                                         {self.view.top -= 700;}
                                     completion:^(BOOL finished)
-                                        {   self.slideLabel.text = @"Slide down to hide playlist...";
+                                        {   self.slideLabel.text = @"Slide down to show chat...";
                                             self.slideBorder.top = 69;
                                             self.footerView.top -= 24;
                                             [UIView animateWithDuration:0.5 animations:^{
