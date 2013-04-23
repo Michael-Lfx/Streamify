@@ -170,6 +170,7 @@
 
 - (void)dealloc {
     [self.pollingTimer invalidate];
+    [self.listenerCountTimer invalidate];
 }
 
 - (void)didReceiveMemoryWarning
