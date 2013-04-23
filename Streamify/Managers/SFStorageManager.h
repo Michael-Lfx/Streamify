@@ -24,5 +24,6 @@ typedef void(^SFStorageCallback)(id returnedObject);
                    withCallback:(SFStorageCallback)callback;
 - (NSString *)directoryForEffectFiles;
 - (NSArray *)getAllEffects;
+- (NSString *)directoryForEffectFiles;
 
 @end

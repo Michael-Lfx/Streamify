@@ -202,5 +202,41 @@
         return [UIImage imageNamed:@"maincol-icon-record.png"];
     }
 }
+- (IBAction)chipmunkPressed:(id)sender {
+    NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
+    NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Chipmunks.caf"]];
+    NSLog(@"Effect: %@", URL);
+    
+    if ([SFAudioBroadcaster sharedInstance].isRecording) {
+        [[SFAudioBroadcaster sharedInstance] addEffect:URL];
+    }
+}
+- (IBAction)clappingPressed:(id)sender {
+    NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
+    NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Applause.caf"]];
+        NSLog(@"Effect: %@", URL);
+    
+    if ([SFAudioBroadcaster sharedInstance].isRecording) {
+        [[SFAudioBroadcaster sharedInstance] addEffect:URL];
+    }
+}
+- (IBAction)bellringPressed:(id)sender {
+    NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
+    NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Bell Ringing.caf"]];
+        NSLog(@"Effect: %@", URL);
+    
+    if ([SFAudioBroadcaster sharedInstance].isRecording) {
+        [[SFAudioBroadcaster sharedInstance] addEffect:URL];
+    }
+}
+- (IBAction)booingPressed:(id)sender {
+    NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
+    NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Booing.caf"]];
+        NSLog(@"Effect: %@", URL);
+    
+    if ([SFAudioBroadcaster sharedInstance].isRecording) {
+        [[SFAudioBroadcaster sharedInstance] addEffect:URL];
+    }
+}
 
 @end

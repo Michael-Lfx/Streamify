@@ -251,7 +251,7 @@
     AEAudioFilePlayer *effectFilePlayer = [AEAudioFilePlayer audioFilePlayerWithURL:effectFileURL
                                                                     audioController:self.audioController
                                                                               error:&error];
-    effectFilePlayer.volume = 0.5;
+    effectFilePlayer.volume = 1.0;
     effectFilePlayer.channelIsPlaying = YES;
     
     __weak SFAudioBroadcaster *weakSelf = self;
