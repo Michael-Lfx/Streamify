@@ -151,6 +151,7 @@
             break;
     }
     [self activateCanvas:activeCanvasViewController];
+    [self positeCanvasViewController:activeCanvasViewController];
 }
 
 - (void)viewDidUnload {
