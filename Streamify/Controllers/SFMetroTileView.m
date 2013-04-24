@@ -64,7 +64,7 @@
         self.coverView.layer.masksToBounds = YES;
         
         if (!user.isLive) {
-            self.coverView.alpha = 0.4;
+            self.coverView.alpha = 0.5;
         }
     }
     return self;

@@ -313,7 +313,7 @@
 		1AFA40A717245EC6001289B1 /* SFPlaylistControlPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistControlPanelViewController.h; sourceTree = "<group>"; };
 		1AFA40A817245EC6001289B1 /* SFPlaylistControlPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistControlPanelViewController.m; sourceTree = "<group>"; };
 		1AFA40A917245EC6001289B1 /* SFPlaylistControlPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPlaylistControlPanelViewController.xib; sourceTree = "<group>"; };
-		9C09131A17266DB8007B710D /* SFEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFEffect.h; sourceTree = "<group>"; };
+		9C09131A17266DB8007B710D /* SFEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFEffect.h; path = Models/SFEffect.h; sourceTree = "<group>"; };
 		9C09131B17266DB8007B710D /* SFEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFEffect.m; sourceTree = "<group>"; };
 		9C1EC5C817216BDB001E7CAE /* SFPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistViewController.h; sourceTree = "<group>"; };
 		9C1EC5C917216BDB001E7CAE /* SFPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistViewController.m; sourceTree = "<group>"; };
@@ -943,6 +943,7 @@
 				C0B221211705566B0045A248 /* Constants */,
 				9CACF02016F755AC0067C352 /* Controllers */,
 				9CACF02816F755AC0067C352 /* Managers */,
+				9C09131A17266DB8007B710D /* SFEffect.h */,
 				9CACF02C16F755AC0067C352 /* Models */,
 				9CACEFE816F7529C0067C352 /* Supporting Files */,
 				9CACF03016F755AC0067C352 /* Vendors */,
@@ -1059,7 +1060,6 @@
 		9CACF02C16F755AC0067C352 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9C09131A17266DB8007B710D /* SFEffect.h */,
 				9C09131B17266DB8007B710D /* SFEffect.m */,
 				9C975CA217180F7F00C5FDDC /* SFMessage.h */,
 				9C975CA317180F7F00C5FDDC /* SFMessage.m */,
