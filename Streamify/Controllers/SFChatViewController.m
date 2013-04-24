@@ -240,10 +240,8 @@
 {
     if (self.isDisplayed == YES) {
         [self showPlaylist];
-        self.isDisplayed = NO;
     } else {
         [self hidePlaylist];
-        self.isDisplayed = YES;
     }
 }
 
@@ -260,6 +258,7 @@
                                                 self.slideLabel.top -= 22;
                                                 self.arrowImage.top -= 12;}];
                                         }];
+    self.isDisplayed = YES;
 }
 
 - (void)showPlaylist
@@ -275,6 +274,7 @@
                                                 self.slideLabel.top += 22;
                                                 self.arrowImage.top += 12;}];
                                         }];
+    self.isDisplayed = NO;
 }
 
 @end
