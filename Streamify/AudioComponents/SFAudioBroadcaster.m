@@ -265,6 +265,26 @@
     [self.effectsArray addObject:effectFilePlayer];
 }
 
+- (void)addEffect:(NSURL *)effectFileURL withCallback:(SFBroadcastCallback)callback {
+    NSError *error;
+    AEAudioFilePlayer *effectFilePlayer = [AEAudioFilePlayer audioFilePlayerWithURL:effectFileURL
+                                                                    audioController:self.audioController
+                                                                              error:&error];
+    effectFilePlayer.volume = 0.8;
+    effectFilePlayer.channelIsPlaying = YES;
+    
+    __weak SFAudioBroadcaster *weakSelf = self;
+    __weak AEAudioFilePlayer *copyEffect = effectFilePlayer;
+    
+    [effectFilePlayer setCompletionBlock:^{
+        [weakSelf stopEffect:copyEffect];
+        callback();
+    }];
+    
+    [self.audioController addChannels:[NSArray arrayWithObjects:effectFilePlayer, nil]];
+    [self.effectsArray addObject:effectFilePlayer];
+}
+
 - (void)stopEffect:(AEAudioFilePlayer *)effectFilePlayer {
     [self.audioController removeChannels:[NSArray arrayWithObject:effectFilePlayer]];
     [self.effectsArray removeObject:effectFilePlayer];

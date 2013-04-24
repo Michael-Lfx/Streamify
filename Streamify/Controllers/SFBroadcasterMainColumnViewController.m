@@ -229,51 +229,64 @@
         self.effect4Button.alpha = 1.0;
     }
 }
-
 - (IBAction)chipmunkPressed:(id)sender {
-    NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
-    NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Chipmunks.caf"]];
+    //    NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
+    //    NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Chipmunks.caf"]];
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"Chipmunks" withExtension:@"caf"];
     NSLog(@"Effect: %@", URL);
     
     if ([SFAudioBroadcaster sharedInstance].isRecording) {
         [self disableAllEffects];
-        [[SFAudioBroadcaster sharedInstance] addEffect:URL];
-        [self performSelector:@selector(enableAllEffects) withObject:nil afterDelay:15.0];
+        [[SFAudioBroadcaster sharedInstance] addEffect:URL withCallback:^{
+            [self enableAllEffects];
+        }];
+        //        [self performSelector:@selector(enableAllEffects) withObject:nil afterDelay:15.0];
     }
 }
-
 
 - (IBAction)clappingPressed:(id)sender {
-    NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
-    NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Applause.caf"]];
+    //    NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
+    //    NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Applause.caf"]];
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"Applause" withExtension:@"caf"];
     NSLog(@"Effect: %@", URL);
     
     if ([SFAudioBroadcaster sharedInstance].isRecording) {
         [self disableAllEffects];
-        [[SFAudioBroadcaster sharedInstance] addEffect:URL];
-        [self performSelector:@selector(enableAllEffects) withObject:nil afterDelay:15.0];
+        [[SFAudioBroadcaster sharedInstance] addEffect:URL withCallback:^{
+            [self enableAllEffects];
+        }];
+        //        [self performSelector:@selector(enableAllEffects) withObject:nil afterDelay:15.0];
     }
 }
-- (IBAction)bellringPressed:(id)sender {
-    NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
-    NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Bell Ringing.caf"]];
+
+- (IBAction)laughingPressed:(id)sender {
+    //    NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
+    //    NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Laughing.caf"]];
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"Laughing" withExtension:@"caf"];
     NSLog(@"Effect: %@", URL);
     
     if ([SFAudioBroadcaster sharedInstance].isRecording) {
         [self disableAllEffects];
-        [[SFAudioBroadcaster sharedInstance] addEffect:URL];
-        [self performSelector:@selector(enableAllEffects) withObject:nil afterDelay:15.0];
+        [[SFAudioBroadcaster sharedInstance] addEffect:URL withCallback:^{
+            [self enableAllEffects];
+        }];
+        //        [self performSelector:@selector(enableAllEffects) withObject:nil afterDelay:15.0];
     }
 }
+
+
 - (IBAction)booingPressed:(id)sender {
-    NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
-    NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Booing.caf"]];
+    //    NSString *dir = [[SFStorageManager sharedInstance] directoryForEffectFiles];
+    //    NSURL *URL = [NSURL URLWithString:[dir stringByAppendingString:@"/Booing.caf"]];
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"Booing" withExtension:@"caf"];
     NSLog(@"Effect: %@", URL);
     
     if ([SFAudioBroadcaster sharedInstance].isRecording) {
         [self disableAllEffects];
-        [[SFAudioBroadcaster sharedInstance] addEffect:URL];
-        [self performSelector:@selector(enableAllEffects) withObject:nil afterDelay:15.0];
+        [[SFAudioBroadcaster sharedInstance] addEffect:URL withCallback:^{
+            [self enableAllEffects];
+        }];
+        //        [self performSelector:@selector(enableAllEffects) withObject:nil afterDelay:15.0];
     }
 }
 

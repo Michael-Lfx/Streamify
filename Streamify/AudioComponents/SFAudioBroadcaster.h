@@ -33,6 +33,7 @@ typedef NSUInteger SFBroadcastMusicPlaybackState;
 - (void)addMusic:(NSURL *)musicFileURL volume:(float)musicVolume;
 - (void)addMusic:(NSURL *)musicFileURL;
 - (void)addEffect:(NSURL *)effectFileURL;
+- (void)addEffect:(NSURL *)effectFileURL withCallback:(SFBroadcastCallback)callback;
 - (void)stopMusic;
 - (void)record;
 - (void)stop;

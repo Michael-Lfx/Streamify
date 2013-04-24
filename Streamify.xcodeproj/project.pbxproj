@@ -38,6 +38,10 @@
 		1AFA40AA17245EC6001289B1 /* SFPlaylistControlPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA40A817245EC6001289B1 /* SFPlaylistControlPanelViewController.m */; };
 		1AFA40AB17245EC6001289B1 /* SFPlaylistControlPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AFA40A917245EC6001289B1 /* SFPlaylistControlPanelViewController.xib */; };
 		9C09131C17266DB8007B710D /* SFEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C09131B17266DB8007B710D /* SFEffect.m */; };
+		9C0913221727BE92007B710D /* Applause.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9C09131E1727BE92007B710D /* Applause.caf */; };
+		9C0913231727BE92007B710D /* Booing.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9C09131F1727BE92007B710D /* Booing.caf */; };
+		9C0913241727BE92007B710D /* Chipmunks.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9C0913201727BE92007B710D /* Chipmunks.caf */; };
+		9C0913251727BE92007B710D /* Laughing.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9C0913211727BE92007B710D /* Laughing.caf */; };
 		9C1EC5CB17216BDB001E7CAE /* SFPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EC5C917216BDB001E7CAE /* SFPlaylistViewController.m */; };
 		9C1EC5CC17216BDB001E7CAE /* SFPlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EC5CA17216BDB001E7CAE /* SFPlaylistViewController.xib */; };
 		9C1EC5CF17217081001E7CAE /* SFSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EC5CE17217081001E7CAE /* SFSong.m */; };
@@ -313,8 +317,12 @@
 		1AFA40A717245EC6001289B1 /* SFPlaylistControlPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistControlPanelViewController.h; sourceTree = "<group>"; };
 		1AFA40A817245EC6001289B1 /* SFPlaylistControlPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistControlPanelViewController.m; sourceTree = "<group>"; };
 		1AFA40A917245EC6001289B1 /* SFPlaylistControlPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPlaylistControlPanelViewController.xib; sourceTree = "<group>"; };
-		9C09131A17266DB8007B710D /* SFEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFEffect.h; path = Models/SFEffect.h; sourceTree = "<group>"; };
+		9C09131A17266DB8007B710D /* SFEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFEffect.h; sourceTree = "<group>"; };
 		9C09131B17266DB8007B710D /* SFEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFEffect.m; sourceTree = "<group>"; };
+		9C09131E1727BE92007B710D /* Applause.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Applause.caf; sourceTree = "<group>"; };
+		9C09131F1727BE92007B710D /* Booing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Booing.caf; sourceTree = "<group>"; };
+		9C0913201727BE92007B710D /* Chipmunks.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Chipmunks.caf; sourceTree = "<group>"; };
+		9C0913211727BE92007B710D /* Laughing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Laughing.caf; sourceTree = "<group>"; };
 		9C1EC5C817216BDB001E7CAE /* SFPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaylistViewController.h; sourceTree = "<group>"; };
 		9C1EC5C917216BDB001E7CAE /* SFPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaylistViewController.m; sourceTree = "<group>"; };
 		9C1EC5CA17216BDB001E7CAE /* SFPlaylistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFPlaylistViewController.xib; sourceTree = "<group>"; };
@@ -815,6 +823,17 @@
 			name = "Settings VC";
 			sourceTree = "<group>";
 		};
+		9C09131D1727BE92007B710D /* EffectFiles */ = {
+			isa = PBXGroup;
+			children = (
+				9C09131E1727BE92007B710D /* Applause.caf */,
+				9C09131F1727BE92007B710D /* Booing.caf */,
+				9C0913201727BE92007B710D /* Chipmunks.caf */,
+				9C0913211727BE92007B710D /* Laughing.caf */,
+			);
+			path = EffectFiles;
+			sourceTree = "<group>";
+		};
 		9C1EC5C717216BA2001E7CAE /* Playlist VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -937,13 +956,13 @@
 		9CACEFE716F7529C0067C352 /* Streamify */ = {
 			isa = PBXGroup;
 			children = (
+				9C09131D1727BE92007B710D /* EffectFiles */,
 				9CDD6AE017034B1C005A42C8 /* Assets */,
 				9CE76B051712B07200D60D7D /* AudioComponents */,
 				9CACF00716F755AC0067C352 /* Categories */,
 				C0B221211705566B0045A248 /* Constants */,
 				9CACF02016F755AC0067C352 /* Controllers */,
 				9CACF02816F755AC0067C352 /* Managers */,
-				9C09131A17266DB8007B710D /* SFEffect.h */,
 				9CACF02C16F755AC0067C352 /* Models */,
 				9CACEFE816F7529C0067C352 /* Supporting Files */,
 				9CACF03016F755AC0067C352 /* Vendors */,
@@ -1060,6 +1079,7 @@
 		9CACF02C16F755AC0067C352 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9C09131A17266DB8007B710D /* SFEffect.h */,
 				9C09131B17266DB8007B710D /* SFEffect.m */,
 				9C975CA217180F7F00C5FDDC /* SFMessage.h */,
 				9C975CA317180F7F00C5FDDC /* SFMessage.m */,
@@ -1667,6 +1687,10 @@
 				1AB19C631726882100B62179 /* SFSettingsManageEffectsViewController.xib in Resources */,
 				1AB19C641726882400B62179 /* SFSettingsAboutUsViewController.xib in Resources */,
 				1AB19C691726890400B62179 /* SFSettingsAddEffectViewController.xib in Resources */,
+				9C0913221727BE92007B710D /* Applause.caf in Resources */,
+				9C0913231727BE92007B710D /* Booing.caf in Resources */,
+				9C0913241727BE92007B710D /* Chipmunks.caf in Resources */,
+				9C0913251727BE92007B710D /* Laughing.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
