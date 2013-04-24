@@ -92,8 +92,11 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [self.timer invalidate];
     [super viewWillDisappear:animated];
+}
+
+- (void)dealloc {
+    [self.timer invalidate];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
