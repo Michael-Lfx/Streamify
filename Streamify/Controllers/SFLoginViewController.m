@@ -50,7 +50,11 @@
                 [self.navigationController pushViewController:homeViewController animated:NO];
             } else {
                 NSLog(@"Uh oh. An error occurred");
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                                message:@"Sorry we cannot login into your Facebook account"
+                                                               delegate:nil
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"Dismiss", nil];
                 [alert show];
                 
                 self.loginButton.hidden = NO;
@@ -77,11 +81,19 @@
         if (!user) {
             if (!error) {
                 NSLog(@"Uh oh. The user cancelled the Facebook login.");
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:@"Uh oh. The user cancelled the Facebook login." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                                message:@"You have cancelled the Facebook login."
+                                                               delegate:nil
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"Dismiss", nil];
                 [alert show];
             } else {
                 NSLog(@"Uh oh. An error occurred: %@", error);
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                                message:@"Please check your Intenet connection"
+                                                               delegate:nil
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"Dismiss", nil];
                 [alert show];
             }
         } else if (user.isNew) {
@@ -92,7 +104,12 @@
                     [self.navigationController pushViewController:homeViewController animated:YES];
                 } else {
                     NSLog(@"Uh oh. An error occurred");
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                    UIAlertView *alert = [[UIAlertView alloc]
+                                          initWithTitle:@"Log In Error"
+                                          message:[error description]
+                                          delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"Dismiss", nil];
                     [alert show];
                 }
             }];
@@ -104,7 +121,11 @@
                     [self.navigationController pushViewController:homeViewController animated:YES];
                 } else {
                     NSLog(@"Uh oh. An error occurred");
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                    UIAlertView *alert = [[UIAlertView alloc]
+                                          initWithTitle:@"Log In Error"
+                                          message:[error description]
+                                          delegate:nil cancelButtonTitle:nil
+                                          otherButtonTitles:@"Dismiss", nil];
                     [alert show];
                 }
             }];
