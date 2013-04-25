@@ -17,7 +17,15 @@
 - (void)managePlaylistButtonPressed;
 - (void)playButtonPressed;
 
+
 @end
+
+@protocol SFPlayListControlDataSourceProtocol <NSObject>
+
+- (SFSong *)currentSelectedSong;
+
+@end
+
 
 @interface SFPlaylistControlPanelViewController : BaseViewController
 
@@ -26,7 +34,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *manageButton;
 @property (strong, nonatomic) IBOutlet SFSlider *volumeSlider;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
+@property (nonatomic, strong) id <SFPlayListControlDataSourceProtocol> datasource;
 @property (nonatomic, strong) SFSong *currentSong;
 
 - (id)initWithDelegate:(id)delegate;

@@ -83,7 +83,7 @@
     } else if ([SFAudioBroadcaster sharedInstance].musicPlaybackState == SFBroadcastMusicPlaybackStopped) {
 //        [self.activityIndicator startAnimating];
 //        self.controlButton.hidden = YES;
-        self.currentSong = self.playlistVC.currentSong;
+        self.currentSong = [self.datasource currentSelectedSong];
         self.controlButton.enabled = NO;
         
         __weak SFPlaylistControlPanelViewController *weakSelf = self;

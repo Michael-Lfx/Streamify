@@ -130,6 +130,12 @@
 //    self.playlistPanelVC.currentSong = song;
 }
 
+#pragma mark - SFPlayListDataSourceProtocol
+
+- (SFSong *)currentSelectedSong {
+    return self.currentSong;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

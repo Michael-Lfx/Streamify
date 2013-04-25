@@ -12,7 +12,7 @@
 #import "SFBroadcasterMainColumnViewController.h"
 #import "SFPlaylistControlPanelViewController.h"
 
-@interface SFBroadcasterViewController : BaseViewController <SFSidebarViewControllerProtocol, SFPlaylistControlPanelDelegate>
+@interface SFBroadcasterViewController : BaseViewController <SFSidebarViewControllerProtocol>
 
 @property (nonatomic, strong) SFBroadcasterMainColumnViewController *mainColumnViewController;
 @property (nonatomic, strong) SFSidebarViewController *sidebarViewController;

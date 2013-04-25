@@ -7,10 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import "SFPlaylistControlPanelViewController.h"
 
-@class SFPlaylistControlPanelViewController;
-
-@interface SFPlaylistViewController : BaseViewController
+@interface SFPlaylistViewController : BaseViewController <SFPlayListControlDataSourceProtocol>
 
 @property (nonatomic, strong) SFPlaylistControlPanelViewController *playlistPanelVC;
 @property (nonatomic, strong) SFSong *currentSong;

@@ -62,8 +62,7 @@
                                                                     self.playlistControlPanelViewController.view.size.height);
     [self.view addSubview:self.playlistControlPanelViewController.view];
     
-    self.playlistControlPanelViewController.playlistVC = self.playlistViewController;
-    self.playlistViewController.playlistPanelVC = self.playlistControlPanelViewController;
+    self.playlistControlPanelViewController.datasource = self.playlistViewController;
     
     // Add Chat View
     self.chatViewController = [[SFChatViewController alloc] initWithChannel:self.channel];
