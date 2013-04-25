@@ -188,11 +188,6 @@
                                              selector:@selector(updatePlaybackState)
                                                  name:MPMoviePlayerPlaybackStateDidChangeNotification
                                                object:[SFAudioStreamer sharedInstance]];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(fuck:)
-                                                 name:MPMoviePlayerPlaybackDidFinishNotification
-                                               object:[SFAudioStreamer sharedInstance]];
 
     // Buttons
     [self.controlButton setImage:[self controlButtonIconForCurrentChannelState] forState:UIControlStateNormal];
@@ -408,11 +403,6 @@
 
 -(void) publishGraphStory{
     [[SFSocialManager sharedInstance] publishGraphStory:self.user.name];
-}
-
-- (void)fuck:(NSNotification *)notification {
-    NSDictionary *userInfo = [notification userInfo];
-    NSLog(@"%@", userInfo);
 }
 
 @end
