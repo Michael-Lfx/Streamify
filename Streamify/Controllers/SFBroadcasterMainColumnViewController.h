@@ -35,5 +35,6 @@
 - (IBAction)muteSegmentedControlChanged:(id)sender;
 
 - (void)stopRecording;
+- (void)stopTimer;
 
 @end

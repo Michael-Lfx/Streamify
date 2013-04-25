@@ -77,13 +77,6 @@
     self.doneFetching = YES;
     self.lastUpdateTime = [NSDate date];
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0
-                                                  target:self
-                                                selector:@selector(updateMessages)
-                                                userInfo:nil
-                                                 repeats:YES];
-    [self.timer fire];
-    
     self.chatTextField.delegate = self;
 }
 
@@ -92,15 +85,20 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [self.timer invalidate];
     [super viewWillDisappear:animated];
 }
 
-- (void)dealloc {
-    [self.timer invalidate];
+- (void)fetch {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0
+                                                  target:self
+                                                selector:@selector(updateMessages)
+                                                userInfo:nil
+                                                 repeats:YES];
+    [self.timer fire];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
+- (void)dealloc {
 }
 
 - (void)viewDidUnload {
@@ -173,24 +171,25 @@
 - (void)updateMessages {
     if (!self.doneFetching) return;
     self.doneFetching = NO;
+    __weak SFChatViewController *weakSelf = self;
     [[SFSocialManager sharedInstance] fetchChannelMessages:self.channel.objectID
                                                lastUpdated:self.lastUpdateTime
                                               withCallback:^(id returnedObject) {
                                                   if ([[returnedObject objectForKey:kOperationResult] isEqual:OPERATION_SUCCEEDED]) {
                                                       NSArray *newMessages = [returnedObject objectForKey:kResultNewMessages];
                                                       if (newMessages.count > 0) {
-                                                          [self.chatTableViewController.messagesData removeAllObjects];
+                                                          [weakSelf.chatTableViewController.messagesData removeAllObjects];
                                                           newMessages = [[newMessages reverseObjectEnumerator] allObjects];
                                                           for (SFMessage *message in newMessages) {
-                                                              if ([message.timeCreated laterDate:self.lastUpdateTime]) {
-                                                                  [self.chatTableViewController.messagesData addObject:message];
-                                                                  self.lastUpdateTime = message.timeCreated;
+                                                              if ([message.timeCreated laterDate:weakSelf.lastUpdateTime]) {
+                                                                  [weakSelf.chatTableViewController.messagesData addObject:message];
+                                                                  weakSelf.lastUpdateTime = message.timeCreated;
                                                               }
                                                           }
-                                                          [self.chatTableViewController.tableView reloadData];
+                                                          [weakSelf.chatTableViewController.tableView reloadData];
                                                       }
                                                   }
-                                                  self.doneFetching = YES;
+                                                  weakSelf.doneFetching = YES;
                                               }];
 }
 

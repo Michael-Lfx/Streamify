@@ -362,6 +362,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [self.listenerCountTimer invalidate];
+    [self.pollingTimer invalidate];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerPlaybackStateDidChangeNotification
                                                   object:[SFAudioStreamer sharedInstance]];

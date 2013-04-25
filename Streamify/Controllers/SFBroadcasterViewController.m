@@ -106,6 +106,7 @@
     [self.navigationController setNavigationBarHidden:YES];
     
     [self.playlistViewController viewDidLoad];
+    [self.chatViewController fetch];
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,6 +120,7 @@
 - (void)backPressed:(id)sender
 {
     [self.mainColumnViewController stopRecording];
+    [self.mainColumnViewController stopTimer];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

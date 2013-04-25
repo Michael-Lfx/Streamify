@@ -171,7 +171,7 @@
     }
 }
 
-- (void)dealloc {
+- (void)stopTimer {
     [self.pollingTimer invalidate];
     [self.listenerCountTimer invalidate];
 }

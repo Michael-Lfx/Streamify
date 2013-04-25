@@ -19,6 +19,7 @@
 - (void)addFooterWithDisplayed:(BOOL)isDisplayed;
 - (void)showPlaylist;
 - (void)hidePlaylist;
+- (void)fetch;
 
 - (IBAction)chatTextEditBeginned:(id)sender;
 - (IBAction)chatTextEditEnded:(id)sender;
