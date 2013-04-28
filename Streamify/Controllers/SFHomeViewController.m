@@ -210,6 +210,7 @@
 }
 
 - (void)broadcastPressed:(id)sender {
+    [[SFAudioStreamer sharedInstance] stop];
     SFBroadcasterViewController *broadcasterViewController = [[SFBroadcasterViewController alloc] initWithChannel:[SFSocialManager sharedInstance].currentUser];
     [self.navigationController pushViewController:broadcasterViewController animated:YES];
 }
