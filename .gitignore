@@ -11,5 +11,6 @@
 *.xcodeproj/*.xcworkspace
 xcuserdata
 build/
+streams
 
 *.orig
